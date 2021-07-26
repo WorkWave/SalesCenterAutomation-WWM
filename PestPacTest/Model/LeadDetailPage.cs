@@ -128,7 +128,6 @@ namespace WorkWave.PestPac.TA.Model
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSalesCenter)))
             {
                 ClickSalesCenter.Click();
-               // Thread.Sleep(2000);
             }
         }
 
@@ -136,8 +135,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickLeadLink)))
             {
-                ClickLeadLink.Click();
-             //   Thread.Sleep(2000);
+                ClickLeadLink.Click();            
             }
         }
 
@@ -145,8 +143,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickPlusButton)))
             {
-                ClickPlusButton.Click();
-              //  Thread.Sleep(2000);
+                ClickPlusButton.Click();             
             }
         }
 
@@ -246,21 +243,6 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
-
-        //if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickListViewButton)))
-        //{
-
-        //    PestPacUtility.DbleClick(SUT.Web.WebDriver, ClickListViewButton);
-        //    return true;
-        //}
-        //else
-        //{
-        //    SUT.Log.ErrorFormat("Could not find element in method {0}", MethodBase.GetCurrentMethod().Name);
-        //    return false;
-        //}
-
-
-
         public void ClickOnSearchIcon()
         {
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSearchIcon)))
@@ -304,12 +286,6 @@ namespace WorkWave.PestPac.TA.Model
                 Thread.Sleep(2000);
             }
         }
-
-
-
-
-
-
         #endregion Selenium
 
 
