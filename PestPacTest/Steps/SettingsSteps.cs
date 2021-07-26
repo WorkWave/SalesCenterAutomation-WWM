@@ -241,27 +241,17 @@ namespace WorkWave.PestPac.TA.Steps
             settingpage.ClickSaveButtonInUserSlider();
         }
 
-        //[Then(@"Validation message should be displayed")]
-        //public void ThenValidationMessageShouldBeDisplayed(string message)
-        //{
-
-
-        //}
-
         [Then(@"Validation message should be displayed (.*)")]
         public void ThenValidationMessageShouldBeDisplayedUserCreated_WelcomeEmailSent_(string message)
         {
             settingpage.VerifyConfirmMsg(message);
         }
 
-
-
         [Then(@"I click on three dots icon for added user")]
         public void ThenIClickOnThreeDotsIconForAddedUser()
         {
             settingpage.ClickOnThreeDotsIconforAddedUser();
         }
-
 
         [Then(@"I click on Delete option for unmapped user")]
         public void ThenIClickOnDeleteOptionForUnmappedUser()
@@ -290,7 +280,6 @@ namespace WorkWave.PestPac.TA.Steps
         {
             settingpage.ClickAddSalesTeamButton();
         }
-
 
         [Then(@"I enter the Sales Team Name (.*)")]
         public void ThenIEnterTheSalesTeamNameAutouserGmail_Com(string salesteamname)
@@ -357,9 +346,6 @@ namespace WorkWave.PestPac.TA.Steps
         {
 
         }
-
-
-
 
     }
 }
