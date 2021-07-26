@@ -1,0 +1,117 @@
+{
+"billToID": 491,
+"paymentDate": "2021-05-10T01:22:34.335Z",
+"amount": 20,
+"reference": "newone",
+"methodOfPayment": "ch",
+"glCode": "string",
+"service": "AUTOSERVICE",
+"paymentType": "Payment",
+"paymentOrigin": "WebPayment",
+"batchID": "",
+"adjustmentReason": "",
+"setupID": 0,
+"applications": [
+{
+"applyToType": "Invoice",
+"applyToID": 309,
+"amount": 10,
+"committed": true,
+"invoice": {
+"invoiceID": 309,
+"locationID": 496,
+"billToID":491,
+"setupID": 0,
+"invoiceNumber": "10806",
+"branch": "string",
+"branchID": 1,
+"parentInvoiceID": null,
+"serviceCode": "string",
+"description": "string",
+"subTotal": 0,
+"tax": 0,
+"total": 0,
+"balance": 0,
+"invoiceDate": "2021-05-10T01:22:34.335Z",
+"workDate": "2021-05-10T01:22:34.335Z",
+"dueDate": "2021-05-12T01:22:34.335Z",
+"duration": 0,
+"timeRange": "string",
+"invoiceType": "CallBack",
+"origin": "Generated",
+"tech1": "string",
+"techID1": 0,
+"route": "string",
+"consolidatedInvoiceNum": "string",
+"consolidatedInvoiceDate": "2021-05-10T01:22:34.335Z",
+"pdfUrls": {
+"additionalProp1": "string",
+"additionalProp2": "string",
+"additionalProp3": "string"
+},
+"autoBill": true
+},
+"serviceOrder": {
+"orderID": 0,
+"locationID": 0,
+"billToID": 0,
+"setupID": 0,
+"leadID": "string",
+"orderNumber": "string",
+"branch": "string",
+"branchID": 0,
+"parentOrderID": 0,
+"inProgress": true,
+"posted": true,
+"serviceCode": "string",
+"description": "string",
+"subTotal": 0,
+"tax": 0,
+"total": 0,
+"workDate": "2021-05-10T01:22:34.335Z",
+"timeRange": "string",
+"locked": true,
+"duration": 0,
+"orderType": "ServiceOrder",
+"origin": "Generated",
+"tech1": "string",
+"techID1": 0,
+"route": "string",
+"pdfUrls": {
+"additionalProp1": "string",
+"additionalProp2": "string",
+"additionalProp3": "string"
+}
+},
+"serviceSetup": {
+"setupID": 0,
+"locationID": 0,
+"serviceCode": "string",
+"discountPercentage": 0
+},
+"renewal": {
+"setupID": 0,
+"locationID": 0,
+"startDate": "2021-05-10T01:22:34.335Z",
+"renewalDate": "2021-05-10T01:22:34.335Z",
+"renewalPrice": 0
+}
+},
+{
+"applyToType": "FinanceCharge",
+"applyToID": 309,
+"amount": 10,
+"committed": true,
+"FinanceCharge": {
+"LocationID": 496,
+"TotalDue": 10
+}
+}
+],
+"collections": {
+"collectionStageNum": 2,
+"creditStatus": "Alert",
+"sentToCollectionAgency": "Yes",
+"collectionRecallReason": "PaidInFull"
+}
+}

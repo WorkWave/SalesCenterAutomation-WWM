@@ -1,0 +1,19 @@
+{
+  "WebConfig": {
+    "Browser": "Chrome",
+    "HomePage": "https://pptxb01c.pestpac.com/",
+    "UseSeleniumGrid": false,
+    "SeleniumHubAddr": "",
+    "ScreenshotUri": "C:\\TestAutomation\\Screenshots",
+    "ExplicitWait_DefaultTimeoutMilliSec": 3000,
+    "ExplicitWait_DefaultPollingIntervalMilliSec": 500
+  },
+  "APIConfig": {
+    "ApiBaseUri": "https://dev.payments.workwave.com",
+    "ApiKey": "zNxAJ2Yg58v4m0pW67Y3BQearljD9LbyknZV",
+    "ApiAuth": ""
+  },
+  "MobileConfig": {
+    "NYI": "NYI"
+  }
+}

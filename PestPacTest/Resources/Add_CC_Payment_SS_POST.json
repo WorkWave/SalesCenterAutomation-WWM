@@ -1,0 +1,34 @@
+{
+"billToID": 526,
+  "paymentDate": "2021-05-19",
+  "amount": 36,
+  "reference": "test",
+  "methodOfPayment": "vs",
+  "glCode": "food",
+  "service": "BEES",
+  "paymentType": "Payment",
+  "paymentOrigin": "",
+  "batchID": "",
+  "adjustmentReason": null,
+  "setupID": null,
+  "forceNewBatch": true,
+  "newBatchLocked": true,
+  "newBatchPrivate": true,
+  "newBatchAddUser": "ADMN",
+"applications": [
+{
+"applyToType": "ServiceSetup",
+"applyToID": 351,
+"amount": 36,
+"committed": true,
+"invoice": null,
+"serviceOrder": null,
+"serviceSetup": {
+"setupID": 351,
+"locationID": 531,
+"serviceCode": "BEES",
+"discountPercentage": 0
+}
+}
+]
+}

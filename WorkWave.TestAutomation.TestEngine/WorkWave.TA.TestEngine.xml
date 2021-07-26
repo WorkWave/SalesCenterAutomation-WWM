@@ -1,0 +1,369 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WorkWave.TA.TestEngine</name>
+    </assembly>
+    <members>
+        <member name="P:WorkWave.TA.TestEngine.PageFactory.FindsByAttribute.How">
+            <summary>
+            Gets or sets the method used to look up the element
+            </summary>
+        </member>
+        <member name="P:WorkWave.TA.TestEngine.PageFactory.FindsByAttribute.Using">
+            <summary>
+            Gets or sets the value to lookup by (i.e. for How.Name, the actual name to look up)
+            </summary>
+        </member>
+        <member name="P:WorkWave.TA.TestEngine.PageFactory.FindsByAttribute.CustomFinderType">
+            <summary>
+            Gets or sets a value indicating the <see cref="T:System.Type"/> of the custom finder. The custom finder must
+            descend from the <see cref="T:OpenQA.Selenium.By"/> class, and expose a public constructor that takes a <see cref="T:System.String"/>
+            argument.
+            </summary>
+        </member>
+        <member name="P:WorkWave.TA.TestEngine.PageFactory.FindsByAttribute.Finder">
+            <summary>
+            Gets or sets an explicit <see cref="T:OpenQA.Selenium.By"/> object to find by.
+            Setting this property takes precedence over setting the How or Using properties.
+            </summary>
+        </member>
+        <member name="F:WorkWave.TA.TestEngine.PageFactory.How.Id">
+            <summary>
+            Finds by <see cref="M:OpenQA.Selenium.By.Id(System.String)" />
+            </summary>
+        </member>
+        <member name="F:WorkWave.TA.TestEngine.PageFactory.How.Name">
+            <summary>
+            Finds by <see cref="M:OpenQA.Selenium.By.Name(System.String)" />
+            </summary>
+        </member>
+        <member name="F:WorkWave.TA.TestEngine.PageFactory.How.TagName">
+            <summary>
+            Finds by <see cref="M:OpenQA.Selenium.By.TagName(System.String)" />
+            </summary>
+        </member>
+        <member name="F:WorkWave.TA.TestEngine.PageFactory.How.ClassName">
+            <summary>
+            Finds by <see cref="M:OpenQA.Selenium.By.ClassName(System.String)" />
+            </summary>
+        </member>
+        <member name="F:WorkWave.TA.TestEngine.PageFactory.How.CssSelector">
+            <summary>
+            Finds by <see cref="M:OpenQA.Selenium.By.CssSelector(System.String)" />
+            </summary>
+        </member>
+        <member name="F:WorkWave.TA.TestEngine.PageFactory.How.LinkText">
+            <summary>
+            Finds by <see cref="M:OpenQA.Selenium.By.LinkText(System.String)" />
+            </summary>
+        </member>
+        <member name="F:WorkWave.TA.TestEngine.PageFactory.How.PartialLinkText">
+            <summary>
+            Finds by <see cref="M:OpenQA.Selenium.By.PartialLinkText(System.String)" />
+            </summary>
+        </member>
+        <member name="F:WorkWave.TA.TestEngine.PageFactory.How.XPath">
+            <summary>
+            Finds by <see cref="M:OpenQA.Selenium.By.XPath(System.String)" />
+            </summary>
+        </member>
+        <member name="F:WorkWave.TA.TestEngine.PageFactory.How.Custom">
+            <summary>
+            Finds by a custom <see cref="!:By"/> implementation.
+            </summary>
+        </member>
+        <member name="T:WorkWave.TA.TestEngine.PageFactory.PageFactory">
+            <summary>
+            Provides the ability to produce Page Objects modeling a page. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.PageFactory.PageFactory.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WorkWave.TA.TestEngine.PageFactory.PageFactory"/> class.
+            Private constructor prevents a default instance from being created.
+            </summary>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.PageFactory.PageFactory.Load(System.Object,System.String,WorkWave.TA.TestEngine.PageFactory.LocatorType)">
+            <summary>
+            Initializes the elements in the Page Object.
+            </summary>
+            <param name="page">The Page Object to be populated with elements.</param>
+            <param name="locator">The <see cref="!:IElementLocator"/> implementation that
+            determines how elements are located.</param>
+            <param name="decorator">The <see cref="!:IPageObjectMemberDecorator"/> implementation that
+            determines how Page Object members representing elements are discovered and populated.</param>
+            <exception cref="T:System.ArgumentException">
+            thrown if a field or property decorated with the <see cref="T:WorkWave.TA.TestEngine.PageFactory.FindsByAttribute"/> is not of type
+            <see cref="T:OpenQA.Selenium.IWebElement"/> or IList{IWebElement}.
+            </exception>
+        </member>
+        <member name="T:WorkWave.TA.TestEngine.CustomExpectedConditions">
+            <summary>
+            Supplies Expected Conditions that can be waited on <see cref="!:WebDriverWait"/>
+            </summary>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.CustomExpectedConditions.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:WorkWave.TA.TestEngine.CustomExpectedConditions"/> class from being created.
+            </summary>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.CustomExpectedConditions.DocumentIsReady">
+            <summary>
+            Wait until the document is ready.  Utilize this condition to help determine when a page is finished loading.  This does not guarantee protection
+            against race conditions as non-deteministic events such as the timing between page tranistions or the timining between load event firing can vary.
+            </summary>
+            <returns>true if document.readystate is 'complete', false if otherwise</returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.CustomExpectedConditions.ElementIsVisible(System.Func{OpenQA.Selenium.IWebElement})">
+            <summary>
+            An expectation for checking that an element is present on the page and
+            is visible.  Will catch the following exceptions: StaleElementReferenceException, NoSuchElementException, ElementNotVisibleException
+            </summary>
+            <param name="element">The expected element to be visible.</param>
+            <returns>true if visible, false if not.</returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.CustomExpectedConditions.ElementIsEnabled(System.Func{OpenQA.Selenium.IWebElement})">
+            <summary>
+            An expectation for checking that an element is enabled on the page.  Will catch the following exceptions: StaleElementReferenceException, NoSuchElementException
+            </summary>
+            <param name="element">The expected element to be enabled.</param>
+            <returns>true if enabled, false if not enabled.</returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.CustomExpectedConditions.ElementExists(System.Func{OpenQA.Selenium.IWebElement})">
+            <summary>
+            An expectation that the element provided can be found in the DOM tree.  Will handle (base exception) NotFoundException
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="P:WorkWave.TA.TestEngine.API.Headers">
+            <summary>
+            HTTP client default request headers
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:WorkWave.TA.TestEngine.API.SetBaseUri(System.String)" -->
+        <member name="M:WorkWave.TA.TestEngine.API.SetPath(System.String)">
+            <summary>
+            Set the path segment of the URI
+            </summary>
+            <param name="path"></param>
+            <returns>Will return a reference to the Request Uri</returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.API.SetQuery(System.String)">
+            <summary>
+            Set the query segment of the URI
+            </summary>
+            <param name="query"></param>
+            <returns>Will return a reference to the Request Uri</returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.API.SetFragment(System.String)">
+            <summary>
+            Set the fragment segment of the URI
+            </summary>
+            <param name="fragment"></param>
+            <returns>Will return a reference to the Request Uri</returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.API.SetPort(System.Int32)">
+            <summary>
+            Set the port of the URI
+            </summary>
+            <param name="port"></param>
+            <returns>Will return a reference to the Request Uri</returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.API.SetScheme(System.String)">
+            <summary>
+            Set the scheme segment of the request URI
+            </summary>
+            <param name="scheme"></param>
+            <returns>Will return a reference to the Request Uri</returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.API.SetHost(System.String)">
+            <summary>
+            Set the host segment of the request URI
+            </summary>
+            <param name="host"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.API.SetEndpoint(System.String)">
+            <summary>
+            Set the request Uri to the endpoint specified.  Endpoint may consist of any Uri segments including path, query, fragment etc., however
+            underlying RequestUri fields for segments may be incomplete.  In these cases, refer to the absolute path of the Uri.
+            </summary>
+            <param name="endpoint"></param>
+            <returns>Will return a reference to the Request Uri</returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.API.SendRequestAsync(System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Send an HTTP request message
+            </summary>
+            <param name="requestMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.API.GetRequestAsync(System.Uri)">
+            <summary>
+            Convenience method to send a GET request message
+            </summary>
+            <param name="requestUri"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.SeleniumUtility.FindElementInListByText(System.Collections.Generic.IList{OpenQA.Selenium.IWebElement},OpenQA.Selenium.By,System.String)">
+            <summary>
+            Utility method to search through a list of web elements and retrieve the first matching web element associated with a given text value.
+            An optional locator can be supplied if you want to search through child nodes in the element list.
+            </summary>
+            <param name="elementList">The list of web elements to search through</param>
+            <param name="childNodeLocator">The optional locator of the child node(s) to be used in the search, otherwise NULL</param>
+            <param name="searchValue">The text value associated with the locator</param>
+            <returns>Will return the web element found, null if not found</returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.SeleniumUtility.ExplicitWaitForAction(WorkWave.TA.TestEngine.ExplicitWaitForActionDelegate,System.Int32,System.Int32)">
+            <summary>
+            This method is comparable to Selenium provided WebDriverWait, however, instead of 
+            limiting the wait to a specific expected condition, you can explicitly wait
+            for conditions, locators, actions or any atomic set of operations that
+            depend on a actionable set of elements on a page.  Additionally, it returns a boolean
+            allowing the user the option to continue with code without having to catch TimeoutException.
+            Handles the following exceptions: StaleElementReferenceException, ElementNotVisibleException, 
+            InvalidOperationException, NoSuchElementException, NoSuchFrameException
+            </summary>
+            <param name="codeToRun">Code that depends on expected Selenium conditions.
+            [(Anonymous) Method that satisfies the ExplicitWaitForActionDelegate] </param>
+            <param name="timeout">Set the amount of time allowable to run the code.  (in milliseconds) </param>
+            <param name="pollingInterval">Set the frequency of how often the action will be attempted before timing out.
+            Default value is every 500 [millisec] </param>
+            <returns> Returns boolean true if code ran withing timeout without throwing Selenium exceptions.
+            Returns boolean false if code could not complete within the timeout specified.
+            </returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.SeleniumUtility.ExceptionCausedByUnexpectedAlerts(System.Exception)">
+            <summary>
+            This method will check if a Selenium exception was caused by an (unexpected) Alert.  If so, it will return an UnhandledAlertException with
+            the offending exception as the inner exception.  You may re-throw the returned exception depending on your desired flow.
+            If running tests on the Selenium Grid, exception types thrown may be different than when run locally.        
+            </summary>
+            <param name="exception">Instance of the exception caught.</param>
+            <returns>An UnhandledAlertException if caused by Alert, otherwise will return null</returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.SeleniumUtility.SetCheckBox(OpenQA.Selenium.IWebElement,System.Boolean)">
+            <summary>
+            Set the checkbox to the desired state.
+            </summary>
+            <param name="element">The checkbox element</param>
+            <param name="selected">The desired selection state of the checkbox</param>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.SeleniumUtility.FindFirstElementContainingText(System.Collections.Generic.IList{OpenQA.Selenium.IWebElement},System.String)">
+            <summary>
+            This method will return the first element found in a collection of elements, that contains the search query in the 
+            inner text of the element.
+            </summary>
+            <param name="elements">The List of elements to be queried.</param>
+            <param name="searchString">The search string</param>
+            <returns>Return the IWebElement object that satisfies the query, otherwise NULL.</returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.SeleniumUtility.FindFirstElement_ContainedInTextContext(System.Collections.Generic.IList{OpenQA.Selenium.IWebElement},System.String)">
+            <summary>
+            This method will return the first element found in a collection of elements, that contains the search query in the 
+            text context of the element.
+            </summary>
+            <param name="elements">The List of elements to be queried.</param>
+            <param name="searchString">The search string</param>
+            <returns>Return the IWebElement object that satisfies the query, otherwise NULL.</returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.SeleniumUtility.FindFirstElementMatchingText(System.Collections.Generic.IList{OpenQA.Selenium.IWebElement},System.String)">
+            <summary>
+            This method will return the first element found in a collection of elements that eqauls the search query in the 
+            inner text of the element.  Leading and trailing spaces found in the element's inner text will be ignored.
+            </summary>
+            <param name="elements">The List of elements to be queried.</param>
+            <param name="searchString">The search string</param>
+            <returns>Return the IWebElement object that satisfies the query, otherwise NULL.</returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.SeleniumUtility.FindFirstElement_MatchTextContext(System.Collections.Generic.IList{OpenQA.Selenium.IWebElement},System.String)">
+            <summary>
+            This method will return the first element found in a collection of elements that eqauls the search query in the 
+            text context of the element.
+            </summary>
+            <param name="elements"></param>
+            <param name="searchString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.SeleniumUtility._WaitFor``1(System.Func{OpenQA.Selenium.IWebDriver,``0})">
+            <summary>
+            Explicitly wait for expected conditions, Selenium provided or WorkWave.TA.TestEngine.CustomExpectedConditions
+            </summary>
+            <param name="expectedCondition">The (Custom) Expected Condition to be evaluated</param>
+            <returns>boolean : The result definining whether the expected condition has been met</returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.SeleniumUtility.WaitFor``1(System.Func{OpenQA.Selenium.IWebDriver,``0},System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan},System.Type[])">
+            <summary>
+            Explicitly wait for expected conditions, Selenium provided or WorkWave.TA.TestEngine.CustomExpectedConditions
+            </summary>
+            <param name="expectedCondition">The (Custom) Expected Condition to be evaluated</param>
+            <param name="timeout">Overwrite the default timeout period in milliseconds</param>
+            <param name="pollingInterval"></param>
+            <param name="exceptionTypes">Specify the exception types to be whitelisted.  These ignored exceptions may propogate and terminate the wait</param>
+            <returns>boolean : The result definining whether the expected condition has been met</returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.SeleniumUtility.SaveScreenshot(System.String,System.String)">
+            <summary>
+            Takes a screenshot and saves it to the default directory. Uses the featureTitle
+            and scenarioTitle to generate the filename.
+            </summary>
+            <param name="featureTitle">Name of the currently executing feature.</param>
+            <param name="scenarioTitle">Name of the currently executing scenario.</param>
+            <returns>Will return the FullName of the screenshot file.</returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.SeleniumUtility.SaveScreenshot(System.String,System.String,System.String)">
+            <summary>
+            Takes a screenshot and saves it to the location specified by the passed Uri. 
+            Uses the featureTitle and scenarioTitle to generate the filename.
+            </summary>
+            <param name="featureTitle">Name of the currently executing feature.</param>
+            <param name="scenarioTitle">Name of the currently executing scenario.</param>
+            <param name="uri">Location to store screenshot.</param>
+            <returns>Will return the FullName of the screenshot file.</returns>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.SUT.InitializeLogger">
+            <summary>
+            Call this to initialize the logger, prefarably in a Test Setup fixture/hook scoped for test run.  This is desired to provide logger access
+            to all tests and not having to make multiple initialization calls.  This is necessary to call from within the test unit project as
+            some test runners, such as NUnit3 will highjack std out.
+            Don't forget to maintain the logger.xml configuration file.
+            </summary>
+        </member>
+        <member name="P:WorkWave.TA.TestEngine.WebApplication.ExplicitWait">
+            <summary>
+            Explicit Wait object with a default timeout of 3 seconds.
+            Use Timeout property to override the default timeout.
+            Use PollingInterval Property to set how often the expected condition is evaluated.
+            </summary>
+        </member>
+        <member name="P:WorkWave.TA.TestEngine.WebApplication.Alert">
+            <summary>
+            Get the expected Alert.  
+            Because there is an expectation for an Alert to be present on the page, 
+            this property will wait 3 seconds until alert is present.  If present the web driver will switch to it,
+            otherwise it will return a null
+            </summary>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.WebApplication.Alert_Accept">
+            <summary>
+            If an alert is present, accept it.
+            </summary>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.WebApplication.Alert_Dismiss">
+            <summary>
+            If an alert is present, dismiss it.
+            </summary>
+        </member>
+        <member name="M:WorkWave.TA.TestEngine.WebApplication.ResetExplicitWait(System.Boolean)">
+            <summary>
+            Reset the ExplicitWait parameters bound to the WebDriver instance.  Selenium's WebDriverWait 
+            object does not provide the ability to remove previous added ignored exceptions.  
+            The timeout and polling interval parameters will be reset to those defined in the 
+            config.json file, otherwise they will match Selenium default values of 3000 milliseconds and 500 milliseconds respectively.
+            </summary>
+            <param name="resetIgnoredExceptions">specify if you need the ignored exceptions whitelist to be reset</param>
+        </member>
+    </members>
+</doc>

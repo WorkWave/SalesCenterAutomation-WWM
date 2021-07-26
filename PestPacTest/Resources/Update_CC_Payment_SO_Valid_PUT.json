@@ -1,0 +1,55 @@
+{
+"billToID": 526,
+"paymentDate": "2021-06-20",
+"amount": 36,
+"reference": "Changed",
+"methodOfPayment": "VS",
+"glCode": "Pest",
+"service": "ANT",
+"paymentType": "Payment",
+"paymentOrigin": "",
+"batchID": null,
+"adjustmentReason": "",
+"setupID": 0,
+"applications": [
+{
+"applyToType": "ServiceOrder",
+"applyToID": 799,
+"amount": 36,
+"committed": true,
+"invoice": null,
+"serviceOrder": {
+"orderID": 799,
+"locationID": 531,
+"billToID": 526,
+"setupID": 0,
+"leadID": "string",
+"orderNumber": "10824",
+"branch": "string",
+"branchID": 0,
+"parentOrderID": 0,
+"inProgress": true,
+"posted": true,
+"serviceCode": "string",
+"description": "string",
+"subTotal": 0,
+"tax": 0,
+"total": 0,
+"workDate": "2021-05-10T01:22:34.336Z",
+"timeRange": "string",
+"locked": true,
+"duration": 0,
+"orderType": "ServiceOrder",
+"origin": "Generated",
+"tech1": "string",
+"techID1": 0,
+"route": "string",
+"pdfUrls": {
+"additionalProp1": "string",
+"additionalProp2": "string",
+"additionalProp3": "string"
+}
+}
+}
+]
+}

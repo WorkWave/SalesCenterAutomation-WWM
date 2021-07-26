@@ -1,0 +1,59 @@
+{
+"billToID": 507,
+"paymentDate": "2021-05-19",
+"amount": 40.00,
+"reference": "Test",
+"methodOfPayment": "VS",
+"glCode": "ANT",
+"service": "ANT",
+"paymentType": "Payment",
+"paymentOrigin": "WebPayment",
+"batchID": "",
+"adjustmentReason": "",
+"setupID": null,
+"applications": [
+{
+"applyToType": "Invoice",
+"applyToID": 315,
+"amount": 40.00,
+"committed": false,
+"invoice": {
+"invoiceID": 315,
+"locationID": 512,
+"billToID": 507,
+"invoiceNumber": "10818",
+"branch": "Main Branch",
+"branchID": 1,
+"parentInvoiceID": 0,
+"serviceCode": "ANT",
+"description": "Ant Treatments",
+"subTotal": 40.00,
+"tax": 0.00,
+"total": 40.00,
+"balance": 0.00,
+"invoiceDate": "2021-05-19",
+"workDate": "2021-05-19",
+"dueDate": "2021-05-24",
+"duration": 30,
+"timeRange": "",
+"invoiceType": "Invoice",
+"origin": "Generated",
+"tech1": "FORAPI",
+"techID1": 58,
+"route": "",
+"consolidatedInvoiceNum": "",
+"consolidatedInvoiceDate": "",
+"autoBill": true
+},
+"serviceOrder": null,
+"serviceSetup": null,
+"renewal": null
+}
+],
+"Collections": {
+"CollectionStageNum": 1,
+"CreditStatus": "Collection",
+"SentToCollectionAgency": "PendingSend",
+"CollectionRecallReason": "PaymentReceived"
+}
+}

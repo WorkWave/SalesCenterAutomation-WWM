@@ -1,0 +1,17 @@
+{
+"billToID": 526,
+"paymentDate": "2021-06-20",
+"amount": 36,
+"reference": "Changed",
+"methodOfPayment": "VS",
+"glCode": "Pest",
+"service": "ANT",
+"paymentType": "Payment",
+"paymentOrigin": "",
+"batchID": null,
+"adjustmentReason": "",
+"setupID": 0,
+"applications": [
+
+]
+}

@@ -1,0 +1,62 @@
+{
+  "getReq1": {
+    "Authorization": "Bearer e38c644d-255c-3e51",
+    "Content-Type": "application/json",
+    "tenant-id": "333500"	  
+	  
+  },
+  "getReq2": {
+    "Authorization": "UnAuth",
+    "Content-Type": "application/text",
+    "Host": "pptapi.pestpac.com"
+	  
+  },
+    "getReq4": {
+    
+	},
+	
+  "getReq3": {
+    "Authorization": "Bearer e38c644d-255c-3e51",
+    "Content-Type": "application/json",
+    "tenant-id": "555750"
+  },
+  
+  "PutReq1": {
+    "Authorization": "Bearer e38c644d-255c-3e5",
+    "Content-Type": "application/json",
+    "Accept": "application/json, application/xml, text/json, text/x-json, text/javascript, text/xml",
+    "tenant-id": "333500"
+	
+  },
+   "PutReq2": {
+    "Authorization": "Bearer e38c644d-255c-3e5",
+    "Content-Type": "application/json",
+    "Accept": "application/json, application/xml, text/json, text/x-json, text/javascript, text/xml",
+    "tenant-id": "555750"
+	
+  },  
+  "PutReq3": {
+    "Authorization": "Bearer e38c644d-255c-3e5",
+    "Content-Type": "application/json",
+    "Accept": "application/json, application/xml, text/json, text/x-json, text/javascript, text/xml",
+    "tenant-id": "333575"
+	
+  },    
+  "PostReqImg": {
+    "Authorization": "Bearer e38c644d-255c-3e5",
+    "Host": "pptapi.pestpac.com",
+    "tenant-id": "333500"
+	  
+  },
+   "PostReqImg1": {
+    "Authorization": "Bearer e38c644d-255c-3e5",
+    "Host": "pptapi.pestpac.com",
+    "tenant-id": "555750"
+	   
+  },
+  
+  "PostIDServer": {
+    "Authorization": "Basic SDk2WnRWdW5jNk05Ym1SR0xsbk8yU1cxUTFjYTpuR2JtUjlaTzJTc1RyTldWX2s3NDlKWERrMlFh",
+    "Content-Type": "application/x-www-form-urlencoded"
+  }
+}

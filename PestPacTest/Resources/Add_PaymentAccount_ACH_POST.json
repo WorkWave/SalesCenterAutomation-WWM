@@ -1,0 +1,68 @@
+{
+"BankAccountInputModel": {
+"BillToID": 506,
+"ReferenceNumber": "test123",
+"RoutingNumber": "122187238",
+"AccountNumber": "11111111",
+"NameOnAccount": "ACH Payment"
+},
+"PaymentInputModel": {
+"billToID": 506,
+"paymentDate": "2021-05-21",
+"amount": 10.00,
+"reference": "Test",
+"methodOfPayment": "ACH",
+"glCode": "PEST",
+"service": "ANT",
+"paymentType": "Payment",
+"paymentOrigin": "WebPayment",
+"batchID": "",
+"adjustmentReason": "",
+"setupID": null,
+"applications": [
+{
+"applyToType": "Invoice",
+"applyToID": 314,
+"amount": 10.00,
+"committed": false,
+"invoice": {
+"invoiceID": 314,
+"locationID": 511,
+"billToID": 506,
+"invoiceNumber": "10817",
+"branch": "Main Branch",
+"branchID": 1,
+"parentInvoiceID": 0,
+"serviceCode": "ANT",
+"description": "Ant Treatments",
+"subTotal": 10.00,
+"tax": 0.00,
+"total": 10.00,
+"balance": 0.00,
+"invoiceDate": "2021-05-20",
+"workDate": "2021-05-20",
+"dueDate": "2021-05-24",
+"duration": 15,
+"timeRange": "",
+"invoiceType": "Invoice",
+"origin": "Generated",
+"tech1": "FORAPI",
+"techID1": 58,
+"route": "",
+"consolidatedInvoiceNum": "",
+"consolidatedInvoiceDate": "",
+"autoBill": true
+},
+"serviceOrder": null,
+"serviceSetup": null,
+"renewal": null
+}
+],
+"collections": {
+"collectionStageNum": 2,
+"creditStatus": "Collection",
+"sentToCollectionAgency": "PendingSend",
+"collectionRecallReason": "PaymentReceived"
+}
+}
+}

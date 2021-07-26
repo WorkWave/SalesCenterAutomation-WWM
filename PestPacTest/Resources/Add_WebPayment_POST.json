@@ -1,0 +1,18 @@
+{
+  "billToID": 467,
+  "paymentDate": "2021-04-18T09:23:15.362Z",
+  "amount": 1,
+  "reference": "Web",
+  "methodOfPayment": "CH",
+  "glCode": "string",
+  "service": "string",
+  "paymentType": "Payment",
+  "paymentOrigin": "WebPayment",
+  "batchID": "",
+  "adjustmentReason": "Web",
+  "setupID": 0,
+  "applications": [
+    
+  ]
+ 
+}
