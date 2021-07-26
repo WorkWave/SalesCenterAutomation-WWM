@@ -155,7 +155,7 @@ namespace WorkWave.PestPac.TA.Model
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAddLeadButton)))
             {
                 ClickAddLeadButton.Click();
-                Thread.Sleep(2000);
+               // Thread.Sleep(2000);
             }
         }
 

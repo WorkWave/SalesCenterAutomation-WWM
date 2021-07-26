@@ -29,8 +29,8 @@ Scenario Outline: Verify user can create and delete a lead
   And I select the sales funnel <SalesFunnel>
   When I click on Save button
   Then Lead created validation message should be displayed <ValidationMessage>
-  And I click on search icon
-  And I enter the lead name <LeadName> and click on search icon
+  #And I click on search icon
+  #And I enter the lead name <LeadName> and click on search icon
   And I click on three dots icon
   And I click on delete link for added lead
   When I click on Delete button in delete lead popup
