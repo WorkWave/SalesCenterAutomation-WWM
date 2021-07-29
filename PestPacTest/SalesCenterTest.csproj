@@ -133,6 +133,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Configuration\PestPacConfiguration.cs" />
+    <Compile Include="Model\OpportunityPage.cs" />
     <Compile Include="Model\RolesandPermissionSetUpPage.cs" />
     <Compile Include="Model\SalesFunnelsPage.cs" />
     <Compile Include="Model\SalesTeamsPage.cs" />

@@ -20,6 +20,7 @@ namespace WorkWave.PestPac.TA.Steps
         private MainPage mainPage;
         private LeadDetailPage leadDetailPage;
         LeadDetailPage leadspage = new LeadDetailPage();
+        OpportunityPage opportunitypage = new OpportunityPage();
         SettingsPage settingpage = new SettingsPage();
 
         //  private ViewLeadsPage viewLeadsPage;
@@ -40,19 +41,27 @@ namespace WorkWave.PestPac.TA.Steps
         [When(@"I mouse hover on sales center side menu")]
         public void WhenIMouseHoverOnSalesCenterSideMenu()
         {
-            leadspage.ClickSalesCenterMenu();
+             leadspage.ClickSalesCenterMenu();
         }
+
+        [When(@"I mouse hover on sales center side menu and click on opportunities link")]
+        public void WhenIMouseHoverOnSalesCenterSideMenuAndClickOnOpportunitiesLink()
+        {
+           
+            leadspage.VerifyOpportunitiesLink();
+        }
+
 
         [When(@"I click on Leads link")]
         public void WhenIClickOnLeadsLink()
         {
-            Assert.True(leadspage.IsLoaded(), "Failed to verify the Leads page loaded after click on leads link");
+            leadspage.ClickonLeadLink();
         }
 
         [Then(@"Leads page should be displayed")]
         public void ThenLeadsPageShouldBeDisplayed()
         {
-            leadspage.ClickonLeadLink();
+            Assert.True(leadspage.IsLoaded(), "Failed to verify the Leads page loaded after click on leads link");           
         }
 
         [When(@"I click on plus icon")]
@@ -92,7 +101,7 @@ namespace WorkWave.PestPac.TA.Steps
         [Then(@"I select the owner (.*)")]
         public void ThenISelectTheOwner(string ownername)
         {
-            leadspage.SelecttheOwnerName();
+            leadspage.SelecttheOwnerAssigneeName();
         }
 
         [Then(@"I select the sales funnel (.*)")]
@@ -112,7 +121,6 @@ namespace WorkWave.PestPac.TA.Steps
         {
             settingpage.VerifySalesTeamCreatedConfirmMsg(message);
         }
-
 
         [Then(@"I click on search icon")]
         public void ThenIClickOnSearchIcon()
@@ -144,17 +152,92 @@ namespace WorkWave.PestPac.TA.Steps
             leadspage.ClickDeleteButtonInLeadPopup();
         }
 
-
         [Then(@"Lead deleted confirmation message should be displayed (.*)")]
         public void ThenLeadDeletedConfirmationMessageShouldBeDisplayedRecordsDeletedSuccessfully_(string deletemessage)
         {
             settingpage.VerifySalesTeamCreatedConfirmMsg(deletemessage);
         }
 
+        //Create opportunity
 
+        [Then(@"I click on Service expand icon")]
+        public void ThenIClickOnServiceExpandIcon()
+        {
+            leadspage.ClickAddServiceExpandIcon();
+        }
 
+        [Then(@"Click on Add Serivces button")]
+        public void ThenClickOnAddSerivcesButton()
+        {
+            leadspage.ClickAddServiceButton();
+        }
 
+        [Then(@"I select the services (.*)")]
+        public void ThenISelectTheServicesANT_AntTreatments(string service)
+        {
+            leadspage.SelectServiceFromDropDown();
+        }
 
+        [When(@"I click on Add services button in slider")]
+        public void WhenIClickOnAddServicesButtonInSlider()
+        {
+            leadspage.ClickAddServiceButtonInSlider();
+        }
+
+        [Then(@"service should be successfully added")]
+        public void ThenServiceShouldBeSuccessfullyAdded()
+        {
+            Assert.True(leadspage.IsServiceAdded(), "Serive is addded");
+        }
+
+        [Then(@"I click on Close services and product button")]
+        public void ThenIClickOnCloseServicesAndProductButton()
+        {
+            leadspage.ClickCloseServicesAndProductButton();
+        }
+
+        [When(@"I click on convert to opportunity button")]
+        public void WhenIClickOnConvertToOpportunityButton()
+        {
+            leadspage.ClickOnConvertOpportunityButton();
+        }
+
+        [Then(@"Convert to lead page should be displayed")]
+        public void ThenConvertToLeadPageShouldBeDisplayed()
+        {
+            leadspage.IsConvertLeadPageIsDisplayed();
+        }
+
+        [When(@"I select the ownername in convert lead page (.*)")]
+        public void WhenISelectTheOwnernameInConvertLeadPage(string ownername)
+        {
+            leadspage.SelecttheOwnerName();
+        }
+
+        [When(@"I select the funnel stage Stage(.*)")]
+        public void WhenISelectTheFunnelStageStage(string funnelstage)
+        {
+            leadspage.SelecttheStageFromDropdown();
+        }
+
+        [Then(@"validation message should be displayed (.*)")]
+        public void ThenValidationMessageShouldBeDisplayed(string message)
+        {
+            settingpage.VerifySalesTeamCreatedConfirmMsg(message);
+        }
+
+        //Delete opportunity
+        
+        [Then(@"Opportunities page should be displayed")]
+        public void ThenOpportunitiesPageShouldBeDisplayed()
+        {
+            Assert.True(opportunitypage.IsLoaded(), "Failed to verify the Opportunity page loaded after click on opportunities link");
+        }
+
+        //[Then(@"Opporunities deleted confirmation message should be displayed Opportunity Deleted")]
+        //public void ThenOpporunitiesDeletedConfirmationMessageShouldBeDisplayedOpportunityDeleted()
+        //{
+           
+        //}
     }
-
 }
