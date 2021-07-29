@@ -66,7 +66,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//span[contains(@class,'MuiTypography-root MuiListItemText-primary')])[2]/..")]
         private IWebElement DeleteOption { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//div[@role='presentation']/following-sibling::div[22]/descendant::button[2]/child::span[1]/..")]
+        [FindsBy(How = How.XPath, Using = "//div[@role='presentation']/following-sibling::div[22]/following-sibling::div/descendant::button[2]")]
         private IWebElement Deletebutton { get { return PageFactory.Load(this); } }
 
         #endregion Roles and Permission 

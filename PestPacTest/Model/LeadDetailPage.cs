@@ -20,7 +20,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//p[text()='Leads']")]
         private IWebElement PageHeader { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//div[@role='button']//p")]
+        [FindsBy(How = How.XPath, Using = "//div[@role='button']//p/..")]
         private IWebElement ClickSalesCenter { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "(//p[text()='Leads'])[2]")]
@@ -59,10 +59,10 @@ namespace WorkWave.PestPac.TA.Model
 
 
         [FindsBy(How = How.Id, Using = "mui-component-select-assigneeId")]
-        private IWebElement ClickOwnerField { get { return PageFactory.Load(this); } }
+        private IWebElement ClickOwnerAssigneeField { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//li[text()='Unassigned']")]
-        private IWebElement SelectOwnerName { get { return PageFactory.Load(this); } }
+        private IWebElement SelectOwnerAssigneeName { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.Id, Using = "mui-component-select-salesFunnelId")]
         private IWebElement ClickFunnelField { get { return PageFactory.Load(this); } }
@@ -93,9 +93,59 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//span[text()='Delete']/parent::button)[1]")]
         private IWebElement ClickDeletebutton { get { return PageFactory.Load(this); } }
 
+        #region Create opportunity
+
+        [FindsBy(How = How.XPath, Using = "(//p[text()='Service ('])[1]")]
+        private IWebElement ClickServiceExapndIcon { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//span[@class='MuiButton-label']//span/../..)[1]")]
+        private IWebElement ClickServiceButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//input[@id='services']/../..")]
+        private IWebElement ClickServiceField { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = " //li[text()='ANT- Ant Treatments']")]
+        private IWebElement SelectServicename { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//div[text()='ANT']")]
+        private IWebElement servicePage { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Close Services and Products']/..")]
+        private IWebElement CloseServicesButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//span[text()='Convert to Opportunity'])[1]/..")]
+        private IWebElement ClickConvertOpportunityButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Add Service']/..")]
+        private IWebElement ClickServiceButtonInSlider { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//p[text()='Convert Lead']")]
+        private IWebElement ConvertLeadPageIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//input[@name='opportunityStageId']/..")]
+        private IWebElement StageField { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='Stage1']")]
+        private IWebElement SelectStageName { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//input[@name='ownerId']/..")]
+        private IWebElement ClickOwnerField { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='Unassigned']")]
+        private IWebElement SelectOwnerName { get { return PageFactory.Load(this); } }
+
+
+        #endregion Create opportunity
+
+        #region Delete Opportunity
+
+        [FindsBy(How = How.XPath, Using = "(//p[text()='Opportunities'])[2]")]
+        private IWebElement ClickOpportunitiesLink { get { return PageFactory.Load(this); } }
 
 
 
+    
+        #endregion Delete Opportunity
 
         #endregion PageFactory
 
@@ -128,6 +178,7 @@ namespace WorkWave.PestPac.TA.Model
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSalesCenter)))
             {
                 ClickSalesCenter.Click();
+                Thread.Sleep(1000);
             }
         }
 
@@ -135,7 +186,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickLeadLink)))
             {
-                ClickLeadLink.Click();            
+                ClickLeadLink.Click();           
             }
         }
 
@@ -151,8 +202,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAddLeadButton)))
             {
-                ClickAddLeadButton.Click();
-                Thread.Sleep(2000);
+                ClickAddLeadButton.Click();              
             }
         }
 
@@ -193,26 +243,20 @@ namespace WorkWave.PestPac.TA.Model
         public void SelectSalesTeamfromdropdown()
         {
             ClickSalesTeamField.Click();
-            Thread.Sleep(2000);
             PestPacUtility.ScrollToElement(SelectSalesTeam);
             SelectSalesTeam.Click();
 
         }
-
-
-        public void SelecttheOwnerName()
+        public void SelecttheOwnerAssigneeName()
         {
-            ClickOwnerField.Click();
-            Thread.Sleep(2000);
-            PestPacUtility.ScrollToElement(SelectOwnerName);
-            SelectOwnerName.Click();
-
+            ClickOwnerAssigneeField.Click();
+            PestPacUtility.ScrollToElement(SelectOwnerAssigneeName);
+            SelectOwnerAssigneeName.Click();
         }
 
         public void SelecttheFunnelName()
         {
             ClickFunnelField.Click();
-            Thread.Sleep(2000);
             PestPacUtility.ScrollToElement(SelectFunnelName);
             SelectFunnelName.Click();
         }
@@ -222,7 +266,6 @@ namespace WorkWave.PestPac.TA.Model
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSaveButton)))
             {
                 ClickSaveButton.Click();
-                Thread.Sleep(2000);
             }
         }
 
@@ -242,13 +285,11 @@ namespace WorkWave.PestPac.TA.Model
                 return false;
             }
         }
-
         public void ClickOnSearchIcon()
         {
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSearchIcon)))
             {
                 ClickSearchIcon.Click();
-                Thread.Sleep(2000);
             }
         }
 
@@ -256,7 +297,6 @@ namespace WorkWave.PestPac.TA.Model
         {
             EnterLeadname.SendKeys(leadname);
             EnterLeadname.SendKeys(Keys.Enter);
-            Thread.Sleep(1000);
         }
 
         public void ClickOnThreeDotsIconforAddedLead()
@@ -264,7 +304,6 @@ namespace WorkWave.PestPac.TA.Model
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsforLead)))
             {
                 ClickThreeDotsforLead.Click();
-                Thread.Sleep(2000);
             }
         }
 
@@ -273,19 +312,131 @@ namespace WorkWave.PestPac.TA.Model
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickDeleteLink)))
             {
                 ClickDeleteLink.Click();
-                Thread.Sleep(2000);
             }
         }
-
-
         public void ClickDeleteButtonInLeadPopup()
         {
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickDeletebutton)))
             {
                 ClickDeletebutton.Click();
-                Thread.Sleep(2000);
             }
         }
+
+        //Create opportunity
+
+        public void ClickAddServiceExpandIcon()
+        {
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceExapndIcon)))
+            {
+                ClickServiceExapndIcon.Click();
+            }
+        }
+
+        public void ClickAddServiceButton()
+        {
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceButton)))
+            {
+                PestPacUtility.ScrollToElement(ClickServiceButton);
+                ClickServiceButton.Click();
+            }
+        }
+
+        public void SelectServiceFromDropDown()
+        {            
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceField)))
+            {
+               ClickServiceField.Click();
+                Thread.Sleep(2000);
+               SelectServicename.Click();
+            }
+
+        }
+
+        private readonly string ServicePage = "ANT";
+        public bool IsServiceAdded()
+        {
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => servicePage)))
+            {
+                if (servicePage.Text.TrimStart().StartsWith(ServicePage))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void ClickCloseServicesAndProductButton()
+        {
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => CloseServicesButton)))
+            {
+                CloseServicesButton.Click();
+            }
+        }
+        public void ClickOnConvertOpportunityButton()
+        {
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickConvertOpportunityButton)))
+            {
+               ClickConvertOpportunityButton.Click();
+               Thread.Sleep(5000);
+            }
+        }
+
+        public void ClickAddServiceButtonInSlider()
+        {
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceButtonInSlider)))
+            {              
+                ClickServiceButtonInSlider.Click();
+            }
+        }
+
+        public void IsConvertLeadPageIsDisplayed()
+        {
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ConvertLeadPageIsDisplayed)))
+            {
+                ConvertLeadPageIsDisplayed.Displayed.ToString();
+            }
+        }
+        public void SelecttheStageFromDropdown()
+        {
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => StageField)))
+            {
+                PestPacUtility.ScrollToElement(StageField);
+                StageField.Click();
+                SelectStageName.Click();
+            }           
+        }
+
+        public void SelecttheOwnerName()
+        {
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickOwnerField)))
+            {
+                ClickOwnerField.Click();
+                Thread.Sleep(2000);
+                SelectOwnerName.Click();
+            }           
+        }
+
+        //Delete opportunity
+        //public void ClickonOpportunitiesLink()
+        //{          
+        //        ClickOpportunitiesLink.Click();           
+        //}
+
+        public void VerifyOpportunitiesLink()
+        {
+            Actions actions = new Actions(SUT.Web.WebDriver);
+            actions.MoveToElement(ClickSalesCenter).Build().Perform();
+            actions.MoveToElement(ClickOpportunitiesLink).Click().Perform();
+           
+        }
+
         #endregion Selenium
 
 
