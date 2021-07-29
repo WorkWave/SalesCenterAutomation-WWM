@@ -194,8 +194,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickPlusButton)))
             {
-                ClickPlusButton.Click();
-              //  Thread.Sleep(2000);
+                ClickPlusButton.Click();             
             }
         }
 
