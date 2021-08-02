@@ -22,21 +22,13 @@ namespace WorkWave.PestPac.TA.Steps
         LeadDetailPage leadspage = new LeadDetailPage();
         OpportunityPage opportunitypage = new OpportunityPage();
         SettingsPage settingpage = new SettingsPage();
-
-        //  private ViewLeadsPage viewLeadsPage;
-        // private AddCustomerPage addCustomerPage;
-
-
-
-
+      
         public LeadSteps(PestPacData pestPacData)
         {
             this.pestPacData = pestPacData;
             mainPage = new MainPage();
             leadDetailPage = new LeadDetailPage();
         }
-
-
 
         [When(@"I mouse hover on sales center side menu")]
         public void WhenIMouseHoverOnSalesCenterSideMenu()
@@ -50,7 +42,6 @@ namespace WorkWave.PestPac.TA.Steps
            
             leadspage.VerifyOpportunitiesLink();
         }
-
 
         [When(@"I click on Leads link")]
         public void WhenIClickOnLeadsLink()
@@ -83,8 +74,6 @@ namespace WorkWave.PestPac.TA.Steps
         }
 
         //Leads creation
-
-
 
         [Then(@"I enter the lead details (.*) (.*) (.*) (.*)")]
         public void ThenIEnterTheLeadDetailsAutomationUserTestAutocompanyAutouserGmail_Com(string name, string lastname, string company, string email)
@@ -233,11 +222,26 @@ namespace WorkWave.PestPac.TA.Steps
         {
             Assert.True(opportunitypage.IsLoaded(), "Failed to verify the Opportunity page loaded after click on opportunities link");
         }
+        
+        //Create opportunity directly
 
-        //[Then(@"Opporunities deleted confirmation message should be displayed Opportunity Deleted")]
-        //public void ThenOpporunitiesDeletedConfirmationMessageShouldBeDisplayedOpportunityDeleted()
-        //{
-           
-        //}
+        [When(@"I click on Create opportunity button")]
+        public void WhenIClickOnCreateOpportunityButton()
+        {
+            leadspage.ClickonCreateOpportunityButton();
+        }
+
+        [When(@"I enter the company name (.*)")]
+        public void WhenIEnterTheCompanyName(string leadname) 
+        {
+            //  leadspage.EnterTheLeadNameInSearchField(leadname);
+            throw new PendingStepException("https://workwave.atlassian.net/browse/WWM-8496-Once this ise is fixed will remove thid pending exception");
+        }
+
+        [When(@"I click on Create opportunity button in create opportunity page")]
+        public void WhenIClickOnCreateOpportunityButtonInCreateOpportunityPage()
+        {
+            leadspage.ClickonCreateOpportunityButtonInOppPage();
+        }
     }
 }

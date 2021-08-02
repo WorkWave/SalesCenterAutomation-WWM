@@ -137,6 +137,20 @@ namespace WorkWave.PestPac.TA.Model
 
         #endregion Create opportunity
 
+        #region Create oportunity directly
+
+        [FindsBy(How = How.XPath, Using = "//div[text()='Create Opportunity']/..")]
+        private IWebElement ClickCreateOpportunityButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//input[@placeholder='Search']")]
+        private IWebElement EnterTheLeadname { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//span[text()='Create Opportunity'])[2]/..")]
+        private IWebElement ClickCreateOpportunityButtonInOppPage { get { return PageFactory.Load(this); } }
+
+        #endregion create opportunity directly
+
+
         #region Delete Opportunity
 
         [FindsBy(How = How.XPath, Using = "(//p[text()='Opportunities'])[2]")]
@@ -181,7 +195,6 @@ namespace WorkWave.PestPac.TA.Model
                 Thread.Sleep(1000);
             }
         }
-
         public void ClickonLeadLink()
         {
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickLeadLink)))
@@ -189,7 +202,6 @@ namespace WorkWave.PestPac.TA.Model
                 ClickLeadLink.Click();           
             }
         }
-
         public void ClickonPlusButton()
         {
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickPlusButton)))
@@ -197,7 +209,6 @@ namespace WorkWave.PestPac.TA.Model
                 ClickPlusButton.Click();             
             }
         }
-
         public void ClickonAddLeadButton()
         {
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAddLeadButton)))
@@ -227,7 +238,6 @@ namespace WorkWave.PestPac.TA.Model
         }
 
         //Lead creation
-
         public void EnterLeadDetails(string firstname, string lastname, string company, string email)
         {
             FirstNamefield.SendKeys(firstname);
@@ -245,7 +255,6 @@ namespace WorkWave.PestPac.TA.Model
             ClickSalesTeamField.Click();
             PestPacUtility.ScrollToElement(SelectSalesTeam);
             SelectSalesTeam.Click();
-
         }
         public void SelecttheOwnerAssigneeName()
         {
@@ -323,7 +332,6 @@ namespace WorkWave.PestPac.TA.Model
         }
 
         //Create opportunity
-
         public void ClickAddServiceExpandIcon()
         {
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceExapndIcon)))
@@ -349,7 +357,6 @@ namespace WorkWave.PestPac.TA.Model
                 Thread.Sleep(2000);
                SelectServicename.Click();
             }
-
         }
 
         private readonly string ServicePage = "ANT";
@@ -423,12 +430,6 @@ namespace WorkWave.PestPac.TA.Model
             }           
         }
 
-        //Delete opportunity
-        //public void ClickonOpportunitiesLink()
-        //{          
-        //        ClickOpportunitiesLink.Click();           
-        //}
-
         public void VerifyOpportunitiesLink()
         {
             Actions actions = new Actions(SUT.Web.WebDriver);
@@ -437,9 +438,31 @@ namespace WorkWave.PestPac.TA.Model
            
         }
 
+        //Create opportunity directly
+
+        public void ClickonCreateOpportunityButton()
+        {
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAddLeadButton)))
+            {
+                ClickCreateOpportunityButton.Click();
+            }
+        }
+
+        public void EnterTheLeadNameInSearchField(string leadname)
+        {
+            EnterTheLeadname.SendKeys(leadname);
+            EnterTheLeadname.SendKeys(Keys.Enter);
+        }
+
+        public void ClickonCreateOpportunityButtonInOppPage()
+        {
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCreateOpportunityButtonInOppPage)))
+            {
+                ClickCreateOpportunityButtonInOppPage.Click();
+                Thread.Sleep(5000);
+            }
+        }
         #endregion Selenium
-
-
 
     }
 }
