@@ -9,6 +9,7 @@ using WorkWave.TA.TestEngine;
 using OpenQA.Selenium.Interactions;
 using System.Threading;
 using NUnit.Framework;
+using System.Reflection;
 
 namespace WorkWave.PestPac.TA.Model
 {
@@ -195,48 +196,133 @@ namespace WorkWave.PestPac.TA.Model
                 return false;
             }
         }
-
         public void ClickonSettingsGearIcon()
         {
-            SettingsGearIcon.Click();
-            Thread.Sleep(3000);
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => SettingsGearIcon)))
+                {
+                    SettingsGearIcon.Click();
+                    Thread.Sleep(3000);
+                    SUT.Log.DebugFormat("Settings gear icon is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Settings gear icon is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Settings gear icon is not clicked");
+            }
         }
 
         public void ClickonCompanySetUpLink()
         {
-            CompanySetUpLink.Click();
-            Thread.Sleep(3000);
-           
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => CompanySetUpLink)))
+                {
+                    CompanySetUpLink.Click();
+                    Thread.Sleep(3000);
+                    SUT.Log.DebugFormat("Company setup link is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Company setup link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Company setup link is not clicked");
+            }
         }
 
         public void ClickonRolesAndPermissionLink()
         {
-
-            RolesandPermissionLink.Click();
-            Thread.Sleep(3000);
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => RolesandPermissionLink)))
+                {
+                    RolesandPermissionLink.Click();
+                    Thread.Sleep(3000);
+                    SUT.Log.DebugFormat("Roles and permission is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Roles and permission is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Roles and permission is not clicked");
+            }
         }
 
         public void ClickonUsersAndAccessLink()
         {
-
-            UsersandAccessLink.Click();
-            Thread.Sleep(3000);
-
-           
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => UsersandAccessLink)))
+                {
+                    UsersandAccessLink.Click();
+                    Thread.Sleep(3000);
+                    SUT.Log.DebugFormat("User and access link is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("User and access link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("User and access link is not clicked");
+            }
         }
 
         public void ClickonSalesFunnelsLink()
         {
-            SalesFunnelsLink.Click();
-             Thread.Sleep(3000);
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => SalesFunnelsLink)))
+                {
+                    SalesFunnelsLink.Click();
+                    Thread.Sleep(3000);
+                    SUT.Log.DebugFormat("Sales funnel link is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Sales funnel link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Sales funnel link is not clicked");
+            }
         }
 
         public void ClickonSalesTeamsLink()
         {
-            PestPacUtility.ScrollToElement(SalesTeamsLink);
-            SalesTeamsLink.Click();
-            Thread.Sleep(3000);
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => SalesTeamsLink)))
+                {
+                    PestPacUtility.ScrollToElement(SalesTeamsLink);
+                    SalesTeamsLink.Click();
+                    Thread.Sleep(3000);
+                    SUT.Log.DebugFormat("Sales team link is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Sales team link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Sales team link is not clicked");
+            }
         }
+
 
         //public void EnterRolesName(string name)
         //{
@@ -249,62 +335,145 @@ namespace WorkWave.PestPac.TA.Model
 
         public void ClickOnAddRoleMainButton()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAddRolebutton)))
+            try
             {
-                ClickAddRoleMainbutton.Click();
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAddRoleMainbutton)))
+                {
+                    ClickAddRoleMainbutton.Click();
+                    SUT.Log.DebugFormat("AddRole main button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("AddRole main button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("AddRole main button is not clicked");
             }
         }
 
 
-
         public void ClickOnAllLink()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => All_Link)))
+            try
             {
-                All_Link.Click();
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => All_Link)))
+                {
+                    All_Link.Click();
+                    SUT.Log.DebugFormat("All link is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("All link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("All link is not clicked");
             }
         }
 
         public void ClickOnAddRoleSaveButton()
         {
+            try { 
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAddRoleSaveButton)))
             {
                 ClickAddRoleSaveButton.Click();
+                  SUT.Log.DebugFormat("AddRole save button is clicked");
+                }
+            else
+            {
+                SUT.Log.ErrorFormat("AddRole save button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+            }
+        }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("AddRole save button is not clicked");
             }
         }
 
-
         public void EnterRoleName(string name)
         {
-            RoleName_Field.SendKeys(name);
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => RoleName_Field)))
+                {
+                    RoleName_Field.SendKeys(name);
+                    SUT.Log.DebugFormat("AddRole save button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("AddRole save button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("AddRole save button is not clicked");
+            }
         }
 
         public void ClickOnThreeDots()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ThreeDotsIcon)))
+            try
             {
-                PestPacUtility.ScrollToElement(ThreeDotsIcon);
-                ThreeDotsIcon.Click();
-                Thread.Sleep(2000);
-               
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ThreeDotsIcon)))
+                {
+                    PestPacUtility.ScrollToElement(ThreeDotsIcon);
+                    ThreeDotsIcon.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Three dots icon is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Three dots icon is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Three dots icon is not clicked");
             }
         }
 
         public void ClickOnDeleteOption()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => DeleteOption)))
+            try
             {
-                DeleteOption.Click();
-                Thread.Sleep(2000);
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => DeleteOption)))
+                {
+                    DeleteOption.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Delete option is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Delete option is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Delete option is not clicked");
             }
         }
 
         public void ClickOnDeletebutton()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => Deletebutton)))
+            try
             {
-                Deletebutton.Click();
-                Thread.Sleep(2000);
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => Deletebutton)))
+                {
+                    Deletebutton.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Delete button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Delete button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Delete button is not clicked");
             }
         }
 
@@ -312,41 +481,105 @@ namespace WorkWave.PestPac.TA.Model
 
         public void ClickAddSalesFunnelButton()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickOnSalesFunnelButton)))
+            try
             {
-                ClickOnSalesFunnelButton.Click();
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickOnSalesFunnelButton)))
+                {
+                    ClickOnSalesFunnelButton.Click();
+                    SUT.Log.DebugFormat("Add sales funnel button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Add sales funnel button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Add sales funnel button is not clicked");
             }
         }
 
         public void EnterSalesFunnelName(string name)
         {
-            SalesFunnelNamefield.SendKeys(name);
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => SalesFunnelNamefield)))
+                {
+                    SalesFunnelNamefield.SendKeys(name);
+                    SUT.Log.DebugFormat("Sales funnel name is entered");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Sales funnel name is not entered {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Sales funnel name is not entered");
+            }
         }
+
 
         public void ClickOnFunnelSaveButton()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickFunnelSavebutton)))
+            try
             {
-                ClickFunnelSavebutton.Click();
-                Thread.Sleep(2000);
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickFunnelSavebutton)))
+                {
+                    ClickFunnelSavebutton.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Sales funnel save button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Sales funnel save button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Sales funnel save button is not clicked");
             }
         }
 
         public void ClickOnThreeDotsIconforSalesFunnel()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsIcon)))
+            try
             {
-                ClickThreeDotsIcon.Click();
-                Thread.Sleep(2000);
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsIcon)))
+                {
+                    ClickThreeDotsIcon.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Threedot icon for sales funnel is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Threedot icon for sales funnel is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Threedot icon for sales funnel is not clicked ");
             }
         }
 
         public void ClickOnDeleteOptionforSalesFunel()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickDeleteOption)))
+            try
             {
-                ClickDeleteOption.Click();
-                Thread.Sleep(2000);
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickDeleteOption)))
+                {
+                    ClickDeleteOption.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Delete option for sales funnel is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Delete option for sales funnel is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Delete option for sales funnel is not clicked ");
             }
         }
 
@@ -355,9 +588,21 @@ namespace WorkWave.PestPac.TA.Model
 
     public void ClickAddUnmappedButton()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickOnUnmappedButton), TimeSpan.FromSeconds(5)))
+            try
             {
-                ClickOnUnmappedButton.Click();
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickOnUnmappedButton), TimeSpan.FromSeconds(5)))
+                {
+                    ClickOnUnmappedButton.Click();
+                    SUT.Log.DebugFormat("Add unmapped button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Add unmapped button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Add unmapped button is not clicked ");
             }
         }
         public void EnterUserDetails(string firstname, string lastname, string email)
@@ -371,50 +616,114 @@ namespace WorkWave.PestPac.TA.Model
         {
             PestPacUtility.SelectDropDown(SelectRoleName, rolename);
         }
-
+            
         public void SelectRoleFromTheDropDown()
         {
-            ClickRoleField.Click();
-            Thread.Sleep(2000);
-            PestPacUtility.ScrollToElement(SelectRolename);
-            SelectRolename.Click();
-
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickRoleField), TimeSpan.FromSeconds(5)))
+                {
+                    ClickRoleField.Click();
+                    Thread.Sleep(2000);
+                    PestPacUtility.ScrollToElement(SelectRolename);
+                    SelectRolename.Click();
+                    SUT.Log.DebugFormat("Role is selected from the droddown");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Role is not selected from the droddown {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Role is not selected from the droddown ");
+            }
         }
 
         public void ClickAddSalesTeamoption()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAddSalesTeamOption)))
+            try
             {
-                ClickAddSalesTeamOption.Click();
-                Thread.Sleep(2000);
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAddSalesTeamOption)))
+                {
+                    ClickAddSalesTeamOption.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Sales team option is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Sales team option is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Sales team option is not clicked");
             }
         }
-
+     
         public void SelectSalesTeamFromTheDropDown()
         {
-            ClickSalesTeamField.Click();
-            Thread.Sleep(2000);
-            PestPacUtility.ScrollToElement(SelectSalesTeamname);
-            SelectSalesTeamname.Click();
-
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSalesTeamField)))
+                {
+                    ClickSalesTeamField.Click();
+                    Thread.Sleep(2000);
+                    PestPacUtility.ScrollToElement(SelectSalesTeamname);
+                    SelectSalesTeamname.Click();
+                    SUT.Log.DebugFormat("Sales team is selected from the droddown");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Sales team is not selected from the droddown {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Sales team is not selected from the droddown");
+            }
         }
 
         public void ClickSalesTeamPosition()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => SelectSalesTeamPosition)))
+            try
             {
-                PestPacUtility.ScrollToElement(SelectSalesTeamPosition);
-                SelectSalesTeamPosition.Click();
-                Thread.Sleep(2000);
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => SelectSalesTeamPosition)))
+                {
+                    PestPacUtility.ScrollToElement(SelectSalesTeamPosition);
+                    SelectSalesTeamPosition.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Sales team position is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Sales team position is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Sales team position is not clicked");
             }
         }
 
         public void ClickSaveButtonInUserSlider()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSaveButton)))
+            try
             {
-                ClickSaveButton.Click();
-                Thread.Sleep(8000);
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSaveButton)))
+                {
+                    ClickSaveButton.Click();
+                    Thread.Sleep(8000);
+                    SUT.Log.DebugFormat("Save button is clicked in user slider");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Save button is not clicked in user slider {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Save button is not clicked in user slider");
             }
         }
 
@@ -437,30 +746,65 @@ namespace WorkWave.PestPac.TA.Model
 
         public void ClickOnThreeDotsIconforAddedUser()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsIconforUnmappedUser)))
+            try
             {
-
-                PestPacUtility.ScrollToElement(ClickThreeDotsIconforUnmappedUser);
-                ClickThreeDotsIconforUnmappedUser.Click();
-                Thread.Sleep(2000);
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsIconforUnmappedUser)))
+                {
+                    PestPacUtility.ScrollToElement(ClickThreeDotsIconforUnmappedUser);
+                    ClickThreeDotsIconforUnmappedUser.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Three dots icon is clicked for added user");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Three dots icon is not clicked for added user {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Three dots icon is not clicked for added user");
             }
         }
 
         public void ClickOnDeleteOptionforUnMappedUser()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => DeleteoptionforAddedUser)))
+            try
             {
-                DeleteoptionforAddedUser.Click();
-                Thread.Sleep(2000);
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => DeleteoptionforAddedUser)))
+                {
+                    DeleteoptionforAddedUser.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Delete option is clicked for unmapped user");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Delete option is not clicked for unmapped user {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Delete option is not clicked for unmapped user");
             }
         }
 
         public void ClickDeleteButtonInPopup()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickDeletebuttonInPopup)))
+            try
             {
-                ClickDeletebuttonInPopup.Click();
-                Thread.Sleep(2000);
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickDeletebuttonInPopup)))
+                {
+                    ClickDeletebuttonInPopup.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Delet button is clicked in the popup");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Delete button is not clicked in the popup {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Delete button is not clicked in the popup");
             }
         }
 
@@ -485,24 +829,65 @@ namespace WorkWave.PestPac.TA.Model
 
         public void ClickAddSalesTeamButton()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => AddSalesTeamButton)))
+            try
             {
-                AddSalesTeamButton.Click();
-                Thread.Sleep(2000);
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => AddSalesTeamButton)))
+                {
+                    AddSalesTeamButton.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Add sales team button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Add sales team button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Add sales team button is not clicked");
             }
         }
 
         public void EnterSalesTeamName(string salesteamname)
         {
-            SalesTeamNamefield.SendKeys(salesteamname);
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => SalesTeamNamefield)))
+                {
+                    SalesTeamNamefield.SendKeys(salesteamname);
+                    SUT.Log.DebugFormat("Sales Team name is entered");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Sales Team name is not entered {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Sales Team name is not entered");
+            }
         }
-
+        
         public void SelectBranch()
         {
-            ClickBranchField.Click();
-            Thread.Sleep(2000);
-            SelectBranchName.Click();
-
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickBranchField)))
+                {
+                    ClickBranchField.Click();
+                    Thread.Sleep(2000);
+                    SelectBranchName.Click();
+                    SUT.Log.DebugFormat("Branch is selected");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Branch is not selected {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Branch is not selected");
+            }
         }
 
         public bool VerifySalesTeamCreatedConfirmMsg(string message)
@@ -524,20 +909,46 @@ namespace WorkWave.PestPac.TA.Model
 
         public void ClickOnThreeDotsIconforAddedSalesTeam()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsIconforSalesTeam)))
+            try
             {
-                ClickThreeDotsIconforSalesTeam.Click();
-                Thread.Sleep(2000);
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsIconforSalesTeam)))
+                {
+                    ClickThreeDotsIconforSalesTeam.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Three dots icon is clicked for added sales team");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Three dots icon is not clicked for added sales team {0}", MethodBase.GetCurrentMethod().Name);
+                }
             }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Three dots icon is not clicked for added sales team ");
+            }
+
         }
 
         public void ClickOnDeleteOptionforSalesTeam()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => DeleteoptionforSalesTeam)))
+            try
             {
-                DeleteoptionforSalesTeam.Click();
-                Thread.Sleep(2000);
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => DeleteoptionforSalesTeam)))
+                {
+                    DeleteoptionforSalesTeam.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Delete option is clicked for added sales team");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Delete option is not clicked for added sales team {0}", MethodBase.GetCurrentMethod().Name);
+                }
             }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Delete option is not clicked for added sales team ");
+            }
+
         }
 
         public bool VerifySalesTeamDeleteConfirmMsg(string message)
