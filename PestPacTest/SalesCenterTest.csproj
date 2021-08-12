@@ -202,6 +202,7 @@
     <Compile Include="SharedData\ServiceSetup.cs" />
     <Compile Include="SharedData\Tasks.cs" />
     <Compile Include="Steps\LeadSteps.cs" />
+    <Compile Include="Steps\PendingException.cs" />
     <Compile Include="Steps\SalesCenterSteps.cs" />
     <Compile Include="Steps\CommonSteps.cs" />
     <Compile Include="Steps\LoginSteps.cs" />

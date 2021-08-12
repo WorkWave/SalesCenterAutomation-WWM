@@ -10,72 +10,110 @@ Background:
 @WW_SM_011
 @smoke
 Scenario Outline: Verify Display of Leads Page through sales center menu
-
-  When I mouse hover on sales center side menu
-  And I click on Leads link
-  Then Leads page should be displayed
+    When Mouse hover on sales center side menu
+    And Click on Leads link
+    Then Leads page should be displayed
   
  
  @WW_SM_012
 @smoke
-Scenario Outline: Verify user can create and delete a lead  
-
-  When I click on plus icon
-  And I click on Add Lead button
-  Then Add Lead details page should be displayed
-  And I enter the lead details <FirstName> <LastName> <CompanyName> <Email>
-  And I select the sales team <SalesTeam>
-  And I select the owner <Owner>
-  And I select the sales funnel <SalesFunnel>
-  When I click on Save button
-  Then Lead created validation message should be displayed <ValidationMessage>
-  And I click on search icon
-  And I enter the lead name <LeadName> and click on search icon
-  And I click on three dots icon
-  And I click on delete link for added lead
-  When I click on Delete button in delete lead popup
-  Then Lead deleted confirmation message should be displayed <DeleteConfirmMessage>
-  When I mouse hover on sales center side menu
- 
-
+Scenario Outline: Verify user can create and delete a lead   
+    When Click on plus icon
+    And  Click on Add Lead button
+    Then Add Lead details page should be displayed
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> <SalesTeam> <Owner> 
+    And Select the sales funnel <SalesFunnel>
+    When Click on Save button
+    Then Lead created validation message should be displayed <ValidationMessage>
+    And  Click on search icon
+    And  Enter the lead name <LeadName> and click on search icon
+    When Delete the lead
+    Then Lead deleted confirmation message should be displayed <DeleteConfirmMessage>
+    
  Examples:  
-     | FirstName        | LastName | CompanyName  | Email              | SalesTeam            | Owner     | SalesFunnel           | ValidationMessage | LeadName   | DeleteConfirmMessage |
-     | Automation user2 | Test2    | autocompany2 | autouser@gmail.com | AutoTestingSalesTeam | UnAsigned | Test reg sales funnel | Lead created      | Automation | Lead deleted.        |
+     | FirstName        | LastName | CompanyName  | Email              | SalesTeam            | Owner     | SalesFunnel           | ValidationMessage | LeadName    | DeleteConfirmMessage |
+     | Automation user2 | Test2    | autocompany2 | autouser@gmail.com | AutoTestingSalesTeam | UnAsigned | Test reg sales funnel | Lead created      | autocompany | Lead deleted.        |
 	 
 
 @WW_SM_013
 @smoke
 Scenario Outline: Verify user can create lead and convert to opportunity
-
-  When I click on plus icon
-  And I click on Add Lead button
-  Then Add Lead details page should be displayed
-  And I enter the lead details <FirstName> <LastName> <CompanyName> <Email>
-  And I select the sales team <SalesTeam>
-  And I select the owner <Owner>
-  And I select the sales funnel <SalesFunnel>
-  When I click on Save button
-  Then Lead created validation message should be displayed <ValidationMessage>
-  And I click on Service expand icon
-  And Click on Add Serivces button
-  And I select the services <Services>
-  When I click on Add services button in slider
-  Then service should be successfully added
-  And I click on Close services and product button
-  When I click on convert to opportunity button
-  And I select the ownername in convert lead page <OwnerName>
-  And I select the funnel stage <FunnelStage>
-  When I click on Save button
-  Then validation message should be displayed <OpportunityCreated>
-  When I mouse hover on sales center side menu and click on opportunities link
-  #Then Opportunities page should be displayed
-  #And I click on search icon
-  #And I enter the lead name <OpportunityName> and click on search icon
-  #And I click on three dots icon
-  #And I click on delete link for added lead
-  #When I click on Delete button in delete lead popup
-  #Then Opporunities deleted confirmation message should be displayed <OpportunityDeleteConfirmMessage>
-
+    When Click on plus icon
+    And  Click on Add Lead button
+    Then Add Lead details page should be displayed
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> <SalesTeam> <Owner> 
+    And Select the sales funnel <SalesFunnel>
+    When Click on Save button
+    Then Lead created validation message should be displayed <ValidationMessage>
+    And Click on Service expand icon
+    And Click on Add Serivces button
+    And Select the services <Services>
+    When Click on Add services button in slider
+    Then Service should be successfully added
+    And Click on Close services and product button
+    When Click on convert to opportunity button
+    When Select the lead details <OwnerName> <FunnelStage>  
+    Then validation message should be displayed <OpportunityCreated>
+ 
  Examples:  
      | FirstName       | LastName | CompanyName   | Email              | SalesTeam            | Owner      | SalesFunnel           | ValidationMessage | LeadName   | Services            | FunnelStage | Ownername  | OpportunityCreated  | OpportunityDeleteConfirmMessage | OpportunityName |
      | Automation Labs | Labs01   | autocompany01 | autouser@gmail.com | AutoTestingSalesTeam | UnAssigned | Test reg sales funnel | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Opportunity Deleted             | Automation Labs |
+
+
+@WW_SM_014
+@WWM-8428
+@smoke
+Scenario Outline: Verify user able to create new opportunity directly 
+    When Click on plus icon
+    And  Click on Add Lead button
+    Then Add Lead details page should be displayed
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> <SalesTeam> <Owner> 
+    And Select the sales funnel <SalesFunnel>
+    When Click on Save button
+    Then Lead created validation message should be displayed <ValidationMessage>
+    And  Click on Service expand icon
+    And Click on Add Serivces button
+    And Select the services <Services>
+    When Click on Add services button in slider
+    Then Service should be successfully added
+    And Click on Close services and product button
+    When Click on plus icon
+    And  Click on Create opportunity button
+    And Search the lead <LeadName>
+    When Click on Create opportunity button in create opportunity page  
+    When Select the lead details <OwnerName> <FunnelStage>  
+    Then validation message should be displayed <OpportunityCreated>
+ 
+
+ Examples:  
+     | FirstName       | LastName | CompanyName   | Email              | SalesTeam            | Owner      | SalesFunnel           | ValidationMessage | Services            | FunnelStage | Ownername  | OpportunityCreated  | OpportunityDeleteConfirmMessage | OpportunityName | LeadName      |
+     | Automation Labs | Labs02   | autocompany02 | autouser@gmail.com | AutoTestingSalesTeam | UnAssigned | Test reg sales funnel | Lead created      | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Opportunity Deleted             | Automation Labs | Automation    |
+
+
+@WW_SM_014
+@WWM-8422
+@smoke
+Scenario Outline: Verify User Can Add a Contract to a Lead
+    When Click on plus icon
+    And Click on Add Lead button
+    Then Add Lead details page should be displayed
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> <SalesTeam> <Owner> 
+    And Select the sales funnel <SalesFunnel>
+    When Click on Save button
+    Then Lead created validation message should be displayed <ValidationMessage>
+    And  Click on Service expand icon
+    And  Click on Add Serivces button
+    And  Select the services <Services>
+    When Click on Add services button in slider
+    Then Service should be successfully added
+    And Click on Close services and product button
+    When Click on send contract button
+    Then Create contract slider should be displayed
+    And  Select contract template <Template> and click on launch form to complete button  
+    And  Click on complete form button
+    When Click on proceed button
+    Then Contract should be successfully added
+
+Examples:  
+     | FirstName       | LastName | CompanyName   | Email              | SalesTeam            | Owner      | SalesFunnel           | ValidationMessage | Services            | Template     |
+     | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | AutoTestingSalesTeam | UnAssigned | Test reg sales funnel | Lead created      | ANT- Ant Treatments | Reg DSB Form |

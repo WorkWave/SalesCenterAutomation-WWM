@@ -22,13 +22,7 @@ namespace WorkWave.PestPac.TA.Steps
         LeadDetailPage leadspage = new LeadDetailPage();
         OpportunityPage opportunitypage = new OpportunityPage();
         SettingsPage settingpage = new SettingsPage();
-
-        //  private ViewLeadsPage viewLeadsPage;
-        // private AddCustomerPage addCustomerPage;
-
-
-
-
+      
         public LeadSteps(PestPacData pestPacData)
         {
             this.pestPacData = pestPacData;
@@ -36,10 +30,8 @@ namespace WorkWave.PestPac.TA.Steps
             leadDetailPage = new LeadDetailPage();
         }
 
-
-
-        [When(@"I mouse hover on sales center side menu")]
-        public void WhenIMouseHoverOnSalesCenterSideMenu()
+        [When(@"Mouse hover on sales center side menu")]
+        public void WhenMouseHoverOnSalesCenterSideMenu()
         {
              leadspage.ClickSalesCenterMenu();
         }
@@ -51,9 +43,8 @@ namespace WorkWave.PestPac.TA.Steps
             leadspage.VerifyOpportunitiesLink();
         }
 
-
-        [When(@"I click on Leads link")]
-        public void WhenIClickOnLeadsLink()
+        [When(@"Click on Leads link")]
+        public void WhenClickOnLeadsLink()
         {
             leadspage.ClickonLeadLink();
         }
@@ -64,14 +55,14 @@ namespace WorkWave.PestPac.TA.Steps
             Assert.True(leadspage.IsLoaded(), "Failed to verify the Leads page loaded after click on leads link");           
         }
 
-        [When(@"I click on plus icon")]
-        public void WhenIClickOnPlusIcon()
+        [When(@"Click on plus icon")]
+        public void WhenClickOnPlusIcon()
         {
             leadspage.ClickonPlusButton();
         }
 
-        [When(@"I click on Add Lead button")]
-        public void WhenIClickOnAddLeadButton()
+        [When(@"Click on Add Lead button")]
+        public void WhenClickOnAddLeadButton()
         {
             leadspage.ClickonAddLeadButton();
         }
@@ -84,34 +75,22 @@ namespace WorkWave.PestPac.TA.Steps
 
         //Leads creation
 
-
-
-        [Then(@"I enter the lead details (.*) (.*) (.*) (.*)")]
-        public void ThenIEnterTheLeadDetailsAutomationUserTestAutocompanyAutouserGmail_Com(string name, string lastname, string company, string email)
+        [Then(@"Enter the lead details (.*) (.*) (.*) (.*) (.*) (.*)")]
+        public void ThenEnterTheLeadDetailsAutomationUserTestAutocompanyAutouserGmail_Com(string firstname, string lastname, string company, string email, string salesteamname, string assigneename)
         {
-            leadspage.EnterLeadDetails(name, lastname, company, email);
-        }
-
-        [Then(@"I select the sales team (.*)")]
-        public void ThenISelectTheSalesTeamAutoTestingSalesTeam(string salesteamname)
-        {
+            leadspage.EnterLeadDetails(firstname, lastname, company, email);
             leadspage.SelectSalesTeamfromdropdown();
-        }
-
-        [Then(@"I select the owner (.*)")]
-        public void ThenISelectTheOwner(string ownername)
-        {
             leadspage.SelecttheOwnerAssigneeName();
         }
 
-        [Then(@"I select the sales funnel (.*)")]
-        public void ThenISelectTheSalesFunnelUserDeleted(string funnelname)
+        [Then(@"Select the sales funnel (.*)")]
+        public void ThenSelectTheSalesFunnelUserDeleted(string funnelname)
         {
             leadspage.SelecttheFunnelName();
         }
 
-        [When(@"I click on Save button")]
-        public void WhenIClickOnSaveButton()
+        [When(@"Click on Save button")]
+        public void WhenClickOnSaveButton()
         {
             leadspage.ClickOnSaveButton();
         }
@@ -122,33 +101,23 @@ namespace WorkWave.PestPac.TA.Steps
             settingpage.VerifySalesTeamCreatedConfirmMsg(message);
         }
 
-        [Then(@"I click on search icon")]
-        public void ThenIClickOnSearchIcon()
+        [Then(@"Click on search icon")]
+        public void ThenClickOnSearchIcon()
         {
             leadspage.ClickOnSearchIcon();
         }
 
-        [Then(@"I enter the lead name (.*) and click on search icon")]
-        public void ThenIEnterTheLeadNameAndClickOnSearchIcon(string leadname)
+        [Then(@"Enter the lead name (.*) and click on search icon")]
+        public void ThenEnterTheLeadNameAndClickOnSearchIcon(string leadname)
         {
             leadspage.EnterTheLeadName(leadname);
         }
 
-        [Then(@"I click on three dots icon")]
-        public void ThenIClickOnThreeDotsIcon()
+        [When(@"Delete the lead")]
+        public void WhenDeleteTheLead()
         {
             leadspage.ClickOnThreeDotsIconforAddedLead();
-        }
-
-        [Then(@"I click on delete link for added lead")]
-        public void ThenIClickOnDeleteLinkForAddedLead()
-        {
             leadspage.ClickOnDeleteLinkforLead();
-        }
-
-        [When(@"I click on Delete button in delete lead popup")]
-        public void WhenIClickOnDeleteButtonInDeleteLeadPopup()
-        {
             leadspage.ClickDeleteButtonInLeadPopup();
         }
 
@@ -160,8 +129,8 @@ namespace WorkWave.PestPac.TA.Steps
 
         //Create opportunity
 
-        [Then(@"I click on Service expand icon")]
-        public void ThenIClickOnServiceExpandIcon()
+        [Then(@"Click on Service expand icon")]
+        public void ThenClickOnServiceExpandIcon()
         {
             leadspage.ClickAddServiceExpandIcon();
         }
@@ -172,32 +141,32 @@ namespace WorkWave.PestPac.TA.Steps
             leadspage.ClickAddServiceButton();
         }
 
-        [Then(@"I select the services (.*)")]
-        public void ThenISelectTheServicesANT_AntTreatments(string service)
+        [Then(@"Select the services (.*)")]
+        public void ThenSelectTheServicesANT_AntTreatments(string service)
         {
             leadspage.SelectServiceFromDropDown();
         }
 
-        [When(@"I click on Add services button in slider")]
-        public void WhenIClickOnAddServicesButtonInSlider()
+        [When(@"Click on Add services button in slider")]
+        public void WhenClickOnAddServicesButtonInSlider()
         {
             leadspage.ClickAddServiceButtonInSlider();
         }
 
-        [Then(@"service should be successfully added")]
+        [Then(@"Service should be successfully added")]
         public void ThenServiceShouldBeSuccessfullyAdded()
         {
             Assert.True(leadspage.IsServiceAdded(), "Serive is addded");
         }
 
-        [Then(@"I click on Close services and product button")]
-        public void ThenIClickOnCloseServicesAndProductButton()
+        [Then(@"Click on Close services and product button")]
+        public void ThenClickOnCloseServicesAndProductButton()
         {
             leadspage.ClickCloseServicesAndProductButton();
         }
 
-        [When(@"I click on convert to opportunity button")]
-        public void WhenIClickOnConvertToOpportunityButton()
+        [When(@"Click on convert to opportunity button")]
+        public void WhenClickOnConvertToOpportunityButton()
         {
             leadspage.ClickOnConvertOpportunityButton();
         }
@@ -208,16 +177,18 @@ namespace WorkWave.PestPac.TA.Steps
             leadspage.IsConvertLeadPageIsDisplayed();
         }
 
-        [When(@"I select the ownername in convert lead page (.*)")]
-        public void WhenISelectTheOwnernameInConvertLeadPage(string ownername)
+        [When(@"Select the ownername in convert lead page (.*)")]
+        public void WhenSelectTheOwnernameInConvertLeadPage(string ownername)
         {
-            leadspage.SelecttheOwnerName();
+           
         }
 
-        [When(@"I select the funnel stage Stage(.*)")]
-        public void WhenISelectTheFunnelStageStage(string funnelstage)
+        [When(@"Select the lead details (.*) (.*)")]
+        public void WhenISelectTheLeadDetails(string ownername, string funnelstage)
         {
+            leadspage.SelecttheOwnerName();
             leadspage.SelecttheStageFromDropdown();
+            leadspage.ClickOnSaveButton();
         }
 
         [Then(@"validation message should be displayed (.*)")]
@@ -233,11 +204,67 @@ namespace WorkWave.PestPac.TA.Steps
         {
             Assert.True(opportunitypage.IsLoaded(), "Failed to verify the Opportunity page loaded after click on opportunities link");
         }
+        
+        //Create opportunity directly
 
-        //[Then(@"Opporunities deleted confirmation message should be displayed Opportunity Deleted")]
-        //public void ThenOpporunitiesDeletedConfirmationMessageShouldBeDisplayedOpportunityDeleted()
-        //{
+        [When(@"Click on Create opportunity button")]
+        public void WhenClickOnCreateOpportunityButton()
+        {
+            leadspage.ClickonCreateOpportunityButton();
+        }
+
+        [When(@"Search the lead (.*)")]
+        public void WhenSearchTheLead(string leadname) 
+        {
+            //  leadspage.EnterTheLeadNameInSearchField(leadname);
+            throw new PendingStepException("https://workwave.atlassian.net/browse/WWM-8496-Once this ise is fixed will remove thid pending exception");
+        }
+
+        [When(@"Click on Create opportunity button in create opportunity page")]
+        public void WhenIClickOnCreateOpportunityButtonInCreateOpportunityPage()
+        {
+            leadspage.ClickonCreateOpportunityButtonInOppPage();
+        }
+
+        //Add contract to the lead
+
+        [When(@"Click on send contract button")]
+        public void WhenClickOnSendContractButton()
+        {
+            leadspage.ClickonSendContractButton();
+        }
+
+        [Then(@"Create contract slider should be displayed")]
+        public void ThenCreateContractSliderShouldBeDisplayed()
+        {
+            leadspage.IsCreateContractSliderDisplayed();
+        }
+
+        [Then(@"Select contract template (.*) and click on launch form to complete button")]
+        public void ThenSelectContractTemplateAndClickOnLaunchFormToCompleteButton(string templatename)
+        {
+            leadspage.SelecttheTemplateName();
+            leadspage.ClickOnLaunchFormToCompleteButton();
+        }
+
+
+        [Then(@"Click on complete form button")]
+        public void ThenIClickOnCompleteFormButton()
+        {
+            leadspage.ClickOnCompleteFormButton();
+        }
+
+        [When(@"Click on proceed button")]
+        public void WhenClickOnProceedButton()
+        {
+            leadspage.ClickOnProceedButtonInPopup();
+        }
+
+        [Then(@"Contract should be successfully added")]
+        public void ThenContractShouldBeSuccessfullyAdded()
+        {
            
-        //}
+        }
+
     }
 }

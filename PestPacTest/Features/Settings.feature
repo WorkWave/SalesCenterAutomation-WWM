@@ -21,7 +21,7 @@ Scenario: Verify Display of Company Setup Page
 @WW_SM_003
 @smoke
 Scenario: Verify Display of Roles and Permission  Page
-    Then Settings page should be displayed
+    When Click on Settings Gear Icon
     Then Settings page should be displayed
     And Click on Roles and Permissions link
     Then Roles and Permissions page should be displayed
@@ -29,7 +29,6 @@ Scenario: Verify Display of Roles and Permission  Page
 @WW_SM_004
 @smoke
 Scenario: Verify Display of User and Access  Page
-
     When Click on Settings Gear Icon
     Then Settings page should be displayed
     And Click on User and Access link
@@ -38,7 +37,6 @@ Scenario: Verify Display of User and Access  Page
 @WW_SM_005
 @smoke
 Scenario: Verify Display of Sales Funnel Page
-
     When Click on Settings Gear Icon
     Then Settings page should be displayed
     And Click on Sales Funnels link
@@ -106,7 +104,7 @@ Scenario Outline: Verify User is Able to Add and delete the UnMapped User
     And  Click on Add Sales Team option
     And  Select the Sales Team from the drdopdown<Salesteam>
     And  Select the team position
-    When Click on Save button
+    When Click on Save button in add unmapped user slider
     Then Validation message should be displayed <ConfirmMessage>
     When Delete the unmapped user
     Then User deleted confirmation mesage should be displayed <UserDeleted>
