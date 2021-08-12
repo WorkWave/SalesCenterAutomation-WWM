@@ -23,14 +23,11 @@ namespace WorkWave.PestPac.TA.Steps
         public SettingsSteps(PestPacData pestPacData)
         {
             this.pestPacData = pestPacData;
-
             SettingsPage settingpage = new SettingsPage();
-
-
         }
 
-        [When(@"I click on Settings Gear Icon")]
-        public void WhenIClickOnSettingsGearIcon()
+        [When(@"Click on Settings Gear Icon")]
+        public void WhenClickOnSettingsGearIcon()
         {
             settingpage.ClickonSettingsGearIcon();
         }
@@ -41,8 +38,8 @@ namespace WorkWave.PestPac.TA.Steps
             Assert.True(settingpage.IsLoaded(), "Failed to verify the settings page loaded after click on Settings Gear icon");
         }
 
-        [Then(@"I click on Company Setup link")]
-        public void ThenIClickOnCompanySetupLink()
+        [Then(@"Click on Company Setup link")]
+        public void ThenClickOnCompanySetupLink()
         {
             settingpage.ClickonCompanySetUpLink();
         }
@@ -53,8 +50,8 @@ namespace WorkWave.PestPac.TA.Steps
             Assert.True(companysetuppage.IsLoaded(), "Failed to verify the Company setup page loaded after click on Company setup link");
         }
 
-        [Then(@"I click on Roles and Permissions link")]
-        public void ThenIClickOnRolesAndPermissionsLink()
+        [Then(@"Click on Roles and Permissions link")]
+        public void ThenClickOnRolesAndPermissionsLink()
         {
             settingpage.ClickonRolesAndPermissionLink();
         }
@@ -65,8 +62,8 @@ namespace WorkWave.PestPac.TA.Steps
             Assert.True(rolespermissionsetupuppage.IsLoaded(), "Failed to verify the Roles and Permissions page loaded after click on Roles and Permissions link");
         }
 
-        [Then(@"I click on User and Access link")]
-        public void ThenIClickOnUserAndAccessLink()
+        [Then(@"Click on User and Access link")]
+        public void ThenClickOnUserAndAccessLink()
         {
             settingpage.ClickonUsersAndAccessLink();
         }
@@ -77,8 +74,8 @@ namespace WorkWave.PestPac.TA.Steps
             Assert.True(useraccesspage.IsLoaded(), "Failed to verify the Users and Access page loaded after click on Users and Access link");
         }
 
-        [Then(@"I click on Sales Funnels link")]
-        public void ThenIClickOnSalesFunnelsLink()
+        [Then(@"Click on Sales Funnels link")]
+        public void ThenClickOnSalesFunnelsLink()
         {
             settingpage.ClickonSalesFunnelsLink();
         }
@@ -89,8 +86,8 @@ namespace WorkWave.PestPac.TA.Steps
             Assert.True(salesfunnelpage.IsLoaded(), "Failed to verify the Users and Access page loaded after click on Users and Access link");
         }
 
-        [Then(@"I click on Sales Teams link")]
-        public void ThenIClickOnSalesTeamsLink()
+        [Then(@"Click on Sales Teams link")]
+        public void ThenClickOnSalesTeamsLink()
         {
             settingpage.ClickonSalesTeamsLink();
         }
@@ -104,21 +101,21 @@ namespace WorkWave.PestPac.TA.Steps
 
         //Add the Role
 
-        [Then(@"I Click on Add Role button")]
-        public void ThenIClickOnAddRoleButton()
+        [Then(@"Click on Add Role button")]
+        public void ThenClickOnAddRoleButton()
         {
             settingpage.ClickOnAddRoleMainButton();
         }
 
-        [Then(@"I enter the role name (.*)")]
-        public void ThenIEnterTheRoleNameSalesManager(String name)
+        [Then(@"Enter the role name (.*)")]
+        public void ThenEnterTheRoleNameSalesManager(String name)
         {
             settingpage.EnterRoleName(name);
             settingpage.ClickOnAllLink();
         }
 
-        [When(@"I click on Add Role button in slider")]
-        public void WhenIClickOnAddRoleButtonInSlider()
+        [When(@"Click on Add Role button in slider")]
+        public void WhenClickOnAddRoleButtonInSlider()
         {
             settingpage.ClickOnAddRoleSaveButton();
         }
@@ -130,24 +127,33 @@ namespace WorkWave.PestPac.TA.Steps
 
         //}
 
-        [When(@"i click on three dots icon")]
-        public void WhenIClickOnThreeDotsIcon()
+        [When(@"Delete the role")]
+        public void WhenDeleteTheRole()
         {
             settingpage.ClickOnThreeDots();
-        }
-
-        [When(@"I click on Delete option")]
-        public void WhenIClickOnDeleteOption()
-        {
             settingpage.ClickOnDeleteOption();
-        }
-
-
-        [When(@"I click on Delete button in popup")]
-        public void WhenIClickOnDeleteButtonInPopup()
-        {
             settingpage.ClickOnDeletebutton();
         }
+
+
+        //[When(@"Click on three dots icon")]
+        //public void WhenClickOnThreeDotsIcon()
+        //{
+        //    settingpage.ClickOnThreeDots();
+        //}
+
+        //[When(@"I click on Delete option")]
+        //public void WhenIClickOnDeleteOption()
+        //{
+        //    settingpage.ClickOnDeleteOption();
+        //}
+
+
+        //[When(@"I click on Delete button in popup")]
+        //public void WhenIClickOnDeleteButtonInPopup()
+        //{
+        //    settingpage.ClickOnDeletebutton();
+        //}
 
 
         //[Then(@"Validation mesage hould be displayed")]
@@ -158,88 +164,97 @@ namespace WorkWave.PestPac.TA.Steps
 
         //Adding Sales Funel
 
-        [Then(@"I Click on Add Sales Funnel button")]
-        public void ThenIClickOnAddSalesFunnelButton()
+        [Then(@"Click on Add Sales Funnel button")]
+        public void ThenClickOnAddSalesFunnelButton()
         {
             settingpage.ClickAddSalesFunnelButton();
         }
 
 
-        [Then(@"I enter the sales funnel name (.*)")]
-        public void ThenIEnterTheSalesFunnelNameTestingFunnel(String salesfunnelname)
+        [Then(@"Enter the sales funnel name (.*)")]
+        public void ThenEnterTheSalesFunnelNameTestingFunnel(String salesfunnelname)
         {
             settingpage.EnterSalesFunnelName(salesfunnelname);
         }
 
 
 
-        [When(@"I click on Save button in add sales funnel slider")]
-        public void WhenIClickOnSaveButtonInAddSalesFunnelSlider()
+        [When(@"Click on Save button in add sales funnel slider")]
+        public void WhenClickOnSaveButtonInAddSalesFunnelSlider()
         {
             settingpage.ClickOnFunnelSaveButton();
         }
 
-        [When(@"I click on three dots icon for ales funnel")]
-        public void WhenIClickOnThreeDotsIconForAlesFunnel()
+        [When(@"Click on three dots icon for ales funnel")]
+        public void WhenClickOnThreeDotsIconForAlesFunnel()
         {
             settingpage.ClickOnThreeDotsIconforSalesFunnel();
         }
 
-        [When(@"I click on Delete option for sales funnel")]
-        public void WhenIClickOnDeleteOptionForSalesFunnel()
+        [When(@"Click on Delete option for sales funnel")]
+        public void WhenClickOnDeleteOptionForSalesFunnel()
         {
             settingpage.ClickOnDeleteOptionforSalesFunel();
         }
 
         //Adding UnMapped user 
 
-        [Then(@"I Click on Add UnMapped User button")]
-        public void ThenIClickOnAddUnMappedUserButton()
+        [Then(@"Click on Add UnMapped User button")]
+        public void ThenClickOnAddUnMappedUserButton()
         {
             settingpage.ClickAddUnmappedButton();
         }
 
-        [Then(@"I enter the user details (.*) (.*) (.*)")]
-        public void ThenIEnterTheUserDetailsTestTestGmail_Com(string firstname, string lastname, string email)
+        [Then(@"Enter the user details (.*) (.*) (.*)")]
+        public void ThenEnterTheUserDetailsTestTestGmail_Com(string firstname, string lastname, string email)
         {
             settingpage.EnterUserDetails(firstname, lastname, email);
         }
 
 
-        [Then(@"I select the User Role (.*)")]
-        public void ThenISelectTheUserRoleAutomationTestingRole(string rolename)
+        [Then(@"Select the User Role (.*)")]
+        public void ThenSelectTheUserRoleAutomationTestingRole(string rolename)
         {
 
             settingpage.SelectRoleFromTheDropDown();
             //settingpage.SelectRoleDropdown(rolename);
         }
 
-        [Then(@"I click on Add Sales Team option")]
-        public void ThenIClickOnAddSalesTeamOption()
+        [Then(@"Click on Add Sales Team option")]
+        public void ThenClickOnAddSalesTeamOption()
         {
             settingpage.ClickAddSalesTeamoption();
         }
 
 
-        [Then(@"I select the Sales Team (.*)")]
-        public void ThenISelectTheSalesTeam(string salesteamname)
+        [Then(@"Select the Sales Team (.*)")]
+        public void ThenSSSelectTheSalesTeam(string salesteamname)
         {
             settingpage.SelectSalesTeamFromTheDropDown();
         }
 
 
-        [Then(@"I select the team position")]
-        public void ThenISelectTheTeamPosition()
+        [Then(@"Select the team position")]
+        public void ThenSelectTheTeamPosition()
         {
             settingpage.ClickSalesTeamPosition();
         }
 
 
-        [When(@"I click on Save button in add unmapped user slider")]
-        public void WhenIClickOnSaveButtonInAddUnmappedUserSlider()
+        [When(@"Click on Save button in add unmapped user slider")]
+        public void WhenClickOnSaveButtonInAddUnmappedUserSlider()
         {
             settingpage.ClickSaveButtonInUserSlider();
         }
+
+        [When(@"Delete the unmapped user")]
+        public void WhenDeleteTheUnmappedUser()
+        {
+            settingpage.ClickOnThreeDotsIconforAddedUser();
+            settingpage.ClickOnDeleteOptionforUnMappedUser();
+            settingpage.ClickDeleteButtonInPopup();
+        }
+
 
         [Then(@"Validation message should be displayed (.*)")]
         public void ThenValidationMessageShouldBeDisplayedUserCreated_WelcomeEmailSent_(string message)
@@ -247,24 +262,24 @@ namespace WorkWave.PestPac.TA.Steps
             settingpage.VerifyConfirmMsg(message);
         }
 
-        [Then(@"I click on three dots icon for added user")]
-        public void ThenIClickOnThreeDotsIconForAddedUser()
-        {
-            settingpage.ClickOnThreeDotsIconforAddedUser();
-        }
+        //[Then(@"I click on three dots icon for added user")]
+        //public void ThenIClickOnThreeDotsIconForAddedUser()
+        //{
+        //    settingpage.ClickOnThreeDotsIconforAddedUser();
+        //}
 
-        [Then(@"I click on Delete option for unmapped user")]
-        public void ThenIClickOnDeleteOptionForUnmappedUser()
-        {
-            settingpage.ClickOnDeleteOptionforUnMappedUser();
-        }
+        //[Then(@"I click on Delete option for unmapped user")]
+        //public void ThenIClickOnDeleteOptionForUnmappedUser()
+        //{
+        //    settingpage.ClickOnDeleteOptionforUnMappedUser();
+        //}
 
-        [When(@"I click on Delete button in unmappeduser popup")]
-        public void WhenIClickOnDeleteButtonInUnmappeduserPopup()
-        {
-            settingpage.ClickDeleteButtonInPopup();
+        //[When(@"I click on Delete button in unmappeduser popup")]
+        //public void WhenIClickOnDeleteButtonInUnmappeduserPopup()
+        //{
+        //    settingpage.ClickDeleteButtonInPopup();
 
-        }
+        //}
 
         [Then(@"User deleted confirmation mesage should be displayed (.*)")]
         public void ThenUserDeletedConfirmationMesageShouldBeDisplayedUserDeleted(string message)
@@ -275,26 +290,26 @@ namespace WorkWave.PestPac.TA.Steps
 
         //Add and Delete Sales Team
 
-        [Then(@"I click on Add Sales Team button")]
-        public void ThenIClickOnAddSalesTeamButton()
+        [Then(@"Click on Add Sales Team button")]
+        public void ThenClickOnAddSalesTeamButton()
         {
             settingpage.ClickAddSalesTeamButton();
         }
 
-        [Then(@"I enter the Sales Team Name (.*)")]
-        public void ThenIEnterTheSalesTeamNameAutouserGmail_Com(string salesteamname)
+        [Then(@"Enter the Sales Team Name (.*)")]
+        public void ThenEnterTheSalesTeamNameAutouserGmail_Com(string salesteamname)
         {
             settingpage.EnterSalesTeamName(salesteamname);
         }
 
-        [Then(@"I select the Branch name (.*)")]
-        public void ThenISelectTheBranchNameAutomationTestingRole(string p0)
+        [Then(@"Select the Branch name (.*)")]
+        public void ThenSelectTheBranchNameAutomationTestingRole(string p0)
         {
             settingpage.SelectBranch();
         }
 
-        [When(@"I click on Save button in add sales team slider")]
-        public void WhenIClickOnSaveButtonInAddSalesTeamSlider()
+        [When(@"Click on Save button in add sales team slider")]
+        public void WhenClickOnSaveButtonInAddSalesTeamSlider()
         {
             settingpage.ClickSaveButtonInUserSlider();
         }
@@ -305,14 +320,14 @@ namespace WorkWave.PestPac.TA.Steps
             settingpage.VerifySalesTeamCreatedConfirmMsg(message);
         }
 
-        [Then(@"I click on three dots icon for added salesteam")]
-        public void ThenIClickOnThreeDotsIconForAddedSalesteam()
+        [Then(@"Click on three dots icon for added salesteam")]
+        public void ThenClickOnThreeDotsIconForAddedSalesteam()
         {
             settingpage.ClickOnThreeDotsIconforAddedSalesTeam();
         }
 
-        [When(@"I click on Delete option for added salesteam")]
-        public void WhenIClickOnDeleteOptionForAddedSalesteam()
+        [When(@"Click on Delete option for added salesteam")]
+        public void WhenClickOnDeleteOptionForAddedSalesteam()
         {
             settingpage.ClickOnDeleteOptionforSalesTeam();
         }
@@ -323,20 +338,20 @@ namespace WorkWave.PestPac.TA.Steps
             settingpage.VerifySalesTeamDeleteConfirmMsg(message);
         }
 
-        [Then(@"I click on Add Position button")]
-        public void ThenIClickOnAddPositionButton()
+        [Then(@"Click on Add Position button")]
+        public void ThenClickOnAddPositionButton()
         {
 
         }
 
-        [Then(@"I enter the position title SalesManager")]
-        public void ThenIEnterThePositionTitleSalesManager()
+        [Then(@"Enter the position title SalesManager")]
+        public void ThenEnterThePositionTitleSalesManager()
         {
 
         }
 
-        [When(@"I click on save button")]
-        public void WhenIClickOnSaveButton()
+        [When(@"Click on save button")]
+        public void WhenClickOnSaveButton()
         {
 
         }
