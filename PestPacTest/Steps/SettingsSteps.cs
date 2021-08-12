@@ -29,8 +29,8 @@ namespace WorkWave.PestPac.TA.Steps
 
         }
 
-        [When(@"I click on Settings Gear Icon")]
-        public void WhenIClickOnSettingsGearIcon()
+        [When(@"Click on Settings Gear Icon")]
+        public void WhenClickOnSettingsGearIcon()
         {
             settingpage.ClickonSettingsGearIcon();
         }
@@ -89,8 +89,8 @@ namespace WorkWave.PestPac.TA.Steps
             Assert.True(salesfunnelpage.IsLoaded(), "Failed to verify the Users and Access page loaded after click on Users and Access link");
         }
 
-        [Then(@"I click on Sales Teams link")]
-        public void ThenIClickOnSalesTeamsLink()
+        [Then(@"Click on Sales Teams link")]
+        public void ThenClickOnSalesTeamsLink()
         {
             settingpage.ClickonSalesTeamsLink();
         }
@@ -235,8 +235,8 @@ namespace WorkWave.PestPac.TA.Steps
         }
 
 
-        [When(@"I click on Save button in add unmapped user slider")]
-        public void WhenIClickOnSaveButtonInAddUnmappedUserSlider()
+        [When(@"Click on Save button")]
+        public void WhenClickOnSaveButton()
         {
             settingpage.ClickSaveButtonInUserSlider();
         }
@@ -247,20 +247,20 @@ namespace WorkWave.PestPac.TA.Steps
             settingpage.VerifyConfirmMsg(message);
         }
 
-        [Then(@"I click on three dots icon for added user")]
-        public void ThenIClickOnThreeDotsIconForAddedUser()
+        [Then(@"Click on three dots icon for added user")]
+        public void ThenClickOnThreeDotsIconForAddedUser()
         {
             settingpage.ClickOnThreeDotsIconforAddedUser();
         }
 
-        [Then(@"I click on Delete option for unmapped user")]
-        public void ThenIClickOnDeleteOptionForUnmappedUser()
+        [Then(@"Click on Delete option for unmapped user")]
+        public void ThenClickOnDeleteOptionForUnmappedUser()
         {
             settingpage.ClickOnDeleteOptionforUnMappedUser();
         }
 
-        [When(@"I click on Delete button in unmappeduser popup")]
-        public void WhenIClickOnDeleteButtonInUnmappeduserPopup()
+        [When(@"Click on Delete button in unmappeduser popup")]
+        public void WhenClickOnDeleteButtonInUnmappeduserPopup()
         {
             settingpage.ClickDeleteButtonInPopup();
 
@@ -275,26 +275,26 @@ namespace WorkWave.PestPac.TA.Steps
 
         //Add and Delete Sales Team
 
-        [Then(@"I click on Add Sales Team button")]
-        public void ThenIClickOnAddSalesTeamButton()
+        [Then(@"Click on Add Sales Team button")]
+        public void ThenClickOnAddSalesTeamButton()
         {
             settingpage.ClickAddSalesTeamButton();
         }
 
-        [Then(@"I enter the Sales Team Name (.*)")]
-        public void ThenIEnterTheSalesTeamNameAutouserGmail_Com(string salesteamname)
+        [Then(@"Enter the Sales Team Name (.*)")]
+        public void ThenEnterTheSalesTeamNameAutouserGmail_Com(string salesteamname)
         {
             settingpage.EnterSalesTeamName(salesteamname);
         }
 
-        [Then(@"I select the Branch name (.*)")]
-        public void ThenISelectTheBranchNameAutomationTestingRole(string p0)
+        [Then(@"Select the Branch name (.*)")]
+        public void ThenSelectTheBranchNameAutomationTestingRole(string p0)
         {
             settingpage.SelectBranch();
         }
 
-        [When(@"I click on Save button in add sales team slider")]
-        public void WhenIClickOnSaveButtonInAddSalesTeamSlider()
+        [When(@"Click on Save button in add sales team slider")]
+        public void WhenClickOnSaveButtonInAddSalesTeamSlider()
         {
             settingpage.ClickSaveButtonInUserSlider();
         }
@@ -305,17 +305,25 @@ namespace WorkWave.PestPac.TA.Steps
             settingpage.VerifySalesTeamCreatedConfirmMsg(message);
         }
 
-        [Then(@"I click on three dots icon for added salesteam")]
-        public void ThenIClickOnThreeDotsIconForAddedSalesteam()
+        [When(@"Delete the sales team")]
+        public void WhenDeleteTheSalesTeam()
         {
             settingpage.ClickOnThreeDotsIconforAddedSalesTeam();
-        }
-
-        [When(@"I click on Delete option for added salesteam")]
-        public void WhenIClickOnDeleteOptionForAddedSalesteam()
-        {
             settingpage.ClickOnDeleteOptionforSalesTeam();
         }
+
+
+        //[Then(@"Click on three dots icon for added salesteam")]
+        //public void ThenClickOnThreeDotsIconForAddedSalesteam()
+        //{
+            
+        //}
+
+        //[When(@"Click on Delete option for added salesteam")]
+        //public void WhenClickOnDeleteOptionForAddedSalesteam()
+        //{
+            
+        //}
 
         [Then(@"SalesTeam deleted confirmation mesage should be displayed (.*)")]
         public void ThenSalesTeamDeletedConfirmationMesageShouldBeDisplayed(string message)
@@ -323,28 +331,22 @@ namespace WorkWave.PestPac.TA.Steps
             settingpage.VerifySalesTeamDeleteConfirmMsg(message);
         }
 
-        [Then(@"I click on Add Position button")]
+        [Then(@"Click on Add Position button")]
         public void ThenIClickOnAddPositionButton()
         {
-
+            settingpage.ClickOnAddPositionButton();
         }
 
-        [Then(@"I enter the position title SalesManager")]
-        public void ThenIEnterThePositionTitleSalesManager()
+        [Then(@"Enter the position title (.*)")]
+        public void ThenEnterThePositionTitleSalesManager(string titlename)
         {
-
+            settingpage.EnterPositionTitle(titlename);
         }
 
-        [When(@"I click on save button")]
-        public void WhenIClickOnSaveButton()
+        [Then(@"Sales team position created validation message should be displayed (.*)")]
+        public void ThenSalesTeamPositionCreatedValidationMessageShouldBeDisplayedSalesTeamPositionCreated(string positioncreatedmessage)
         {
-
-        }
-
-        [Then(@"Sales team position created validation message should be displayed Sales team position created")]
-        public void ThenSalesTeamPositionCreatedValidationMessageShouldBeDisplayedSalesTeamPositionCreated()
-        {
-
+            settingpage.VerifySalesTeamCreatedConfirmMsg(positioncreatedmessage);
         }
 
     }

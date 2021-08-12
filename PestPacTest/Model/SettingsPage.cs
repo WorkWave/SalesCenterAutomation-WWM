@@ -9,6 +9,7 @@ using WorkWave.TA.TestEngine;
 using OpenQA.Selenium.Interactions;
 using System.Threading;
 using NUnit.Framework;
+using System.Reflection;
 
 namespace WorkWave.PestPac.TA.Model
 {
@@ -180,9 +181,19 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[text()='Sales Team deleted.']")]
         private IWebElement SalesTeamDeleteConfirm_Txt { get { return PageFactory.Load(this); } }
 
-
-
         #endregion Sales Team
+
+        #region Add position
+
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'autosalesteam')]/../following-sibling::div/descendant::button")]
+        private IWebElement ClickAddPositionButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//label[text()='Title']/following::input")]
+        private IWebElement TitleNamefield { get { return PageFactory.Load(this); } }
+
+
+        #endregion Add position
+
 
         public virtual bool IsLoaded()
         {
@@ -525,10 +536,10 @@ namespace WorkWave.PestPac.TA.Model
         public void ClickOnThreeDotsIconforAddedSalesTeam()
         {
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsIconforSalesTeam)))
-            {
+            {                
                 ClickThreeDotsIconforSalesTeam.Click();
                 Thread.Sleep(2000);
-            }
+            }         
         }
 
         public void ClickOnDeleteOptionforSalesTeam()
@@ -557,6 +568,48 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
+        //Add position to sales team
+
+        public void ClickOnAddPositionButton()
+        {           
+                try
+                {                 
+                    if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAddPositionButton)))
+                    {
+                        ClickAddPositionButton.Click();
+                        Thread.Sleep(2000);
+                        SUT.Log.DebugFormat("Add position button is clicked");
+                    }
+                    else
+                    {
+                        SUT.Log.ErrorFormat("Add position button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                    }
+                }
+                catch (WebDriverTimeoutException)
+                {
+                    SUT.Log.ErrorFormat("Add position button is not clicked");
+                }
+        }
+
+        public void EnterPositionTitle(string titlename)
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => TitleNamefield)))
+                {
+                    TitleNamefield.SendKeys(titlename);
+                    SUT.Log.DebugFormat("Position title is entered");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Position title is not entered {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Position title is not entered");
+            }
+        }
     }
 
 
