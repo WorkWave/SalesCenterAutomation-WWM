@@ -4,13 +4,14 @@
 Background: 
 	Given I am logged in
 
-@WW_SM_001
+@WW_ST_001
+@WWM-8401
 @smoke
 Scenario: Verify Display of Settings Home Page
     When Click on Settings Gear Icon
     Then Settings page should be displayed
 
-@WW_SM_002
+@WW_ST_002
 @smoke
 Scenario: Verify Display of Company Setup Page
     When Click on Settings Gear Icon
@@ -18,7 +19,7 @@ Scenario: Verify Display of Company Setup Page
     And Click on Company Setup link
     Then Company Setup page should be displayed
 
-@WW_SM_003
+@WW_ST_003
 @smoke
 Scenario: Verify Display of Roles and Permission  Page
     When Click on Settings Gear Icon
@@ -26,7 +27,7 @@ Scenario: Verify Display of Roles and Permission  Page
     And Click on Roles and Permissions link
     Then Roles and Permissions page should be displayed
 
-@WW_SM_004
+@WW_ST_004
 @smoke
 Scenario: Verify Display of User and Access  Page
     When Click on Settings Gear Icon
@@ -34,7 +35,7 @@ Scenario: Verify Display of User and Access  Page
     And Click on User and Access link
     Then User and Access page should be displayed
 
-@WW_SM_005
+@WW_ST_005
 @smoke
 Scenario: Verify Display of Sales Funnel Page
     When Click on Settings Gear Icon
@@ -42,7 +43,7 @@ Scenario: Verify Display of Sales Funnel Page
     And Click on Sales Funnels link
     Then Sales Funnels page should be displayed
 
-@WW_SM_006
+@WW_ST_006
 @smoke
 Scenario: Verify Display of Sales Team Page
     When Click on Settings Gear Icon
@@ -51,7 +52,8 @@ Scenario: Verify Display of Sales Team Page
     Then Sales Teams page should be displayed
 
 
-@WW_SM_007
+@WW_ST_007
+@WWM-8403
 @smoke
 Scenario Outline: Verify User is able to Add and Delete the  new role
     When Click on Settings Gear Icon
@@ -71,7 +73,8 @@ Scenario Outline: Verify User is able to Add and Delete the  new role
    | Auto Sales manager1 |
 
 
-@WW_SM_008
+@WW_ST_008
+@WWM-8402
 @smoke
 Scenario Outline: Verify user is able to Add and Delete the sales funnel
     When Click on Settings Gear Icon
@@ -91,7 +94,8 @@ Scenario Outline: Verify user is able to Add and Delete the sales funnel
    | Automation funnel1  |
 
 
-@WW_SM_009
+@WW_ST_009
+@WWM-8406
 @smoke
 Scenario Outline: Verify User is Able to Add and delete the UnMapped User 
     When Click on Settings Gear Icon
@@ -104,7 +108,7 @@ Scenario Outline: Verify User is Able to Add and delete the UnMapped User
     And  Click on Add Sales Team option
     And  Select the Sales Team from the drdopdown<Salesteam>
     And  Select the team position
-    When Click on Save button in add unmapped user slider
+    When Click on Save button
     Then Validation message should be displayed <ConfirmMessage>
     When Delete the unmapped user
     Then User deleted confirmation mesage should be displayed <UserDeleted>
@@ -114,7 +118,8 @@ Scenario Outline: Verify User is Able to Add and delete the UnMapped User
      | Automation user | Test     | autouser@gmail.com | AutomationTestingRole | AutoTestingSalesTeam | User created. Welcome email sent. | User deleted  |
 
 
-@WW_SM_010
+@WW_ST_010
+@WWM-8404
 @smoke
 Scenario Outline: Verify User is Able to Add and delete the Sales Team
     When Click on Settings Gear Icon
@@ -132,7 +137,7 @@ Scenario Outline: Verify User is Able to Add and delete the Sales Team
      | autosalesteam  | Sales Center Test Branch | Sales Team created | 
 
     
-@WW_SM_011
+@WW_ST_011
 @smoke
 @WWM-8405
 Scenario Outline: Verify Admin Users Can Add Positions to Sales Teams
@@ -147,16 +152,14 @@ Scenario Outline: Verify Admin Users Can Add Positions to Sales Teams
     Then Sales team created validation message should be displayed <ConfirmMessage>
     And  Click on Add Position button
     And  Enter the position title <title>
-    When Click on Save button
+    When Click on Save button 
     Then Sales team position created validation message should be displayed <Positionvalmsg>
     When Delete the sales team
-    #And  Click on three dots icon for added salesteam
-    #When Click on Delete option for added salesteam
     Then SalesTeam deleted confirmation mesage should be displayed <SalesTeamDeleted>
     
    Examples: 
      | SalesTeamName   | BranchName               | ConfirmMessage     | SalesTeamDeleted    | title        | Positionvalmsg               |
-     | autosalesteam   | Sales Center Test Branch | Sales Team created | Sales Team deleted. | SalesManager | Sales team position created  |
+     | autosalesteam   | Sales Center Test Branch | Sales Team created | Sales Team deleted. | SalesManager | Sales Team Position created  |
      
 
 

@@ -135,27 +135,6 @@ namespace WorkWave.PestPac.TA.Steps
             settingpage.ClickOnDeletebutton();
         }
 
-
-        //[When(@"Click on three dots icon")]
-        //public void WhenClickOnThreeDotsIcon()
-        //{
-        //    settingpage.ClickOnThreeDots();
-        //}
-
-        //[When(@"I click on Delete option")]
-        //public void WhenIClickOnDeleteOption()
-        //{
-        //    settingpage.ClickOnDeleteOption();
-        //}
-
-
-        //[When(@"I click on Delete button in popup")]
-        //public void WhenIClickOnDeleteButtonInPopup()
-        //{
-        //    settingpage.ClickOnDeletebutton();
-        //}
-
-
         //[Then(@"Validation mesage hould be displayed")]
         //public void ThenValidationMesageHouldBeDisplayed()
         //{
@@ -170,14 +149,11 @@ namespace WorkWave.PestPac.TA.Steps
             settingpage.ClickAddSalesFunnelButton();
         }
 
-
         [Then(@"Enter the sales funnel name (.*)")]
         public void ThenEnterTheSalesFunnelNameTestingFunnel(String salesfunnelname)
         {
             settingpage.EnterSalesFunnelName(salesfunnelname);
         }
-
-
 
         [When(@"Click on Save button in add sales funnel slider")]
         public void WhenClickOnSaveButtonInAddSalesFunnelSlider()
@@ -211,13 +187,10 @@ namespace WorkWave.PestPac.TA.Steps
             settingpage.EnterUserDetails(firstname, lastname, email);
         }
 
-
         [Then(@"Select the User Role (.*)")]
         public void ThenSelectTheUserRoleAutomationTestingRole(string rolename)
         {
-
-            settingpage.SelectRoleFromTheDropDown();
-            //settingpage.SelectRoleDropdown(rolename);
+            settingpage.SelectRoleFromTheDropDown();         
         }
 
         [Then(@"Click on Add Sales Team option")]
@@ -240,13 +213,6 @@ namespace WorkWave.PestPac.TA.Steps
             settingpage.ClickSalesTeamPosition();
         }
 
-
-        [When(@"Click on Save button")]
-        public void WhenClickOnSaveButton()
-        {
-            settingpage.ClickSaveButtonInUserSlider();
-        }
-
         [When(@"Delete the unmapped user")]
         public void WhenDeleteTheUnmappedUser()
         {
@@ -267,20 +233,7 @@ namespace WorkWave.PestPac.TA.Steps
         {
             settingpage.ClickOnThreeDotsIconforAddedUser();
         }
-
-        //[Then(@"I click on Delete option for unmapped user")]
-        //public void ThenIClickOnDeleteOptionForUnmappedUser()
-        //{
-        //    settingpage.ClickOnDeleteOptionforUnMappedUser();
-        //}
-
-        //[When(@"I click on Delete button in unmappeduser popup")]
-        //public void WhenIClickOnDeleteButtonInUnmappeduserPopup()
-        //{
-        //    settingpage.ClickDeleteButtonInPopup();
-
-        //}
-
+       
         [Then(@"User deleted confirmation mesage should be displayed (.*)")]
         public void ThenUserDeletedConfirmationMesageShouldBeDisplayedUserDeleted(string message)
         {
