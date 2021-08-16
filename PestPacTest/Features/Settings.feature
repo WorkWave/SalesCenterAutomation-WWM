@@ -106,7 +106,7 @@ Scenario Outline: Verify User is Able to Add and delete the UnMapped User
     And  Enter the user details <FirstName> <LastName> <Email>
     And  Select the User Role <UserRole>
     And  Click on Add Sales Team option
-    And  Select the Sales Team from the drdopdown<Salesteam>
+    And  Select the Sales Team <Salesteam>
     And  Select the team position
     When Click on Save button
     Then Validation message should be displayed <ConfirmMessage>

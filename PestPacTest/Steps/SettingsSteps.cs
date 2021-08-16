@@ -201,7 +201,7 @@ namespace WorkWave.PestPac.TA.Steps
 
 
         [Then(@"Select the Sales Team (.*)")]
-        public void ThenSSSelectTheSalesTeam(string salesteamname)
+        public void ThenSelectTheSalesTeam(string salesteamname)
         {
             settingpage.SelectSalesTeamFromTheDropDown();
         }
