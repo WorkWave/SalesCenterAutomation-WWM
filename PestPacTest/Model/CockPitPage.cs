@@ -27,7 +27,11 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//p[text()='Leads to Qualify']")]
         private IWebElement LeadsToQualifyCards { get { return PageFactory.Load(this); } }
 
+        [FindsBy(How = How.XPath, Using = "//span[text()='Records with Overdue Next Action Dates']")]
+        private IWebElement OverdueNextActionDates { get { return PageFactory.Load(this); } }
 
+
+        
         #endregion PageFactory
 
 
@@ -44,16 +48,16 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => LeadsCards)))
                 {
                     LeadsCards.Displayed.ToString();
-                    SUT.Log.DebugFormat("Leads card  is diplayed in dashboard");
+                    SUT.Log.DebugFormat("Leads card  is diplayed on dashboard");
                 }
                 else
                 {
-                    SUT.Log.ErrorFormat("Leads card  is not diplayed in dashboard {0}", MethodBase.GetCurrentMethod().Name);
+                    SUT.Log.ErrorFormat("Leads card  is not diplayed on dashboard {0}", MethodBase.GetCurrentMethod().Name);
                 }
             }
             catch (WebDriverTimeoutException)
             {
-                SUT.Log.ErrorFormat("Leads card  is not diplayed in dashboard");
+                SUT.Log.ErrorFormat("Leads card  is not diplayed on dashboard");
             }
         }
 
@@ -64,16 +68,16 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => OpportunitiesCards)))
                 {
                     OpportunitiesCards.Displayed.ToString();
-                    SUT.Log.DebugFormat("Opportunities card  is diplayed in dashboard");
+                    SUT.Log.DebugFormat("Opportunities card  is diplayed on dashboard");
                 }
                 else
                 {
-                    SUT.Log.ErrorFormat("Opportunities card  is not diplayed in dashboard {0}", MethodBase.GetCurrentMethod().Name);
+                    SUT.Log.ErrorFormat("Opportunities card  is not diplayed on dashboard {0}", MethodBase.GetCurrentMethod().Name);
                 }
             }
             catch (WebDriverTimeoutException)
             {
-                SUT.Log.ErrorFormat("Opportunities card  is not diplayed in dashboard");
+                SUT.Log.ErrorFormat("Opportunities card  is not diplayed on dashboard");
             }
         }
 
@@ -85,16 +89,38 @@ namespace WorkWave.PestPac.TA.Model
                 {
                     PestPacUtility.ScrollToElement(LeadsToQualifyCards);
                     LeadsToQualifyCards.Displayed.ToString();
-                    SUT.Log.DebugFormat("Leads To Qualify card  is diplayed in dashboard");
+                    SUT.Log.DebugFormat("Leads To Qualify card  is diplayed on dashboard");
                 }
                 else
                 {
-                    SUT.Log.ErrorFormat("Leads To Qualify card  is not diplayed in dashboard {0}", MethodBase.GetCurrentMethod().Name);
+                    SUT.Log.ErrorFormat("Leads To Qualify card  is not diplayed on dashboard {0}", MethodBase.GetCurrentMethod().Name);
                 }
             }
             catch (WebDriverTimeoutException)
             {
-                SUT.Log.ErrorFormat("Leads To Qualify card  is not diplayed in dashboard");
+                SUT.Log.ErrorFormat("Leads To Qualify card  is not diplayed on dashboard");
+            }
+        }
+
+        //Overdue next action dates
+
+        public void IsOverdueNextActionDatesDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => OverdueNextActionDates)))
+                {       
+                    OverdueNextActionDates.Displayed.ToString();
+                    SUT.Log.DebugFormat("Overdue next action dates is diplayed on dashboard");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Overdue next action dates is not diplayed on dashboard {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Overdue next action dates is not diplayed on dashboard");
             }
         }
     }

@@ -32,5 +32,12 @@ namespace WorkWave.PestPac.TA.Steps
             cockpitpage.IsLeadsToQualifyCardDisplayed();
         }
 
+        [Then(@"Verify the  default dispay of Records with Overdue Next Action Dates on dashboard")]
+        public void ThenVerifyTheDefaultDispayOfRecordsWithOverdueNextActionDatesOnDashboard()
+        {
+            cockpitpage.IsOverdueNextActionDatesDisplayed();
+            cockpitpage.IsLeadsCardDisplayed();
+            cockpitpage.IsOpportunitiesCardDisplayed();
+        }
     }
 }
