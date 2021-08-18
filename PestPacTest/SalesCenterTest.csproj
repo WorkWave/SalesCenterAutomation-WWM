@@ -133,6 +133,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Configuration\PestPacConfiguration.cs" />
+    <Compile Include="Model\CockPitPage.cs" />
     <Compile Include="Model\OpportunityPage.cs" />
     <Compile Include="Model\RolesandPermissionSetUpPage.cs" />
     <Compile Include="Model\SalesFunnelsPage.cs" />
@@ -201,6 +202,7 @@
     <Compile Include="SharedData\ServiceOrder.cs" />
     <Compile Include="SharedData\ServiceSetup.cs" />
     <Compile Include="SharedData\Tasks.cs" />
+    <Compile Include="Steps\CockPitSteps.cs" />
     <Compile Include="Steps\LeadSteps.cs" />
     <Compile Include="Steps\PendingException.cs" />
     <Compile Include="Steps\SalesCenterSteps.cs" />
@@ -212,6 +214,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Configuration\PestPacConfig.json" />
+    <None Include="Features\CockPit.feature" />
     <None Include="Features\Lead.feature" />
     <None Include="Features\Settings.feature" />
     <None Include="Features\Login.feature" />
