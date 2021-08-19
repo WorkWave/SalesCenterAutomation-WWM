@@ -90,7 +90,7 @@ Scenario Outline: Verify user able to create new opportunity directly
      | Automation Labs | Labs02   | autocompany02 | autouser@gmail.com | AutoTestingSalesTeam | UnAssigned | Test reg sales funnel | Lead created      | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Opportunity Deleted             | Automation Labs | Automation    |
 
 
-@WW_SM_014
+@WW_SM_015
 @WWM-8422
 @smoke
 Scenario Outline: Verify User Can Add a Contract to a Lead
