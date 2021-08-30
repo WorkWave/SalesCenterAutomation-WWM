@@ -61,13 +61,13 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//span[text()='Add Role'])[3]")]
         private IWebElement ClickAddRoleSaveButton { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//div[text()='Auto Sales manager1']/descendant::button")]
+        [FindsBy(How = How.XPath, Using = "//div[text()='Sales manager1']/descendant::button")]
         private IWebElement ThreeDotsIcon { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "(//span[contains(@class,'MuiTypography-root MuiListItemText-primary')])[2]/..")]
         private IWebElement DeleteOption { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//div[@role='presentation']/following-sibling::div[22]/following-sibling::div/descendant::button[2]")]
+        [FindsBy(How = How.XPath, Using = "//div[@id='root']/following-sibling::div[5]/descendant::button[2]")]
         private IWebElement Deletebutton { get { return PageFactory.Load(this); } }
 
         #endregion Roles and Permission 
@@ -83,7 +83,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//span[text()='Save']")]
         private IWebElement ClickFunnelSavebutton { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Automation funnel1']/../following-sibling::div/child::button")]
+        [FindsBy(How = How.XPath, Using = "//span[text()='Automation funnel']/../following-sibling::div/child::button")]
         private IWebElement ClickThreeDotsIcon { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[text()='Delete']/../..")]
@@ -114,7 +114,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[@id='mui-component-select-role']/..")]
         private IWebElement ClickRoleField { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//li[text()='AutomationTestingRole']")]
+        [FindsBy(How = How.XPath, Using = "//li[text()='SalesManager']")]
         private IWebElement SelectRolename { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[text()='+ Add Sales Team']/..")]
@@ -124,12 +124,11 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[@id='mui-component-select-salesTeamAssignments[0].salesTeamId']/..")]
         private IWebElement ClickSalesTeamField { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//li[text()='AutoTestingSalesTeam']")]
+        [FindsBy(How = How.XPath, Using = "//li[text()='Secondary south sales Team']")]
         private IWebElement SelectSalesTeamname { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Sales Manager']/..")]
+        [FindsBy(How = How.XPath, Using = "//span[text()='Lead']/..")]
         private IWebElement SelectSalesTeamPosition { get { return PageFactory.Load(this); } }
-
 
         [FindsBy(How = How.XPath, Using = "//span[text()='Save']/..")]
         private IWebElement ClickSaveButton { get { return PageFactory.Load(this); } }
@@ -165,7 +164,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[contains(@class,'MuiSelect-root MuiSelect-select')]/..")]
         private IWebElement ClickBranchField { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//li[text()='Sales Center Test Branch']")]
+        [FindsBy(How = How.XPath, Using = "//li[text()='North Branch']")]
         private IWebElement SelectBranchName { get { return PageFactory.Load(this); } }
 
 
@@ -332,17 +331,7 @@ namespace WorkWave.PestPac.TA.Model
                 SUT.Log.ErrorFormat("Sales team link is not clicked");
             }
         }
-
-
-        //public void EnterRolesName(string name)
-        //{
-        //    if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => RoleName_Field)))
-        //    {
-        //        RoleName_Field.SendKeys(name);
-        //    }
-
-        //}
-
+      
         public void ClickOnAddRoleMainButton()
         {
             try

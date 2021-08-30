@@ -75,11 +75,21 @@ namespace WorkWave.PestPac.TA.Steps
 
         //Leads creation
 
-        [Then(@"Enter the lead details (.*) (.*) (.*) (.*) (.*) (.*)")]
-        public void ThenEnterTheLeadDetailsAutomationUserTestAutocompanyAutouserGmail_Com(string firstname, string lastname, string company, string email, string salesteamname, string assigneename)
+        [Then(@"Enter the lead details (.*) (.*) (.*) (.*)")]
+        public void ThenEnterTheLeadDetailsAutomationUserTestAutocompanyAutouserGmail_Com(string firstname, string lastname, string company, string email)
         {
-            leadspage.EnterLeadDetails(firstname, lastname, company, email);
+            leadspage.EnterLeadDetails(firstname, lastname, company, email);           
+        }
+
+        [Then(@"Select the SalesTeam (.*)")]
+        public void ThenSelectTheSalesTeamSecondarySouthSalesTeam(string salesteam)
+        {
             leadspage.SelectSalesTeamfromdropdown();
+        }
+
+        [Then(@"Select the Owner (.*)")]
+        public void ThenSelectTheOwnerUnassigned(string owner)
+        {
             leadspage.SelecttheOwnerAssigneeName();
         }
 
@@ -216,7 +226,7 @@ namespace WorkWave.PestPac.TA.Steps
         [When(@"Search the lead (.*)")]
         public void WhenSearchTheLead(string leadname) 
         {
-            //  leadspage.EnterTheLeadNameInSearchField(leadname);
+            //leadspage.EnterTheLeadNameInSearchField(leadname);
             throw new PendingStepException("https://workwave.atlassian.net/browse/WWM-8496-Once this ise is fixed will remove thid pending exception");
         }
 
