@@ -206,7 +206,6 @@ namespace WorkWave.PestPac.TA.Steps
             settingpage.SelectSalesTeamFromTheDropDown();
         }
 
-
         [Then(@"Select the team position")]
         public void ThenSelectTheTeamPosition()
         {
@@ -220,7 +219,6 @@ namespace WorkWave.PestPac.TA.Steps
             settingpage.ClickOnDeleteOptionforUnMappedUser();
             settingpage.ClickDeleteButtonInPopup();
         }
-
 
         [Then(@"Validation message should be displayed (.*)")]
         public void ThenValidationMessageShouldBeDisplayedUserCreated_WelcomeEmailSent_(string message)
@@ -239,7 +237,6 @@ namespace WorkWave.PestPac.TA.Steps
         {
             settingpage.VerifyDeleteConfirmMsg(message);
         }
-
 
         //Add and Delete Sales Team
 
@@ -280,12 +277,6 @@ namespace WorkWave.PestPac.TA.Steps
             settingpage.ClickOnDeleteOptionforSalesTeam();
         }
 
-        [When(@"Click on Delete option for added salesteam")]
-        public void WhenClickOnDeleteOptionForAddedSalesteam()
-        {
-            settingpage.ClickOnDeleteOptionforSalesTeam();
-        }
-
         [Then(@"SalesTeam deleted confirmation mesage should be displayed (.*)")]
         public void ThenSalesTeamDeletedConfirmationMesageShouldBeDisplayed(string message)
         {
@@ -309,6 +300,5 @@ namespace WorkWave.PestPac.TA.Steps
         {
             settingpage.VerifySalesTeamCreatedConfirmMsg(positioncreatedmessage);
         }
-
     }
 }

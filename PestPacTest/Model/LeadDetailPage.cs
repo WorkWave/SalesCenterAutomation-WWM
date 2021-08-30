@@ -53,9 +53,8 @@ namespace WorkWave.PestPac.TA.Model
         private IWebElement ClickSalesTeamField { get { return PageFactory.Load(this); } }
 
 
-        [FindsBy(How = How.XPath, Using = "//li[contains(text(),'AutoTestingSalesTeam')]")]
+        [FindsBy(How = How.XPath, Using = "//li[text()='Testing sales Team']")]
         private IWebElement SelectSalesTeam { get { return PageFactory.Load(this); } }
-
 
 
         [FindsBy(How = How.Id, Using = "mui-component-select-assigneeId")]
@@ -67,7 +66,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.Id, Using = "mui-component-select-salesFunnelId")]
         private IWebElement ClickFunnelField { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//li[text()='Test reg sales funnel']")]
+        [FindsBy(How = How.XPath, Using = "//li[text()='Required Contract & Payment']")]
         private IWebElement SelectFunnelName { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[text()='Save']/..")]
@@ -90,7 +89,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//span[contains(@class,'MuiTypography-root MuiListItemText-primary')])[2]")]
         private IWebElement ClickDeleteLink { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//span[text()='Delete']/parent::button)[1]")]
+        [FindsBy(How = How.XPath, Using = "//div[@id='root']/following-sibling::div[5]/descendant::button[2]")]
         private IWebElement ClickDeletebutton { get { return PageFactory.Load(this); } }
 
         #region Create opportunity
@@ -172,7 +171,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[contains(text(),'Select Contract Template')]/..")]
         private IWebElement ClickTemplateField { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//p[text()='Reg DSB Form']")]
+        [FindsBy(How = How.XPath, Using = "//p[text()='Residential Service Form']")]
         private IWebElement SelectContractTemplate { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Launch Form to Complete')]/..")]
@@ -339,8 +338,8 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSalesTeamField)))
                 {
-                    ClickSalesTeamField.Click();
                   //  PestPacUtility.ScrollToElement(SelectSalesTeam);
+                    ClickSalesTeamField.Click();                  
                     SelectSalesTeam.Click();
                     SUT.Log.DebugFormat("Sales team selected from the dropdown");
                 }

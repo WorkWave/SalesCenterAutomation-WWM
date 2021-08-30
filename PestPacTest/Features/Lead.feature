@@ -7,21 +7,23 @@ Background:
 	Given I am logged in
 
 
-@WW_SM_011
-@smoke
+
+@smoke @Leads @WW_LD_001
 Scenario Outline: Verify Display of Leads Page through sales center menu
     When Mouse hover on sales center side menu
     And Click on Leads link
     Then Leads page should be displayed
   
  
- @WW_SM_012
-@smoke
+
+@smoke @Leads @WW_LD_002
 Scenario Outline: Verify user can create and delete a lead   
     When Click on plus icon
     And  Click on Add Lead button
     Then Add Lead details page should be displayed
-    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> <SalesTeam> <Owner> 
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
+    And Select the SalesTeam <SalesTeam>
+    And Select the Owner <Owner>
     And Select the sales funnel <SalesFunnel>
     When Click on Save button
     Then Lead created validation message should be displayed <ValidationMessage>
@@ -31,17 +33,19 @@ Scenario Outline: Verify user can create and delete a lead
     Then Lead deleted confirmation message should be displayed <DeleteConfirmMessage>
     
  Examples:  
-     | FirstName        | LastName | CompanyName  | Email              | SalesTeam            | Owner     | SalesFunnel           | ValidationMessage | LeadName    | DeleteConfirmMessage |
-     | Automation user2 | Test2    | autocompany2 | autouser@gmail.com | AutoTestingSalesTeam | UnAsigned | Test reg sales funnel | Lead created      | autocompany | Lead deleted.        |
+     | FirstName        | LastName | CompanyName  | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName    | DeleteConfirmMessage |
+     | Automation user2 | Test2    | autocompany2 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | Lead deleted.        |
 	 
 
-@WW_SM_013
-@smoke
+
+@smoke @Leads @WW_LD_002
 Scenario Outline: Verify user can create lead and convert to opportunity
     When Click on plus icon
     And  Click on Add Lead button
     Then Add Lead details page should be displayed
-    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> <SalesTeam> <Owner> 
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
+    And Select the SalesTeam <SalesTeam>
+    And Select the Owner <Owner>
     And Select the sales funnel <SalesFunnel>
     When Click on Save button
     Then Lead created validation message should be displayed <ValidationMessage>
@@ -56,18 +60,18 @@ Scenario Outline: Verify user can create lead and convert to opportunity
     Then validation message should be displayed <OpportunityCreated>
  
  Examples:  
-     | FirstName       | LastName | CompanyName   | Email              | SalesTeam            | Owner      | SalesFunnel           | ValidationMessage | LeadName   | Services            | FunnelStage | Ownername  | OpportunityCreated  | OpportunityDeleteConfirmMessage | OpportunityName |
-     | Automation Labs | Labs01   | autocompany01 | autouser@gmail.com | AutoTestingSalesTeam | UnAssigned | Test reg sales funnel | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Opportunity Deleted             | Automation Labs |
+     | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName   | Services            | FunnelStage | Ownername  | OpportunityCreated  | OpportunityDeleteConfirmMessage | OpportunityName |
+     | Automation Labs | Labs01   | autocompany01 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Opportunity Deleted             | Automation Labs |
 
 
-@WW_SM_014
-@WWM-8428
-@smoke
+@smoke @Leads @WW_LD_003
 Scenario Outline: Verify user able to create new opportunity directly 
     When Click on plus icon
     And  Click on Add Lead button
     Then Add Lead details page should be displayed
-    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> <SalesTeam> <Owner> 
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
+    And Select the SalesTeam <SalesTeam>
+    And Select the Owner <Owner> 
     And Select the sales funnel <SalesFunnel>
     When Click on Save button
     Then Lead created validation message should be displayed <ValidationMessage>
@@ -86,18 +90,19 @@ Scenario Outline: Verify user able to create new opportunity directly
  
 
  Examples:  
-     | FirstName       | LastName | CompanyName   | Email              | SalesTeam            | Owner      | SalesFunnel           | ValidationMessage | Services            | FunnelStage | Ownername  | OpportunityCreated  | OpportunityDeleteConfirmMessage | OpportunityName | LeadName      |
-     | Automation Labs | Labs02   | autocompany02 | autouser@gmail.com | AutoTestingSalesTeam | UnAssigned | Test reg sales funnel | Lead created      | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Opportunity Deleted             | Automation Labs | Automation    |
+     | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Services            | FunnelStage | Ownername  | OpportunityCreated  | OpportunityDeleteConfirmMessage | OpportunityName | LeadName      |
+     | Automation Labs | Labs02   | autocompany02 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Opportunity Deleted             | Automation Labs | Automation    |
 
 
-@WW_SM_015
-@WWM-8422
-@smoke
+
+@smoke @Leads @WW_LD_004
 Scenario Outline: Verify User Can Add a Contract to a Lead
     When Click on plus icon
     And Click on Add Lead button
     Then Add Lead details page should be displayed
-    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> <SalesTeam> <Owner> 
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
+    And Select the SalesTeam <SalesTeam>
+    And Select the Owner <Owner> 
     And Select the sales funnel <SalesFunnel>
     When Click on Save button
     Then Lead created validation message should be displayed <ValidationMessage>
@@ -115,5 +120,5 @@ Scenario Outline: Verify User Can Add a Contract to a Lead
     Then Contract should be successfully added
 
 Examples:  
-     | FirstName       | LastName | CompanyName   | Email              | SalesTeam            | Owner      | SalesFunnel           | ValidationMessage | Services            | Template     |
-     | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | AutoTestingSalesTeam | UnAssigned | Test reg sales funnel | Lead created      | ANT- Ant Treatments | Reg DSB Form |
+     | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Services            | Template                 |
+     | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments | Residential Service Form |
