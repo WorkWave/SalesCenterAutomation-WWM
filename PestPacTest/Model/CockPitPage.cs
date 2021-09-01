@@ -30,6 +30,9 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//span[text()='Records with Overdue Next Action Dates']")]
         private IWebElement OverdueNextActionDates { get { return PageFactory.Load(this); } }
 
+        [FindsBy(How = How.XPath, Using = "//span[text(),'Upcoming Follow-Ups']")]
+        private IWebElement UpcomingfollowupsDisplayed { get { return PageFactory.Load(this); } }
+        
         [FindsBy(How = How.XPath, Using = "//span[text()='Manage Contracts']")]
         private IWebElement ContractHistory { get { return PageFactory.Load(this); } }
         
@@ -142,6 +145,26 @@ namespace WorkWave.PestPac.TA.Model
             catch (WebDriverTimeoutException)
             {
                 SUT.Log.ErrorFormat("Contract history is not diplayed on dashboard");
+            }
+        }
+
+        public void IsUpcomingfollowupsDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => UpcomingfollowupsDisplayed)))
+                {
+                    UpcomingfollowupsDisplayed.Displayed.ToString();
+                    SUT.Log.DebugFormat("Upcoming follow-ups  is diplayed on dashboard");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Upcoming follow-ups  is not diplayed on dashboard {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Upcoming follow-ups  is not diplayed on dashboard");
             }
         }
     }
