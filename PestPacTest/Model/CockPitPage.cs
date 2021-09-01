@@ -30,7 +30,8 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//span[text()='Records with Overdue Next Action Dates']")]
         private IWebElement OverdueNextActionDates { get { return PageFactory.Load(this); } }
 
-
+        [FindsBy(How = How.XPath, Using = "//span[text()='Manage Contracts']")]
+        private IWebElement ContractHistory { get { return PageFactory.Load(this); } }
         
         #endregion PageFactory
 
@@ -121,6 +122,26 @@ namespace WorkWave.PestPac.TA.Model
             catch (WebDriverTimeoutException)
             {
                 SUT.Log.ErrorFormat("Overdue next action dates is not diplayed on dashboard");
+            }
+        }
+
+        public void IsContractHistoryDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ContractHistory)))
+                {
+                    ContractHistory.Displayed.ToString();
+                    SUT.Log.DebugFormat("Contract history is diplayed on dashboard");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Contract history is not diplayed on dashboard {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Contract history is not diplayed on dashboard");
             }
         }
     }

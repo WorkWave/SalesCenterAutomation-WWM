@@ -122,3 +122,26 @@ Scenario Outline: Verify User Can Add a Contract to a Lead
 Examples:  
      | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Services            | Template                 |
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments | Residential Service Form |
+
+
+@smoke @WWM-8426 @Leads @WW_LD_005
+Scenario Outline: Ensure User Can Re-Open a Disqualified Lead
+    When Mouse hover on sales center side menu
+    And Click on Leads link
+    Then Leads page should be displayed
+    And  Click on filters button
+    And Click on clear filter button
+    And  Click on filters button
+    And  Select the lead status <LeadStatus>
+    When Click on Apply button
+    Then All the disqualified leads should be diplayed
+    And Click on three dots icon for disqualified lead
+    And Select the reopen option
+    And Select Qualify option in popup <Qualify>
+    When Click on Save button in Re-Open Lead popup
+   # Then Lead should be successfully reopened validation message should be displayed
+
+Examples:  
+     | LeadStatus   | Qualify  | 
+     | Disqualified | Qualify  | 
+
