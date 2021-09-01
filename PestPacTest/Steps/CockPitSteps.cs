@@ -39,5 +39,12 @@ namespace WorkWave.PestPac.TA.Steps
             cockpitpage.IsLeadsCardDisplayed();
             cockpitpage.IsOpportunitiesCardDisplayed();
         }
+
+        [Then(@"Verify the default dispay of Upcoming Follow-Ups on dashboard")]
+        public void ThenVerifyTheDefaultDispayOfUpcomingFollow_UpsOnDashboard()
+        {
+            cockpitpage.IsUpcomingfollowupsDisplayed();
+        }
+
     }
 }
