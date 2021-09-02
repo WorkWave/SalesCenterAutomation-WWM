@@ -27,6 +27,8 @@ Scenario Outline: Verify user can create and delete a lead
     And Select the sales funnel <SalesFunnel>
     When Click on Save button
     Then Lead created validation message should be displayed <ValidationMessage>
+    And  Click on filters button
+    And Click on clear filter button
     And  Click on search icon
     And  Enter the lead name <LeadName> and click on search icon
     When Delete the lead
@@ -49,6 +51,8 @@ Scenario Outline: Verify user can create lead and convert to opportunity
     And Select the sales funnel <SalesFunnel>
     When Click on Save button
     Then Lead created validation message should be displayed <ValidationMessage>
+    And  Click on filters button
+    And Click on clear filter button
     And Click on Service expand icon
     And Click on Add Serivces button
     And Select the services <Services>
@@ -75,6 +79,8 @@ Scenario Outline: Verify user able to create new opportunity directly
     And Select the sales funnel <SalesFunnel>
     When Click on Save button
     Then Lead created validation message should be displayed <ValidationMessage>
+    And  Click on filters button
+    And Click on clear filter button
     And  Click on Service expand icon
     And Click on Add Serivces button
     And Select the services <Services>
@@ -106,6 +112,8 @@ Scenario Outline: Verify User Can Add a Contract to a Lead
     And Select the sales funnel <SalesFunnel>
     When Click on Save button
     Then Lead created validation message should be displayed <ValidationMessage>
+    And  Click on filters button
+    And Click on clear filter button
     And  Click on Service expand icon
     And  Click on Add Serivces button
     And  Select the services <Services>
@@ -124,8 +132,8 @@ Examples:
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments | Residential Service Form |
 
 
-@smoke @WWM-8426 @Leads @WW_LD_005
-Scenario Outline: Ensure User Can Re-Open a Disqualified Lead
+@smoke  @WWM-8426 @Leads @WW_LD_005
+Scenario Outline: Verify User Can Re-Open a Disqualified Lead
     When Mouse hover on sales center side menu
     And Click on Leads link
     Then Leads page should be displayed

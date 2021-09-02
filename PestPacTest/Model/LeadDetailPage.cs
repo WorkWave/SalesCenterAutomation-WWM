@@ -89,7 +89,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//span[contains(@class,'MuiTypography-root MuiListItemText-primary')])[2]")]
         private IWebElement ClickDeleteLink { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//div[@id='root']/following-sibling::div[5]/descendant::button[2]")]
+        [FindsBy(How = How.XPath, Using = "(//span[text()='Delete']/..)[1]")]
         private IWebElement ClickDeletebutton { get { return PageFactory.Load(this); } }
 
         #region Create opportunity
