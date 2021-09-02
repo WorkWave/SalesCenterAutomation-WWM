@@ -40,6 +40,13 @@ namespace WorkWave.PestPac.TA.Steps
             cockpitpage.IsOpportunitiesCardDisplayed();
         }
 
+        [Then(@"Verify the Contract History is displayed on dashboard")]
+        public void ThenVerifyTheContractHistoryIsDisplayedOnDashboard()
+        {
+            cockpitpage.IsContractHistoryDisplayed();
+        }
+
+
         [Then(@"Verify the default dispay of Upcoming Follow-Ups on dashboard")]
         public void ThenVerifyTheDefaultDispayOfUpcomingFollow_UpsOnDashboard()
         {

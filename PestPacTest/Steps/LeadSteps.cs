@@ -52,7 +52,8 @@ namespace WorkWave.PestPac.TA.Steps
         [Then(@"Leads page should be displayed")]
         public void ThenLeadsPageShouldBeDisplayed()
         {
-            Assert.True(leadspage.IsLoaded(), "Failed to verify the Leads page loaded after click on leads link");           
+            Assert.True(leadspage.IsLoaded(), "Failed to verify the Leads page loaded after click on leads link");
+            Thread.Sleep(3000);
         }
 
         [When(@"Click on plus icon")]
@@ -275,6 +276,70 @@ namespace WorkWave.PestPac.TA.Steps
         {
            
         }
+
+        //Reopen disqualified leads
+
+        [Then(@"Click on filters button")]
+        public void ThenClickOnFiltersButton()
+        {
+            leadspage.ClickFiltersButton();
+        }
+
+        [Then(@"Click on clear filter button")]
+        public void ThenClickOnClearFilterButton()
+        {
+            leadspage.ClickOnClearFilterButtonInSider();
+        }
+
+        [Then(@"Select the lead status (.*)")]
+        public void ThenSelectTheLeadStatusAutomationLabs(string leadstatus)
+        {
+            leadspage.SelectleadStatus();
+        }
+
+        [When(@"Click on Apply button")]
+        public void WhenClickOnApplyButton()
+        {
+            leadspage.ClickOnApplyButtonInSider();
+        }
+
+        [Then(@"All the disqualified leads should be diplayed")]
+        public void ThenAllTheDisqualifiedLeadsShouldBeDiplayed()
+        {
+            leadspage.IsDisqualifiedLeadsDisplayed();
+        }
+
+        [Then(@"Click on three dots icon for disqualified lead")]
+        public void ThenClickOnThreeDotsIconForDisqualifiedLead()
+        {
+            leadspage.ClickOnThreeDotsIconforDisqualifiedLead();
+        }
+
+        [Then(@"Select the reopen option")]
+        public void ThenSelectTheReopenOption()
+        {
+            leadspage.SelectReopenOptionforDisqualifiedLead();
+        }
+
+        [Then(@"Select Qualify option in popup (.*)")]
+        public void ThenSelectQualifyOptionInPopupLabs(string leadstatus)
+        {
+            leadspage.SelectReopenleadStatus();
+        }
+
+        [When(@"Click on Save button in Re-Open Lead popup")]
+        public void WhenClickOnSaveButtonInRe_OpenLeadPopup()
+        {
+            leadspage.ClickOnSaveButton();
+        }
+
+        //[Then(@"Lead should be successfully reopened validation message should be displayed")]
+        //public void ThenLeadShouldBeSuccessfullyReopenedValidationMessageShouldBeDisplayed()
+        //{
+        //   //Validation message not displaying
+        //}
+
+
 
     }
 }

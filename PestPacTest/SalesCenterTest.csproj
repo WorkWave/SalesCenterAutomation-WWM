@@ -213,7 +213,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Configuration\PestPacConfig.json" />
+    <None Include="Configuration\SalesCenterConfig.json" />
     <None Include="Features\CockPit.feature" />
     <None Include="Features\Lead.feature" />
     <None Include="Features\Settings.feature" />

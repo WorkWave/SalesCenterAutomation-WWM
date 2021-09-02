@@ -23,7 +23,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[@role='button']//p/..")]
         private IWebElement ClickSalesCenter { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//p[text()='Leads']")]
+        [FindsBy(How = How.XPath, Using = "(//p[text()='Leads'])[2]")]
         private IWebElement ClickLeadLink { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "(//span[@class='MuiButton-label']/../preceding-sibling::button)[1]")]
@@ -89,7 +89,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//span[contains(@class,'MuiTypography-root MuiListItemText-primary')])[2]")]
         private IWebElement ClickDeleteLink { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//div[@id='root']/following-sibling::div[5]/descendant::button[2]")]
+        [FindsBy(How = How.XPath, Using = "(//span[text()='Delete']/..)[1]")]
         private IWebElement ClickDeletebutton { get { return PageFactory.Load(this); } }
 
         #region Create opportunity
@@ -188,9 +188,54 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[text()='This form has been completed.']")]
         private IWebElement ContractIsAdded { get { return PageFactory.Load(this); } }
 
-        
+        [FindsBy(How = How.Id, Using = "mui-component-select-salesFunnelStageId")]
+        private IWebElement ReopenLeadStatusField { get { return PageFactory.Load(this); } }
+
+
+        [FindsBy(How = How.XPath, Using = "//div[text()='This form has been completed.']")]
+        private IWebElement LeadStatusField { get { return PageFactory.Load(this); } }
+
+       
         #endregion Add contract to the lead
 
+        #region Reopen disqualified leads
+
+
+       [FindsBy(How = How.XPath, Using = "//span[text()='Filters']/..")]
+        private IWebElement ClickOnFilterButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//div[text()='Lead Status']/../following-sibling::div")]
+        private IWebElement LeadStatusExpandIcon { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='Disqualified']")]
+        private IWebElement LeadStatusName { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Apply']/..")]
+        private IWebElement ClickApplyButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//div[@class='sc-iklJeh hbusih actions']/descendant::button[2]")]
+        private IWebElement ClickThreeDotsIconforDisqualified { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Re-Open']")]
+        private IWebElement ReopenoptionforDisqualifiedlead { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='Qualify']")]
+        private IWebElement ReopenLeadStatusName { get { return PageFactory.Load(this); } }
+
+
+        [FindsBy(How = How.XPath, Using = "//div[text()='Open']")]
+        private IWebElement LeadStatusOpenField { get { return PageFactory.Load(this); } }
+
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Clear Filters']/..")]
+        private IWebElement ClickClearFilterButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Disqualified']/..")]
+        private IWebElement DisqualifiedLeadDisplayed { get { return PageFactory.Load(this); } }
+
+
+       
+        #endregion Reopen disqualified leads
 
         #endregion PageFactory
 
@@ -751,8 +796,6 @@ namespace WorkWave.PestPac.TA.Model
             actions.MoveToElement(ClickOpportunitiesLink).Click().Perform();
         }
       
-
-
         //Create opportunity directly
 
         public void ClickonCreateOpportunityButton()
@@ -892,7 +935,7 @@ namespace WorkWave.PestPac.TA.Model
         {           
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCompleteFormButton)))
                 {               
-                ClickCompleteFormButton.Click();
+                    ClickCompleteFormButton.Click();
                     SUT.Log.DebugFormat("Complete button is clicked");
                 }
                 else
@@ -941,11 +984,186 @@ namespace WorkWave.PestPac.TA.Model
                 SUT.Log.ErrorFormat("Contract is not added");
             }
         }
+
+        public void ClickFiltersButton()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickOnFilterButton)))
+                {
+                    ClickOnFilterButton.Click();
+                    SUT.Log.DebugFormat("Filters button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Filters button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Filters button is not clicked ");
+            }
+        }
+
+        public void SelectleadStatus()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => LeadStatusExpandIcon)))
+                {
+                    PestPacUtility.ScrollToElement(LeadStatusExpandIcon);
+                    LeadStatusExpandIcon.Click();
+                    Thread.Sleep(1000);
+                    LeadStatusOpenField.Click();
+                    LeadStatusName.Click();
+                    SUT.Log.DebugFormat("Lead status is selected");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Lead status is not selected {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Lead status is not selected");
+            }
+        }
+
+        public void ClickOnApplyButtonInSider()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickApplyButton)))
+                {
+                    ClickApplyButton.Click();
+                    SUT.Log.DebugFormat("Apply button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Apply button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Apply button is not clicked ");
+            }
+        }
+
+        public void ClickOnThreeDotsIconforDisqualifiedLead()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsIconforDisqualified)))
+                {
+                    ClickThreeDotsIconforDisqualified.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Three dots icon is clicked for Disqualified lead");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Three dots icon is not clicked for Disqualified lead {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Three dots icon is not clicked for Disqualified lead ");
+            }
+
+        }
+
+        public void SelectReopenOptionforDisqualifiedLead()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ReopenoptionforDisqualifiedlead)))
+                {
+                    ReopenoptionforDisqualifiedlead.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Reopen option is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Reopen option is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Reopen option is not clicked");
+            }
+
+        }
+
+        public void SelectReopenleadStatus()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ReopenLeadStatusField)))
+                {
+                    ReopenLeadStatusField.Click();
+                    Thread.Sleep(2000);
+                    ReopenLeadStatusName.Click();
+                    SUT.Log.DebugFormat("Lead status is selected");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Lead status is not selected {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Lead status is not selected");
+            }
+        }
+
+        public void ClickOnClearFilterButtonInSider()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickClearFilterButton)))
+                {
+                    ClickClearFilterButton.Click();
+                    SUT.Log.DebugFormat("Clear filter button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Clear filter button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Clear filter button is not clicked ");
+            }
+        }
+
+        public void IsDisqualifiedLeadsDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => DisqualifiedLeadDisplayed)))
+                {
+                    DisqualifiedLeadDisplayed.Displayed.ToString();
+                    SUT.Log.DebugFormat("Contract is added");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Contract is not added {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Contract is not added");
+            }
+        }
+
+
+
     }
+
+}
 
 
 
     #endregion Selenium
 
-}   
+
 
