@@ -204,7 +204,7 @@ namespace WorkWave.PestPac.TA.Model
 
             if (!IsLocationHistoryOpen())
             {
-                if (!PestPacUtility.Click(LocationHistory_Accordion, wait: true, useJS: false))
+                if (!SalesCenterUtility.Click(LocationHistory_Accordion, wait: true, useJS: false))
                 {
                     isOpen = false;
                     SUT.Log.ErrorFormat("Unable to expand the location history menu");
@@ -430,7 +430,7 @@ namespace WorkWave.PestPac.TA.Model
             if (!QuickLinks.Displayed)
             {
                 SUT.Log.Debug("QuickLinks not being displayed, scrolling into view");
-                PestPacUtility.ScrollToElement(QuickLinks);
+                SalesCenterUtility.ScrollToElement(QuickLinks);
             }
 
             if (IsQuickLinksOpen() != open)
@@ -503,11 +503,11 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SUT.Web.Alert.Text == "")
                 {
-                    PestPacUtility.Alerts_CloseSequent(AlertHandlingType.Accept);
+                    SalesCenterUtility.Alerts_CloseSequent(AlertHandlingType.Accept);
                 }
                 else
                 {
-                    PestPacUtility.Alerts_CloseSequent(AlertHandlingType.Dismiss);
+                    SalesCenterUtility.Alerts_CloseSequent(AlertHandlingType.Dismiss);
                 }
             }
             return page;
@@ -639,7 +639,7 @@ namespace WorkWave.PestPac.TA.Model
         }
         private void QuickLinks_Click()
         {
-            PestPacUtility.ScrollToElement(QuickLinks);
+            SalesCenterUtility.ScrollToElement(QuickLinks);
             QuickLinks.Click();
         }
 

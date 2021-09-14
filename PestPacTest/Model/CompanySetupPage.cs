@@ -558,7 +558,7 @@ namespace WorkWave.PestPac.TA.Model
                 //Set Default Domain
                 if (!String.IsNullOrEmpty(defaultDomain))
                 {
-                    PestPacUtility.BackspaceClear(DefaultDomain_Field);
+                    SalesCenterUtility.BackspaceClear(DefaultDomain_Field);
                     DefaultDomain_Field.SendKeys(defaultDomain + Keys.Tab);
                 }
                 return true;
@@ -569,7 +569,7 @@ namespace WorkWave.PestPac.TA.Model
                 //Set Default Domain
                 if (!String.IsNullOrEmpty(defaultDomain))
                 {
-                    PestPacUtility.BackspaceClear(DefaultDomain_Field);
+                    SalesCenterUtility.BackspaceClear(DefaultDomain_Field);
                     DefaultDomain_Field.SendKeys(defaultDomain + Keys.Tab);
                 }
                 return true;
@@ -630,7 +630,7 @@ namespace WorkWave.PestPac.TA.Model
 
                 if (!String.IsNullOrEmpty(discount))
                 {
-                    PestPacUtility.BackspaceClear(Discount_Field);
+                    SalesCenterUtility.BackspaceClear(Discount_Field);
                     Discount_Field.SendKeys(discount + Keys.Tab);
                 }
                 if (!String.IsNullOrEmpty(discountReason))
@@ -650,7 +650,7 @@ namespace WorkWave.PestPac.TA.Model
 
             if (!String.IsNullOrEmpty(serviceCode))
             {
-                PestPacUtility.BackspaceClear(ServiceCode_Field);
+                SalesCenterUtility.BackspaceClear(ServiceCode_Field);
                 ServiceCode_Field.SendKeys(serviceCode + Keys.Tab);
             }
 
@@ -1298,7 +1298,7 @@ namespace WorkWave.PestPac.TA.Model
 
         public void SendInspectionReportOn(string sendInspectionReportOn)
         {
-            PestPacUtility.ScrollToElement(SendInspectionReportOn_DropDown);
+            SalesCenterUtility.ScrollToElement(SendInspectionReportOn_DropDown);
             SelectElement selectElement = new SelectElement(SendInspectionReportOn_DropDown);
             selectElement.SelectByText(sendInspectionReportOn);
             SendInspectionReportOn_DropDown.SendKeys(Keys.Tab);

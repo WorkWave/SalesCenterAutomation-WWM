@@ -10,7 +10,7 @@ namespace WorkWave.PestPac.TA.Steps
     [Binding]
     public class SettingsSteps : TestSteps
     {
-        private PestPacData pestPacData;
+        private SalesCenterData salesCenterData;
         SettingsPage settingpage = new SettingsPage();
         CompanySetupPage companysetuppage = new CompanySetupPage();
         RolesandPermissionSetUpPage rolespermissionsetupuppage = new RolesandPermissionSetUpPage();
@@ -20,9 +20,9 @@ namespace WorkWave.PestPac.TA.Steps
 
         public object RandomStringTransformer { get; private set; }
 
-        public SettingsSteps(PestPacData pestPacData)
+        public SettingsSteps(SalesCenterData salesCenterData)
         {
-            this.pestPacData = pestPacData;
+            this.salesCenterData = salesCenterData;
             SettingsPage settingpage = new SettingsPage();
         }
 

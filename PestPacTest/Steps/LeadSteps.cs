@@ -15,7 +15,7 @@ namespace WorkWave.PestPac.TA.Steps
     [Binding]
     public class LeadSteps : TestSteps
     {
-        private PestPacData pestPacData;
+        
 
         private MainPage mainPage;
         private LeadDetailPage leadDetailPage;
@@ -23,12 +23,7 @@ namespace WorkWave.PestPac.TA.Steps
         OpportunityPage opportunitypage = new OpportunityPage();
         SettingsPage settingpage = new SettingsPage();
       
-        public LeadSteps(PestPacData pestPacData)
-        {
-            this.pestPacData = pestPacData;
-            mainPage = new MainPage();
-            leadDetailPage = new LeadDetailPage();
-        }
+      
 
         [When(@"Mouse hover on sales center side menu")]
         public void WhenMouseHoverOnSalesCenterSideMenu()
@@ -338,6 +333,51 @@ namespace WorkWave.PestPac.TA.Steps
         //{
         //   //Validation message not displaying
         //}
+
+        //Attach location to the lead
+
+        [Then(@"Click on Bill to locations expand icon")]
+        public void ThenClickOnBillToLocationsExpandIcon()
+        {
+            leadspage.ClickOnBillToExpandIcon();
+        }
+
+        [When(@"Click on Match or create link")]
+        public void WhenClickOnMatchOrCreateLink()
+        {
+            leadspage.ClickOnMatchOrCreateLocationLink();
+        }
+
+        [Then(@"Match or create new location slider should be displayed")]
+        public void ThenMatchOrCreateNewLocationSliderShouldBeDisplayed()
+        {
+            leadspage.IsMatchorCreateSliderDisplayed();
+        }
+
+        [Then(@"Click on close icon")]
+        public void ThenClickOnCloseIcon()
+        {
+           
+        }
+
+        [Then(@"Enter the location name (.*) and click on search icon")]
+        public void ThenEnterTheLocationNameAndClickOnSearchIcon(string locationname)
+        {
+            leadspage.EnterTheLocationName(locationname);
+        }
+
+        [When(@"Click on match button")]
+        public void WhenClickOnMatchButton()
+        {
+            
+        }
+
+        [Then(@"Location matched validation message should be displayed (.*)")]
+        public void ThenLocationMatchedValidationMessageShouldBeDisplayed(string p0)
+        {
+            
+        }
+
 
 
 

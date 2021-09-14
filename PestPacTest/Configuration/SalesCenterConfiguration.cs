@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WorkWave.PestPac.TA.Configuration
 {
-    sealed internal class PestPacConfiguration
+    sealed internal class SalesCenterConfiguration
     {
         public string Default_CompanyKey { get; set; }
         public string Default_Username { get; set; }

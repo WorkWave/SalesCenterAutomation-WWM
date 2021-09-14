@@ -15,12 +15,12 @@ namespace WorkWave.PestPac.TA.Steps
     class CockPitSteps : TestSteps
     {
         CockPitPage cockpitpage = new CockPitPage();
-        private PestPacData pestPacData;
+        private SalesCenterData salesCenterData;
         private MainPage mainPage;
 
-        public CockPitSteps(PestPacData pestPacData)
+        public CockPitSteps(SalesCenterData salesCenterData)
         {
-            this.pestPacData = pestPacData;
+            this.salesCenterData = salesCenterData;
             mainPage = new MainPage();
         }
 

@@ -510,7 +510,7 @@ namespace WorkWave.PestPac.TA.Model
         }
         public void saveButton()
         {
-            PestPacUtility.ScrollToElement(AddButton);
+            SalesCenterUtility.ScrollToElement(AddButton);
             Thread.Sleep(2000);
             AddButton.Click();
         }
@@ -742,7 +742,7 @@ namespace WorkWave.PestPac.TA.Model
 
         public bool addAllDevices(string selectOption)
         {
-            PestPacUtility.Frame_SafeSwitch(AddDeviceFrame, () => AddAllDevicesCheckBox);
+            SalesCenterUtility.Frame_SafeSwitch(AddDeviceFrame, () => AddAllDevicesCheckBox);
             if (AddAllDevicesCheckBox.Selected && selectOption.Equals("True"))
             {
                 return true;
@@ -782,7 +782,7 @@ namespace WorkWave.PestPac.TA.Model
 
         public bool leadAttatchmentSetuppopup()
         {
-            if (PestPacUtility.Frame_SafeSwitch_without_elementInFrame(LeadAttachmentSetup))
+            if (SalesCenterUtility.Frame_SafeSwitch_without_elementInFrame(LeadAttachmentSetup))
             {
                 SUT.Log.Debug("Successfully switched to: Lead Attchment setup frame.");
                 LeadAttachmentSetupRow.Click();

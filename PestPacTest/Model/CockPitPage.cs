@@ -91,7 +91,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => LeadsToQualifyCards)))
                 {
-                    PestPacUtility.ScrollToElement(LeadsToQualifyCards);
+                    SalesCenterUtility.ScrollToElement(LeadsToQualifyCards);
                     LeadsToQualifyCards.Displayed.ToString();
                     SUT.Log.DebugFormat("Leads To Qualify card  is diplayed on dashboard");
                 }

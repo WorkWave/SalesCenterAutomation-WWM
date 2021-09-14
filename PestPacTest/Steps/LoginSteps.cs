@@ -21,8 +21,8 @@ namespace WorkWave.PestPac.TA.Steps
         [When(@"Login attempt")]
         public void WhenLoginAttempt()
         {
-            mainPage = loginPage.LoginAttempt(PestPacSupport.DefaultUsername,
-                PestPacSupport.DefaultPassword);
+            mainPage = loginPage.LoginAttempt(SalesCenterSupport.DefaultUsername,
+                SalesCenterSupport.DefaultPassword);
         }
 
         [When(@"Login attempt")]

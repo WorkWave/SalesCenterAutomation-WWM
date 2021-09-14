@@ -12,9 +12,9 @@ using WorkWave.PestPac.TA.Model;
 
 namespace WorkWave.PestPac.TA
 {
-    class PestPacSupport
+    class SalesCenterSupport
     {
-        private static PestPacConfiguration pestPacConfig;
+        private static SalesCenterConfiguration salesCenterConfig;
 
         public static void InitializePestPacConfig()
         {
@@ -26,7 +26,7 @@ namespace WorkWave.PestPac.TA
                 using (StreamReader file = new StreamReader(configFile_FullName))
                 {
                     string json = file.ReadToEnd();
-                    pestPacConfig = JsonConvert.DeserializeObject<PestPacConfiguration>(json);
+                    salesCenterConfig = JsonConvert.DeserializeObject<SalesCenterConfiguration>(json);
                 }
             }
             catch (FileNotFoundException)
@@ -44,22 +44,22 @@ namespace WorkWave.PestPac.TA
 
         public static string DefaultLocation
         {
-            get { return pestPacConfig.Default_Location; }
+            get { return salesCenterConfig.Default_Location; }
         }
 
         public static string DefaultCompanyKey
         {
-            get { return pestPacConfig.Default_CompanyKey; }
+            get { return salesCenterConfig.Default_CompanyKey; }
         }
 
         public static string DefaultUsername
         {
-            get { return pestPacConfig.Default_Username; }
+            get { return salesCenterConfig.Default_Username; }
         }
 
         public static string DefaultPassword
         {
-            get { return pestPacConfig.Default_Password; }
+            get { return salesCenterConfig.Default_Password; }
         }
  
       

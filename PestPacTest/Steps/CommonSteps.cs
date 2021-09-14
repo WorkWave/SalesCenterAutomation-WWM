@@ -20,14 +20,14 @@ namespace WorkWave.PestPac.TA.Steps
     {
         MainPage mainPage;
 
-        PestPacData pestPacData;
+        SalesCenterData salesCenterData;
         private CompanySetupPage companySetupPage;
 
         private static string primaryWindow = "";
 
-        public CommonSteps(PestPacData pestPacData)
+        public CommonSteps(SalesCenterData salesCenterData)
         {
-            this.pestPacData = pestPacData;
+            this.salesCenterData = salesCenterData;
             mainPage = new MainPage();
         }
 
@@ -48,7 +48,7 @@ namespace WorkWave.PestPac.TA.Steps
                 SUT.Web.WebDriver.Manage().Window.Size.Width);
 
             //PestPac config
-            PestPacSupport.InitializePestPacConfig();
+           SalesCenterSupport.InitializePestPacConfig();
             if (SUT.Web.Config.Browser == "Firefox")
             {
                 Thread.Sleep(9000);
@@ -345,8 +345,8 @@ namespace WorkWave.PestPac.TA.Steps
                 }
                 else
                 {
-                    mainPage = loginPage.LoginAttempt(PestPacSupport.DefaultUsername,
-                        PestPacSupport.DefaultPassword);
+                    mainPage = loginPage.LoginAttempt(SalesCenterSupport.DefaultUsername,
+                        SalesCenterSupport.DefaultPassword);
                 }
                 Assert.True(mainPage.IsLoaded(), "Failed to detect the main page after login attempt on {0}", config.HomePage);
             }

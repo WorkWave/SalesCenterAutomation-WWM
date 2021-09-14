@@ -233,9 +233,28 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//span[text()='Disqualified']/..")]
         private IWebElement DisqualifiedLeadDisplayed { get { return PageFactory.Load(this); } }
 
+        #endregion Reopen disqualified leads
+
+
+        #region Attach a lead to location
+
+        [FindsBy(How = How.XPath, Using = "//p[text()='autocompany3']/../descendant::button")]
+        private IWebElement ClickBillToExpandButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//a[text()='Match / Create New']")]
+        private IWebElement ClickMatchOrCreateLocationLink { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Match / Create New Location']")]
+        private IWebElement MatchorCreateNewLocationSliderDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//input[@placeholder='Search']")]
+        private IWebElement EnterLocationName { get { return PageFactory.Load(this); } }
+
 
        
-        #endregion Reopen disqualified leads
+
+        #endregion Attach a lead to location
+
 
         #endregion PageFactory
 
@@ -406,7 +425,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickOwnerAssigneeField)))
                 {
                     ClickOwnerAssigneeField.Click();
-                    PestPacUtility.ScrollToElement(SelectOwnerAssigneeName);
+                    SalesCenterUtility.ScrollToElement(SelectOwnerAssigneeName);
                     SelectOwnerAssigneeName.Click();
                     SUT.Log.DebugFormat("Owner selected from the dropdown");
                 }
@@ -428,9 +447,9 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickFunnelField)))
                 {
-                    PestPacUtility.ScrollToElement(ClickFunnelField);
+                    SalesCenterUtility.ScrollToElement(ClickFunnelField);
                     ClickFunnelField.Click();
-                    PestPacUtility.ScrollToElement(SelectFunnelName);
+                    SalesCenterUtility.ScrollToElement(SelectFunnelName);
                     SelectFunnelName.Click();
                     SUT.Log.DebugFormat("Sales funnel selected from the dropdown");
                 }
@@ -609,7 +628,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceButton)))
                 {
-                    PestPacUtility.ScrollToElement(ClickServiceButton);
+                    SalesCenterUtility.ScrollToElement(ClickServiceButton);
                     ClickServiceButton.Click();
                     SUT.Log.DebugFormat("Add service button is clicked");
                 }
@@ -751,7 +770,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => StageField)))
                 {
-                    PestPacUtility.ScrollToElement(StageField);
+                    SalesCenterUtility.ScrollToElement(StageField);
                     StageField.Click();
                     SelectStageName.Click();
                     SUT.Log.DebugFormat("Stage is selected from the droddown");
@@ -1011,7 +1030,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => LeadStatusExpandIcon)))
                 {
-                    PestPacUtility.ScrollToElement(LeadStatusExpandIcon);
+                    SalesCenterUtility.ScrollToElement(LeadStatusExpandIcon);
                     LeadStatusExpandIcon.Click();
                     Thread.Sleep(1000);
                     LeadStatusOpenField.Click();
@@ -1155,7 +1174,90 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
+        public void ClickOnBillToExpandIcon()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickBillToExpandButton)))
+                {
+                    ClickBillToExpandButton.Click();
+                    SUT.Log.DebugFormat("Bill to location expand icon is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Bill to location expand icon is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Bill to location expand icon is not clicked ");
+            }
+        }
 
+        public void ClickOnMatchOrCreateLocationLink()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickMatchOrCreateLocationLink)))
+                {
+                    ClickMatchOrCreateLocationLink.Click();
+                    SUT.Log.DebugFormat("Match/Create new location is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Match/Create new location is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Match/Create new location is not clicked ");
+            }
+        }
+
+        public void IsMatchorCreateSliderDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => MatchorCreateNewLocationSliderDisplayed)))
+                {
+                    MatchorCreateNewLocationSliderDisplayed.Displayed.ToString();
+                    SUT.Log.DebugFormat("Match or create new location slider is displayed ");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Match or create new location slider is not displayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Match or create new location slider is not displayed");
+            }
+        }
+
+        public void EnterTheLocationName(string locationname)
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => EnterLocationName)))
+                {
+                    // EnterLocationName.Click();
+                    EnterLocationName.SendKeys(Keys.Control + "a");
+                    EnterLocationName.SendKeys(Keys.Backspace);
+                    EnterLocationName.SendKeys(Keys.Clear);
+                    EnterLocationName.SendKeys(locationname);                
+                    EnterLocationName.SendKeys(Keys.Enter);
+                    SUT.Log.DebugFormat("Existing location name is entered");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Existing location name is not entered {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Existing location name is not entered ");
+            }
+        }
 
     }
 

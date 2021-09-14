@@ -316,7 +316,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => SalesTeamsLink)))
                 {
-                    PestPacUtility.ScrollToElement(SalesTeamsLink);
+                    SalesCenterUtility.ScrollToElement(SalesTeamsLink);
                     SalesTeamsLink.Click();
                     Thread.Sleep(3000);
                     SUT.Log.DebugFormat("Sales team link is clicked");
@@ -418,7 +418,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ThreeDotsIcon)))
                 {
-                    PestPacUtility.ScrollToElement(ThreeDotsIcon);
+                    SalesCenterUtility.ScrollToElement(ThreeDotsIcon);
                     ThreeDotsIcon.Click();
                     Thread.Sleep(2000);
                     SUT.Log.DebugFormat("Three dots icon is clicked");
@@ -613,7 +613,7 @@ namespace WorkWave.PestPac.TA.Model
 
         public void SelectRoleDropdown(String rolename)
         {
-            PestPacUtility.SelectDropDown(SelectRoleName, rolename);
+            SalesCenterUtility.SelectDropDown(SelectRoleName, rolename);
         }
             
         public void SelectRoleFromTheDropDown()
@@ -624,7 +624,7 @@ namespace WorkWave.PestPac.TA.Model
                 {
                     ClickRoleField.Click();
                     Thread.Sleep(2000);
-                    PestPacUtility.ScrollToElement(SelectRolename);
+                    SalesCenterUtility.ScrollToElement(SelectRolename);
                     SelectRolename.Click();
                     SUT.Log.DebugFormat("Role is selected from the droddown");
                 }
@@ -668,7 +668,7 @@ namespace WorkWave.PestPac.TA.Model
                 {
                     ClickSalesTeamField.Click();
                     Thread.Sleep(2000);
-                    PestPacUtility.ScrollToElement(SelectSalesTeamname);
+                    SalesCenterUtility.ScrollToElement(SelectSalesTeamname);
                     SelectSalesTeamname.Click();
                     SUT.Log.DebugFormat("Sales team is selected from the droddown");
                 }
@@ -689,7 +689,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => SelectSalesTeamPosition)))
                 {
-                    PestPacUtility.ScrollToElement(SelectSalesTeamPosition);
+                    SalesCenterUtility.ScrollToElement(SelectSalesTeamPosition);
                     SelectSalesTeamPosition.Click();
                     Thread.Sleep(2000);
                     SUT.Log.DebugFormat("Sales team position is clicked");
@@ -749,7 +749,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsIconforUnmappedUser)))
                 {
-                    PestPacUtility.ScrollToElement(ClickThreeDotsIconforUnmappedUser);
+                    SalesCenterUtility.ScrollToElement(ClickThreeDotsIconforUnmappedUser);
                     ClickThreeDotsIconforUnmappedUser.Click();
                     Thread.Sleep(2000);
                     SUT.Log.DebugFormat("Three dots icon is clicked for added user");

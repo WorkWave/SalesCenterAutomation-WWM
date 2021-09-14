@@ -16,7 +16,7 @@ Scenario: Verify default dispay of Records with Overdue Next Action Dates on das
 Scenario: Verify  Contract History is displayed on dashboard
     Then Verify the Contract History is displayed on dashboard
 
-@smoke @WWM-8414 @CockPit @WW_CP_002
+@smoke @WWM-8414 @CockPit @WW_CP_004
 Scenario: Verify default dispay of Upcoming Follow-Ups on dashboard
     Then Verify the default dispay of Upcoming Follow-Ups on dashboard
 

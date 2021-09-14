@@ -59,36 +59,15 @@ namespace WorkWave.PestPac.TA
         WWPReal,
         None
     }
-    public class PestPacUtility
+    public class SalesCenterUtility
     {
-        public static void InitializePestPacData(Table data, ref PestPacData pestPacData)
+        public static void InitializePestPacData(Table data, ref SalesCenterData salesCenterData)
         {
-            pestPacData.Location = data.CreateInstance<Location>();
-            pestPacData.Service = data.CreateInstance<ServiceDetail>();
-            pestPacData.ServiceOrder = data.CreateInstance<ServiceOrder>();
-            pestPacData.ServiceSetup = data.CreateInstance<ServiceSetup>();
-            pestPacData.Invoice = data.CreateInstance<Invoice>();
-            pestPacData.Payment = data.CreateInstance<Payment>();
-            pestPacData.CreditMemo = data.CreateInstance<CreditMemo>();
-            pestPacData.Tasks = data.CreateInstance<Tasks>();
-            pestPacData.Leads = data.CreateInstance<Leads>();
-            pestPacData.Adjustments = data.CreateInstance<Adjustments>();
-            pestPacData.Employee = data.CreateInstance<Employee>();
-            pestPacData.Renewal = data.CreateInstance<Renewal>();
-            pestPacData.Calls = data.CreateInstance<Calls>();
-            pestPacData.Programs = data.CreateInstance<Programs>();
-            pestPacData.Documents = data.CreateInstance<Documents>();
-            pestPacData.Reports = data.CreateInstance<Reports>();
-            pestPacData.Contact = data.CreateInstance<Contact>();
-            pestPacData.Customer = data.CreateInstance<Customer>();
-            pestPacData.CreditCards= data.CreateInstance<CreditCards>();
-            pestPacData.BillTo = data.CreateInstance<BillTo>();
-            pestPacData.Materials = data.CreateInstance<Materials>();
-            pestPacData.WDC = data.CreateInstance<WDC>();
-            pestPacData.Tools = data.CreateInstance<Tools>();
-            pestPacData.UnitsOfMeasure = data.CreateInstance<UnitsOfMeasure>();
-            pestPacData.Areas = data.CreateInstance<Areas>();
-            pestPacData.FormsManager = data.CreateInstance<FormsManager>();
+            salesCenterData.Location = data.CreateInstance<Location>();
+
+            salesCenterData.Payment = data.CreateInstance<Payment>();
+            salesCenterData.Leads = data.CreateInstance<Leads>();
+                    
         }
 
         public static Processor ConvertStringToEnum(string provider)
@@ -382,7 +361,7 @@ namespace WorkWave.PestPac.TA
                 Thread.Sleep(3000);
                 SUT.Web.WebDriver.SwitchTo().Frame(frame);
 
-                if (SeleniumUtility.WaitFor(PestPacUtility.ElementExists(frame)))
+                if (SeleniumUtility.WaitFor(SalesCenterUtility.ElementExists(frame)))
                 {
                     return true;
                 }
@@ -555,11 +534,11 @@ namespace WorkWave.PestPac.TA
                     {
                         if (useJS)
                         {
-                            clickReady = SeleniumUtility.WaitFor(PestPacUtility.ElementExists(element));
+                            clickReady = SeleniumUtility.WaitFor(SalesCenterUtility.ElementExists(element));
                         }
                         else
                         {
-                            clickReady = SeleniumUtility.WaitFor(PestPacUtility.ElementIsClickable(element));
+                            clickReady = SeleniumUtility.WaitFor(SalesCenterUtility.ElementIsClickable(element));
                         }
                     }
 
