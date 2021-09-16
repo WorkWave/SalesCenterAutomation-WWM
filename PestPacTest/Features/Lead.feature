@@ -136,7 +136,7 @@ Examples:
 Scenario Outline: Verify User Can Re-Open a Disqualified Lead
     When Mouse hover on sales center side menu
     And Click on Leads link
-    Then Leads page should be displayedl 
+    Then Leads page should be displayed
     And  Click on filters button
     And Click on clear filter button
     And  Click on filters button
@@ -172,16 +172,17 @@ Scenario Outline: Verify user able to attach lead card to existing location
     And Click on Bill to locations expand icon  
     When Click on Match or create link
     Then Match or create new location slider should be displayed
-  #  And Click on close icon  
-   # And  Click on search icon
-    And  Enter the location name <LocationName> and click on search icon 
-    When Click on match button
+    And Click to match to existing location button
+    And Select the pestpac location 
+    When Click on Save button in bill to search for matching slider
+    And Select match to service location <ServiceLocation>
+    When Click on Save button
     Then Location matched validation message should be displayed <LocationMatchedValMsg>
-
-   
-    
+  
  Examples:  
-     | FirstName        | LastName | CompanyName  | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName    | LocationName |
-     | Automation user3 | Test3    | autocompany3 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      |
+     | FirstName        | LastName | CompanyName  | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName    | LocationName | ServiceLocation     | LocationMatchedValMsg                  |
+     | Automation user3 | Test3    | autocompany3 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created |                     
 	 
+	 
+       
        

@@ -247,12 +247,25 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//span[text()='Match / Create New Location']")]
         private IWebElement MatchorCreateNewLocationSliderDisplayed { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//input[@placeholder='Search']")]
-        private IWebElement EnterLocationName { get { return PageFactory.Load(this); } }
+      
+        [FindsBy(How = How.XPath, Using = "//span[text()='Match To Existing Location']")]
+        private IWebElement ClickMatchToExistingLocationButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//span[text()='Match Bill-to'])[1]")]
+        private IWebElement ClickExistingLocationRadioButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//span[text()='Save'])[2]")]
+        private IWebElement ClickSaveButtonInBilltoMatchingSlider { get { return PageFactory.Load(this); } }
 
 
-       
+        [FindsBy(How = How.XPath, Using = "//div[text()='Select Service Location']")]
+        private IWebElement ClickServiceLocationField { get { return PageFactory.Load(this); } }
 
+        [FindsBy(How = How.XPath, Using = "//li[text()='3600 STATE ROUTE 66']")]
+        private IWebElement SelectServiceLocationName { get { return PageFactory.Load(this); } }
+
+
+      
         #endregion Attach a lead to location
 
 
@@ -1141,6 +1154,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickClearFilterButton)))
                 {
                     ClickClearFilterButton.Click();
+                    Thread.Sleep(2000);
                     SUT.Log.DebugFormat("Clear filter button is clicked");
                 }
                 else
@@ -1234,28 +1248,86 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
-        public void EnterTheLocationName(string locationname)
+        public void ClickOnMatchToExistingLocationButton()
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => EnterLocationName)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickMatchToExistingLocationButton)))
                 {
-                    // EnterLocationName.Click();
-                    EnterLocationName.SendKeys(Keys.Control + "a");
-                    EnterLocationName.SendKeys(Keys.Backspace);
-                    EnterLocationName.SendKeys(Keys.Clear);
-                    EnterLocationName.SendKeys(locationname);                
-                    EnterLocationName.SendKeys(Keys.Enter);
-                    SUT.Log.DebugFormat("Existing location name is entered");
+                    ClickMatchToExistingLocationButton.Click();
+                    SUT.Log.DebugFormat("Match to existing location button is clicked");
                 }
                 else
                 {
-                    SUT.Log.ErrorFormat("Existing location name is not entered {0}", MethodBase.GetCurrentMethod().Name);
+                    SUT.Log.ErrorFormat("Match to existing location button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
                 }
             }
             catch (WebDriverTimeoutException)
             {
-                SUT.Log.ErrorFormat("Existing location name is not entered ");
+                SUT.Log.ErrorFormat("Match to existing location button is not clicked");
+            }
+        }
+
+        public void ClickOnSaveButtonInBilltoMatchingSlider()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSaveButtonInBilltoMatchingSlider)))
+                {
+                    ClickSaveButtonInBilltoMatchingSlider.Click();
+                    SUT.Log.DebugFormat("Match to existing location button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Match to existing location button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Match to existing location button is not clicked");
+            }
+        }
+
+        public void ClickOnExistingLocationRadioButton()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickExistingLocationRadioButton)))
+                {
+                    ClickExistingLocationRadioButton.Click();
+                    SUT.Log.DebugFormat("Existing location radio button is selected");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Existing location radio button is not selected {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Existing location radio button is selected");
+            }
+        }
+
+        public void SelecttheServiceLocation()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceLocationField)))
+                {
+                    SalesCenterUtility.ScrollToElement(ClickServiceLocationField);
+                    ClickServiceLocationField.Click();
+                    Thread.Sleep(1000);
+                    SelectServiceLocationName.Click();
+                    SUT.Log.DebugFormat("Service location is selected from the dropdown");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Service location is not selected from the dropdown {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Service location is not selected from the dropdown");
             }
         }
 

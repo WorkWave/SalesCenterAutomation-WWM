@@ -1009,10 +1009,9 @@ namespace WorkWave.PestPac.TA.Model
                 SUT.Log.ErrorFormat("Position title is not entered");
             }
         }
+
+       
     }
-
-
-
 
 }
 #endregion

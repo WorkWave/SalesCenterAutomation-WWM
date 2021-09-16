@@ -457,7 +457,7 @@ namespace WorkWave.PestPac.TA
                     textMatches = true;
                 }        
             return textMatches;
-            Thread.Sleep(9000);
+           
         }
         public void CloseOtherTabs(string _startWindowHandle)
         {
@@ -560,7 +560,7 @@ namespace WorkWave.PestPac.TA
                         return false;
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {                    
                     return false;
                 }

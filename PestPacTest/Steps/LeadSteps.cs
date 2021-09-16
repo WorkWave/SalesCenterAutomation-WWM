@@ -15,10 +15,7 @@ namespace WorkWave.PestPac.TA.Steps
     [Binding]
     public class LeadSteps : TestSteps
     {
-        
-
-        private MainPage mainPage;
-        private LeadDetailPage leadDetailPage;
+       
         LeadDetailPage leadspage = new LeadDetailPage();
         OpportunityPage opportunitypage = new OpportunityPage();
         SettingsPage settingpage = new SettingsPage();
@@ -354,32 +351,41 @@ namespace WorkWave.PestPac.TA.Steps
             leadspage.IsMatchorCreateSliderDisplayed();
         }
 
-        [Then(@"Click on close icon")]
-        public void ThenClickOnCloseIcon()
+        [Then(@"Click to match to existing location button")]
+        public void ThenClickToMatchToExistingLocationButton()
         {
-           
+            leadspage.ClickOnMatchToExistingLocationButton();
         }
 
-        [Then(@"Enter the location name (.*) and click on search icon")]
-        public void ThenEnterTheLocationNameAndClickOnSearchIcon(string locationname)
+        [Then(@"Select the pestpac location")]
+        public void ThenSelectThePestpacLocation()
         {
-            leadspage.EnterTheLocationName(locationname);
+            leadspage.ClickOnExistingLocationRadioButton();
         }
 
-        [When(@"Click on match button")]
-        public void WhenClickOnMatchButton()
+        [When(@"Click on Save button in bill to search for matching slider")]
+        public void WhenClickOnSaveButtonInBillToSearchForMatchingSlider()
         {
-            
+            leadspage.ClickOnSaveButtonInBilltoMatchingSlider();
+        }
+
+        //[When(@"Select match to service location")]
+        //public void WhenSelectMatchToServiceLocation()
+        //{
+        //    leadspage.SelecttheServiceLocation();
+        //}
+
+        [When(@"Select match to service location (.*)")]
+        public void WhenSelectMatchToServiceLocationSTATEROUTE(string servicelocation)
+        {
+            leadspage.SelecttheServiceLocation();
         }
 
         [Then(@"Location matched validation message should be displayed (.*)")]
-        public void ThenLocationMatchedValidationMessageShouldBeDisplayed(string p0)
+        public void ThenLocationMatchedValidationMessageShouldBeDisplayed(string message)
         {
-            
+            settingpage.VerifySalesTeamCreatedConfirmMsg(message);
         }
-
-
-
 
     }
 }
