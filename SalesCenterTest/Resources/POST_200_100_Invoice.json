@@ -1,0 +1,53 @@
+{
+  "billToID": 539,
+  "paymentDate": "2021-07-10T06:21:49.359Z",
+  "amount": 200,
+  "reference": "TestMatrix3",
+  "methodOfPayment": "CH",
+  "glCode": "",
+  "service": "",
+  "batchID": "",
+  "forceNewBatch": true,
+  "paymentType": "Payment",
+  "paymentOrigin": "",
+  "adjustmentReason": "",
+  "applications": [
+    {
+      "applyToType": "Invoice",
+      "applyToID": 323,
+      "amount": 100,
+      "committed": true,
+      "adjustmentReason": "GW",
+      "adjustmentAmount": 3.00,
+      "invoice": {
+        "invoiceID": 323,
+        "locationID": 544,
+        "billToID": 539,
+        "setupID": 0,
+        "invoiceNumber": "10831",
+        "branch": "Main Branch",
+        "branchID": 1,
+        "parentInvoiceID": 0,
+        "serviceCode": "",
+        "description": "",
+        "subTotal": 0,
+        "tax": 0,
+        "total": 0,
+        "balance": 0,
+        "invoiceDate": "2021-07-10T06:21:49.360Z",
+        "workDate": "2021-07-10T06:21:49.360Z",
+        "dueDate": "2021-07-10T06:21:49.360Z",
+        "duration": 0,
+        "timeRange": "",
+        "invoiceType": "CallBack",
+        "origin": "Generated",
+        "tech1": "",
+        "techID1": 0,
+        "route": "string",
+        "consolidatedInvoiceNum": "string",
+        "consolidatedInvoiceDate": "2021-07-10T06:21:49.360Z",
+        "pdfUrls": {}
+      }
+    }
+  ]
+}

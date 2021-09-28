@@ -1,0 +1,56 @@
+{
+  "billToID": 1559,
+  "paymentDate": "2021-07-20",
+  "amount": 3500,
+  "reference": "Prepay2",
+  "methodOfPayment": "CH",
+  "glCode": "food",
+  "service": "BEES",
+  "paymentType": "Payment",
+  "paymentOrigin": "WebPayment",
+  "batchID": null,
+  "adjustmentReason": null,
+  "setupID": null,
+  "forceNewBatch": true,
+  "newBatchLocked": false,
+  "newBatchPrivate": false,
+  "newBatchAddUser": "ADMN",
+  "Applications": [
+    {
+      "ApplyToType": "ServiceSetup",
+      "ApplyToID": 355,
+      "Amount": 1500.0,
+      "Committed": false,
+      "AdjustmentReason": "GW",
+      "AdjustmentAmount": 25.0,
+      "Invoice": null,
+      "ServiceOrder": null,
+      "ServiceSetup": {
+        "SetupID": 355,
+        "LocationID": 1564,
+        "ServiceCode": "BEES",
+        "DiscountPercentage": 0.06
+      },
+      "Renewal": null,
+      "FinanceCharge": null
+    },
+    {
+      "ApplyToType": "ServiceSetup",
+      "ApplyToID": 356,
+      "Amount": 1600,
+      "Committed": false,
+      "AdjustmentReason": "GW",
+      "AdjustmentAmount": 30.0,
+      "Invoice": null,
+      "ServiceOrder": null,
+      "ServiceSetup": {
+        "SetupID": 356,
+        "LocationID": 1564,
+        "ServiceCode": "BEDBUG",
+        "DiscountPercentage": 0.06
+      },
+      "Renewal": null,
+      "FinanceCharge": null
+    }
+  ]
+}

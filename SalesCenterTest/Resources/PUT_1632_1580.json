@@ -1,0 +1,32 @@
+{
+  "billToID": 527,
+  "paymentDate": "2021-06-21T01:22:34.335Z",
+  "amount": 1632.00,
+  "reference": "PutTest12",
+  "methodOfPayment": "CH",
+  "glCode": "Pest",
+  "service": "BEES",
+  "paymentType": "Payment",
+  "paymentOrigin": "",
+  "batchID": 1032,
+  "adjustmentReason": "",
+  "setupID": 350,
+  "applications": [
+    {
+      "applyToType": "ServiceSetup",
+      "applyToID": 350,
+      "amount": 1580.00,
+      "committed": true,
+      "adjustmentReason": null,
+      "adjustmentAmount": 0,
+      "invoice": null,
+      "serviceOrder": null,
+      "serviceSetup": {
+        "setupID": 350,
+        "locationID": 532,
+        "serviceCode": "BEES",
+        "discountPercentage": 0
+      }
+    }
+  ]
+}

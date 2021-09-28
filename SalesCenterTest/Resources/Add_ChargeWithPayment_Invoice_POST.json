@@ -1,0 +1,63 @@
+{
+  "billToID": 1564,
+  "paymentDate": "2021-08-01",
+  "amount": 36,
+  "reference": "VSInvoice",
+  "methodOfPayment": "VS",
+  "glCode": "food",
+  "service": "",
+  "paymentType": "Payment",
+  "paymentOrigin": "WebPayment",
+  "batchID": "",
+  "adjustmentReason": null,
+  "setupID": null,
+  "forceNewBatch": true,
+  "newBatchLocked": false,
+  "newBatchPrivate": true,
+  "newBatchAddUser": "ADMN",
+  "applications": [
+    {
+      "applyToType": "Invoice",
+      "applyToID": 337,
+      "amount": 36,
+      "committed": true,
+      "adjustmentReason": null,
+      "adjustmentAmount": 0,
+      "invoice": {
+        "invoiceID": 337,
+        "locationID": 1569,
+        "billToID": 1564,
+        "setupID": 0,
+        "invoiceNumber": "10850",
+        "branch": "Main Branch",
+        "branchID": 1,
+        "parentInvoiceID": 0,
+        "serviceCode": "",
+        "description": "",
+        "subTotal": 0,
+        "tax": 0,
+        "total": 0,
+        "balance": 0,
+        "invoiceDate": "2021-08-01",
+        "workDate": "2021-08-01",
+        "dueDate": "2021-08-01",
+        "duration": 0,
+        "timeRange": "",
+        "invoiceType": "CallBack",
+        "origin": "Generated",
+        "tech1": "",
+        "techID1": 0,
+        "route": "string",
+        "consolidatedInvoiceNum": "string",
+        "consolidatedInvoiceDate": "2021-08-01",
+        "pdfUrls": {}
+      }
+    }
+  ],
+  "collections": {
+    "collectionStageNum": 1,
+    "creditStatus": "Normal",
+    "sentToCollectionAgency": "No",
+    "collectionRecallReason": "PaidInFull"
+  }
+}

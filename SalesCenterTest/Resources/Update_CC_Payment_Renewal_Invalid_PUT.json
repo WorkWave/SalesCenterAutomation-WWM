@@ -1,0 +1,32 @@
+{
+  "billToID": 526,
+  "paymentDate": "2021-05-10T01:22:34.335Z",
+  "amount": 30,
+  "reference": "Test",
+  "methodOfPayment": "VS",
+  "glCode": "NewCode",
+  "service": "BEES",
+  "paymentType": "Payment",
+  "paymentOrigin": "",
+  "batchID": null,
+  "adjustmentReason": "",
+  "setupID": 0,
+  "applications": [
+    {
+      "applyToType": "Renewal",
+      "applyToID": 352,
+      "amount": 30,
+      "committed": true,
+      "invoice": null,
+      "serviceOrder": null,
+      "serviceSetup": null,
+      "renewal": {
+        "setupID": 352,
+        "locationID": 531,
+        "startDate": "2021-05-10T01:22:34.336Z",
+        "renewalDate": "2021-05-15T01:22:34.336Z",
+        "renewalPrice": 36
+      }
+    }
+  ]
+}

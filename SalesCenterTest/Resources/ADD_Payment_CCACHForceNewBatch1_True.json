@@ -1,0 +1,24 @@
+{
+  "BillToID": 1552,
+  "PaymentDate": "07/21/2021",
+  "Amount": 50,
+  "Reference": "BatchPay1",
+  "MethodOfPayment": "Discover",
+  "GLCode": "",
+  "Service": "",
+  "PaymentType": "PendingPayment",
+  "PaymentOrigin": "WebPayment",
+  "AdjustmentReason": "Te",
+  "SetupID": "",
+  "ForceNewBatch": true,
+  "NewBatchLocked": true,
+  "NewBatchPrivate": true,
+  "NewBatchAddUser": "ADMN",
+  "Applications": [],
+  "Collections": {
+    "CollectionStageNum": 1,
+    "CreditStatus": "Normal",
+    "SentToCollectionAgency": "Yes",
+    "CollectionRecallReason": "AdjustmentEntered"
+  }
+}

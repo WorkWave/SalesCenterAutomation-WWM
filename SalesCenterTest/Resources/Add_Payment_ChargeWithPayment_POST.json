@@ -1,0 +1,25 @@
+{
+  "billToID": 1563,
+  "paymentDate": "2021-08-01",
+  "amount": 80,
+  "reference": "testVS",
+  "methodOfPayment": "VS",
+  "glCode": "food",
+  "service": "",
+  "paymentType": "Payment",
+  "paymentOrigin": "WebPayment",
+  "batchID": "",
+  "adjustmentReason": null,
+  "setupID": null,
+  "forceNewBatch": true,
+  "newBatchLocked": false,
+  "newBatchPrivate": true,
+  "newBatchAddUser": "ADMN",
+  "applications": [],
+  "collections": {
+    "collectionStageNum": 1,
+    "creditStatus": "Normal",
+    "sentToCollectionAgency": "No",
+    "collectionRecallReason": "PaidInFull"
+  }
+}

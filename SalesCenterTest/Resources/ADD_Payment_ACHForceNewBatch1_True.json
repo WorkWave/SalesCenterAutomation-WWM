@@ -1,0 +1,33 @@
+{
+  "BankAccountInputModel": {
+    "BillToID": "1553",
+    "ReferenceNumber": "23456",
+    "RoutingNumber": "122187238",
+    "AccountNumber": "11111111",
+    "NameOnAccount": "ACH Batch Payment"
+  },
+  "PaymentInputModel": {
+    "BillToID": 1553,
+    "PaymentDate": "07/21/2021",
+    "Amount": 30,
+    "Reference": "BatchPay3",
+    "MethodOfPayment": "ACH",
+    "GLCode": "",
+    "Service": "",
+    "PaymentType": "PendingPayment",
+    "PaymentOrigin": "WebPayment",
+    "AdjustmentReason": "Te",
+    "SetupID": "",
+    "ForceNewBatch": true,
+    "NewBatchLocked": true,
+    "NewBatchPrivate": true,
+    "NewBatchAddUser": "ADMN",
+    "Applications": [],
+    "Collections": {
+      "CollectionStageNum": 1,
+      "CreditStatus": "Normal",
+      "SentToCollectionAgency": "Yes",
+      "CollectionRecallReason": "AdjustmentEntered"
+    }
+  }
+}

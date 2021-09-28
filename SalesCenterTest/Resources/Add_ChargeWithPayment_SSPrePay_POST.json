@@ -1,0 +1,45 @@
+{
+  "billToID": 1566,
+  "paymentDate": "2021-08-18T13:24:48.467Z",
+  "amount": 36,
+  "reference": "TestSSPrePay",
+  "methodOfPayment": "VS",
+  "glCode": "",
+  "service": "BEES",
+  "paymentType": "Payment",
+  "paymentOrigin": "WebPayment",
+  "batchID": "",
+  "adjustmentReason": "str",
+  "setupID": 362,
+  "forceNewBatch": true,
+  "newBatchLocked": false,
+  "newBatchPrivate": true,
+  "newBatchAddUser": "ADMN",
+  "applications": [
+    {
+      "applyToType": "serviceSetup",
+      "applyToID": 362,
+      "amount": 36,
+      "committed": true,
+      "adjustmentReason": null,
+      "adjustmentAmount": 0,
+      "serviceID": 0,
+      "invoice": null,
+      "serviceOrder": null,
+      "renewal": null,
+      "serviceSetup": {
+        "setupID": 362,
+        "locationID": 1571,
+        "serviceCode": "BEES",
+        "discountPercentage": 0,
+        "annualAdvanceRenewal": true
+      }
+    }
+  ],
+  "collections": {
+    "collectionStageNum": 1,
+    "creditStatus": "Normal",
+    "sentToCollectionAgency": "No",
+    "collectionRecallReason": "PaidInFull"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "billToID": 1567,
+  "paymentDate": "2021-08-18T13:24:48.467Z",
+  "amount": 36,
+  "reference": "TestSO",
+  "methodOfPayment": "VS",
+  "glCode": "",
+  "service": "BEES",
+  "paymentType": "Payment",
+  "paymentOrigin": "WebPayment",
+  "batchID": "",
+  "adjustmentReason": "str",
+  "setupID": 0,
+  "forceNewBatch": true,
+  "newBatchLocked": false,
+  "newBatchPrivate": true,
+  "newBatchAddUser": "ADMN",
+  "applications": [
+    {
+      "applyToType": "serviceOrder",
+      "applyToID": 826,
+      "amount": 36,
+      "committed": true,
+      "adjustmentReason": null,
+      "adjustmentAmount": 0,
+      "serviceID": 0,
+      "invoice": null,
+      "serviceOrder": {
+        "orderID": 826,
+        "locationID": 1572,
+        "billToID": 1567,
+        "setupID": 0,
+        "leadID": "string",
+        "orderNumber": "string",
+        "branch": "string",
+        "branchID": 0,
+        "parentOrderID": 0,
+        "inProgress": true,
+        "posted": true,
+        "serviceCode": "BEES",
+        "description": "Bee Services",
+        "subTotal": 36,
+        "tax": 0,
+        "total": 36,
+        "workDate": "2021-08-18T13:24:48.468Z",
+        "timeRange": "string",
+        "locked": true,
+        "duration": 0,
+        "orderType": "ServiceOrder",
+        "origin": "Generated",
+        "tech1": "FORAPI",
+        "techID1": 0,
+        "route": "string",
+        "pdfUrls": {
+          "additionalProp1": "string",
+          "additionalProp2": "string",
+          "additionalProp3": "string"
+        }
+      },
+      "serviceSetup": null,
+      "renewal": null
+    }
+  ],
+  "collections": {
+    "collectionStageNum": 1,
+    "creditStatus": "Normal",
+    "sentToCollectionAgency": "No",
+    "collectionRecallReason": "PaidInFull"
+  }
+}

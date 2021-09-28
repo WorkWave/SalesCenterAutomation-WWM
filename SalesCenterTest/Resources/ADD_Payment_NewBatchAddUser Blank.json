@@ -1,0 +1,18 @@
+{
+  "BillToID": 1551,
+  "PaymentDate": "07/21/2021",
+  "Amount": 36,
+  "Reference": "Batch3",
+  "MethodOfPayment": "ACH",
+  "GLCode": "",
+  "Service": "",
+  "PaymentType": "PendingPayment",
+  "PaymentOrigin": "WebPayment",
+  "BatchID": 1032,
+  "AdjustmentReason": "Te",
+  "SetupID": 0,
+  "ForceNewBatch": true,
+  "NewBatchLocked": true,
+  "NewBatchPrivate": true,
+  "NewBatchAddUser": ""
+}

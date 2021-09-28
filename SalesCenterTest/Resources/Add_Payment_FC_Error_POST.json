@@ -1,0 +1,68 @@
+{
+  "billToID": 533,
+  "paymentDate": "2021-05-10T01:22:34.335Z",
+  "amount": 20,
+  "reference": "newone",
+  "methodOfPayment": "ch",
+  "glCode": "string",
+  "service": "AUTOSERVICE",
+  "paymentType": "Payment",
+  "paymentOrigin": "WebPayment",
+  "batchID": "",
+  "adjustmentReason": "",
+  "setupID": 0,
+  "applications": [
+    {
+      "applyToType": "Invoice",
+      "applyToID": 318,
+      "amount": 10,
+      "committed": true,
+      "invoice": {
+        "invoiceID": 318,
+        "locationID": 538,
+        "billToID": 533,
+        "setupID": 0,
+        "invoiceNumber": "10825",
+        "branch": "Main Branch",
+        "branchID": 1,
+        "parentInvoiceID": null,
+        "serviceCode": "string",
+        "description": "string",
+        "subTotal": 0,
+        "tax": 0,
+        "total": 0,
+        "balance": 0,
+        "invoiceDate": "2021-02-08T01:22:34.335Z",
+        "workDate": "2021-02-08T01:22:34.335Z",
+        "dueDate": "2021-02-08T01:22:34.335Z",
+        "duration": 0,
+        "timeRange": "string",
+        "invoiceType": "CallBack",
+        "origin": "Generated",
+        "tech1": "string",
+        "techID1": 0,
+        "route": "string",
+        "consolidatedInvoiceNum": "string",
+        "consolidatedInvoiceDate": "2021-02-08T01:22:34.335Z",
+        "pdfUrls": {
+          "additionalProp1": "string",
+          "additionalProp2": "string",
+          "additionalProp3": "string"
+        },
+        "autoBill": true
+      }
+    },
+    {
+      "applyToType": "FinanceCharge",
+      "applyToID": 533,
+      "amount": 10,
+      "committed": true
+    }
+  ],
+  "collections": {
+    "collectionStageNum": 2,
+    "creditStatus": "Alert",
+    "sentToCollectionAgency": "Yes",
+    "collectionRecallReason": "PaidInFull"
+  }
+}
