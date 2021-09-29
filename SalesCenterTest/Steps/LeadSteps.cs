@@ -186,10 +186,11 @@ namespace WorkWave.PestPac.TA.Steps
            
         }
 
-        [When(@"Select the lead details (.*) (.*)")]
-        public void WhenISelectTheLeadDetails(string ownername, string funnelstage)
+        [When(@"Select the lead details (.*) (.*) (.*)")]
+        public void WhenISelectTheLeadDetails(string ownername,string funnelname, string funnelstage)
         {
             leadspage.SelecttheOwnerName();
+            leadspage.SelecttheFunnelName();
             leadspage.SelecttheStageFromDropdown();
             leadspage.ClickOnSaveButton();
         }
@@ -219,8 +220,7 @@ namespace WorkWave.PestPac.TA.Steps
         [When(@"Search the lead (.*)")]
         public void WhenSearchTheLead(string leadname) 
         {
-            //leadspage.EnterTheLeadNameInSearchField(leadname);
-            throw new PendingStepException("https://workwave.atlassian.net/browse/WWM-8496-Once this ise is fixed will remove thid pending exception");
+            leadspage.EnterTheLeadNameInSearchField(leadname);          
         }
 
         [When(@"Click on Create opportunity button in create opportunity page")]
@@ -386,6 +386,5 @@ namespace WorkWave.PestPac.TA.Steps
         {
             settingpage.VerifySalesTeamCreatedConfirmMsg(message);
         }
-
     }
 }
