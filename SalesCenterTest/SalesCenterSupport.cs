@@ -8,7 +8,7 @@ namespace WorkWave.PestPac.TA
 {
     class SalesCenterSupport
     {
-        private static PestPacConfiguration pestPacConfig;
+        private static SalesCenterConfiguration pestPacConfig;
 
         public static void InitializePestPacConfig()
         {
@@ -21,7 +21,7 @@ namespace WorkWave.PestPac.TA
                 using (var file = new StreamReader(configFile_FullName))
                 {
                     var json = file.ReadToEnd();
-                    pestPacConfig = JsonConvert.DeserializeObject<PestPacConfiguration>(json);
+                    pestPacConfig = JsonConvert.DeserializeObject<SalesCenterConfiguration>(json);
                 }
             }
             catch (FileNotFoundException)

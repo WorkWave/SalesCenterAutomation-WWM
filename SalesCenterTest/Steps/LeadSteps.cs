@@ -387,5 +387,33 @@ namespace WorkWave.PestPac.TA.Steps
             settingpage.VerifySalesTeamCreatedConfirmMsg(message);
         }
 
+        //Update the servcie in opportunity form
+
+        [Then(@"Click on three dots icon in update service or product slider")]
+        public void ThenClickOnThreeDotsIconInUpdateServiceOrProductSlider()
+        {
+            leadspage.ClickOnThreeDotsIconInUpdateServiceSlider();
+            leadspage.ClickOnEditOption();
+        }
+
+        [Then(@"Select the other service (.*)")]
+        public void ThenSelectTheOtherService(string otherservice)
+        {
+            leadspage.SelectOtherServiceFromDropDown();
+        }
+
+        [Then(@"click on update servcie button")]
+        public void ThenClickOnUpdateServcieButton()
+        {
+            leadspage.ClickOnUpdateServiceButton();
+        }
+
+        [When(@"click on close convert lead button")]
+        public void WhenClickOnCloseConvertLeadButton()
+        {
+            
+        }
+
+
     }
 }

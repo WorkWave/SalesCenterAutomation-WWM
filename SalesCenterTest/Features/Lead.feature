@@ -40,7 +40,7 @@ Scenario Outline: Verify user can create and delete a lead
 	 
 
 
-@smoke @Leads @WW_LD_002
+@smoke @Leads @WW_LD_003
 Scenario Outline: Verify user can create lead and convert to opportunity
     When Click on plus icon
     And  Click on Add Lead button
@@ -68,7 +68,7 @@ Scenario Outline: Verify user can create lead and convert to opportunity
      | Automation Labs | Labs01   | autocompany01 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Opportunity Deleted             | Automation Labs |
 
 
-@smoke @Leads @WW_LD_003
+@smoke @Leads @WW_LD_004
 Scenario Outline: Verify user able to create new opportunity directly 
     When Click on plus icon
     And  Click on Add Lead button
@@ -101,7 +101,7 @@ Scenario Outline: Verify user able to create new opportunity directly
 
 
 
-@smoke @Leads @WW_LD_004
+@smoke @Leads @WW_LD_005
 Scenario Outline: Verify User Can Add a Contract to a Lead
     When Click on plus icon
     And Click on Add Lead button
@@ -132,7 +132,7 @@ Examples:
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments | Residential Service Form |
 
 
-@smoke  @WWM-8426 @Leads @WW_LD_005
+@smoke  @WWM-8426 @Leads @WW_LD_006
 Scenario Outline: Verify User Can Re-Open a Disqualified Lead
     When Mouse hover on sales center side menu
     And Click on Leads link
@@ -154,7 +154,7 @@ Examples:
      | Disqualified | Qualify  | 
 
 
-@smoke @Leads @WWM-8423 @WW_LD_006
+@smoke @Leads @WWM-8423 @WW_LD_007
 Scenario Outline: Verify user able to attach lead card to existing location  
     When Click on plus icon
     And  Click on Add Lead button
@@ -184,5 +184,33 @@ Scenario Outline: Verify user able to attach lead card to existing location
      | Automation user3 | Test3    | autocompany3 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created |                     
 	 
 	 
-       
-       
+@smoke @Leads @WWM-8430 @WW_LD_008
+Scenario Outline: Verify user able to edit the services on opportunity form
+    When Click on plus icon
+    And Click on Add Lead button
+    Then Add Lead details page should be displayed
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
+    And Select the SalesTeam <SalesTeam>
+    And Select the Owner <Owner> 
+    And Select the sales funnel <SalesFunnel>
+    Then Lead created validatmessage should be displayed <ValidationMessage>
+    And  Click on filters button
+    And Click on clear filter button
+    And  Click on Service expand icon
+    And  Click on Add Serivces button
+    And  Select the services <Services>
+    When Click on Add services button in slider
+    Then Service should be successfully added
+    And Click on Close services and product button   
+    When Click on convert to opportunity button
+    Then Convert to lead page should be displayed
+    And Click on three dots icon in update service or product slider
+    And Select the other service <UpdateServcie>
+    And click on update servcie button
+    When click on close convert lead button
+    Then Leads page should be displayed
+
+  
+Examples:  
+     | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Services            | UpdateService      |
+     | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments | BEES- Bee Services |

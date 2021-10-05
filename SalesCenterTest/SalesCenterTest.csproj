@@ -60,14 +60,12 @@
     </ItemGroup>
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
         <ItemGroup>
-            <PestPacConfig Include="$(ProjectDir)Configuration\PestPacConfig.json"/>
-            <Resources Include="$(ProjectDir)Resources*"/>
+            <SalesCenterConfig Include="$(ProjectDir)Configuration\SalesCenterConfig.json"/>
             <TestEngineConfig Include="$(ProjectDir)Configuration\config.json"/>
             <Logger Include="$(ProjectDir)Configuration\logger.xml"/>
             <AppSettings Include="$(ProjectDir)appsettings.json"/>
         </ItemGroup>
-        <Copy SourceFiles="@(PestPacConfig)" DestinationFolder="$(TargetDir)" ContinueOnError="false"/>
-        <Copy SourceFiles="@(Resources)" DestinationFolder="$(TargetDir)Resources" ContinueOnError="false"/>
+        <Copy SourceFiles="@(SalesCenterConfig)" DestinationFolder="$(TargetDir)" ContinueOnError="false"/>
         <Copy SourceFiles="@(TestEngineConfig)" DestinationFolder="$(TargetDir)" ContinueOnError="false"/>
         <Copy SourceFiles="@(Logger)" DestinationFolder="$(TargetDir)" ContinueOnError="false"/>
         <Copy SourceFiles="@(AppSettings)" DestinationFolder="$(TargetDir)" ContinueOnError="false"/>
@@ -78,6 +76,7 @@
             <UserProperties Configuration_4PestPacConfig_1json__JSONSchema="https://docs.renovatebot.com/renovate-schema.json"/>
         </VisualStudio>
     </ProjectExtensions>
+   
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App"/>
     </ItemGroup>
