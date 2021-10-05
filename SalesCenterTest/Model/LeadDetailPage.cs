@@ -265,8 +265,28 @@ namespace WorkWave.PestPac.TA.Model
         private IWebElement SelectServiceLocationName { get { return PageFactory.Load(this); } }
 
 
-      
         #endregion Attach a lead to location
+
+
+        #region Update service
+
+        [FindsBy(How = How.XPath, Using = "//div[contains(text(),'ANT')]/../../child::button")]
+        private IWebElement ClickThreeDotsIconInSlider { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Edit']")]
+        private IWebElement SelectOtherServicename { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[contains(text(),'BEES- Bee Services')]")]
+        private IWebElement ClickUpdateServiceButton { get { return PageFactory.Load(this); } }
+
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Edit']")]
+        private IWebElement ClickEditOption { get { return PageFactory.Load(this); } }
+
+
+
+      
+        #endregion Update service
 
 
         #endregion PageFactory
@@ -1331,6 +1351,90 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
+        //Update service in opportunity form
+
+        public void ClickOnThreeDotsIconInUpdateServiceSlider()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsIconInSlider)))
+                {
+                    ClickThreeDotsIconInSlider.Click();
+                    SUT.Log.DebugFormat("Match to existing location button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Match to existing location button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Match to existing location button is not clicked");
+            }
+        }
+
+        public void ClickOnEditOption()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickEditOption)))
+                {
+                    ClickEditOption.Click();
+                    SUT.Log.DebugFormat("Edit button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Edit button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Edit button is not clicked");
+            }
+        }
+
+        public void SelectOtherServiceFromDropDown()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceField)))
+                {
+                    ClickServiceField.Click();
+                    Thread.Sleep(2000);
+                    SalesCenterUtility.ScrollToElement(SelectOtherServicename);
+                    SelectOtherServicename.Click();
+                    SUT.Log.DebugFormat("Service selected from the droddown");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Service is not selected from the droddown {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Service is not selected from the dropdown");
+            }
+        }
+
+        public void ClickOnUpdateServiceButton()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickUpdateServiceButton)))
+                {
+                    ClickUpdateServiceButton.Click();
+                    SUT.Log.DebugFormat("Update service button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Update service button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Update service button is not clicked");
+            }
+        }
     }
 
 }

@@ -105,7 +105,7 @@ Scenario Outline: Verify User is Able to Add and delete the UnMapped User
      | Automation user | Test     | test2@gmail.com | SalesManager | Secondary south sales Team | User created. Welcome email sent. | User deleted  |
 
 
-@smoke @WWM-8404 @Settings @WW_ST_009
+@smoke @WWM-8404 @Settings @WW_ST_010
 Scenario Outline: Verify User is Able to Add and delete the Sales Team
     When Click on Settings Gear Icon
     Then Settings page should be displayed
