@@ -101,8 +101,8 @@ Scenario Outline: Verify User is Able to Add and delete the UnMapped User
     Then User deleted confirmation mesage should be displayed <UserDeleted>
 
    Examples: 
-     | FirstName       | LastName | Email           | UserRole     | SalesTeam                  | ConfirmMessage                    | UserDeleted   |
-     | Automation user | Test     | test2@gmail.com | SalesManager | Secondary south sales Team | User created. Welcome email sent. | User deleted  |
+     | FirstName       | LastName | Email             | UserRole     | SalesTeam                  | ConfirmMessage                    | UserDeleted   |
+     | Automation user | Test     | test321@gmail.com | SalesManager | Secondary south sales Team | User created. Welcome email sent. | User deleted  |
 
 
 @smoke @WWM-8404 @Settings @WW_ST_010

@@ -66,7 +66,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.Id, Using = "mui-component-select-salesFunnelId")]
         private IWebElement ClickFunnelField { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//li[text()='Required Contract & Payment']")]
+        [FindsBy(How = How.XPath, Using = "//li[contains(text(),'Required Contract & Payment')]")]
         private IWebElement SelectFunnelName { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[text()='Save']/..")]
@@ -133,6 +133,11 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//li[text()='Unassigned']")]
         private IWebElement SelectOwnerName { get { return PageFactory.Load(this); } }
 
+        [FindsBy(How = How.Id, Using = "mui-component-select-salesFunnelId")]
+        private IWebElement FunnelField { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[contains(text(),'Test Sales funnel')]")]
+        private IWebElement FunnelName { get { return PageFactory.Load(this); } }
 
         #endregion Create opportunity
 
@@ -261,7 +266,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[text()='Select Service Location']")]
         private IWebElement ClickServiceLocationField { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//li[text()='3600 STATE ROUTE 66']")]
+        [FindsBy(How = How.XPath, Using = "//li[contains(text(),'3600 STATE ROUTE 66')]")]
         private IWebElement SelectServiceLocationName { get { return PageFactory.Load(this); } }
 
 
@@ -825,6 +830,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickOwnerField)))
                 {
+                    SalesCenterUtility.ScrollToElement(ClickOwnerField);
                     ClickOwnerField.Click();
                     Thread.Sleep(2000);
                     SelectOwnerName.Click();
@@ -840,6 +846,30 @@ namespace WorkWave.PestPac.TA.Model
                 SUT.Log.ErrorFormat("Owner is not selected from the dropdown");
             }
         }
+
+        //public void SelectFunnelName()
+        //{
+        //    try
+        //    {
+        //        if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => FunnelField)))
+        //        {
+        //            SalesCenterUtility.ScrollToElement(FunnelField);
+        //            FunnelField.Click();
+        //            Thread.Sleep(2000);
+        //            FunnelName.Click();
+        //            SUT.Log.DebugFormat("Owner selected from the droddown");
+        //        }
+        //        else
+        //        {
+        //            SUT.Log.ErrorFormat("Owner is not selected from the dropdown {0}", MethodBase.GetCurrentMethod().Name);
+        //        }
+        //    }
+        //    catch (WebDriverTimeoutException)
+        //    {
+        //        SUT.Log.ErrorFormat("Owner is not selected from the dropdown");
+        //    }
+        //}
+
 
         public void VerifyOpportunitiesLink()
         {

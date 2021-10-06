@@ -91,13 +91,13 @@ Scenario Outline: Verify user able to create new opportunity directly
     And  Click on Create opportunity button
     And Search the lead <LeadName>
     When Click on Create opportunity button in create opportunity page  
-    When Select the lead details <OwnerName> <FunnelStage>  
+    When Select the lead details <OwnerName> <FunnelName> <FunnelStage>
     Then validation message should be displayed <OpportunityCreated>
  
 
  Examples:  
-     | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Services            | FunnelStage | Ownername  | OpportunityCreated  | OpportunityDeleteConfirmMessage | OpportunityName | LeadName      |
-     | Automation Labs | Labs02   | autocompany02 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Opportunity Deleted             | Automation Labs | Automation    |
+     | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Services            | FunnelStage | Ownername  | FunnelName        | OpportunityCreated  | OpportunityDeleteConfirmMessage | OpportunityName | LeadName |
+     | Automation Labs | Labs02   | autocompany02 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments | Stage1      | Unassigned | Test Sales funnel | Opportunity created | Opportunity Deleted             | Automation Labs | Automation    |
 
 
 
@@ -156,7 +156,7 @@ Examples:
 
 @smoke @Leads @WWM-8423 @WW_LD_007
 Scenario Outline: Verify user able to attach lead card to existing location  
-    When Click on plus icon
+    When Click on plus icon 
     And  Click on Add Lead button
     Then Add Lead details page should be displayed
     And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
