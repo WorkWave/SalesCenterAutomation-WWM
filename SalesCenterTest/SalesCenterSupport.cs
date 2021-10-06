@@ -14,7 +14,7 @@ namespace WorkWave.PestPac.TA
         {
             var workingDir =
                 System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            var configFile_FullName = string.Format($"{workingDir}{Path.DirectorySeparatorChar}PestPacConfig.json");
+            var configFile_FullName = string.Format($"{workingDir}{Path.DirectorySeparatorChar}SalesCenterConfig.json");
 
             try
             {
