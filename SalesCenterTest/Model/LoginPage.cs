@@ -47,7 +47,7 @@ namespace WorkWave.PestPac.TA.Model
             //it would take for tests to run with failure, dev seeing the failure and then having to re-run the 
             //smoke test steps.            
 
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => LoginForm), TimeSpan.FromSeconds(20)))
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => LoginForm), TimeSpan.FromSeconds(25)))
             {
                 return true;
             }
@@ -95,7 +95,7 @@ namespace WorkWave.PestPac.TA.Model
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => LoginButton)))
             {
                 LoginButton.Click();
-                Thread.Sleep(4000);
+                Thread.Sleep(10000);
                 return true;
             }
             else

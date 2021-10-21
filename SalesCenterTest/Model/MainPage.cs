@@ -120,7 +120,7 @@ namespace WorkWave.PestPac.TA.Model
 
         public bool IsLoaded()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => CompanyName), TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1)))
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => CompanyName), TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(5)))
             {
                 if (CompanyName.Text.Contains(PageHeaderTitle))
                 {
