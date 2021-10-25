@@ -206,7 +206,7 @@ namespace WorkWave.PestPac.TA.Model
         #region Reopen disqualified leads
 
 
-       [FindsBy(How = How.XPath, Using = "//span[text()='Filters']/..")]
+       [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Filters')]/..")]
         private IWebElement ClickOnFilterButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//div[text()='Lead Status']/../following-sibling::div")]
@@ -506,7 +506,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSaveButton)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickSaveButton)))
                 {
                     ClickSaveButton.Click();
                     SUT.Log.DebugFormat("Save button is clicked");

@@ -1,22 +1,18 @@
-﻿@Lead
-
-Feature: Lead
-	I want to able to verify leads scenarios
-
+﻿@Leads
+Feature: Leads
+	
 Background: 
 	Given I am logged in
 
 
 
-@smoke @Leads @WW_LD_001
+@Smoke @Regression @Leads @WW_LD_001
 Scenario Outline: Verify Display of Leads Page through sales center menu
     When Mouse hover on sales center side menu
     And Click on Leads link
     Then Leads page should be displayed
   
- 
-
-@smoke @Leads @WW_LD_002
+@Smoke @Regression @Leads @WW_LD_002
 Scenario Outline: Verify user can create and delete a lead   
     When Click on plus icon
     And  Click on Add Lead button
@@ -39,8 +35,7 @@ Scenario Outline: Verify user can create and delete a lead
      | Automation user2 | Test2    | autocompany2 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | Lead deleted.        |
 	 
 
-
-@smoke @Leads @WW_LD_003
+@Smoke @Regression @Leads @WW_LD_003
 Scenario Outline: Verify user can create lead and convert to opportunity
     When Click on plus icon
     And  Click on Add Lead button
@@ -68,7 +63,7 @@ Scenario Outline: Verify user can create lead and convert to opportunity
      | Automation Labs | Labs01   | autocompany01 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Opportunity Deleted             | Automation Labs |
 
 
-@smoke @Leads @WW_LD_004
+@Smoke @Regression @Leads @WW_LD_004
 Scenario Outline: Verify user able to create new opportunity directly 
     When Click on plus icon
     And  Click on Add Lead button
@@ -101,7 +96,7 @@ Scenario Outline: Verify user able to create new opportunity directly
 
 
 
-@smoke @Leads @WW_LD_005
+@Smoke @Regression @Leads @WW_LD_005
 Scenario Outline: Verify User Can Add a Contract to a Lead
     When Click on plus icon
     And Click on Add Lead button
@@ -132,7 +127,7 @@ Examples:
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments | Residential Service Form |
 
 
-@smoke  @WWM-8426 @Leads @WW_LD_006
+@Smoke  @Regression @WWM-8426 @Leads @WW_LD_006
 Scenario Outline: Verify User Can Re-Open a Disqualified Lead
     When Mouse hover on sales center side menu
     And Click on Leads link
@@ -154,7 +149,7 @@ Examples:
      | Disqualified | Qualify  | 
 
 
-@smoke @Leads @WWM-8423 @WW_LD_007
+@Smoke @Regression @Leads @WWM-8423 @WW_LD_007
 Scenario Outline: Verify user able to attach lead card to existing location  
     When Click on plus icon 
     And  Click on Add Lead button
@@ -184,7 +179,7 @@ Scenario Outline: Verify user able to attach lead card to existing location
      | Automation user3 | Test3    | autocompany3 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created |                     
 	 
 	 
-@smoke @Leads @WWM-8430 @WW_LD_008
+@Smoke @Regression @Leads @WWM-8430 @WW_LD_008
 Scenario Outline: Verify user able to edit the services on opportunity form
     When Click on plus icon
     And Click on Add Lead button
