@@ -218,7 +218,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//span[text()='Apply']/..")]
         private IWebElement ClickApplyButton { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//div[@class='sc-iklJeh hbusih actions']/descendant::button[2]")]
+        [FindsBy(How = How.XPath, Using = "//div[@class='sc-idOiZg gPAFHC actions']/descendant::button[2]")]
         private IWebElement ClickThreeDotsIconforDisqualified { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[text()='Re-Open']")]
