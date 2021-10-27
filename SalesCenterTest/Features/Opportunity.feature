@@ -26,3 +26,15 @@ Scenario Outline: SC-Bulk Re-open: Verify that user can Bulk reopen the multiple
   Examples:  
      | OpportunityStatus | 
      | Closed            | 
+
+
+@Smoke @Regression @Opportunities @WWM-8442 @WW_OP_003
+Scenario: Verification of multiple records selection on Opportunity List View Page
+	When Mouse hover on sales center side menu
+    And Click on Opportunities link
+    Then Opportunities page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+	And Click on List view button
+	When select the all checkbox option
+	Then checkbox should be selected
