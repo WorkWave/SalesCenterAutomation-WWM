@@ -50,13 +50,17 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//p[contains(text(),'Reopen')]")]
         private IWebElement ReopenPageIsDisplayed { get { return PageFactory.Load(this); } }
 
+        #region Select all the checkbox in listview
+
         [FindsBy(How = How.XPath, Using = "(//input[@type='checkbox'])[1]/..")]
         private IWebElement ClickAllCheckboxOption { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "(//input[@type='checkbox'])[1]/..")]
         private IWebElement CheckboxSelected { get { return PageFactory.Load(this); } }
 
-        
+        #endregion Select all the checkbox in listview
+
+
         #endregion PageFactory
         private readonly string PageHeaderText = "Opportunities";
 

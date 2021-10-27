@@ -209,3 +209,14 @@ Scenario Outline: Verify user able to edit the services on opportunity form
 Examples:  
      | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Services            | UpdateService      |
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments | BEES- Bee Services |
+
+@Smoke @Regression @Leads  @WWM-8443 @WW_LD_009
+Scenario: Verification of multiple records selection on Leads List View Page
+	When Mouse hover on sales center side menu
+    And Click on Leads link
+    Then Leads page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+	And Click on List view button
+	When select the all checkbox option
+	Then checkbox should be selected
