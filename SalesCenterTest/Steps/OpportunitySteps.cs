@@ -76,6 +76,32 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.IsCheckBoxSelected();
         }
 
+        //Reopen closed won or closed lost opportunities through card view'
+
+        [Then(@"Click on three dots icon for closed opportunities")]
+        public void ThenClickOnThreeDotsIconForClosedOpportunities()
+        {
+            opportunitypage.ClickOnThreeDotsIconforClosedOpportunities();
+        }
+
+        [Then(@"Select the date")]
+        public void ThenSelectTheDates()
+        {
+            opportunitypage.ClickonCalenderIcon();
+            opportunitypage.ClickonOkButtonInCalenderPopup();
+        }
+
+        [When(@"Click on reopen button in reopen opportunity popup")]
+        public void WhenClickOnReopenButtonInReopenOpportunityPopup()
+        {
+            opportunitypage.ClickonOkReopenButtonInCalenderPopup();
+        }
+
+        [Then(@"Select the reopen option for closed opportunities")]
+        public void ThenSelectTheReopenOptionForClosedOpportunities()
+        {
+            opportunitypage.SelectReopenOptionforClosedOpportunities();
+        }
 
 
     }

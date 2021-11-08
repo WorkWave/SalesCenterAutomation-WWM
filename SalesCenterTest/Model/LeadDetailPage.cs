@@ -1073,6 +1073,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickOnFilterButton)))
                 {
+                    Thread.Sleep(5000);
                     ClickOnFilterButton.Click();
                     SUT.Log.DebugFormat("Filters button is clicked");
                 }
