@@ -94,10 +94,10 @@ namespace WorkWave.PestPac.TA.Model
 
         #region Create opportunity
 
-        [FindsBy(How = How.XPath, Using = "(//p[text()='Service ('])[1]")]
+        [FindsBy(How = How.XPath, Using = "//p[contains(text(),'autocompany03')]/../../../following-sibling::div")]
         private IWebElement ClickServiceExapndIcon { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//span[@class='MuiButton-label']//span/../..)[1]")]
+        [FindsBy(How = How.XPath, Using = "//span[text()='Add Services']/../..")]
         private IWebElement ClickServiceButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//input[@id='services']/../..")]
@@ -112,13 +112,13 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//span[text()='Close Services and Products']/..")]
         private IWebElement CloseServicesButton { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//span[text()='Convert to Opportunity'])[1]/..")]
+        [FindsBy(How = How.XPath, Using = "//p[text()='View Services Added']")]
         private IWebElement ClickConvertOpportunityButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[text()='Add Service']/..")]
         private IWebElement ClickServiceButtonInSlider { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//p[text()='Convert Lead']")]
+        [FindsBy(How = How.XPath, Using = "//div[text()='Services or Products Added']")]
         private IWebElement ConvertLeadPageIsDisplayed { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//input[@name='opportunityStageId']/..")]
@@ -200,13 +200,13 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[text()='This form has been completed.']")]
         private IWebElement LeadStatusField { get { return PageFactory.Load(this); } }
 
-       
+
         #endregion Add contract to the lead
 
         #region Reopen disqualified leads
 
 
-       [FindsBy(How = How.Id, Using = "//span[text()='Filters']/..")]
+        [FindsBy(How = How.XPath, Using = "//button[@data-test-id='filterBtn']")]
         private IWebElement ClickOnFilterButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//div[text()='Lead Status']/../following-sibling::div")]
@@ -275,17 +275,17 @@ namespace WorkWave.PestPac.TA.Model
 
         #region Update service
 
-        [FindsBy(How = How.XPath, Using = "//div[contains(text(),'ANT')]/../../child::button")]
+        [FindsBy(How = How.XPath, Using = "//div[text()='ANT']/../../descendant::button")]
         private IWebElement ClickThreeDotsIconInSlider { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Edit']")]
+        [FindsBy(How = How.XPath, Using = "//li[text()='BEDBUG- Bed Bug Treatment']")]
         private IWebElement SelectOtherServicename { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//li[contains(text(),'BEES- Bee Services')]")]
+        [FindsBy(How = How.XPath, Using = "//span[text()='Update Service']")]
         private IWebElement ClickUpdateServiceButton { get { return PageFactory.Load(this); } }
 
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Edit']")]
+        [FindsBy(How = How.XPath, Using = "//div[@data-test-id='editBtn']")]
         private IWebElement ClickEditOption { get { return PageFactory.Load(this); } }
 
 
@@ -747,7 +747,7 @@ namespace WorkWave.PestPac.TA.Model
             try
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickConvertOpportunityButton)))
-                {
+                {                  
                     ClickConvertOpportunityButton.Click();
                     Thread.Sleep(5000);
                     SUT.Log.DebugFormat("Closeservice and product button is clicked");
@@ -1431,7 +1431,7 @@ namespace WorkWave.PestPac.TA.Model
                 {
                     ClickServiceField.Click();
                     Thread.Sleep(2000);
-                    SalesCenterUtility.ScrollToElement(SelectOtherServicename);
+                   // SalesCenterUtility.ScrollToElement(SelectOtherServicename);
                     SelectOtherServicename.Click();
                     SUT.Log.DebugFormat("Service selected from the droddown");
                 }
