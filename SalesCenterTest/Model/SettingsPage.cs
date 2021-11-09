@@ -114,7 +114,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[@id='mui-component-select-role']/..")]
         private IWebElement ClickRoleField { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//li[text()='SalesManager']")]
+        [FindsBy(How = How.XPath, Using = "//li[text()='Testing  non admin']")]
         private IWebElement SelectRolename { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[text()='+ Add Sales Team']/..")]

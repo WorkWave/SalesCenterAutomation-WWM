@@ -28,7 +28,7 @@ Scenario Outline: SC-Bulk Re-open: Verify that user can Bulk reopen the multiple
      | Closed            | 
 
 @Smoke @Regression @Opportunities @WWM-8438 @WW_OP_002
-Scenario: Verify user can close an opportunity as closed/lost
+Scenario Outline: Verify user can close an opportunity as closed/lost
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
     Then Opportunities page should be displayed
@@ -43,8 +43,8 @@ Scenario: Verify user can close an opportunity as closed/lost
 	Then Opportunity closed validation message should be displayed
 	
    Examples:  
-     | OpportunityStatus | 
-     | Closed     
+     | OpportunityStatus |
+     | Closed            |
 
 @Smoke @Regression @Opportunities @WWM-8442 @WW_OP_003
 Scenario: Verification of multiple records selection on Opportunity List View Page

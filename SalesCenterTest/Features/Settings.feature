@@ -101,8 +101,8 @@ Scenario Outline: Verify User is Able to Add and delete the UnMapped User
     Then User deleted confirmation mesage should be displayed <UserDeleted>
 
    Examples: 
-     | FirstName       | LastName | Email             | UserRole     | SalesTeam                  | ConfirmMessage                    | UserDeleted   |
-     | Automation user | Test     | test321@gmail.com | SalesManager | Secondary south sales Team | User created. Welcome email sent. | User deleted  |
+     | FirstName       | LastName | Email             | UserRole           | SalesTeam                  | ConfirmMessage                    | UserDeleted   |
+     | Automation user | Test     | test321@gmail.com | Testing  non admin | Secondary south sales Team | User created. Welcome email sent. | User deleted  |
 
 
 @Smoke @Regression @WWM-8404 @Settings @WW_ST_010
@@ -143,9 +143,31 @@ Scenario Outline: Verify Admin Users Can Add Positions to Sales Teams
     Then SalesTeam deleted confirmation mesage should be displayed <SalesTeamDeleted>
     
    Examples: 
-     | SalesTeamName   | BranchName    | ConfirmMessage     | SalesTeamDeleted    | title        | Positionvalmsg               |
+     | SalesTeamName   | Branch Name    | ConfirmMessage     | SalesTeamDeleted    | title        | Positionvalmsg               |
      | autosalesteam   | North Branch  | Sales Team created | Sales Team deleted. | SalesManager | Sales Team Position created  |
      
+
+@Smoke @Regression @WWM-8408 @Settings @WW_ST_012
+Scenario Outline: Verify that Non Admin Users Can be Assigned a Single Position on any Number of Sales Teams
+    When Click on Settings Gear Icon
+    Then Settings page should be displayed
+    And  Click on User and Access link
+    Then User and Access page should be displayed
+    And  Click on Add UnMapped User button
+    And  Enter the user details <FirstName> <LastName> <Email>
+    And  Select the User Role <UserRole>
+    And  Click on Add Sales Team option
+    And  Select the Sales Team <Salesteam>
+    And  Select the team position
+    When Click on Save button
+    Then Validation message should be displayed <ConfirmMessage>
+    When Delete the unmapped user
+    Then User deleted confirmation mesage should be displayed <UserDeleted>
+
+   Examples: 
+     | FirstName       | LastName | Email             | UserRole           | SalesTeam                   | ConfirmMessage                    | UserDeleted   |
+     | Automation user | Test     | test321@gmail.com | Testing  non admin | Secondary south sales Team  | User created. Welcome email sent. | User deleted  |
+
 
 
   
