@@ -43,8 +43,8 @@ Scenario: Verify user can close an opportunity as closed/lost
 	Then Opportunity closed validation message should be displayed
 	
    Examples:  
-     | OpportunityStatus | 
-     | Closed     
+     | OpportunityStatus |
+     | Closed            |
 
 @Smoke @Regression @Opportunities @WWM-8442 @WW_OP_003
 Scenario: Verification of multiple records selection on Opportunity List View Page
