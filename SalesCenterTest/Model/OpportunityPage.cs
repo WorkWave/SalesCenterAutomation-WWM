@@ -62,6 +62,8 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//p[contains(text(),'Opportunity Detail Page')]")]
         private IWebElement OpportunityDetailPageIsDisplayed { get { return PageFactory.Load(this); } }
 
+        #region Select all the checkbox in listview
+
         [FindsBy(How = How.XPath, Using = "//div[text()='Closed Won / Closed Lost']")]
         private IWebElement ClickCloseLostExpandIcon { get { return PageFactory.Load(this); } }
 
@@ -73,14 +75,24 @@ namespace WorkWave.PestPac.TA.Model
 
         [FindsBy(How = How.XPath, Using = "//span[contains(text(),'SAVE')]/..")]
         private IWebElement ClickSaveButtonInCloseLostPopup { get { return PageFactory.Load(this); } }
+        [FindsBy(How = How.XPath, Using = "(//input[@type='checkbox'])[1]/..")]
+        private IWebElement ClickAllCheckboxOption { get { return PageFactory.Load(this); } }
 
        
         #endregion Close lost opportunities
 
         #endregion PageFactory
         private readonly string PageHeaderText = "Opportunities";
+        [FindsBy(How = How.XPath, Using = "(//input[@type='checkbox'])[1]/..")]
+        private IWebElement CheckboxSelected { get { return PageFactory.Load(this); } }
+
+        #endregion Select all the checkbox in listview
+
 
       
+        #endregion PageFactory
+        private readonly string PageHeaderText = "Opportunities";
+
         public bool IsLoaded()
         {
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => PageHeader),TimeSpan.FromSeconds(10)))
@@ -130,6 +142,7 @@ namespace WorkWave.PestPac.TA.Model
                 {
                    
                     ClickListviewButton.Click();
+                    Thread.Sleep(5000);
                     SUT.Log.DebugFormat("List view button is clicked");
                 }
                 else
@@ -232,7 +245,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ReopenPageIsDisplayed), TimeSpan.FromSeconds(5)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ReopenPageIsDisplayed), TimeSpan.FromSeconds(10)))
                 {
                     ReopenPageIsDisplayed.Displayed.ToString();
                     Thread.Sleep(8000);
@@ -373,6 +386,54 @@ namespace WorkWave.PestPac.TA.Model
             catch (WebDriverTimeoutException)
             {
                 SUT.Log.ErrorFormat("Save button is not clicked");
+            }
+        }
+
+    }
+        }
+
+        //Select all checkbox
+
+        public void SelecttheAllOpportunitiesCheckBox()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAllCheckboxOption)))
+                {
+                    ClickAllCheckboxOption.Click();
+                    Thread.Sleep(3000);
+                    SUT.Log.DebugFormat("All Opportunities checkbox is selected");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("All Opportunities checkbox is not selected {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("All Opportunities checkbox is not selected");
+            }
+        }
+
+        public void IsCheckBoxSelected()
+        {
+            try
+            {
+              bool IscheckboxSelected=  CheckboxSelected.Selected;
+
+                if (IscheckboxSelected)
+                {                   
+                    SUT.Log.DebugFormat("All Opportunities checkbox is selected");
+                }
+                else
+                {
+                    CheckboxSelected.Click();
+                    SUT.Log.ErrorFormat("All Opportunities checkbox is not selected {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("All Opportunities checkbox is not selected");
             }
         }
 

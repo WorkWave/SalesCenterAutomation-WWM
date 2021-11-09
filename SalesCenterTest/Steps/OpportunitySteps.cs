@@ -80,6 +80,21 @@ namespace WorkWave.PestPac.TA.Steps
         {
             opportunitypage.ClickOnCloseLostExpandIcon();
         }
+        //Select all the opportunities checkbox
+
+        [When(@"select the all checkbox option")]
+        public void WhenSelectTheAllCheckboxOption()
+        {
+            opportunitypage.SelecttheAllOpportunitiesCheckBox();
+        }
+
+        [Then(@"checkbox should be selected")]
+        public void ThenCheckboxShouldBeSelected()
+        {
+            opportunitypage.IsCheckBoxSelected();
+        }
+
+
 
         [Then(@"Select the closed lost option")]
         public void ThenSelectTheClosedLostOption()

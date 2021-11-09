@@ -42,3 +42,16 @@ Scenario: Verify user can close an opportunity as closed/lost
 	When Click on save button in closed lost popup
 	Then Opportunity closed validation message should be displayed
 	
+     | Closed            | 
+
+
+@Smoke @Regression @Opportunities @WWM-8442 @WW_OP_003
+Scenario: Verification of multiple records selection on Opportunity List View Page
+	When Mouse hover on sales center side menu
+    And Click on Opportunities link
+    Then Opportunities page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+	And Click on List view button
+	When select the all checkbox option
+	Then checkbox should be selected
