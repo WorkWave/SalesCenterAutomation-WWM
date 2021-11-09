@@ -55,3 +55,24 @@ Scenario: Verification of multiple records selection on Opportunity List View Pa
 	And Click on List view button
 	When select the all checkbox option
 	Then checkbox should be selected
+
+@Smoke @Regression @Opportunities @WWM-8440 @WW_OP_004
+Scenario Outline: Verify Users Can Re-Open Closed/Won and Closed/Lost Opportunities
+	When Mouse hover on sales center side menu
+    And Click on Opportunities link
+    Then Opportunities page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+	And Click on filters button
+	And Select the opportunity status <OpportunityStatus>
+    When Click on Apply button
+	Then All the closed opportunities should be displayed
+	And Click on three dots icon for closed opportunities
+	And Select the reopen option for closed opportunities
+	And Select the date
+	When Click on reopen button in reopen opportunity popup
+	
+Examples:  
+     | OpportunityStatus | 
+     | Closed            | 
+

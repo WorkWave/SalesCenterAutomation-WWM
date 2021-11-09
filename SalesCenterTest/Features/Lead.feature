@@ -188,17 +188,18 @@ Scenario Outline: Verify user able to edit the services on opportunity form
     And Select the SalesTeam <SalesTeam>
     And Select the Owner <Owner> 
     And Select the sales funnel <SalesFunnel>
-    Then Lead created validatmessage should be displayed <ValidationMessage>
-    And  Click on filters button
+    When Click on Save button
+    Then Lead created validation message should be displayed <ValidationMessage>
+    And Click on filters button
     And Click on clear filter button
-    And  Click on Service expand icon
-    And  Click on Add Serivces button
-    And  Select the services <Services>
+    And Click on Service expand icon
+    And Click on Add Serivces button
+    And Select the services <Services>
     When Click on Add services button in slider
     Then Service should be successfully added
     And Click on Close services and product button   
-    When Click on convert to opportunity button
-    Then Convert to lead page should be displayed
+    When Click on view services added link
+    Then Manage services and products page should be displayed
     And Click on three dots icon in update service or product slider
     And Select the other service <UpdateServcie>
     And click on update servcie button

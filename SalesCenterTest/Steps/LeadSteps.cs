@@ -174,8 +174,14 @@ namespace WorkWave.PestPac.TA.Steps
             leadspage.ClickOnConvertOpportunityButton();
         }
 
-        [Then(@"Convert to lead page should be displayed")]
-        public void ThenConvertToLeadPageShouldBeDisplayed()
+        [When(@"Click on view services added link")]
+        public void WhenClickOnViewServicesAddedLink()
+        {
+            leadspage.ClickOnConvertOpportunityButton();
+        }
+
+        [Then(@"Manage services and products page should be displayed")]
+        public void ThenManageServicesAndProductsPageShouldBeDisplayed()
         {
             leadspage.IsConvertLeadPageIsDisplayed();
         }
