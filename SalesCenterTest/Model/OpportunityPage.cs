@@ -61,7 +61,7 @@ namespace WorkWave.PestPac.TA.Model
         #endregion  Bulk reopen close opportunities
         public bool IsLoaded()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => PageHeader),TimeSpan.FromSeconds(5)))
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => PageHeader),TimeSpan.FromSeconds(10)))
             {
                 if (PageHeader.Text.TrimStart().StartsWith(PageHeaderText))
                 {
@@ -107,6 +107,7 @@ namespace WorkWave.PestPac.TA.Model
                 {
                    
                     ClickListviewButton.Click();
+                    Thread.Sleep(3000);
                     SUT.Log.DebugFormat("List view button is clicked");
                 }
                 else
@@ -209,7 +210,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ReopenPageIsDisplayed), TimeSpan.FromSeconds(5)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ReopenPageIsDisplayed), TimeSpan.FromSeconds(10)))
                 {
                     ReopenPageIsDisplayed.Displayed.ToString();
                     Thread.Sleep(8000);

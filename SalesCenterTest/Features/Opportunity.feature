@@ -20,7 +20,7 @@ Scenario Outline: SC-Bulk Re-open: Verify that user can Bulk reopen the multiple
 	And Select the multiple opportunities
 	When Click on Reopen button
 	Then Reopen slider should be displayed
-	When ClickOP on Save button
+	When Click on Save button
    # Then validation message should be displayed
 
   Examples:  
