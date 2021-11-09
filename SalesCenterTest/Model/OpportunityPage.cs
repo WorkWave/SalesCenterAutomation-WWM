@@ -62,6 +62,9 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//p[contains(text(),'Opportunity Detail Page')]")]
         private IWebElement OpportunityDetailPageIsDisplayed { get { return PageFactory.Load(this); } }
 
+
+        #endregion Close lost opportunities
+
         #region Select all the checkbox in listview
 
         [FindsBy(How = How.XPath, Using = "//div[text()='Closed Won / Closed Lost']")]
@@ -78,11 +81,6 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//input[@type='checkbox'])[1]/..")]
         private IWebElement ClickAllCheckboxOption { get { return PageFactory.Load(this); } }
 
-       
-        #endregion Close lost opportunities
-
-        #endregion PageFactory
-        private readonly string PageHeaderText = "Opportunities";
         [FindsBy(How = How.XPath, Using = "(//input[@type='checkbox'])[1]/..")]
         private IWebElement CheckboxSelected { get { return PageFactory.Load(this); } }
 
@@ -91,6 +89,7 @@ namespace WorkWave.PestPac.TA.Model
 
       
         #endregion PageFactory
+
         private readonly string PageHeaderText = "Opportunities";
 
         public bool IsLoaded()
@@ -387,9 +386,6 @@ namespace WorkWave.PestPac.TA.Model
             {
                 SUT.Log.ErrorFormat("Save button is not clicked");
             }
-        }
-
-    }
         }
 
         //Select all checkbox
