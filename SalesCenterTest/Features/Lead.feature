@@ -7,7 +7,7 @@ Background:
 
 
 @Smoke @Regression @Leads @WW_LD_001
-Scenario Outline: Verify Display of Leads Page through sales center menu
+Scenario Outline: Verify default display of Lead Card
     When Mouse hover on sales center side menu
     And Click on Leads link
     Then Leads page should be displayed

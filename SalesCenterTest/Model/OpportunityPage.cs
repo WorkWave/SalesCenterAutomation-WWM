@@ -49,16 +49,17 @@ namespace WorkWave.PestPac.TA.Model
 
         [FindsBy(How = How.XPath, Using = "//p[contains(text(),'Reopen')]")]
         private IWebElement ReopenPageIsDisplayed { get { return PageFactory.Load(this); } }
-     
 
+        [FindsBy(How = How.XPath, Using = "(//input[@type='checkbox'])[1]/..")]
+        private IWebElement ClickAllCheckboxOption { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//input[@type='checkbox'])[1]/..")]
+        private IWebElement CheckboxSelected { get { return PageFactory.Load(this); } }
+
+        
         #endregion PageFactory
         private readonly string PageHeaderText = "Opportunities";
 
-        #region Bulk reopen close opportunities
-
-       
-
-        #endregion  Bulk reopen close opportunities
         public bool IsLoaded()
         {
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => PageHeader),TimeSpan.FromSeconds(10)))
@@ -107,7 +108,7 @@ namespace WorkWave.PestPac.TA.Model
                 {
                    
                     ClickListviewButton.Click();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(5000);
                     SUT.Log.DebugFormat("List view button is clicked");
                 }
                 else
@@ -225,6 +226,52 @@ namespace WorkWave.PestPac.TA.Model
             {
                 SUT.Log.ErrorFormat("Reopen slider is not diplayed");
             }
-        }       
+        }
+
+        //Select all checkbox
+
+        public void SelecttheAllOpportunitiesCheckBox()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAllCheckboxOption)))
+                {
+                    ClickAllCheckboxOption.Click();
+                    Thread.Sleep(3000);
+                    SUT.Log.DebugFormat("All Opportunities checkbox is selected");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("All Opportunities checkbox is not selected {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("All Opportunities checkbox is not selected");
+            }
+        }
+
+        public void IsCheckBoxSelected()
+        {
+            try
+            {
+              bool IscheckboxSelected=  CheckboxSelected.Selected;
+
+                if (IscheckboxSelected)
+                {                   
+                    SUT.Log.DebugFormat("All Opportunities checkbox is selected");
+                }
+                else
+                {
+                    CheckboxSelected.Click();
+                    SUT.Log.ErrorFormat("All Opportunities checkbox is not selected {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("All Opportunities checkbox is not selected");
+            }
+        }
+
     }
 }
