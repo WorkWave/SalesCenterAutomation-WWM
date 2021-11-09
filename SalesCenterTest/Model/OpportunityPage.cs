@@ -17,6 +17,8 @@ namespace WorkWave.PestPac.TA.Model
     {
         #region PageFactory
 
+        #region Bulk reopen close opportunities
+
         [FindsBy(How = How.XPath, Using = "(//p[text()='Opportunities'])[2]")]
         private IWebElement ClickOpportunitiesLink { get { return PageFactory.Load(this); } }
 
@@ -50,23 +52,72 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//p[contains(text(),'Reopen')]")]
         private IWebElement ReopenPageIsDisplayed { get { return PageFactory.Load(this); } }
 
+        #endregion  Bulk reopen close opportunities
+
+        #region close lost opportunities
+
+        [FindsBy(How = How.LinkText, Using = "View Detail Page")]
+        private IWebElement ClickViewDetailsLink { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//p[contains(text(),'Opportunity Detail Page')]")]
+        private IWebElement OpportunityDetailPageIsDisplayed { get { return PageFactory.Load(this); } }
+
         #region Select all the checkbox in listview
 
+        [FindsBy(How = How.XPath, Using = "//div[text()='Closed Won / Closed Lost']")]
+        private IWebElement ClickCloseLostExpandIcon { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Closed Lost...')]")]
+        private IWebElement ClickCloseLostOption { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Lost to Competitor']")]
+        private IWebElement ClickLostCompetitorRadioButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'SAVE')]/..")]
+        private IWebElement ClickSaveButtonInCloseLostPopup { get { return PageFactory.Load(this); } }
         [FindsBy(How = How.XPath, Using = "(//input[@type='checkbox'])[1]/..")]
         private IWebElement ClickAllCheckboxOption { get { return PageFactory.Load(this); } }
 
+       
+        #endregion Close lost opportunities
+
+        #endregion PageFactory
+        private readonly string PageHeaderText = "Opportunities";
         [FindsBy(How = How.XPath, Using = "(//input[@type='checkbox'])[1]/..")]
         private IWebElement CheckboxSelected { get { return PageFactory.Load(this); } }
 
         #endregion Select all the checkbox in listview
 
+        #region reopen closed won/lost opportunities through card view
 
+        [FindsBy(How = How.XPath, Using = "//button[@data-test-id='opportunityMoreBtn']")]
+        private IWebElement ClickThreeDotsIconforClosedOpportunities { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//p[text()='- - / - - / - - - -']/..")]
+        private IWebElement ClickCalenderIcon { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='OK']/..")]
+        private IWebElement ClickOkButtonInCalenderPopup { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Re-Open']/..")]
+        private IWebElement ClickReopenButtonInCalenderPopup { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//div[@data-test-id='reopenBtn']")]
+        private IWebElement ReopenoptionforClosedOpportunities { get { return PageFactory.Load(this); } }
+
+
+
+
+        #endregion reopen closed won/lost opportunities through card view 
+
+
+      
         #endregion PageFactory
         private readonly string PageHeaderText = "Opportunities";
 
         public bool IsLoaded()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => PageHeader),TimeSpan.FromSeconds(10)))
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => PageHeader),TimeSpan.FromSeconds(15)))
             {
                 if (PageHeader.Text.TrimStart().StartsWith(PageHeaderText))
                 {
@@ -91,6 +142,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickOpportunitiesLink)))
                 {
                     ClickOpportunitiesLink.Click();
+                    Thread.Sleep(5000);
                     SUT.Log.DebugFormat("Opportunities link is clicked");
                 }
                 else
@@ -232,6 +284,136 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
+        //Close lost opportunities
+
+        public void ClickOnViewDetailsLink()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickViewDetailsLink)))
+                {
+                    ClickViewDetailsLink.Click();
+                    SUT.Log.DebugFormat("View detail link is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("View detail link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("View detail link is not clicked");
+            }
+        }
+
+        public void IsOpportunityDetailPageDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() =>OpportunityDetailPageIsDisplayed), TimeSpan.FromSeconds(5)))
+                {
+                    OpportunityDetailPageIsDisplayed.Displayed.ToString();
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("Reopen slider is diplayed");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Reopen slider is not diplayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Reopen slider is not diplayed");
+            }
+        }
+
+        public void ClickOnCloseLostExpandIcon()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCloseLostExpandIcon)))
+                {
+                    ClickCloseLostExpandIcon.Click();
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("Closed Won/Close Lost expand icon is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Closed Won/Close Lost expand icon is clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Closed Won/Close Lost expand icon is clicked");
+            }
+        }
+
+        public void ClickOnCloseLostOption()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickCloseLostOption)))
+                {
+                    ClickCloseLostOption.Click();
+                    Thread.Sleep(3000);
+                    SUT.Log.DebugFormat("Close lost option is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Close lost option is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Close lost option is not clicked");
+            }
+        }
+
+        public void IsSelectLostCompetitorRadioButton()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickLostCompetitorRadioButton)))
+                {
+                    ClickLostCompetitorRadioButton.Click();
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("Lost competitor radio button is selected");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Lost competitor radio button is not selected {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Lost competitor radio button is not selected");
+            }
+        }
+
+        public void ClickOnSaveButtonInCloseLostPopup()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSaveButtonInCloseLostPopup)))
+                {
+                    ClickSaveButtonInCloseLostPopup.Click();
+                    Thread.Sleep(3000);
+                    SUT.Log.DebugFormat("Save button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Save button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Save button is not clicked");
+            }
+        }
+
+    }
+        }
+
         //Select all checkbox
 
         public void SelecttheAllOpportunitiesCheckBox()
@@ -277,5 +459,111 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
+        public void ClickOnThreeDotsIconforClosedOpportunities()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsIconforClosedOpportunities)))
+                {
+                    ClickThreeDotsIconforClosedOpportunities.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Three dots icon is clicked for closed won/lost opportunities");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Three dots icon is not clicked for closed won/lost opportunities {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Three dots icon is not clicked for closed won/lost opportunities ");
+            }
+        }
+
+        public void ClickonCalenderIcon()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCalenderIcon)))
+                {
+                    ClickCalenderIcon.Click();
+                    Thread.Sleep(3000);
+                    SUT.Log.DebugFormat("");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("All Opportunities checkbox is not selected {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("All Opportunities checkbox is not selected");
+            }
+        }
+
+        //Reopen closed won/lost opportunities
+        public void ClickonOkButtonInCalenderPopup()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickOkButtonInCalenderPopup)))
+                {
+                    ClickOkButtonInCalenderPopup.Click();
+                    Thread.Sleep(5000);
+                    SUT.Log.DebugFormat("Ok button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Ok button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Ok button is not clicked");
+            }
+        }
+
+        public void ClickonOkReopenButtonInCalenderPopup()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickReopenButtonInCalenderPopup)))
+                {
+                    ClickReopenButtonInCalenderPopup.Click();
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("Reopen button is clicked in calender popup");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Reopen button is not clicked in calender popup {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Reopen button is not clicked in calender popup");
+            }
+        }
+
+        public void SelectReopenOptionforClosedOpportunities()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ReopenoptionforClosedOpportunities)))
+                {
+                    ReopenoptionforClosedOpportunities.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Reopen option is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Reopen option is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Reopen option is not clicked");
+            }
+
+        }
     }
 }
