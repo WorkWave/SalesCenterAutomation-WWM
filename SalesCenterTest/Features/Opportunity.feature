@@ -27,6 +27,23 @@ Scenario Outline: SC-Bulk Re-open: Verify that user can Bulk reopen the multiple
      | OpportunityStatus | 
      | Closed            | 
 
+@Smoke @Regression @Opportunities @WWM-8438 @WW_OP_002
+Scenario: Verify user can close an opportunity as closed/lost
+	When Mouse hover on sales center side menu
+    And Click on Opportunities link
+    Then Opportunities page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+	When Click on View details page link
+	Then Opportunity detail page should be displayed
+	And Click on closed won/closed lost bar
+	And Select the closed lost option
+	And Select Lost to competitor radio button in close lost popup
+	When Click on save button in closed lost popup
+	Then Opportunity closed validation message should be displayed
+	
+     | Closed            | 
+
 
 @Smoke @Regression @Opportunities @WWM-8442 @WW_OP_003
 Scenario: Verification of multiple records selection on Opportunity List View Page

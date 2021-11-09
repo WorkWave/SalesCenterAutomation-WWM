@@ -31,7 +31,6 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.IsClosedOpportunitiesDisplayed();
         }
 
-
         [Then(@"Click on List view button")]
         public void ThenClickOnListViewButton()
         {
@@ -62,6 +61,25 @@ namespace WorkWave.PestPac.TA.Steps
             
         }
 
+        //Opp closed lost
+
+        [When(@"Click on View details page link")]
+        public void WhenClickOnViewDetailsPageLink()
+        {
+            opportunitypage.ClickOnViewDetailsLink();
+        }
+
+        [Then(@"Opportunity detail page should be displayed")]
+        public void ThenOpportunityDetailPageShouldBeDisplayed()
+        {
+            opportunitypage.IsOpportunityDetailPageDisplayed();
+        }
+
+        [Then(@"Click on closed won/closed lost bar")]
+        public void ThenClickOnClosedWonClosedLostBar()
+        {
+            opportunitypage.ClickOnCloseLostExpandIcon();
+        }
         //Select all the opportunities checkbox
 
         [When(@"select the all checkbox option")]
@@ -78,5 +96,28 @@ namespace WorkWave.PestPac.TA.Steps
 
 
 
+        [Then(@"Select the closed lost option")]
+        public void ThenSelectTheClosedLostOption()
+        {
+            opportunitypage.ClickOnCloseLostOption();
+        }
+
+        [When(@"Click on save button in closed lost popup")]
+        public void WhenClickOnSaveButtonInClosedLostPopup()
+        {
+            opportunitypage.ClickOnSaveButtonInCloseLostPopup();
+        }
+
+        [Then(@"Select Lost to competitor radio button in close lost popup")]
+        public void ThenSelectLostToCompetitorRadioButtonInCloseLostPopup()
+        {
+            opportunitypage.IsSelectLostCompetitorRadioButton();
+        }
+
+        [Then(@"Opportunity closed validation message should be displayed")]
+        public void ThenOpportunityClosedValidationMessageShouldBeDisplayed()
+        {
+           
+        }
     }
 }
