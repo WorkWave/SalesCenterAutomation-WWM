@@ -46,7 +46,6 @@ Scenario: Verify user can close an opportunity as closed/lost
      | OpportunityStatus | 
      | Closed     
 
-
 @Smoke @Regression @Opportunities @WWM-8442 @WW_OP_003
 Scenario: Verification of multiple records selection on Opportunity List View Page
 	When Mouse hover on sales center side menu
