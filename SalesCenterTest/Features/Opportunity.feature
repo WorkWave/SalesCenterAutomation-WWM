@@ -42,7 +42,9 @@ Scenario: Verify user can close an opportunity as closed/lost
 	When Click on save button in closed lost popup
 	Then Opportunity closed validation message should be displayed
 	
-     | Closed            | 
+   Examples:  
+     | OpportunityStatus | 
+     | Closed     
 
 
 @Smoke @Regression @Opportunities @WWM-8442 @WW_OP_003
