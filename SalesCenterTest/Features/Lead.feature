@@ -65,23 +65,6 @@ Scenario Outline: Verify user can create lead and convert to opportunity
 
 @Smoke @Regression @Leads @WW_LD_004
 Scenario Outline: Verify user able to create new opportunity directly 
-    #When Click on plus icon
-    #And  Click on Add Lead button
-    #Then Add Lead details page should be displayed
-    #And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
-    #And Select the SalesTeam <SalesTeam>
-    #And Select the Owner <Owner> 
-    #And Select the sales funnel <SalesFunnel>
-    #When Click on Save button
-    #Then Lead created validation message should be displayed <ValidationMessage>
-    #And  Click on filters button
-    #And Click on clear filter button
-    #And  Click on Service expand icon
-    #And Click on Add Serivces button
-    #And Select the services <Services>
-    #When Click on Add services button in slider
-    #Then Service should be successfully added
-    #And Click on Close services and product button
     When Click on plus icon
     And  Click on Create opportunity button
     And Search the lead <LeadName>
