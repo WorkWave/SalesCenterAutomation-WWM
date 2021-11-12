@@ -5,7 +5,7 @@ Feature: Login
 @Smoke @WW_LG_001
 Scenario: Login with valid credentials
 	Given Home page
-	When Login attempt
+	When Login attempt 
 	Then Login successful
 
 

@@ -163,7 +163,7 @@ namespace WorkWave.PestPac.TA.Model
                 {
                    
                     ClickListviewButton.Click();
-                    Thread.Sleep(5000);
+                    Thread.Sleep(8000);
                     SUT.Log.DebugFormat("List view button is clicked");
                 }
                 else
