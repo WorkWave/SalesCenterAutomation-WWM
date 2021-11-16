@@ -45,7 +45,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.Name, Using = "company")]
         private IWebElement CompanyNamefield { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.Name, Using = "emailAddress")]
+        [FindsBy(How = How.Name, Using = "emailAddresses[0].emailAddress")]
         private IWebElement EmailNamefield { get { return PageFactory.Load(this); } }
 
 
@@ -198,7 +198,6 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//button[text()='Complete Form']")]
         private IWebElement ClickCompleteFormButton { get { return PageFactory.Load(this); } }
 
-
         [FindsBy(How = How.XPath, Using = "//div[text()='This form has been completed.']")]
         private IWebElement ContractIsAdded { get { return PageFactory.Load(this); } }
 
@@ -252,7 +251,7 @@ namespace WorkWave.PestPac.TA.Model
 
         #region Attach a lead to location
 
-        [FindsBy(How = How.XPath, Using = "//p[text()='autocompany3']/../descendant::button")]
+        [FindsBy(How = How.XPath, Using = "//p[text()='autocompany03']/../descendant::button")]
         private IWebElement ClickBillToExpandButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//a[text()='Match / Create New']")]
@@ -789,6 +788,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceButtonInSlider)))
                 {
                     ClickServiceButtonInSlider.Click();
+                    Thread.Sleep(3000);
                     SUT.Log.DebugFormat("Add service button is clicked in the slider");
                 }
                 else
@@ -1056,7 +1056,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickLaunchFormToCompleteButton)))
                 {
                     ClickLaunchFormToCompleteButton.Click();
-                    Thread.Sleep(15000);
+                    Thread.Sleep(20000);
                     SUT.Log.DebugFormat("Launch form button is clicked");
                 }
                 else
@@ -1071,9 +1071,9 @@ namespace WorkWave.PestPac.TA.Model
         }
 
         public void ClickOnCompleteFormButton()
-        {           
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCompleteFormButton)))
-                {               
+        {
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCompleteFormButton)))
+            {               
                     ClickCompleteFormButton.Click();
                     SUT.Log.DebugFormat("Complete button is clicked");
                 }
@@ -1327,7 +1327,7 @@ namespace WorkWave.PestPac.TA.Model
                 }
                 else
                 {
-                    SUT.Log.ErrorFormat("Match/Create new location is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                    SUT.Log.DebugFormat("Location matched");
                 }
             }
             catch (WebDriverTimeoutException)

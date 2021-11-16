@@ -145,5 +145,37 @@ namespace WorkWave.PestPac.TA.Steps
         {
            
         }
+
+        //Closed won opportunity
+
+        [When(@"Click on Opportunities link in leads page")]
+        public void WhenClickOnOpportunitiesLinkInLeadsPage()
+        {
+            opportunitypage.ClickonOpportunitiesLInkinLeadsPage();
+        }
+
+        [Then(@"Click on View detail page link")]
+        public void ThenClickOnViewDetailPageLink()
+        {
+            opportunitypage.ClickOnViewDetailsLink();
+        }
+
+        [Then(@"Click on again billto expand icon")]
+        public void ThenClickOnAgainBilltoExpandIcon()
+        {
+            opportunitypage.ClickonAgainBilltoexpandicon();
+        }
+
+        [When(@"Select the closed won option")]
+        public void WhenSelectTheClosedWonOption()
+        {
+            opportunitypage.ClickOnCloseWonOption();
+        }
+
+        [Then(@"Click on Close form manager button")]
+        public void ThenClickOnCloseFormManagerButton()
+        {
+            opportunitypage.ClickOnCloseFormManagerButton();
+        }
     }
 }
