@@ -45,7 +45,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.Name, Using = "company")]
         private IWebElement CompanyNamefield { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.Name, Using = "emailAddress")]
+        [FindsBy(How = How.Name, Using = "emailAddresses[0].emailAddress")]
         private IWebElement EmailNamefield { get { return PageFactory.Load(this); } }
 
 
