@@ -53,8 +53,6 @@ namespace WorkWave.PestPac.TA.Steps
             string actualError = loginPage.GetInvalidCredentialsError();
             StringAssert.Contains(expectedError, actualError);
         }
-
-       
         #region hooks
 
         [AfterScenario()]

@@ -55,44 +55,33 @@ Scenario Outline: Verify user can create lead and convert to opportunity
     Then Service should be successfully added
     And Click on Close services and product button
     When Click on convert to opportunity button
-    When Select the lead details <OwnerName> <FunnelStage>  
+    When Select the lead details <OwnerName> <FunnelName> <FunnelStage> 
     Then validation message should be displayed <OpportunityCreated>
  
  Examples:  
      | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName   | Services            | FunnelStage | Ownername  | OpportunityCreated  | OpportunityDeleteConfirmMessage | OpportunityName |
-     | Automation Labs | Labs01   | autocompany01 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Opportunity Deleted             | Automation Labs |
+     | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Opportunity Deleted             | Automation Labs |
 
 
 @Smoke @Regression @Leads @WW_LD_004
 Scenario Outline: Verify user able to create new opportunity directly 
     When Click on plus icon
-    And  Click on Add Lead button
-    Then Add Lead details page should be displayed
-    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
-    And Select the SalesTeam <SalesTeam>
-    And Select the Owner <Owner> 
-    And Select the sales funnel <SalesFunnel>
-    When Click on Save button
-    Then Lead created validation message should be displayed <ValidationMessage>
-    And  Click on filters button
-    And Click on clear filter button
-    And  Click on Service expand icon
-    And Click on Add Serivces button
+    And  Click on Create opportunity button
+    And Search the lead <LeadName>
+    When Click on Create opportunity button in create opportunity page 
+    Then Create opportunity slider should be displayed
+    When Click on Apply button
+    Then Add opportunity page should be displayed
+    And click on add additional service or product button
     And Select the services <Services>
     When Click on Add services button in slider
     Then Service should be successfully added
-    And Click on Close services and product button
-    When Click on plus icon
-    And  Click on Create opportunity button
-    And Search the lead <LeadName>
-    When Click on Create opportunity button in create opportunity page  
     When Select the lead details <OwnerName> <FunnelName> <FunnelStage>
     Then validation message should be displayed <OpportunityCreated>
  
-
  Examples:  
-     | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Services            | FunnelStage | Ownername  | FunnelName        | OpportunityCreated  | OpportunityDeleteConfirmMessage | OpportunityName | LeadName |
-     | Automation Labs | Labs02   | autocompany02 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments | Stage1      | Unassigned | Test Sales funnel | Opportunity created | Opportunity Deleted             | Automation Labs | Automation    |
+     | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Services            | FunnelStage | Ownername  | FunnelName        | OpportunityCreated  |  LeadName   |
+     | Automation Labs | Labs02   | autocompany02 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments | Stage1      | Unassigned | Test Sales funnel | Opportunity created |  Automation |
 
 
 

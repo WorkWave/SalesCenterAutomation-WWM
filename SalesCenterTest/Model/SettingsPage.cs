@@ -896,7 +896,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 SUT.Log.Debug("Validation  message is displayed");
                 Assert.True(ValidationConfirm_Txt.Text.Contains(message), "Validation message is not matching");
-                Thread.Sleep(8000);
+                Thread.Sleep(10000);
                 return true;
             }
             else

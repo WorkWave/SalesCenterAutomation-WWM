@@ -10,6 +10,7 @@ using OpenQA.Selenium.Interactions;
 using System.Threading;
 using NUnit.Framework;
 using System.Reflection;
+using OpenQA.Selenium.Chrome;
 
 namespace WorkWave.PestPac.TA.Model
 {
@@ -69,7 +70,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[text()='Closed Won / Closed Lost']")]
         private IWebElement ClickCloseLostExpandIcon { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Closed Lost...')]")]
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Closed Lost...')]/..")]
         private IWebElement ClickCloseLostOption { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[text()='Lost to Competitor']")]
@@ -108,8 +109,24 @@ namespace WorkWave.PestPac.TA.Model
 
         #endregion reopen closed won/lost opportunities through card view 
 
+        #region  closed won opportunity
 
-      
+        [FindsBy(How = How.XPath, Using = "//div[@id='contacts-popover']/div[3]/div[1]/div[1]/div[1]/p[1]")]
+        private IWebElement ClickAnywhere { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Closed Won']")]
+        private IWebElement ClickCloseWonOption { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Close Form Manager']/..")]
+        private IWebElement ClickCloseFormmanagerButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//p[text()='Opportunities']")]
+        private IWebElement ClickOpportunitiesLinkInLeadsPage { get { return PageFactory.Load(this); } }
+
+
+       
+        #endregion closed won opportunity
+
         #endregion PageFactory
 
         private readonly string PageHeaderText = "Opportunities";
@@ -163,7 +180,7 @@ namespace WorkWave.PestPac.TA.Model
                 {
                    
                     ClickListviewButton.Click();
-                    Thread.Sleep(5000);
+                    Thread.Sleep(8000);
                     SUT.Log.DebugFormat("List view button is clicked");
                 }
                 else
@@ -559,7 +576,84 @@ namespace WorkWave.PestPac.TA.Model
             {
                 SUT.Log.ErrorFormat("Reopen option is not clicked");
             }
+        }
 
+        //Closed won opportunity
+
+        public void ClickonAgainBilltoexpandicon()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAnywhere)))
+                {
+                    ClickAnywhere.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Ok button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Ok button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Ok button is not clicked");
+            }
+        }
+
+        public void ClickOnCloseWonOption()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickCloseWonOption)))
+                {
+                    ClickCloseWonOption.Click();
+                    Thread.Sleep(3000);
+                    SUT.Log.DebugFormat("Close lost option is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Close lost option is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Close lost option is not clicked");
+            }
+        }
+
+        public void ClickOnCloseFormManagerButton()
+        {
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCloseFormmanagerButton)))
+            {
+                ClickCloseFormmanagerButton.Click();
+                SUT.Log.DebugFormat("Complete button is clicked");
+            }
+            else
+            {
+                SUT.Log.ErrorFormat("Complete button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        public void ClickonOpportunitiesLInkinLeadsPage()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickOpportunitiesLinkInLeadsPage)))
+                {
+                    ClickOpportunitiesLinkInLeadsPage.Click();
+                    Thread.Sleep(5000);
+                    SUT.Log.DebugFormat("Opportunities link is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Opportunities link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Opportunities link is not clicked");
+            }
         }
     }
 }

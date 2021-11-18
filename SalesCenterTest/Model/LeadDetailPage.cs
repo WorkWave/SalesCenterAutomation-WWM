@@ -45,7 +45,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.Name, Using = "company")]
         private IWebElement CompanyNamefield { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.Name, Using = "emailAddress")]
+        [FindsBy(How = How.Name, Using = "emailAddresses[0].emailAddress")]
         private IWebElement EmailNamefield { get { return PageFactory.Load(this); } }
 
 
@@ -94,7 +94,7 @@ namespace WorkWave.PestPac.TA.Model
 
         #region Create opportunity
 
-        [FindsBy(How = How.XPath, Using = "//p[contains(text(),'autocompany03')]/../../../following-sibling::div")]
+        [FindsBy(How = How.XPath, Using = "//p[contains(text(),'autocompany03')]/../../../following-sibling::div[1]")]
         private IWebElement ClickServiceExapndIcon { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[text()='Add Services']/../..")]
@@ -112,7 +112,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//span[text()='Close Services and Products']/..")]
         private IWebElement CloseServicesButton { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//p[text()='View Services Added']")]
+        [FindsBy(How = How.XPath, Using = "//span[text()='Convert to Opportunity'][1]/..")]
         private IWebElement ClickConvertOpportunityButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[text()='Add Service']/..")]
@@ -152,12 +152,21 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//span[text()='Create Opportunity'])[2]/..")]
         private IWebElement ClickCreateOpportunityButtonInOppPage { get { return PageFactory.Load(this); } }
 
+        [FindsBy(How = How.XPath, Using = "//div[text()='Choose one or more service locations related to this Bill-to']/../preceding-sibling::div")]
+        private IWebElement CreateOpportunityPageIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//p[text()='Add Opportunity']")]
+        private IWebElement AddOpportunityPageIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Add Additional Service or Product']/..")]
+        private IWebElement ClickAddAdditionalServiceOrProductButton { get { return PageFactory.Load(this); } }
+      
         #endregion create opportunity directly
 
 
         #region Delete Opportunity
 
-        [FindsBy(How = How.XPath, Using = "(//p[text()='Opportunities'])[2]")]
+     [FindsBy(How = How.XPath, Using = "(//p[text()='Opportunities'])[2]")]
         private IWebElement ClickOpportunitiesLink { get { return PageFactory.Load(this); } }
 
 
@@ -188,7 +197,6 @@ namespace WorkWave.PestPac.TA.Model
 
         [FindsBy(How = How.XPath, Using = "//button[text()='Complete Form']")]
         private IWebElement ClickCompleteFormButton { get { return PageFactory.Load(this); } }
-
 
         [FindsBy(How = How.XPath, Using = "//div[text()='This form has been completed.']")]
         private IWebElement ContractIsAdded { get { return PageFactory.Load(this); } }
@@ -243,7 +251,7 @@ namespace WorkWave.PestPac.TA.Model
 
         #region Attach a lead to location
 
-        [FindsBy(How = How.XPath, Using = "//p[text()='autocompany3']/../descendant::button")]
+        [FindsBy(How = How.XPath, Using = "//p[text()='autocompany03']/../descendant::button")]
         private IWebElement ClickBillToExpandButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//a[text()='Match / Create New']")]
@@ -288,9 +296,15 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[@data-test-id='editBtn']")]
         private IWebElement ClickEditOption { get { return PageFactory.Load(this); } }
 
+        [FindsBy(How = How.XPath, Using = "//p[text()='View Services Added']")]
+        private IWebElement ClickViewServicesAddedLink { get { return PageFactory.Load(this); } }
 
 
-      
+        
+
+
+
+
         #endregion Update service
 
 
@@ -465,6 +479,7 @@ namespace WorkWave.PestPac.TA.Model
                     ClickOwnerAssigneeField.Click();
                     SalesCenterUtility.ScrollToElement(SelectOwnerAssigneeName);
                     SelectOwnerAssigneeName.Click();
+                    Thread.Sleep(5000);
                     SUT.Log.DebugFormat("Owner selected from the dropdown");
                 }
                 else
@@ -485,10 +500,11 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickFunnelField)))
                 {
-                    SalesCenterUtility.ScrollToElement(ClickFunnelField);
+                   // SalesCenterUtility.ScrollToElement(ClickFunnelField);
                     ClickFunnelField.Click();
                     SalesCenterUtility.ScrollToElement(SelectFunnelName);
                     SelectFunnelName.Click();
+                    Thread.Sleep(4000);
                     SUT.Log.DebugFormat("Sales funnel selected from the dropdown");
                 }
                 else
@@ -509,6 +525,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickSaveButton)))
                 {
                     ClickSaveButton.Click();
+                    Thread.Sleep(5000);
                     SUT.Log.DebugFormat("Save button is clicked");
                 }
                 else
@@ -706,7 +723,7 @@ namespace WorkWave.PestPac.TA.Model
         private readonly string ServicePage = "ANT";
         public bool IsServiceAdded()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => servicePage)))
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => servicePage),TimeSpan.FromSeconds(10)))
             {
                 if (servicePage.Text.TrimStart().StartsWith(ServicePage))
                 {
@@ -729,6 +746,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => CloseServicesButton)))
                 {
+                    Thread.Sleep(5000);
                     CloseServicesButton.Click();
                     SUT.Log.DebugFormat("Closeservice and product button is clicked");
                 }
@@ -749,7 +767,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickConvertOpportunityButton)))
                 {                  
                     ClickConvertOpportunityButton.Click();
-                    Thread.Sleep(5000);
+                    Thread.Sleep(8000);
                     SUT.Log.DebugFormat("Closeservice and product button is clicked");
                 }
                 else
@@ -770,6 +788,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceButtonInSlider)))
                 {
                     ClickServiceButtonInSlider.Click();
+                    Thread.Sleep(3000);
                     SUT.Log.DebugFormat("Add service button is clicked in the slider");
                 }
                 else
@@ -808,7 +827,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => StageField)))
                 {
-                    SalesCenterUtility.ScrollToElement(StageField);
+                 //   SalesCenterUtility.ScrollToElement(StageField);
                     StageField.Click();
                     SelectStageName.Click();
                     SUT.Log.DebugFormat("Stage is selected from the droddown");
@@ -846,31 +865,7 @@ namespace WorkWave.PestPac.TA.Model
                 SUT.Log.ErrorFormat("Owner is not selected from the dropdown");
             }
         }
-
-        //public void SelectFunnelName()
-        //{
-        //    try
-        //    {
-        //        if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => FunnelField)))
-        //        {
-        //            SalesCenterUtility.ScrollToElement(FunnelField);
-        //            FunnelField.Click();
-        //            Thread.Sleep(2000);
-        //            FunnelName.Click();
-        //            SUT.Log.DebugFormat("Owner selected from the droddown");
-        //        }
-        //        else
-        //        {
-        //            SUT.Log.ErrorFormat("Owner is not selected from the dropdown {0}", MethodBase.GetCurrentMethod().Name);
-        //        }
-        //    }
-        //    catch (WebDriverTimeoutException)
-        //    {
-        //        SUT.Log.ErrorFormat("Owner is not selected from the dropdown");
-        //    }
-        //}
-
-
+        
         public void VerifyOpportunitiesLink()
         {
             Actions actions = new Actions(SUT.Web.WebDriver);
@@ -887,6 +882,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAddLeadButton)))
                 {
                     ClickCreateOpportunityButton.Click();
+                    Thread.Sleep(5000);
                     SUT.Log.DebugFormat("Create opportunity button is clicked");
                 }
                 else
@@ -926,6 +922,67 @@ namespace WorkWave.PestPac.TA.Model
                 SUT.Log.ErrorFormat("Create opportunity button is not clicked");
             }
         }
+
+        public void IsCreateOpportunitySliderDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => CreateOpportunityPageIsDisplayed)))
+                {
+                    CreateOpportunityPageIsDisplayed.Displayed.ToString();
+                    SUT.Log.DebugFormat("Create opportunity slider is diplayed");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Create opportunity slider is diplayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Create opportunity slider is diplayed");
+            }
+        }
+
+        public void IsAddOpportunityPageIsDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => AddOpportunityPageIsDisplayed),TimeSpan.FromSeconds(10)))
+                {
+                    AddOpportunityPageIsDisplayed.Displayed.ToString();
+                    SUT.Log.DebugFormat("Create opportunity slider is diplayed");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Create opportunity slider is diplayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Create opportunity slider is diplayed");
+            }
+        }
+
+        public void ClickAddAdditionalServiceorProductButton()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAddAdditionalServiceOrProductButton)))
+                {
+                    ClickAddAdditionalServiceOrProductButton.Click();
+                    SUT.Log.DebugFormat("Add additional service or product button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Add additional service or product button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Add additional service or product button is not clicked");
+            }
+        }
+
 
         //Add contract to the elad
 
@@ -999,7 +1056,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickLaunchFormToCompleteButton)))
                 {
                     ClickLaunchFormToCompleteButton.Click();
-                    Thread.Sleep(15000);
+                    Thread.Sleep(20000);
                     SUT.Log.DebugFormat("Launch form button is clicked");
                 }
                 else
@@ -1014,9 +1071,9 @@ namespace WorkWave.PestPac.TA.Model
         }
 
         public void ClickOnCompleteFormButton()
-        {           
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCompleteFormButton)))
-                {               
+        {
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCompleteFormButton)))
+            {               
                     ClickCompleteFormButton.Click();
                     SUT.Log.DebugFormat("Complete button is clicked");
                 }
@@ -1270,7 +1327,7 @@ namespace WorkWave.PestPac.TA.Model
                 }
                 else
                 {
-                    SUT.Log.ErrorFormat("Match/Create new location is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                    SUT.Log.DebugFormat("Location matched");
                 }
             }
             catch (WebDriverTimeoutException)
@@ -1464,6 +1521,26 @@ namespace WorkWave.PestPac.TA.Model
             catch (WebDriverTimeoutException)
             {
                 SUT.Log.ErrorFormat("Update service button is not clicked");
+            }
+        }
+
+        public void ClickOnViewServicesAddedLink()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickViewServicesAddedLink)))
+                {
+                    ClickViewServicesAddedLink.Click();
+                    SUT.Log.DebugFormat("View services added link is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("View services added link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("View services added link is not clicked");
             }
         }
     }

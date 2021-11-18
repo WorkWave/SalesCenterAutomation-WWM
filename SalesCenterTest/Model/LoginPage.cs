@@ -95,7 +95,7 @@ namespace WorkWave.PestPac.TA.Model
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => LoginButton)))
             {
                 LoginButton.Click();
-                Thread.Sleep(10000);
+                Thread.Sleep(5000);
                 return true;
             }
             else

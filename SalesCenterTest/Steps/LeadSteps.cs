@@ -177,7 +177,7 @@ namespace WorkWave.PestPac.TA.Steps
         [When(@"Click on view services added link")]
         public void WhenClickOnViewServicesAddedLink()
         {
-            leadspage.ClickOnConvertOpportunityButton();
+            leadspage.ClickOnViewServicesAddedLink();
         }
 
         [Then(@"Manage services and products page should be displayed")]
@@ -235,6 +235,25 @@ namespace WorkWave.PestPac.TA.Steps
             leadspage.ClickonCreateOpportunityButtonInOppPage();
         }
 
+        [Then(@"Create opportunity slider should be displayed")]
+        public void ThenCreateOpportunitySliderShouldBeDisplayed()
+        {
+            leadspage.IsCreateOpportunitySliderDisplayed();
+        }
+       
+        [Then(@"Add opportunity page should be displayed")]
+        public void ThenAddOpportunityPageShouldBeDisplayed()
+        {
+            leadspage.IsAddOpportunityPageIsDisplayed();
+        }
+
+        [Then(@"click on add additional service or product button")]
+        public void ThenClickOnAddAdditionalServiceOrProductButton()
+        {
+            leadspage.ClickAddAdditionalServiceorProductButton();
+        }
+
+
         //Add contract to the lead
 
         [When(@"Click on send contract button")]
@@ -255,7 +274,6 @@ namespace WorkWave.PestPac.TA.Steps
             leadspage.SelecttheTemplateName();
             leadspage.ClickOnLaunchFormToCompleteButton();
         }
-
 
         [Then(@"Click on complete form button")]
         public void ThenIClickOnCompleteFormButton()
