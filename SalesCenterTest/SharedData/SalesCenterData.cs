@@ -10,10 +10,10 @@
             public Leads Leads { get; set; }
 
 
-            public Branch Branch { get; set; }
+         
 
 
-            public CompanySetup CompanySetup { get; set; }
+           
 
 
 

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
 using WorkWave.PestPac.TA.Model;
+using WorkWave.PestPac.TA.SharedData;
 using WorkWave.TA.TestEngine;
 
 namespace WorkWave.PestPac.TA.Steps
@@ -11,6 +13,7 @@ namespace WorkWave.PestPac.TA.Steps
     [Binding]
     public class OpportunitySteps : TestSteps
     {
+        private PestPacData pestPacData;
         OpportunityPage opportunitypage = new OpportunityPage();
 
         [When(@"Click on Opportunities link")]
@@ -177,5 +180,63 @@ namespace WorkWave.PestPac.TA.Steps
         {
             opportunitypage.ClickOnCloseFormManagerButton();
         }
+
+        //credit card details
+
+        [Then(@"Click on Capture card button")]
+        public void ThenClickOnCaptureCardButton()
+        {
+            opportunitypage.ClickonCaptureCardButton();
+        }
+
+        [Then(@"Enter the card holder name (.*)")]
+        public void ThenEnterTheCardHolderName(string name)
+        {
+            opportunitypage.IsCardNameEntered(name);
+        }
+
+
+        [Then(@"Click on Enter button")]
+        public void ThenClickOnEnterButton()
+        {
+            opportunitypage.ClickOnEnterButton();
+        }
+
+        //[Then(@"Enter the card details (.*)")]
+        //public void ThenEnterTheCardDetails(string cardnumber)
+        //{
+        //    opportunitypage.EnterCardNumber(cardnumber);
+        //}
+
+        [Then(@"Enter the card details (.*)")]
+        public void ThenEnterTheCardDetails(string cardnumber)
+        {
+            opportunitypage.EnterCardNumber(cardnumber);
+        }
+
+
+
+
+
+
+        [When(@"Click on Add credit card button")]
+        public void WhenClickOnAddCreditCardButton()
+        {
+            opportunitypage.ClickOnAddCreditCardButton();
+        }
+
+        [Then(@"Click on Service expand icon in opportunity page")]
+        public void ThenClickOnServiceExpandIconInOpportunityPage()
+        {
+            opportunitypage.ClickOnServiceExpandIconForMatchedOpportunity();
+        }
+
+        [Then(@"Select the expiration month and year")]
+        public void ThenSelectTheExpirationMonthAndYear()
+        {
+            opportunitypage.EnterthedateandYear();
+        }
+
+
     }
 }
