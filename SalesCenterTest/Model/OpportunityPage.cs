@@ -11,6 +11,7 @@ using System.Threading;
 using NUnit.Framework;
 using System.Reflection;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 
 namespace WorkWave.PestPac.TA.Model
 {
@@ -123,9 +124,39 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//p[text()='Opportunities']")]
         private IWebElement ClickOpportunitiesLinkInLeadsPage { get { return PageFactory.Load(this); } }
 
-
-       
         #endregion closed won opportunity
+
+        #region Add credit card details
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Capture Card']/../..")]
+        private IWebElement ClickCaptureCardButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Name, Using = "name")]
+        private IWebElement EnterCardName { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Enter']/..")]
+        private IWebElement ClickEnterButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//p[contains(text(),'Add CC for API Auto CC Refund')]/../../../following-sibling::div[1]")]
+        private IWebElement ClickServiceExapndIconForMatchedOpportunity { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Id, Using = "cardNumber")]
+        private IWebElement CardNumber { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Id, Using = "ddlExpirationMonth")]
+        private IWebElement selmonth { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Id, Using = "ddlExpirationYear")]
+        private IWebElement selyear { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Id, Using = "submit")]
+        private IWebElement ClickAddcreditCardButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.CssSelector, Using = "iframe[src*='certtransaction.hostedpayments']")]
+        private IWebElement IframeName { get { return PageFactory.Load(this); } }
+
+        
+        #endregion  Add credit card details
 
         #endregion PageFactory
 
@@ -655,5 +686,142 @@ namespace WorkWave.PestPac.TA.Model
                 SUT.Log.ErrorFormat("Opportunities link is not clicked");
             }
         }
+
+        //Enter the card details
+
+        public void ClickonCaptureCardButton()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCaptureCardButton)))
+                {
+                    SalesCenterUtility.ScrollToElement(ClickCaptureCardButton);
+                    ClickCaptureCardButton.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Opportunities link is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Opportunities link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Opportunities link is not clicked");
+            }
+        }
+
+        public void IsCardNameEntered(string name)
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => EnterCardName)))
+                {
+                    EnterCardName.SendKeys(name);                  
+                    SUT.Log.DebugFormat("Card name is entered");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Card name is not entered {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Card name is not entered");
+            }
+        }
+
+        public void ClickOnEnterButton()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickEnterButton)))
+                {
+                    ClickEnterButton.Click();
+                    Thread.Sleep(15000);
+                    SUT.Log.DebugFormat("Enter button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Enter button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Enter button is not clicked");
+            }
+        }
+
+        public void ClickOnServiceExpandIconForMatchedOpportunity()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceExapndIconForMatchedOpportunity)))
+                {
+                    ClickServiceExapndIconForMatchedOpportunity.Click();
+                    Thread.Sleep(5000);
+                    SUT.Log.DebugFormat("Service expand icon is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Service expand icon is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Service expand icon is not clicked");
+            }
+        }
+
+        public void EnterCardNumber(string cardnumber)
+        {
+            if (SalesCenterUtility.Frame_SafeSwitch(IframeName, () => CardNumber, 10))
+            {
+                SUT.Log.Debug("Safely switched to the payment iFrame");               
+                    CardNumber.Click();
+                    CardNumber.SendKeys(cardnumber);
+                    SUT.Log.DebugFormat("Card number is entered");
+           }  
+        }
+
+       
+        public void EnterthedateandYear()
+            
+        {
+
+            SelectElement month = new SelectElement(selmonth);
+            month.SelectByIndex(3);
+            Thread.Sleep(2000);
+
+            SelectElement year = new SelectElement(selyear);
+            year.SelectByIndex(5);
+            Thread.Sleep(1000);
+        }
+
+        public void ClickOnAddCreditCardButton()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAddcreditCardButton)))
+                {
+                    ClickAddcreditCardButton.Click();
+                    Thread.Sleep(5000);
+                    SUT.Log.DebugFormat("Add credit card button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Add credit card button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Add credit card button is not clicked");
+            }
+        }
+
+
+
+
+
     }
 }
