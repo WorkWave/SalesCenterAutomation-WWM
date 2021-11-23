@@ -155,8 +155,33 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.CssSelector, Using = "iframe[src*='certtransaction.hostedpayments']")]
         private IWebElement IframeName { get { return PageFactory.Load(this); } }
 
-        
+
         #endregion  Add credit card details
+
+        #region Bulk  Reassign opportunitues
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Re-Assign']")]
+        private IWebElement ClickReassignButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//p[text()='reassign']")]
+        private IWebElement ReassignSliderIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//div[@id='mui-component-select-salesTeamId']")]
+        private IWebElement ClickSalesTeamField { get { return PageFactory.Load(this); } }
+
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='Auto Test Sales Team']")]
+        private IWebElement SalesTeamNameInReassignSlider { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Id, Using = "mui-component-select-assigneeId")]
+        private IWebElement ClickSalesTeamMemberField { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='Unassigned']")]
+        private IWebElement SalesTeamMemberInReassignSlider { get { return PageFactory.Load(this); } }
+
+     
+        #endregion Bulk reaasign opportunities
+
 
         #endregion PageFactory
 
@@ -819,9 +844,91 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
+        //Reassign sales team
 
+        public void ClickOnReassignButton()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickReassignButton)))
+                {
+                    ClickReassignButton.Click();
+                    SUT.Log.DebugFormat("Reassign button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Reassign button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Reassign button is not clicked");
+            }
+        }
 
+        public void IsReassignSliderDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ReassignSliderIsDisplayed), TimeSpan.FromSeconds(10)))
+                {
+                    ReassignSliderIsDisplayed.Displayed.ToString();
+                    Thread.Sleep(8000);
+                    SUT.Log.DebugFormat("Reassign slider is diplayed");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Reassign slider is not diplayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Reassign slider is not diplayed");
+            }
+        }
 
+        public void SelectSalesTeamInReassignSlider()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSalesTeamField)))
+                {
+                    ClickSalesTeamField.Click();
+                    SalesTeamNameInReassignSlider.Click();
+                    Thread.Sleep(5000);
+                    SUT.Log.DebugFormat("Sales team is selected");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Sales team is not selected {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Sales team is not selected");
+            }
+        }
 
+        public void SelectSalesTeamMemberInReassignSlider()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSalesTeamMemberField)))
+                {
+                    ClickSalesTeamMemberField.Click();
+                    SalesTeamMemberInReassignSlider.Click();
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("Sales team member is assigned");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Sales team member is not assigned {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Sales team member is not assigned");
+            }
+        }
     }
 }

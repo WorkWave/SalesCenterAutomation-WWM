@@ -183,4 +183,23 @@ Scenario Outline: Veriy user able to add payment card for a matched opportunity 
      | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName    | LocationName | ServiceLocation     | LocationMatchedValMsg                  | Template                 | Services            | OpportunityCreated  | CardHolderName | CardNumber        | ValMessage                         |
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created | Residential Service Form | ANT- Ant Treatments | Opportunity created | John Smith     | 4111111111111111  | Successfully added payment method. |           
 	
-    
+   
+@Smoke @Regression @Opportunities @WWM-8445 @WW_OP_007
+Scenario Outline: Verification of Bulk Re-assignment of Opportunities which are associated with same branch Sales Team
+	When Mouse hover on sales center side menu
+    And Click on Opportunities link
+    Then Opportunities page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+	And Click on List view button
+	And Select the multiple opportunities
+	When Click on Reassign button
+	Then Reassign slider should be displayed
+    And Select the same branch SalesTeam in reassign slider <SalesTeam>
+    And Select the team member in reassign slider <SalesTeamMember>
+	When Click on Save button
+   # Then validation message should be displayed
+
+  Examples:  
+     | SalesTeam             | SalesTeamMember |
+     | Auto Test Sales Team  | unassigned      |
