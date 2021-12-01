@@ -13,8 +13,9 @@ namespace WorkWave.PestPac.TA.Steps
     [Binding]
     public class OpportunitySteps : TestSteps
     {
-        private PestPacData pestPacData;
+      
         OpportunityPage opportunitypage = new OpportunityPage();
+        LeadDetailPage leadspage = new LeadDetailPage();
 
         [When(@"Click on Opportunities link")]
         public void WhenClickOnOpportunitiesLink()
@@ -214,11 +215,6 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.EnterCardNumber(cardnumber);
         }
 
-
-
-
-
-
         [When(@"Click on Add credit card button")]
         public void WhenClickOnAddCreditCardButton()
         {
@@ -236,6 +232,37 @@ namespace WorkWave.PestPac.TA.Steps
         {
             opportunitypage.EnterthedateandYear();
         }
+
+        //Reassign the sales team
+
+        [When(@"Click on Reassign button")]
+        public void WhenClickOnReassignButton()
+        {
+            opportunitypage.ClickOnReassignButton();
+        }
+
+        [Then(@"Reassign slider should be displayed")]
+        public void ThenReassignSliderShouldBeDisplayed()
+        {
+            opportunitypage.IsReassignSliderDisplayed();
+        }
+
+        [Then(@"Select the same branch SalesTeam in reassign slider (.*)")]
+        public void ThenSelectTheSameBranchSalesTeamInReassignSliderAutoTestSalesTeam(string salesteam)
+        {
+            opportunitypage.SelectSalesTeamInReassignSlider();
+        }
+
+
+        [Then(@"Select the team member in reassign slider (.*)")]
+        public void ThenSelectTheTeamMemberInReassignSliderUnassigned(string salesteammember)
+        {
+            opportunitypage.SelectSalesTeamMemberInReassignSlider();
+        }
+
+
+
+
 
 
     }
