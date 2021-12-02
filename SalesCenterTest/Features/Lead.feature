@@ -210,3 +210,39 @@ Scenario: Verification of multiple records selection on Leads List View Page
 	And Click on List view button
 	When select the all checkbox option
 	Then checkbox should be selected
+
+
+@Smoke @Regression @Leads @WWM-8424 @WW_LD_0010
+Scenario Outline: Verify user able to create a new location in PP from a lead card   
+    When Click on plus icon
+    And  Click on Add Lead button
+    Then Add Lead details page should be displayed
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
+    And Select the SalesTeam <SalesTeam>
+    And Select the Owner <Owner>
+    And Select the sales funnel <SalesFunnel>
+    When Click on Save button
+    Then Lead created validation message should be displayed <ValidationMessage>
+    And  Click on filters button
+    And Click on clear filter button
+    And Click on Bill to locations expand icon  
+    When Click on Match or create link
+    Then Match or create new location slider should be displayed
+    When Click on Create new location tab
+    Then Create new location page should be displayed
+    When Click on Edit button for bill to location
+    Then Update location slider should be displayed
+    And Enter the address details <Address> <City> <State> <PostalCode>
+    When Click on Save button update location slider
+    Then Location matched validation message should be displayed <LocationMatchedValMsg>
+    When Click on Edit button for service location
+    Then Update location slider should be displayed
+    And Enter the address details <Address> <City> <State> <PostalCode>
+    When Click on Save button update location slider
+    Then Location matched validation message should be displayed <LocationMatchedValMsg>
+    When Click on Save button
+    Then Location created successfully message should be displayed <LocationValMsg>
+    
+ Examples:  
+     | FirstName | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Address        | City    | State | PostalCode | LocationMatchedValMsg                           | LocationValMsg                 |
+     | John      | Smith    | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | 200 street san | chester | PA    | 93013-373  | A Service Location has been added successfully. | Locations Created Successfully |
