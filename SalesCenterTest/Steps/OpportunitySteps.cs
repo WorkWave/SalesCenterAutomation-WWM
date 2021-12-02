@@ -260,6 +260,14 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.SelectSalesTeamMemberInReassignSlider();
         }
 
+        //Opportunity close win when pp location not matched
+
+        [Then(@"Closing requirements missing popup should be displayed")]
+        public void ThenClosingRequirementsMissingPopupShouldBeDisplayed()
+        {
+            opportunitypage.IsCloseRequirementMissingPopupDisplayed();
+            opportunitypage.ClickOnCloseButtonInPopup();
+        }
 
 
 
