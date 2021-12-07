@@ -408,7 +408,7 @@ namespace WorkWave.PestPac.TA.Steps
         [Then(@"Location matched validation message should be displayed (.*)")]
         public void ThenLocationMatchedValidationMessageShouldBeDisplayed(string message)
         {
-            settingpage.VerifySalesTeamCreatedConfirmMsg(message);
+            leadspage.VerifyServiceLocationAddedConfirmMsg(message);
         }
 
         //Update the servcie in opportunity form
@@ -435,8 +435,61 @@ namespace WorkWave.PestPac.TA.Steps
         [When(@"click on close convert lead button")]
         public void WhenClickOnCloseConvertLeadButton()
         {
-            
+           
         }
+
+
+        //Create a new location in PP
+
+        [When(@"Click on Create new location tab")]
+        public void WhenClickOnCreateNewLocationTab()
+        {
+            leadspage.ClickOnCreateNewLocationTab();
+        }
+
+        [Then(@"Create new location page should be displayed")]
+        public void ThenCreateNewLocationPageShouldBeDisplayed()
+        {
+            leadspage.IsCreateNewLocationDisplayed();
+        }
+
+        [When(@"Click on Edit button for bill to location")]
+        public void WhenClickOnEditButtonForBillToLocation()
+        {
+            leadspage.ClickOnBillToEditButton();
+        }
+
+        [Then(@"Update location slider should be displayed")]
+        public void ThenUpdateLocationSliderShouldBeDisplayed()
+        {
+            leadspage.IsUpdateLocationSliderDisplayed();
+        }
+
+        [Then(@"Enter the address details (.*) (.*) (.*) (.*)")]
+        public void ThenEnterTheAddressDetails(string address, string city, string state, string postalcode)
+        {
+            leadspage.EnterLocationAddressDetails(address,city,state,postalcode);
+        }
+
+        [When(@"Click on Edit button for service location")]
+        public void WhenClickOnEditButtonForServiceLocation()
+        {
+            leadspage.ClickOnServiceLocationEditButton();
+        }
+
+        [When(@"Click on Save button update location slider")]
+        public void WhenClickOnSaveButtonUpdateLocationSlider()
+        {
+            leadspage.ClickOnSaveButtonInUpdateLocationSlider();
+        }
+
+        [Then(@"Location created successfully message should be displayed (.*)")]
+        public void ThenLocationCreatedSuccessfullyMessageShouldBeDisplayedLocationsCreatedSuccessfully(string message)
+        {
+            leadspage.VerifyNewLocationCreatedConfirmMsg(message);
+        }
+
+
 
 
     }

@@ -203,3 +203,42 @@ Scenario Outline: Verification of Bulk Re-assignment of Opportunities which are 
   Examples:  
      | SalesTeam             | SalesTeamMember |
      | Auto Test Sales Team  | unassigned      |
+
+@Smoke @Regression @Opportunities @WWM-8432 @WW_OP_008
+Scenario Outline: Veriy user not able to close win if opportunity is not matched to any PP location
+	When Click on plus icon 
+    And  Click on Add Lead button
+    Then Add Lead details page should be displayed
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
+    And Select the SalesTeam <SalesTeam>
+    And Select the Owner <Owner>
+    And Select the sales funnel <SalesFunnel>
+    When Click on Save button
+    Then Lead created validation message should be displayed <ValidationMessage>
+    And  Click on filters button
+    And Click on clear filter button
+    And Click on Service expand icon
+    And Click on Add Serivces button
+    And Select the services <Services>
+    When Click on Add services button in slider
+    Then Service should be successfully added
+    And Click on Close services and product button
+    When Click on convert to opportunity button
+    When Select the lead details <OwnerName> <FunnelName> <FunnelStage> 
+    Then validation message should be displayed <OpportunityCreated>
+    When Mouse hover on sales center side menu
+    And Click on Opportunities link in leads page 
+    Then Opportunities page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+    And Click on View detail page link
+    And Click on closed won/closed lost bar
+    When Select the closed won option
+    Then Closing requirements missing popup should be displayed
+    
+ Examples:  
+     | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName    | LocationName |  Services             | OpportunityCreated  | 
+     | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      |   ANT- Ant Treatments | Opportunity created |           
+	
+
+

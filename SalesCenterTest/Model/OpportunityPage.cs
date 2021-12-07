@@ -179,10 +179,18 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//li[text()='Unassigned']")]
         private IWebElement SalesTeamMemberInReassignSlider { get { return PageFactory.Load(this); } }
 
-     
+
         #endregion Bulk reaasign opportunities
 
+        #region Close won the opportunity without pp location matched
 
+        [FindsBy(How = How.XPath, Using = "//h2[text()='Closing Requirements Missing']")]
+        private IWebElement CloseRequirementMissingPopup { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='CLOSE']/..")]
+        private IWebElement ClickCloseButton { get { return PageFactory.Load(this); } }
+       
+        #endregion Close won the opportunity without pp location matched
         #endregion PageFactory
 
         private readonly string PageHeaderText = "Opportunities";
@@ -930,5 +938,47 @@ namespace WorkWave.PestPac.TA.Model
                 SUT.Log.ErrorFormat("Sales team member is not assigned");
             }
         }
+
+        public void IsCloseRequirementMissingPopupDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => CloseRequirementMissingPopup)))
+                {
+                    CloseRequirementMissingPopup.Displayed.ToString();
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("Close requirements missing popup is displayed ");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Close requirements missing popup is not displayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Close requirements missing popup is not displayed");
+            }
+        }
+
+        public void ClickOnCloseButtonInPopup()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCloseButton)))
+                {
+                    ClickCloseButton.Click();
+                    SUT.Log.DebugFormat("Close button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Close button is not clicked{0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Close button is not clicked");
+            }
+        }
+
     }
 }

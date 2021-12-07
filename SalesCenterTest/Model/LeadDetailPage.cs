@@ -277,7 +277,6 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//li[contains(text(),'3600 STATE ROUTE 66')]")]
         private IWebElement SelectServiceLocationName { get { return PageFactory.Load(this); } }
 
-
         #endregion Attach a lead to location
 
 
@@ -300,12 +299,54 @@ namespace WorkWave.PestPac.TA.Model
         private IWebElement ClickViewServicesAddedLink { get { return PageFactory.Load(this); } }
 
 
-        
+
 
 
 
 
         #endregion Update service
+
+
+        #region Create new location in PP
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Create New Location']")]
+        private IWebElement ClickCreatenewLocationTab { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//p[text()='Create New Location']")]
+        private IWebElement CreateNewLocationPageIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Edit']")]
+        private IWebElement ClickBillToEditButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Name, Using = "address1")]
+        private IWebElement AddressNamefield { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Name, Using = "city")]
+        private IWebElement CityNamefield { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Name, Using = "state")]
+        private IWebElement StateNamefield { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Name, Using = "postalCode")]
+        private IWebElement PostalcodeNamefield { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Update Bill-To Location']")]
+        private IWebElement UpdateLocationSliderDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//span[text()='Edit'])[2]")]
+        private IWebElement ClickServiceLocationEditButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//span[text()='Save'])[2]/..")]
+        private IWebElement ClickSaveButtonInUpdateLocationSlider { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//div[text()='A Service Location has been added successfully.']")]
+        private IWebElement ServiceLocationValidationConfirm_Txt { get { return PageFactory.Load(this); } }
+
+
+        [FindsBy(How = How.XPath, Using = "//div[text()='Locations Created Successfully']")]
+        private IWebElement NewLocationValidationConfirm_Txt { get { return PageFactory.Load(this); } }
+
+        #endregion Create new location in PP
 
 
         #endregion PageFactory
@@ -479,7 +520,7 @@ namespace WorkWave.PestPac.TA.Model
                     ClickOwnerAssigneeField.Click();
                     SalesCenterUtility.ScrollToElement(SelectOwnerAssigneeName);
                     SelectOwnerAssigneeName.Click();
-                    Thread.Sleep(5000);
+                    Thread.Sleep(8000);
                     SUT.Log.DebugFormat("Owner selected from the dropdown");
                 }
                 else
@@ -500,7 +541,8 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickFunnelField)))
                 {
-                   // SalesCenterUtility.ScrollToElement(ClickFunnelField);
+                    // SalesCenterUtility.ScrollToElement(ClickFunnelField);
+                    Thread.Sleep(4000);
                     ClickFunnelField.Click();
                     SalesCenterUtility.ScrollToElement(SelectFunnelName);
                     SelectFunnelName.Click();
@@ -603,6 +645,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsforLead)))
                 {
                     ClickThreeDotsforLead.Click();
+                    Thread.Sleep(2000);
                     SUT.Log.DebugFormat("Three dot icon is clicked");
                 }
                 else
@@ -624,6 +667,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickDeleteLink)))
                 {
                     ClickDeleteLink.Click();
+                    Thread.Sleep(2000);
                     SUT.Log.DebugFormat("Delete link is clicked");
                 }
                 else
@@ -950,6 +994,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => AddOpportunityPageIsDisplayed),TimeSpan.FromSeconds(10)))
                 {
                     AddOpportunityPageIsDisplayed.Displayed.ToString();
+                    Thread.Sleep(3000);
                     SUT.Log.DebugFormat("Create opportunity slider is diplayed");
                 }
                 else
@@ -1303,6 +1348,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickBillToExpandButton)))
                 {
                     ClickBillToExpandButton.Click();
+                    Thread.Sleep(2000);
                     SUT.Log.DebugFormat("Bill to location expand icon is clicked");
                 }
                 else
@@ -1489,7 +1535,6 @@ namespace WorkWave.PestPac.TA.Model
                 {
                     ClickServiceField.Click();
                     Thread.Sleep(2000);
-                   // SalesCenterUtility.ScrollToElement(SelectOtherServicename);
                     SelectOtherServicename.Click();
                     SUT.Log.DebugFormat("Service selected from the droddown");
                 }
@@ -1543,6 +1588,188 @@ namespace WorkWave.PestPac.TA.Model
                 SUT.Log.ErrorFormat("View services added link is not clicked");
             }
         }
+
+        //Create new location in PP
+
+        public void ClickOnCreateNewLocationTab()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCreatenewLocationTab)))
+                {
+                    ClickCreatenewLocationTab.Click();
+                    SUT.Log.DebugFormat("Create New location tab is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Create New location tab is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Create New location tab is not clicked");
+            }
+        }
+
+        public void IsCreateNewLocationDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() =>CreateNewLocationPageIsDisplayed), TimeSpan.FromSeconds(10)))
+                {
+                    CreateNewLocationPageIsDisplayed.Displayed.ToString();
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("Create new location page is diplayed");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Create new location page is diplayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Create new location page is diplayed");
+            }
+        }
+
+        public void ClickOnBillToEditButton()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickBillToEditButton)))
+                {
+                    ClickBillToEditButton.Click();
+                    Thread.Sleep(8000);
+                    SUT.Log.DebugFormat("Bill-to Edit button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Bill-to Edit button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Bill-to Edit button is not clicked");
+            }
+        }
+
+        public void IsUpdateLocationSliderDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => UpdateLocationSliderDisplayed)))
+                {
+                    UpdateLocationSliderDisplayed.Displayed.ToString();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Match or create new location slider is displayed ");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Match or create new location slider is not displayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Match or create new location slider is not displayed");
+            }
+        }
+
+        public void EnterLocationAddressDetails(string address, string city, string state, string postalcode)
+        {
+            SalesCenterUtility.ScrollToElement(AddressNamefield);
+            AddressNamefield.Clear();
+            AddressNamefield.SendKeys(address);
+            AddressNamefield.SendKeys(Keys.Enter);
+            Thread.Sleep(1000);
+
+            CityNamefield.Clear();
+            CityNamefield.SendKeys(city);
+            Thread.Sleep(1000);
+
+            StateNamefield.Clear();
+            StateNamefield.SendKeys(state);
+            Thread.Sleep(1000);
+
+            PostalcodeNamefield.Clear();
+            PostalcodeNamefield.SendKeys(postalcode);
+            Thread.Sleep(1000);
+        }
+
+        public void ClickOnServiceLocationEditButton()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceLocationEditButton)))
+                {
+                    ClickServiceLocationEditButton.Click();
+                    SUT.Log.DebugFormat("Service location Edit button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Service location Edit button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Service location Edit button is not clicked");
+            }
+        }
+
+        public void ClickOnSaveButtonInUpdateLocationSlider()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSaveButtonInUpdateLocationSlider)))
+                {
+                    ClickSaveButtonInUpdateLocationSlider.Click();
+                    Thread.Sleep(10000);
+                    SUT.Log.DebugFormat("Save button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Save button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Save button is not clicked");
+            }
+        }
+
+        public bool VerifyServiceLocationAddedConfirmMsg(string message)
+        {
+
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ServiceLocationValidationConfirm_Txt)))
+            {
+                SUT.Log.Debug("Validation  message is displayed");
+                Assert.True(ServiceLocationValidationConfirm_Txt.Text.Contains(message), "Validation message is not matching");
+                Thread.Sleep(12000);
+                return true;
+            }
+            else
+            {
+                SUT.Log.Debug("Validation message is displayed");
+                return false;
+            }
+        }
+
+        public bool VerifyNewLocationCreatedConfirmMsg(string message)
+        {
+
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => NewLocationValidationConfirm_Txt)))
+            {
+                SUT.Log.Debug("Validation  message is displayed");
+                Assert.True(NewLocationValidationConfirm_Txt.Text.Contains(message), "Validation message is not matching");
+                Thread.Sleep(12000);
+                return true;
+            }
+            else
+            {
+                SUT.Log.Debug("Validation message is displayed");
+                return false;
+            }
+        }
+
     }
 
 }
