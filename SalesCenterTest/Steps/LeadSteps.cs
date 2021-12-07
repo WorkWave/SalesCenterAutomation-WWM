@@ -497,6 +497,15 @@ namespace WorkWave.PestPac.TA.Steps
             leadspage.ClickOnApplyButtonInSider();
         }
 
+        //Bulk reassign multiple leads
+
+        [Then(@"Select the multiple leads")]
+        public void ThenSelectTheMultipleLeads()
+        {
+            opportunitypage.SelecttheOpportunities();
+        }
+
+
 
 
 

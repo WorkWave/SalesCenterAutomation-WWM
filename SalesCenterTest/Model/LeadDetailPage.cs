@@ -1222,6 +1222,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickApplyButton)))
                 {
                     ClickApplyButton.Click();
+                    Thread.Sleep(5000);
                     SUT.Log.DebugFormat("Apply button is clicked");
                 }
                 else
@@ -1770,7 +1771,6 @@ namespace WorkWave.PestPac.TA.Model
                 return false;
             }
         }
-
     }
 
 }

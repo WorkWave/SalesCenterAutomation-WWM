@@ -184,7 +184,7 @@ namespace WorkWave.PestPac.TA.Model
 
         #region Add position
 
-        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'autosalesteam')]/../following-sibling::div/descendant::button")]
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'autosalesteam')]/../following-sibling::div/descendant::button[1]")]
         private IWebElement ClickAddPositionButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//label[text()='Title']/following::input")]
@@ -896,7 +896,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 SUT.Log.Debug("Validation  message is displayed");
                 Assert.True(ValidationConfirm_Txt.Text.Contains(message), "Validation message is not matching");
-                Thread.Sleep(12000);
+                Thread.Sleep(15000);
                 return true;
             }
             else
