@@ -217,7 +217,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//button[@data-test-id='filterBtn']")]
         private IWebElement ClickOnFilterButton { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//div[text()='Lead Status']/../following-sibling::div")]
+        [FindsBy(How = How.XPath, Using = "//div[text()='Lead Status']")]
         private IWebElement LeadStatusExpandIcon { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//li[text()='Disqualified']")]
@@ -236,11 +236,11 @@ namespace WorkWave.PestPac.TA.Model
         private IWebElement ReopenLeadStatusName { get { return PageFactory.Load(this); } }
 
 
-        [FindsBy(How = How.XPath, Using = "//div[text()='Open']")]
+        [FindsBy(How = How.XPath, Using = "//div[text()='All']")]
         private IWebElement LeadStatusOpenField { get { return PageFactory.Load(this); } }
 
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Clear Filters']/..")]
+        [FindsBy(How = How.XPath, Using = "//span[text()='Clear All']/..")]
         private IWebElement ClickClearFilterButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[text()='Disqualified']/..")]
@@ -1200,6 +1200,7 @@ namespace WorkWave.PestPac.TA.Model
                     LeadStatusExpandIcon.Click();
                     Thread.Sleep(1000);
                     LeadStatusOpenField.Click();
+                    Thread.Sleep(1000);
                     LeadStatusName.Click();
                     SUT.Log.DebugFormat("Lead status is selected");
                 }

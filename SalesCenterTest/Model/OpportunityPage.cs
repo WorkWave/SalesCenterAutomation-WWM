@@ -42,7 +42,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[text()='Opportunity Status']")]
         private IWebElement OpportunitiesStatusExpandIcon { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//div[text()='Open']")]
+        [FindsBy(How = How.XPath, Using = "//div[text()='All']")]
         private IWebElement OpportunitiesStatusOpenField { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//li[text()='Closed']")]

@@ -489,6 +489,14 @@ namespace WorkWave.PestPac.TA.Steps
             leadspage.VerifyNewLocationCreatedConfirmMsg(message);
         }
 
+        //Filter button issue in slider
+
+        [Then(@"Click on Apply button in filter slider")]
+        public void ThenClickOnApplyButtonInFilterSlider()
+        {
+            leadspage.ClickOnApplyButtonInSider();
+        }
+
 
 
 

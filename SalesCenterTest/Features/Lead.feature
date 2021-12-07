@@ -25,6 +25,7 @@ Scenario Outline: Verify user can create and delete a lead
     Then Lead created validation message should be displayed <ValidationMessage>
     And  Click on filters button
     And Click on clear filter button
+    And Click on Apply button in filter slider   
     And  Click on search icon
     And  Enter the lead name <LeadName> and click on search icon
     When Delete the lead
@@ -48,6 +49,7 @@ Scenario Outline: Verify user can create lead and convert to opportunity
     Then Lead created validation message should be displayed <ValidationMessage>
     And  Click on filters button
     And Click on clear filter button
+    And Click on Apply button in filter slider  
     And Click on Service expand icon
     And Click on Add Serivces button
     And Select the services <Services>
@@ -98,6 +100,7 @@ Scenario Outline: Verify User Can Add a Contract to a Lead
     Then Lead created validation message should be displayed <ValidationMessage>
     And  Click on filters button
     And Click on clear filter button
+    And Click on Apply button in filter slider  
     And  Click on Service expand icon
     And  Click on Add Serivces button
     And  Select the services <Services>
@@ -123,7 +126,8 @@ Scenario Outline: Verify User Can Re-Open a Disqualified Lead
     Then Leads page should be displayed
     And  Click on filters button
     And Click on clear filter button
-    And  Click on filters button
+    And Click on Apply button in filter slider 
+    And  Click on filters button   
     And  Select the lead status <LeadStatus>
     When Click on Apply button
     Then All the disqualified leads should be diplayed
@@ -151,6 +155,7 @@ Scenario Outline: Verify user able to attach lead card to existing location
     Then Lead created validation message should be displayed <ValidationMessage>
     And  Click on filters button
     And Click on clear filter button
+    And Click on Apply button in filter slider  
     And  Click on search icon
     And  Enter the lead name <LeadName> and click on search icon
     And Click on Bill to locations expand icon  
@@ -181,6 +186,7 @@ Scenario Outline: Verify user able to edit the services on opportunity form
     Then Lead created validation message should be displayed <ValidationMessage>
     And Click on filters button
     And Click on clear filter button
+    And Click on Apply button in filter slider  
     And Click on Service expand icon
     And Click on Add Serivces button
     And Select the services <Services>
@@ -207,6 +213,7 @@ Scenario: Verification of multiple records selection on Leads List View Page
     Then Leads page should be displayed
 	And Click on filters button
     And Click on clear filter button
+    And Click on Apply button in filter slider  
 	And Click on List view button
 	When select the all checkbox option
 	Then checkbox should be selected
@@ -225,6 +232,7 @@ Scenario Outline: Verify user able to create a new location in PP from a lead ca
     Then Lead created validation message should be displayed <ValidationMessage>
     And  Click on filters button
     And Click on clear filter button
+    And Click on Apply button in filter slider  
     And Click on Bill to locations expand icon  
     When Click on Match or create link
     Then Match or create new location slider should be displayed

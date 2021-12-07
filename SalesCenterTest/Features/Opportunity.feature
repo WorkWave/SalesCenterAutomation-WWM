@@ -12,6 +12,7 @@ Scenario Outline: SC-Bulk Re-open: Verify that user can Bulk reopen the multiple
     Then Opportunities page should be displayed
 	And Click on filters button
     And Click on clear filter button
+    And Click on Apply button in filter slider  
 	And Click on filters button
 	And Select the opportunity status <OpportunityStatus>
     When Click on Apply button
@@ -34,6 +35,7 @@ Scenario Outline: Verify user can close an opportunity as closed/lost
     Then Opportunities page should be displayed
 	And Click on filters button
     And Click on clear filter button
+    And Click on Apply button in filter slider
 	When Click on View details page link
 	Then Opportunity detail page should be displayed
 	And Click on closed won/closed lost bar
@@ -53,6 +55,7 @@ Scenario: Verification of multiple records selection on Opportunity List View Pa
     Then Opportunities page should be displayed
 	And Click on filters button
     And Click on clear filter button
+    And Click on Apply button in filter slider
 	And Click on List view button
 	When select the all checkbox option
 	Then checkbox should be selected
@@ -64,6 +67,7 @@ Scenario Outline: Verify Users Can Re-Open Closed/Won and Closed/Lost Opportunit
     Then Opportunities page should be displayed
 	And Click on filters button
     And Click on clear filter button
+    And Click on Apply button in filter slider
 	And Click on filters button
 	And Select the opportunity status <OpportunityStatus>
     When Click on Apply button
@@ -90,6 +94,7 @@ Scenario Outline: Verify user can closed won a opportunity
     Then Lead created validation message should be displayed <ValidationMessage>
     And  Click on filters button
     And Click on clear filter button
+    And Click on Apply button in filter slider
     And Click on Service expand icon
     And Click on Add Serivces button
     And Select the services <Services>
@@ -108,6 +113,7 @@ Scenario Outline: Verify user can closed won a opportunity
     Then Opportunities page should be displayed
 	And Click on filters button
     And Click on clear filter button
+    And Click on Apply button in filter slider
     And Click on Bill to locations expand icon
     When Click on Match or create link
     Then Match or create new location slider should be displayed
@@ -142,6 +148,7 @@ Scenario Outline: Veriy user able to add payment card for a matched opportunity 
     Then Lead created validation message should be displayed <ValidationMessage>
     And  Click on filters button
     And Click on clear filter button
+    And Click on Apply button in filter slider
     And Click on Service expand icon
     And Click on Add Serivces button
     And Select the services <Services>
@@ -160,6 +167,7 @@ Scenario Outline: Veriy user able to add payment card for a matched opportunity 
     Then Opportunities page should be displayed
 	And Click on filters button
     And Click on clear filter button
+    And Click on Apply button in filter slider
     And Click on Bill to locations expand icon
     When Click on Match or create link
     Then Match or create new location slider should be displayed
@@ -191,6 +199,7 @@ Scenario Outline: Verification of Bulk Re-assignment of Opportunities which are 
     Then Opportunities page should be displayed
 	And Click on filters button
     And Click on clear filter button
+    And Click on Apply button in filter slider
 	And Click on List view button
 	And Select the multiple opportunities
 	When Click on Reassign button
@@ -217,6 +226,7 @@ Scenario Outline: Veriy user not able to close win if opportunity is not matched
     Then Lead created validation message should be displayed <ValidationMessage>
     And  Click on filters button
     And Click on clear filter button
+    And Click on Apply button in filter slider
     And Click on Service expand icon
     And Click on Add Serivces button
     And Select the services <Services>
@@ -231,6 +241,7 @@ Scenario Outline: Veriy user not able to close win if opportunity is not matched
     Then Opportunities page should be displayed
 	And Click on filters button
     And Click on clear filter button
+    And Click on Apply button in filter slider
     And Click on View detail page link
     And Click on closed won/closed lost bar
     When Select the closed won option
