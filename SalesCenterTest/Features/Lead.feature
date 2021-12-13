@@ -276,3 +276,21 @@ Scenario Outline: Verification of Bulk Re-assignment of leads which are associat
   Examples:  
      | SalesTeam             | SalesTeamMember |
      | Auto Test Sales Team  | unassigned      |
+
+
+@Smoke @Regression @Leads @WWM-8418 @WW_LD_012
+Scenario Outline: Verify duplicate alerts are displayed when there is matching First Name ,Last Name ,Phone, Email address from an existing lead or opportunity
+    When Click on plus icon
+    And  Click on Add Lead button
+    Then Add Lead details page should be displayed
+    When Enable show only required fields toggle on
+    When Enter the first name <FirstName>
+    Then Duplicate alerts count should be displayed
+    When Click on Dulicate alerts link
+    Then Same duplicate alerts count should be displayed in duplicate alert page
+    When Click on close duplicate alert button
+    Then Add Lead details page should be displayed
+     
+ Examples:  
+     | FirstName       | 
+     | Qa              | 

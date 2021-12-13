@@ -45,7 +45,7 @@ namespace WorkWave.PestPac.TA.Steps
         public void ThenLeadsPageShouldBeDisplayed()
         {
             Assert.True(leadspage.IsLoaded(), "Failed to verify the Leads page loaded after click on leads link");
-            Thread.Sleep(3000);
+            Thread.Sleep(10000);
         }
 
         [When(@"Click on plus icon")]
@@ -505,9 +505,43 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.SelecttheOpportunities();
         }
 
+        //Duplicate alerts
 
+        [When(@"Enable show only required fields toggle on")]
+        public void WhenEnableShowOnlyRequiredFieldsToggleOn()
+        {
+            leadspage.EnableToggleButtonOn();
+        }
 
+        [When(@"Enter the first name (.*)")]
+        public void WhenEnterTheFirstNameAutomationLabs(string firstname)
+        {
+            leadspage.EnterLeadFirstName(firstname);
+        }
 
+        [Then(@"Duplicate alerts count should be displayed")]
+        public void ThenDuplicateAlertsCountShouldBeDisplayed()
+        {
+            leadspage.IsDuplicateAlertCountDisplayed();
+        }
+
+        [When(@"Click on Dulicate alerts link")]
+        public void WhenClickOnDulicateAlertsLink()
+        {
+            leadspage.ClickOnDuplicateAlertLink();
+        }
+     
+        [Then(@"Same duplicate alerts count should be displayed in duplicate alert page")]
+        public void ThenSameDuplicateAlertsCountShouldBeDisplayedInDuplicateAlertPage()
+        {
+            leadspage.IsDuplicatePageIsDisplayed();
+        }
+
+        [When(@"Click on close duplicate alert button")]
+        public void WhenClickOnCloseDuplicateAlertButton()
+        {
+            leadspage.ClickOnCloseDuplicateAlertButton();
+        }  
 
     }
 }
