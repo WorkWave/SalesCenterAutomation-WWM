@@ -372,8 +372,16 @@ namespace WorkWave.PestPac.TA.Model
 
 
 
-      
+
         #endregion Duplicate alerts
+
+        #region Invalid card info
+
+        [FindsBy(How = How.XPath, Using = "//span[text()=': INVALID CARD INFO']")]
+        private IWebElement InvalidCardErrorMessage_Txt { get { return PageFactory.Load(this); } }
+
+      
+        #endregion Invalid card info
 
         #endregion PageFactory
 
@@ -1498,7 +1506,7 @@ namespace WorkWave.PestPac.TA.Model
                 {
                     SalesCenterUtility.ScrollToElement(ClickServiceLocationField);
                     ClickServiceLocationField.Click();
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2000);
                     SelectServiceLocationName.Click();
                     SUT.Log.DebugFormat("Service location is selected from the dropdown");
                 }
@@ -1926,8 +1934,26 @@ namespace WorkWave.PestPac.TA.Model
             {
                 SUT.Log.ErrorFormat("Close duplicate alert button is not clicked");
             }
-        }    
-        
+        }
+
+        //Verifying invliad card info
+
+        public bool VerifyInvalidCardErrorMessage(string message)
+        {
+
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => InvalidCardErrorMessage_Txt)))
+            {
+                SUT.Log.Debug("Error  message is displayed");
+                Assert.True(InvalidCardErrorMessage_Txt.Text.Contains(message), "Error  message is not displayed");
+                Thread.Sleep(4000);
+                return true;
+            }
+            else
+            {
+                SUT.Log.Debug("Error  message is not displayed");
+                return false;
+            }
+        }
 
     }
 
