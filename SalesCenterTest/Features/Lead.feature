@@ -254,3 +254,43 @@ Scenario Outline: Verify user able to create a new location in PP from a lead ca
  Examples:  
      | FirstName | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Address        | City    | State | PostalCode | LocationMatchedValMsg                           | LocationValMsg                 |
      | John      | Smith    | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | 200 street san | chester | PA    | 93013-373  | A Service Location has been added successfully. | Locations Created Successfully |
+
+
+@Smoke @Regression @Opportunities @WWM-8446 @WW_LD_011
+Scenario Outline: Verification of Bulk Re-assignment of leads which are associated with same branch Sales Team
+	When Mouse hover on sales center side menu
+    And Click on Leads link
+    Then Leads page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+	And Click on List view button
+	And Select the multiple leads
+	When Click on Reassign button
+	Then Reassign slider should be displayed
+    And Select the same branch SalesTeam in reassign slider <SalesTeam>
+    And Select the team member in reassign slider <SalesTeamMember>
+	When Click on Save button
+   # Then validation message should be displayed
+
+  Examples:  
+     | SalesTeam             | SalesTeamMember |
+     | Auto Test Sales Team  | unassigned      |
+
+
+@Smoke @Regression @Leads @WWM-8418 @WW_LD_012
+Scenario Outline: Verify duplicate alerts are displayed when there is matching First Name ,Last Name ,Phone, Email address from an existing lead or opportunity
+    When Click on plus icon
+    And  Click on Add Lead button
+    Then Add Lead details page should be displayed
+    When Enable show only required fields toggle on
+    When Enter the first name <FirstName>
+    Then Duplicate alerts count should be displayed
+    When Click on Dulicate alerts link
+    Then Same duplicate alerts count should be displayed in duplicate alert page
+    When Click on close duplicate alert button
+    Then Add Lead details page should be displayed
+     
+ Examples:  
+     | FirstName       | 
+     | Qa              | 

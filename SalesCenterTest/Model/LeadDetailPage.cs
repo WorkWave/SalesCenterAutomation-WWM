@@ -10,6 +10,7 @@ using OpenQA.Selenium.Interactions;
 using System.Threading;
 using NUnit.Framework;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace WorkWave.PestPac.TA.Model
 {
@@ -348,6 +349,31 @@ namespace WorkWave.PestPac.TA.Model
 
         #endregion Create new location in PP
 
+        #region Duplicate alerts
+
+        [FindsBy(How = How.XPath, Using = "//span[@class='MuiIconButton-label']//input/../../../..")]
+        private IWebElement ToggleButtonOn { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//div[contains(text(),'Duplicate Alert')]")]
+        private IWebElement DuplicateAlertCountDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//div[contains(text(),'Duplicate Alert')]")]
+        private IWebElement ClickDuplicateAlertLink { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//p[text()='Duplicate Alert']")]
+        private IWebElement DuplicateAlertPageIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Close Duplicate Alert']/..")]
+        private IWebElement ClickCloseDuplicateAlertButton { get { return PageFactory.Load(this); } }
+
+
+        [FindsBy(How = How.XPath, Using = "(//span[text()='Results']/..)[1]")]
+        private IWebElement SameDuplicateAlertCountIsDisplayed { get { return PageFactory.Load(this); } }
+
+
+
+      
+        #endregion Duplicate alerts
 
         #endregion PageFactory
 
@@ -459,11 +485,11 @@ namespace WorkWave.PestPac.TA.Model
         private readonly string LeadsPage = "Add Lead";
         public bool IsLeadPageLoaded()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => leadPage)))
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => leadPage), TimeSpan.FromSeconds(10)))
             {
                 if (leadPage.Text.TrimStart().StartsWith(LeadsPage))
                 {
-                    return true;
+                    return true;                  
                 }
                 else
                 {
@@ -1222,6 +1248,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickApplyButton)))
                 {
                     ClickApplyButton.Click();
+                    Thread.Sleep(5000);
                     SUT.Log.DebugFormat("Apply button is clicked");
                 }
                 else
@@ -1766,10 +1793,141 @@ namespace WorkWave.PestPac.TA.Model
             }
             else
             {
-                SUT.Log.Debug("Validation message is displayed");
+                SUT.Log.Debug("Validation message is not displayed");
                 return false;
             }
         }
+
+        //Duplicate alerts
+
+        public void EnableToggleButtonOn()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ToggleButtonOn)))
+                {
+                    ToggleButtonOn.Click();
+                    Thread.Sleep(1000);
+                    SUT.Log.DebugFormat("Show only required fields toggle button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Show only required fields toggle button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Show only required fields toggle button is not clicked");
+            }
+        }
+
+        public void EnterLeadFirstName(string firstname)
+        {
+            FirstNamefield.SendKeys(firstname);
+            FirstNamefield.SendKeys(Keys.Enter);
+            Thread.Sleep(6000);
+        }
+
+        public void IsDuplicateAlertCountDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => DuplicateAlertCountDisplayed)))
+                {
+                    string text = DuplicateAlertCountDisplayed.Text;
+            
+                    Regex re = new Regex(@"[0-9]+");
+
+                    var match = re.Matches(text);
+                    foreach(Match m in match)
+                    {
+                        Console.WriteLine("Duplicate alert count is:::" + m.Value);
+                    }
+
+                    SUT.Log.DebugFormat("Duplicate alerts are displayed");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Duplicate alerts are not displayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Duplicate alerts are not displayed");
+            }
+        }
+
+        public void ClickOnDuplicateAlertLink()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickDuplicateAlertLink)))
+                {
+                    ClickDuplicateAlertLink.Click();
+                    Thread.Sleep(5000);
+                    SUT.Log.DebugFormat("Duplicate alert page is displayed");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Duplicate alert page is not displayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Duplicate alert page is not displayed");
+            }
+        }
+
+        public void IsDuplicatePageIsDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => DuplicateAlertCountDisplayed)))
+                {
+                    string text = SameDuplicateAlertCountIsDisplayed.Text;
+           
+                    Regex re = new Regex(@"[0-9]+");
+
+                    var match = re.Matches(text);
+                    foreach (Match m in match)
+                    {
+                        Console.WriteLine("Duplicate alert count is:::" +m.Value);
+                    }
+
+                    SUT.Log.DebugFormat("Duplicate alerts same count diplayed in duplicate alerts page");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Duplicate alerts same count is not diplayed in duplicate alerts page {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Duplicate alerts same count is not diplayed in duplicate alerts page");
+            }
+        }
+
+        public void ClickOnCloseDuplicateAlertButton()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCloseDuplicateAlertButton)))
+                {
+                    ClickCloseDuplicateAlertButton.Click();
+                    Thread.Sleep(5000);
+                    SUT.Log.DebugFormat("Close duplicate alert button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Close duplicate alert button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Close duplicate alert button is not clicked");
+            }
+        }    
+        
 
     }
 
