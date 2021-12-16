@@ -380,8 +380,19 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//span[text()=': INVALID CARD INFO']")]
         private IWebElement InvalidCardErrorMessage_Txt { get { return PageFactory.Load(this); } }
 
-      
+
         #endregion Invalid card info
+
+        #region verify captre card button
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Capture Card']/../..")]
+        private IWebElement MouseHoverCaptureCardButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//div[text()='Link this lead to a location to view/capture payment information.']")]
+        private IWebElement CatureCardButtonWarningToastmessage { get { return PageFactory.Load(this); } }
+
+       
+        #endregion verify captre card button
 
         #endregion PageFactory
 
@@ -1951,6 +1962,49 @@ namespace WorkWave.PestPac.TA.Model
             else
             {
                 SUT.Log.Debug("Error  message is not displayed");
+                return false;
+            }
+        }
+
+        //Validate capture card button
+
+        public void MouseHoverOnCaptureCardButton()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => MouseHoverCaptureCardButton)))
+                {
+                    SalesCenterUtility.ScrollToElement(MouseHoverCaptureCardButton);
+                    Thread.Sleep(2000);
+                    Assert.AreEqual(false, MouseHoverCaptureCardButton.Enabled);                  
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("Capture card button is disabled");
+                }
+                else
+                {
+                    Assert.AreEqual(true, MouseHoverCaptureCardButton.Enabled);
+                    SUT.Log.ErrorFormat("Capture card button is enabled {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Capture card button is enabled");
+            }
+        }
+
+        public bool VerifyCatureCardButtonWarningToastmessage(string message)
+        {
+
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => CatureCardButtonWarningToastmessage)))
+            {
+                SUT.Log.Debug("Toast  message is displayed");
+                Assert.True(CatureCardButtonWarningToastmessage.Text.Contains(message), "Toast  message is not displayed");
+                Thread.Sleep(4000);
+                return true;
+            }
+            else
+            {
+                SUT.Log.Debug("Toast  message is not displayed");
                 return false;
             }
         }
