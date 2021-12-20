@@ -136,13 +136,13 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[@role='alert']")]
         private IWebElement ValidationConfirm_Txt { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//td[text()='Automation user']/preceding-sibling::td")]
+        [FindsBy(How = How.XPath, Using = "//td[text()='Automation user']/preceding-sibling::td/child::button")]
         private IWebElement ClickThreeDotsIconforUnmappedUser { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//span[text()='Delete'])[2]")]
+        [FindsBy(How = How.XPath, Using = "(//span[text()='Delete'])[2]/..")]
         private IWebElement DeleteoptionforAddedUser { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Delete']")]
+        [FindsBy(How = How.XPath, Using = "//span[text()='Delete']/..")]
         private IWebElement ClickDeletebuttonInPopup { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//div[text()='User deleted']")]
@@ -772,7 +772,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => DeleteoptionforAddedUser)))
                 {
                     DeleteoptionforAddedUser.Click();
-                    Thread.Sleep(2000);
+                    Thread.Sleep(4000);
                     SUT.Log.DebugFormat("Delete option is clicked for unmapped user");
                 }
                 else

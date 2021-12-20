@@ -565,7 +565,7 @@ namespace WorkWave.PestPac.TA.Model
                     ClickOwnerAssigneeField.Click();
                     SalesCenterUtility.ScrollToElement(SelectOwnerAssigneeName);
                     SelectOwnerAssigneeName.Click();
-                    Thread.Sleep(8000);
+                    Thread.Sleep(10000);
                     SUT.Log.DebugFormat("Owner selected from the dropdown");
                 }
                 else
@@ -587,11 +587,11 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickFunnelField)))
                 {
                     // SalesCenterUtility.ScrollToElement(ClickFunnelField);
-                    Thread.Sleep(4000);
                     ClickFunnelField.Click();
+                    Thread.Sleep(6000);
                     SalesCenterUtility.ScrollToElement(SelectFunnelName);
                     SelectFunnelName.Click();
-                    Thread.Sleep(4000);
+                    Thread.Sleep(7000);
                     SUT.Log.DebugFormat("Sales funnel selected from the dropdown");
                 }
                 else
@@ -670,6 +670,7 @@ namespace WorkWave.PestPac.TA.Model
                 {
                     EnterLeadname.SendKeys(leadname);
                     EnterLeadname.SendKeys(Keys.Enter);
+                    Thread.Sleep(5000);
                     SUT.Log.DebugFormat("Lead name is entered");
                 }
                 else
@@ -877,7 +878,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceButtonInSlider)))
                 {
                     ClickServiceButtonInSlider.Click();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(5000);
                     SUT.Log.DebugFormat("Add service button is clicked in the slider");
                 }
                 else
