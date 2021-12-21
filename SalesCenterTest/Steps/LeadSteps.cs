@@ -541,7 +541,14 @@ namespace WorkWave.PestPac.TA.Steps
         public void WhenClickOnCloseDuplicateAlertButton()
         {
             leadspage.ClickOnCloseDuplicateAlertButton();
-        }  
+        }
 
+        //Invalid payment verification
+
+        [Then(@"Error message should be displayed (.*)")]
+        public void ThenErrorMessageShouldBeDisplayedSuccessfullyAddedPaymentMethod_(string message)
+        {
+            leadspage.VerifyInvalidCardErrorMessage(message);
+        }
     }
 }

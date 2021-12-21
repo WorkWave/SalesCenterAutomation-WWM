@@ -105,12 +105,10 @@ namespace WorkWave.PestPac.TA
             return switched;
         }
 
-
         public static void ScrollToElement(IWebElement e)
         {
             try
             {
-
                 SUT.Web.ExplicitWait.Until(CustomExpectedConditions.ElementIsVisible(() => e));
 
                 if (SUT.Web.Config.Browser.Equals("Chrome"))
@@ -125,7 +123,6 @@ namespace WorkWave.PestPac.TA
                 SUT.Log.Error(exc.Message);
             }
         }
-
       
         public static bool SelectDropDown(IWebElement elem, string ItemName)
         {

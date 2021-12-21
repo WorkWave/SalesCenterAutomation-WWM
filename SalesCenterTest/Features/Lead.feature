@@ -170,7 +170,7 @@ Scenario Outline: Verify user able to attach lead card to existing location
   
  Examples:  
      | FirstName        | LastName | CompanyName  | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName    | LocationName | ServiceLocation     | LocationMatchedValMsg                  |
-     | Automation user3 | Test3    | autocompany3 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created |                     
+     | Automation user3 | Test3    | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created |                     
 	 
 	 
 @Smoke @Regression @Leads @WWM-8430 @WW_LD_008
@@ -294,3 +294,43 @@ Scenario Outline: Verify duplicate alerts are displayed when there is matching F
  Examples:  
      | FirstName       | 
      | Qa              | 
+
+
+@Regression @Leads @WWM-8613 @WW_LD_013
+Scenario Outline: Verify user not able to add invalid payment card for a matched Lead to a PP location  
+    When Click on plus icon 
+    And  Click on Add Lead button
+    Then Add Lead details page should be displayed
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
+    And Select the SalesTeam <SalesTeam>
+    And Select the Owner <Owner>
+    And Select the sales funnel <SalesFunnel>
+    When Click on Save button
+    Then Lead created validation message should be displayed <ValidationMessage>
+    And  Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider  
+    And Click on Bill to locations expand icon  
+    When Click on Match or create link
+    Then Match or create new location slider should be displayed
+    And Click to match to existing location button
+    And Select the pestpac location 
+    When Click on Save button in bill to search for matching slider
+    And Select match to service location <ServiceLocation>
+    When Click on Save button
+    Then Location matched validation message should be displayed <LocationMatchedValMsg>
+    And Click on again billto expand icon
+    And Click on Service expand icon in opportunity page
+    And Click on Capture card button
+    And Enter the card holder name <CardHolderName>
+    And Click on Enter button
+    And Enter the card details <CardNumber>
+    And Select the expiration month and year
+    When Click on Add credit card button
+    Then Error message should be displayed <ErrorMessage>
+  
+ Examples:  
+     | FirstName        | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName    | LocationName | ServiceLocation     | LocationMatchedValMsg                  | CardHolderName | CardNumber        | ErrorMessage       |
+     | Automation user3 | Test3    | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created | John Smith     | 4111111111111231  | INVALID CARD INFO  |                         
+	 
+	 
