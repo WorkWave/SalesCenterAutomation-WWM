@@ -550,5 +550,21 @@ namespace WorkWave.PestPac.TA.Steps
         {
             leadspage.VerifyInvalidCardErrorMessage(message);
         }
+
+        //validate payment card
+
+        [When(@"Mouse hover on capture button")]
+        public void WhenMouseHoverOnCaptureButton()
+        {
+            leadspage.MouseHoverOnCaptureCardButton();
+        }
+
+        [Then(@"Toast message should be displayed (.*)")]
+        public void ThenToastMessageShouldBeDisplayed(string ToastMessage)
+        {
+            leadspage.VerifyCatureCardButtonWarningToastmessage(ToastMessage);
+        }
+
+
     }
 }

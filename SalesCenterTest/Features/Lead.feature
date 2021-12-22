@@ -333,4 +333,31 @@ Scenario Outline: Verify user not able to add invalid payment card for a matched
      | FirstName        | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName    | LocationName | ServiceLocation     | LocationMatchedValMsg                  | CardHolderName | CardNumber        | ErrorMessage       |
      | Automation user3 | Test3    | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created | John Smith     | 4111111111111231  | INVALID CARD INFO  |                         
 	 
+
+@Regression @Leads @WWM-8612 @WW_LD_014
+Scenario Outline: Veriy user not able to add payment card with out matching lead to a PP location
+    When Click on plus icon 
+    And  Click on Add Lead button
+    Then Add Lead details page should be displayed
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
+    And Select the SalesTeam <SalesTeam>
+    And Select the Owner <Owner>
+    And Select the sales funnel <SalesFunnel>
+    When Click on Save button
+    Then Lead created validation message should be displayed <ValidationMessage>
+    And  Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider     
+    And Click on Service expand icon
+    When Mouse hover on capture button
+    Then Toast message should be displayed <Toastmessage>
+   
+  
+ Examples:  
+     | FirstName        | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Toastmessage                                                       |
+     | Automation user3 | Test3    | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Link this lead to a location to view/capture payment information.  |
+	 
+
+	 
+
 	 

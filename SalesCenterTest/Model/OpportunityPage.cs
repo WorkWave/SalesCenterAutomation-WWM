@@ -244,7 +244,7 @@ namespace WorkWave.PestPac.TA.Model
                 {
                    
                     ClickListviewButton.Click();
-                    Thread.Sleep(8000);
+                    Thread.Sleep(10000);
                     SUT.Log.DebugFormat("List view button is clicked");
                 }
                 else
@@ -282,9 +282,10 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickFirstOpportunitiesCheckbox)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickFirstOpportunitiesCheckbox),TimeSpan.FromSeconds(10)))
                 {
-                    ClickFirstOpportunitiesCheckbox.Click(); 
+                    ClickFirstOpportunitiesCheckbox.Click();
+                    Thread.Sleep(3000);
                     ClickSecondOpportunitiesCheckbox.Click();
                     SUT.Log.DebugFormat("Opportunities are selected");
                 }
@@ -350,7 +351,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ReopenPageIsDisplayed), TimeSpan.FromSeconds(10)))
                 {
                     ReopenPageIsDisplayed.Displayed.ToString();
-                    Thread.Sleep(8000);
+                    Thread.Sleep(10000);
                     SUT.Log.DebugFormat("Reopen slider is diplayed");
                 }
                 else
