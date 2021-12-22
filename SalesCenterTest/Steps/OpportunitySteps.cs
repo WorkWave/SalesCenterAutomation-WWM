@@ -269,6 +269,58 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.ClickOnCloseButtonInPopup();
         }
 
+        //Remove sc contacts
+
+        [When(@"Click on view contacts link")]
+        public void WhenClickOnViewContactsLink()
+        {
+            opportunitypage.ClickOnViewContactsLink();
+        }
+
+        [Then(@"Contacts page should be displayed")]
+        public void ThenContactsPageShouldBeDisplayed()
+        {
+            opportunitypage.ContactPageIsDisplayed();
+        }
+
+        [When(@"Click on Add contac button")]
+        public void WhenClickOnAddContacButton()
+        {
+            opportunitypage.ClickOnAddContactButton();
+        }
+
+        [Then(@"Add contact slider should be displayed")]
+        public void ThenAddContactSliderShouldBeDisplayed()
+        {
+            opportunitypage.IsAddContactSliderIsDisplayed();
+        }
+
+        [Then(@"Search the existing contact (.*)")]
+        public void ThenSearchTheExistingContactJames(string contactname)
+        {
+            opportunitypage.ClickOnSearchiconInContactSlider();
+            opportunitypage.EnterTheExistingContactName(contactname);        
+        }
+
+        [Then(@"Click on Add contact button")]
+        public void ThenClickOnAddContactButton()
+        {
+            opportunitypage.ClickOnAddContactButtonInContactSlider();
+        }
+
+        [When(@"Remove the contact")]
+        public void WhenRemoveTheContact()
+        {
+            opportunitypage.ClickOnThreeDotsIconforAddedContacts();
+            opportunitypage.ClickOnRemoveLinkforContacts();
+            opportunitypage.ClickOnRemoveButtonInPopup();
+        }
+
+        //[Then(@"Confirmation message should be displayed Closed")]
+        //public void ThenConfirmationMessageShouldBeDisplayedClosed()
+        //{
+            
+        //}
 
 
 

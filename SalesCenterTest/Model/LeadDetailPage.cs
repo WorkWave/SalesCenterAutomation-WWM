@@ -93,6 +93,11 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//span[text()='Delete']/..)[1]")]
         private IWebElement ClickDeletebutton { get { return PageFactory.Load(this); } }
 
+        [FindsBy(How = How.XPath, Using = "//div[contains(text(),'ANT')]")]
+        private IWebElement ServcieAdded { get { return PageFactory.Load(this); } }
+
+       
+
         #region Create opportunity
 
         [FindsBy(How = How.XPath, Using = "//p[contains(text(),'autocompany03')]/../../../following-sibling::div[1]")]
@@ -227,7 +232,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//span[text()='Apply']/..")]
         private IWebElement ClickApplyButton { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//div[@class='sc-idOiZg gPAFHC actions']/descendant::button[2]")]
+        [FindsBy(How = How.XPath, Using = "(//span[@title='Add services to this lead to convert it into a sales opportunity']/following-sibling::button)[1]")]
         private IWebElement ClickThreeDotsIconforDisqualified { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[text()='Re-Open']")]
@@ -241,7 +246,7 @@ namespace WorkWave.PestPac.TA.Model
         private IWebElement LeadStatusOpenField { get { return PageFactory.Load(this); } }
 
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Clear All']/..")]
+        [FindsBy(How = How.XPath, Using = "//span[text()='Clear All']")]
         private IWebElement ClickClearFilterButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[text()='Disqualified']/..")]
@@ -586,7 +591,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickFunnelField)))
                 {
-                    // SalesCenterUtility.ScrollToElement(ClickFunnelField);
+                     SalesCenterUtility.ScrollToElement(ClickFunnelField);
                     ClickFunnelField.Click();
                     Thread.Sleep(6000);
                     SalesCenterUtility.ScrollToElement(SelectFunnelName);
@@ -810,25 +815,27 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
-        private readonly string ServicePage = "ANT";
-        public bool IsServiceAdded()
+        public void IsServiceAdded()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => servicePage),TimeSpan.FromSeconds(10)))
+            try
             {
-                if (servicePage.Text.TrimStart().StartsWith(ServicePage))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ServcieAdded), TimeSpan.FromSeconds(10)))
                 {
-                    return true;
+                    ServcieAdded.Displayed.ToString();
+                    Thread.Sleep(3000);
+                    SUT.Log.DebugFormat("Service added");
                 }
                 else
                 {
-                    return false;
+                    SUT.Log.ErrorFormat("Service is not added {0}", MethodBase.GetCurrentMethod().Name);
                 }
             }
-            else
+            catch (WebDriverTimeoutException)
             {
-                return false;
+                SUT.Log.ErrorFormat("Service is not added");
             }
         }
+
 
         public void ClickCloseServicesAndProductButton()
         {
@@ -878,7 +885,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceButtonInSlider)))
                 {
                     ClickServiceButtonInSlider.Click();
-                    Thread.Sleep(5000);
+                    Thread.Sleep(6000);
                     SUT.Log.DebugFormat("Add service button is clicked in the slider");
                 }
                 else

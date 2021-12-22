@@ -250,7 +250,30 @@ Scenario Outline: Veriy user not able to close win if opportunity is not matched
  Examples:  
      | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName    | LocationName |  Services             | OpportunityCreated  | 
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      |   ANT- Ant Treatments | Opportunity created |           
-	
+
+
+@Regression @Opportunities @WWM-8611 @WW_OP_009
+Scenario Outline: Remove WWM Contact - Opportunity
+	When Mouse hover on sales center side menu
+    And Click on Opportunities link
+    Then Opportunities page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+	When Click on View details page link
+	Then Opportunity detail page should be displayed
+    When Click on view contacts link
+    Then Contacts page should be displayed
+    When Click on Add contac button
+    Then Add contact slider should be displayed
+    And Search the existing contact <ExistingContact>
+    And Click on Add contact button
+    When Remove the contact
+    #Then Confirmation message should be displayed <ContactDeleted>
+    	
+   Examples:  
+     | ExistingContact | ContactDeleted |
+     | James           | Closed         |  
 
 
 

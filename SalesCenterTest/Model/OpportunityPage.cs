@@ -189,8 +189,43 @@ namespace WorkWave.PestPac.TA.Model
 
         [FindsBy(How = How.XPath, Using = "//span[text()='CLOSE']/..")]
         private IWebElement ClickCloseButton { get { return PageFactory.Load(this); } }
-       
+
         #endregion Close won the opportunity without pp location matched
+
+        #region Remove SC contacts
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='View Contacts']/..")]
+        private IWebElement ClickViewContactsLink { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//p[text()='Contacts'])[2]")]
+        private IWebElement ContactPageDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Add Contact']/..")]
+        private IWebElement ClickAddContactButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//input[@placeholder='Search']")]
+        private IWebElement ClickSearchIconInContactSlider { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//input[@placeholder='Search']")]
+        private IWebElement Searchfield { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//span[text()='Add Contact'])[3]")]
+        private IWebElement ClickAddContactButtonInContactSlider { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//div[text()='James Jacob']/../descendant::button")]
+        private IWebElement ClickThreeDotsforContacts { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//div[@class='MuiListItemText-root MuiListItemText-dense']//span)[2]/..")]
+        private IWebElement ClickRemoveLinkForContacts { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//span[text()='Remove'])[2]")]
+        private IWebElement ClickRemoveButtonInPopup { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//span[text()='Add Contact'])[2]")]
+        private IWebElement AddOpportunityPageIsDisplayed { get { return PageFactory.Load(this); } }
+
+        #endregion Remove SC Contacts
+
         #endregion PageFactory
 
         private readonly string PageHeaderText = "Opportunities";
@@ -394,7 +429,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() =>OpportunityDetailPageIsDisplayed), TimeSpan.FromSeconds(5)))
                 {
                     OpportunityDetailPageIsDisplayed.Displayed.ToString();
-                    Thread.Sleep(4000);
+                    Thread.Sleep(8000);
                     SUT.Log.DebugFormat("Reopen slider is diplayed");
                 }
                 else
@@ -978,6 +1013,202 @@ namespace WorkWave.PestPac.TA.Model
             catch (WebDriverTimeoutException)
             {
                 SUT.Log.ErrorFormat("Close button is not clicked");
+            }
+        }
+
+        //Removing SC contacts
+
+        public void ClickOnViewContactsLink()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickViewContactsLink)))
+                {
+                    ClickViewContactsLink.Click();
+                    SUT.Log.DebugFormat("View Contacts link is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("View Contacts link is not clicked{0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("View Contacts link is not clicked");
+            }
+        }
+
+        public void ContactPageIsDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ContactPageDisplayed), TimeSpan.FromSeconds(4)))
+                {
+                    ContactPageDisplayed.Displayed.ToString();
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("Contact page is diplayed");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Contact page is not diplayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Contact page is not diplayed");
+            }
+        }
+
+        public void ClickOnAddContactButton()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAddContactButton)))
+                {
+                    ClickAddContactButton.Click();
+                    SUT.Log.DebugFormat("Add contact button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Add contact button is not clicked{0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Add contact button is not clicked");
+            }
+        }
+
+        public void IsAddContactSliderIsDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => AddOpportunityPageIsDisplayed), TimeSpan.FromSeconds(10)))
+                {
+                    AddOpportunityPageIsDisplayed.Displayed.ToString();
+                    Thread.Sleep(3000);
+                    SUT.Log.DebugFormat("Add contact slider is diplayed");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Add contact slider is not diplayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Add contact slider is not diplayed");
+            }
+        }
+
+        public void ClickOnSearchiconInContactSlider()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSearchIconInContactSlider)))
+                {
+                    ClickSearchIconInContactSlider.Click();
+                    SUT.Log.DebugFormat("Search icon is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Search icon is not clicked{0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Search icon is not clicked");
+            }
+        }
+
+        public void EnterTheExistingContactName(string contactname)
+        {
+            Searchfield.SendKeys(contactname);
+            Searchfield.SendKeys(Keys.Enter);
+            Thread.Sleep(5000);
+           
+        }
+
+        public void ClickOnAddContactButtonInContactSlider()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAddContactButtonInContactSlider)))
+                {
+                    ClickAddContactButtonInContactSlider.Click();
+                    SUT.Log.DebugFormat("Add contact button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Add contact button is not clicked{0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Add contact button is not clicked");
+            }
+        }
+
+        public void ClickOnThreeDotsIconforAddedContacts()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsforContacts)))
+                {
+                    ClickThreeDotsforContacts.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Three dot icon is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Three dot icon is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Three dot icon is not clicked ");
+            }
+        }
+
+        public void ClickOnRemoveLinkforContacts()
+        {
+            try
+            {
+
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickRemoveLinkForContacts)))
+                {
+                    ClickRemoveLinkForContacts.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Remove link is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Remove link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Remove link is not clicked");
+            }
+        }
+
+        public void ClickOnRemoveButtonInPopup()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickRemoveButtonInPopup)))
+                {
+                    ClickRemoveButtonInPopup.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Remove button is clicked in popup");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Remove button is not clicked in popup {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Remove button is not clicked in popup");
             }
         }
 
