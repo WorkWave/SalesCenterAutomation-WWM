@@ -591,7 +591,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickFunnelField)))
                 {
-                     SalesCenterUtility.ScrollToElement(ClickFunnelField);
+                   //  SalesCenterUtility.ScrollToElement(ClickFunnelField);
                     ClickFunnelField.Click();
                     Thread.Sleep(6000);
                     SalesCenterUtility.ScrollToElement(SelectFunnelName);

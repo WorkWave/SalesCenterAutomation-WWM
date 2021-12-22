@@ -253,7 +253,7 @@ Scenario Outline: Veriy user not able to close win if opportunity is not matched
 
 
 @Regression @Opportunities @WWM-8611 @WW_OP_009
-Scenario Outline: Remove WWM Contact - Opportunity
+Scenario Outline: Remove WWM Contact for Opportunity
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
     Then Opportunities page should be displayed
@@ -274,6 +274,7 @@ Scenario Outline: Remove WWM Contact - Opportunity
    Examples:  
      | ExistingContact | ContactDeleted |
      | James           | Closed         |  
+
 
 
 
