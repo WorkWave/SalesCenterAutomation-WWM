@@ -144,7 +144,7 @@ Examples:
 
 @Smoke @Regression @Leads @WWM-8423 @WW_LD_007
 Scenario Outline: Verify user able to attach lead card to existing location  
-    When Click on plus icon 
+    When Click on plus icon
     And  Click on Add Lead button
     Then Add Lead details page should be displayed
     And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
