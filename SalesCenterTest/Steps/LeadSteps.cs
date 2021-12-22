@@ -158,8 +158,8 @@ namespace WorkWave.PestPac.TA.Steps
 
         [Then(@"Service should be successfully added")]
         public void ThenServiceShouldBeSuccessfullyAdded()
-        {
-            Assert.True(leadspage.IsServiceAdded(), "ANT");
+        {          
+            leadspage.IsServiceAdded();
         }
 
         [Then(@"Click on Close services and product button")]

@@ -429,7 +429,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() =>OpportunityDetailPageIsDisplayed), TimeSpan.FromSeconds(5)))
                 {
                     OpportunityDetailPageIsDisplayed.Displayed.ToString();
-                    Thread.Sleep(4000);
+                    Thread.Sleep(8000);
                     SUT.Log.DebugFormat("Reopen slider is diplayed");
                 }
                 else
