@@ -283,8 +283,15 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.ContactPageIsDisplayed();
         }
 
-        [When(@"Click on Add contac button")]
-        public void WhenClickOnAddContacButton()
+        [Then(@"Click on workwave contacts tab")]
+        public void ThenClickOnWorkwaveContactsTab()
+        {
+            opportunitypage.ClickOnWorkWaveContactsLink();
+        }
+
+
+        [When(@"Click on Add contact button")]
+        public void WhenClickOnAddContactButton()
         {
             opportunitypage.ClickOnAddContactButton();
         }
@@ -319,10 +326,36 @@ namespace WorkWave.PestPac.TA.Steps
         //[Then(@"Confirmation message should be displayed Closed")]
         //public void ThenConfirmationMessageShouldBeDisplayedClosed()
         //{
-            
+
         //}
 
+        //Edit the opportunity contacts
 
+        [When(@"Edit the contacts")]
+        public void WhenEditTheContacts()
+        {
+            opportunitypage.ClickOnThreeDotsIconforAddedContacts();
+            opportunitypage.ClickOnEditLinkforContacts();
+        }
+
+         
+        [When(@"Enter the EmailId (.*)")]
+        public void WhenEnterTheEmailId(string emailid)
+        {
+            opportunitypage.EnterEmailId(emailid);
+        }
+
+        [When(@"Click on Update button in add contact slider")]
+        public void WhenClickOnUpdateButtonInAddContactSlider()
+        {
+            opportunitypage.ClickOnUpdateButtonInAddContactSlider();
+        }
+
+        [When(@"Remove the updated contact")]
+        public void WhenRemoveTheUpdatedContact()
+        {
+            
+        }
 
 
     }

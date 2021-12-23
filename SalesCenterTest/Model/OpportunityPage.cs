@@ -209,7 +209,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//input[@placeholder='Search']")]
         private IWebElement Searchfield { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//span[text()='Add Contact'])[3]")]
+        [FindsBy(How = How.XPath, Using = "(//span[text()='Add Contact'])[3]/..")]
         private IWebElement ClickAddContactButtonInContactSlider { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//div[text()='James Jacob']/../descendant::button")]
@@ -225,6 +225,31 @@ namespace WorkWave.PestPac.TA.Model
         private IWebElement AddOpportunityPageIsDisplayed { get { return PageFactory.Load(this); } }
 
         #endregion Remove SC Contacts
+
+        #region Edit SC opp contacts
+
+        [FindsBy(How = How.XPath, Using = "(//span[text()='Edit'])[2]/..")]
+        private IWebElement ClickEditLinkForContacts { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Name, Using = "lastName")]
+        private IWebElement LastNamefield { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Name, Using = "emailAddresses[0].emailAddress")]
+        private IWebElement EmailId { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Update Contact']")]
+        private IWebElement ClickUpdateButtonInAddContactSlider { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Update Contact']")]
+        private IWebElement ClickThreeDotsforUpdatedContacts { get { return PageFactory.Load(this); } }
+
+
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'WorkWave Marketing Contacts')]")]
+        private IWebElement ClickWorkWaveContactsLink { get { return PageFactory.Load(this); } }
+
+
+     
+        #endregion Edit SC opp contacts 
 
         #endregion PageFactory
 
@@ -1212,5 +1237,117 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
+        public void ClickOnEditLinkforContacts()
+        {
+            try
+            {
+
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickEditLinkForContacts)))
+                {
+                    ClickEditLinkForContacts.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Edit link is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Edit link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Edit link is not clicked");
+            }
+        }
+
+      
+       public bool EnterEmailId(string emailid)
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => EmailId)))
+                {
+                    EmailId.Click();
+                    EmailId.Clear();
+                    EmailId.SendKeys(emailid);
+                    Thread.Sleep(1000);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception )
+            {
+
+                throw ;
+            }
+
+        }
+
+
+        public void ClickOnUpdateButtonInAddContactSlider()
+        {
+            try
+            {
+
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickUpdateButtonInAddContactSlider)))
+                {
+                    ClickUpdateButtonInAddContactSlider.Click();
+                    Thread.Sleep(5000);
+                    SUT.Log.DebugFormat("Update  button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Update  button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Update  button is not sclicked");
+            }
+        }
+
+        public void ClickOnThreeDotsIconforUpdatedContacts()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsforUpdatedContacts)))
+                {
+                    ClickThreeDotsforUpdatedContacts.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Three dot icon is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Three dot icon is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Three dot icon is not clicked ");
+            }
+        }
+
+        public void ClickOnWorkWaveContactsLink()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickWorkWaveContactsLink)))
+                {
+                    ClickWorkWaveContactsLink.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Workwave contact link is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Workwave contact link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Workwave contact link is not clicked ");
+            }
+        }
     }
 }
