@@ -593,8 +593,8 @@ namespace WorkWave.PestPac.TA.Model
                 {
                    //  SalesCenterUtility.ScrollToElement(ClickFunnelField);
                     ClickFunnelField.Click();
-                    Thread.Sleep(6000);
-                    SalesCenterUtility.ScrollToElement(SelectFunnelName);
+                    Thread.Sleep(4000);
+                  //  SalesCenterUtility.ScrollToElement(SelectFunnelName);
                     SelectFunnelName.Click();
                     Thread.Sleep(7000);
                     SUT.Log.DebugFormat("Sales funnel selected from the dropdown");

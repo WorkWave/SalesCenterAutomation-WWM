@@ -264,7 +264,8 @@ Scenario Outline: Remove WWM Contact for Opportunity
 	Then Opportunity detail page should be displayed
     When Click on view contacts link
     Then Contacts page should be displayed
-    When Click on Add contac button
+    And Click on workwave contacts tab
+    When Click on Add contact button
     Then Add contact slider should be displayed
     And Search the existing contact <ExistingContact>
     And Click on Add contact button
@@ -272,8 +273,37 @@ Scenario Outline: Remove WWM Contact for Opportunity
     #Then Confirmation message should be displayed <ContactDeleted>
     	
    Examples:  
-     | ExistingContact | ContactDeleted |
-     | James           | Closed         |  
+     | ExistingContact | 
+     | James           | 
+
+
+@Regression @Opportunities @WWM-8610 @WW_OP_010
+Scenario Outline: Edit WWM Contact for Opportunity
+	When Mouse hover on sales center side menu
+    And Click on Opportunities link
+    Then Opportunities page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+	When Click on View details page link
+	Then Opportunity detail page should be displayed
+    When Click on view contacts link
+    Then Contacts page should be displayed
+    And Click on workwave contacts tab
+    When Click on Add contact button
+    Then Add contact slider should be displayed
+    And Search the existing contact <ExistingContact>
+    And Click on Add contact button
+    When Edit the contacts
+    And Enter the EmailId <EmailId>
+    And Click on Update button in add contact slider
+    When Remove the contact
+    #Then Confirmation message should be displayed <ContactDeleted>
+    	
+   Examples:  
+     | ExistingContact | EmailId        |
+     | James           | john@gmail.com | 
+
 
 
 
