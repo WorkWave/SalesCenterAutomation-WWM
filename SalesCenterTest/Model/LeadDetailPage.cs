@@ -246,7 +246,7 @@ namespace WorkWave.PestPac.TA.Model
         private IWebElement LeadStatusOpenField { get { return PageFactory.Load(this); } }
 
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Clear All']")]
+        [FindsBy(How = How.XPath, Using = "//span[text()='Reset Filters to Default']")]
         private IWebElement ClickClearFilterButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[text()='Disqualified']/..")]
@@ -593,10 +593,10 @@ namespace WorkWave.PestPac.TA.Model
                 {
                    //  SalesCenterUtility.ScrollToElement(ClickFunnelField);
                     ClickFunnelField.Click();
-                    Thread.Sleep(4000);
+                    Thread.Sleep(7000);
                   //  SalesCenterUtility.ScrollToElement(SelectFunnelName);
                     SelectFunnelName.Click();
-                    Thread.Sleep(7000);
+                    Thread.Sleep(5000);
                     SUT.Log.DebugFormat("Sales funnel selected from the dropdown");
                 }
                 else

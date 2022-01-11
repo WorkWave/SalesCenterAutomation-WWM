@@ -218,7 +218,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//div[@class='MuiListItemText-root MuiListItemText-dense']//span)[2]/..")]
         private IWebElement ClickRemoveLinkForContacts { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//span[text()='Remove'])[2]")]
+        [FindsBy(How = How.XPath, Using = "//span[text()='Remove']/..")]
         private IWebElement ClickRemoveButtonInPopup { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "(//span[text()='Add Contact'])[2]")]
@@ -247,9 +247,24 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//span[contains(text(),'WorkWave Marketing Contacts')]")]
         private IWebElement ClickWorkWaveContactsLink { get { return PageFactory.Load(this); } }
 
-
-     
         #endregion Edit SC opp contacts 
+
+        #region Create SC contacts for opp
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Add New Contact']/..")]
+        private IWebElement ClickAddNewContactTab { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Name, Using = "firstName")]
+        private IWebElement FirstName { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Name, Using = "lastName")]
+        private IWebElement LastName { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Create Contact']/..")]
+        private IWebElement ClickCreateContactButton { get { return PageFactory.Load(this); } }
+
+      
+        #endregion Create SC contacts for opp
 
         #endregion PageFactory
 
@@ -1282,7 +1297,6 @@ namespace WorkWave.PestPac.TA.Model
 
                 throw ;
             }
-
         }
 
 
@@ -1349,5 +1363,98 @@ namespace WorkWave.PestPac.TA.Model
                 SUT.Log.ErrorFormat("Workwave contact link is not clicked ");
             }
         }
+
+        //Create SC contacts for opp
+
+        public void ClickOnAddNewContactTab()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAddNewContactTab)))
+                {
+                    ClickAddNewContactTab.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Add new contact tab is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Add new contact tab is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Add new contact tab is not clicked ");
+            }
+        }
+
+        public bool EnterFirstName(string firstname)
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => FirstName)))
+                {
+                    FirstName.Click();
+                    FirstName.Clear();
+                    FirstName.SendKeys(firstname);
+                    Thread.Sleep(1000);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public bool EnterLastName(string lastname)
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => LastName)))
+                {
+                    LastName.Click();
+                    LastName.Clear();
+                    LastName.SendKeys(lastname);
+                    Thread.Sleep(1000);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void ClickOnCreateContactButton()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCreateContactButton)))
+                {
+                    ClickCreateContactButton.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Create contact button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Create contact button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Create contact button is not clicked ");
+            }
+        }
+
     }
 }

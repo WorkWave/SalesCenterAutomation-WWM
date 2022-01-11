@@ -351,11 +351,30 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.ClickOnUpdateButtonInAddContactSlider();
         }
 
-        [When(@"Remove the updated contact")]
-        public void WhenRemoveTheUpdatedContact()
+        //Create WWM contacts
+
+        [Then(@"Click on Add new contact tab")]
+        public void ThenClickOnAddNewContactTab()
         {
-            
+            opportunitypage.ClickOnAddNewContactTab();
         }
+
+        [Then(@"Enter the contact details (.*) (.*) (.*)")]
+        public void ThenEnterTheContactDetails(string firstname, string lastname, string emailid)
+        {
+            opportunitypage.EnterFirstName(firstname);
+            opportunitypage.EnterLastName(lastname);
+            opportunitypage.EnterEmailId(emailid);
+        }
+
+        [When(@"Click on Create contact button")]
+        public void WhenClickOnCreateContactButton()
+        {
+            opportunitypage.ClickOnCreateContactButton();
+        }
+
+
+
 
 
     }

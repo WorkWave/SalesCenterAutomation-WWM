@@ -5,7 +5,7 @@ Feature: Opportunities
 Background: 
 	Given I am logged in
 
-@Smoke @Regression @Opportunities @WWM-8447 @WW_OP_001
+@Smoke @Opportunities @WWM-8447 @WW_OP_001
 Scenario Outline: SC-Bulk Re-open: Verify that user can Bulk reopen the multiple closed opportunities at once
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
@@ -305,6 +305,29 @@ Scenario Outline: Edit WWM Contact for Opportunity
      | James           | john@gmail.com | 
 
 
-
+@Regression @Opportunities @WWM-8609 @WW_OP_011
+Scenario Outline: Create WWM Contact for Opportunity
+	When Mouse hover on sales center side menu
+    And Click on Opportunities link
+    Then Opportunities page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+	When Click on View details page link
+	Then Opportunity detail page should be displayed
+    When Click on view contacts link
+    Then Contacts page should be displayed
+    And Click on workwave contacts tab
+    When Click on Add contact button
+    Then Add contact slider should be displayed
+    And Click on Add new contact tab
+    And Enter the contact details <FirstName> <LastName> <Email>
+    When Click on Create contact button
+    When Remove the contact
+    #Then Confirmation message should be displayed <ContactDeleted>
+    	
+   Examples:  
+     | ExistingContact | EmailId        | FirstName | LastName | Email           |
+     | James           | john@gmail.com | James     | Jacob    | james@gmail.com |
 
 
