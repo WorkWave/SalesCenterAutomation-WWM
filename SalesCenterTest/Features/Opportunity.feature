@@ -331,3 +331,32 @@ Scenario Outline: Create WWM Contact for Opportunity
      | James           | john@gmail.com | James     | Jacob    | james@gmail.com |
 
 
+@Regression @Opportunities @WWM-8608 @WW_OP_012
+Scenario Outline: Verify that Primary contact which is shown in the Contacts slide-out is the same contact displayed on the Opportunity-cards
+	When Mouse hover on sales center side menu
+    And Click on Opportunities link
+    Then Opportunities page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+	When Click on View details page link
+	Then Opportunity detail page should be displayed
+    When Click on view contacts link
+    Then Contacts page should be displayed
+    And Click on workwave contacts tab
+    When Click on Add contact button
+    Then Add contact slider should be displayed
+    And Click on Add new contact tab
+    And Enter the contact details <FirstName> <LastName> <Email>
+    When Click on Create contact button
+    And Select the primary contact radio button
+    When Click on close button
+    Then Same contact name should be displayed in primary contact section
+    When Click on view contacts link
+    Then Contacts page should be displayed
+    When Remove the contact
+    #Then Confirmation message should be displayed <ContactDeleted>
+    	
+   Examples:  
+     | ExistingContact | EmailId        | FirstName | LastName | Email           |
+     | James           | john@gmail.com | James     | Jacob    | james@gmail.com |

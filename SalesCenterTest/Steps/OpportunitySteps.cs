@@ -373,6 +373,27 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.ClickOnCreateContactButton();
         }
 
+        //Verify primary contact name which is shown in contacts section
+
+        [When(@"Select the primary contact radio button")]
+        public void WhenSelectThePrimaryContactRadioButton()
+        {
+            opportunitypage.ClickOnPrimaryContactRadioButton();
+        }
+
+        [When(@"Click on close button")]
+        public void WhenClickOnCloseButton()
+        {
+            opportunitypage.ClickOnCloseButtonInContactsPage();
+        }
+
+        [Then(@"Same contact name should be displayed in primary contact section")]
+        public void ThenSameContactNameShouldBeDisplayedInPrimaryContactSection()
+        {
+            opportunitypage.VerifyPrimaryContactName_isDisplayed();
+        }
+
+
 
 
 
