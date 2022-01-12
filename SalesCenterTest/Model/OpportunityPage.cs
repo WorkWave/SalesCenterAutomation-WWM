@@ -17,6 +17,9 @@ namespace WorkWave.PestPac.TA.Model
 {
     class OpportunityPage : IWebPage
     {
+
+        private readonly string PrimaryContactText = "James Jacob";
+
         #region PageFactory
 
         #region Bulk reopen close opportunities
@@ -42,7 +45,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[text()='Opportunity Status']")]
         private IWebElement OpportunitiesStatusExpandIcon { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//div[text()='All']")]
+        [FindsBy(How = How.XPath, Using = "//p[text()='Open']")]
         private IWebElement OpportunitiesStatusOpenField { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//li[text()='Closed']")]
@@ -68,7 +71,7 @@ namespace WorkWave.PestPac.TA.Model
 
         #region Select all the checkbox in listview
 
-        [FindsBy(How = How.XPath, Using = "//div[text()='Closed Won / Closed Lost']")]
+        [FindsBy(How = How.XPath, Using = "//div[text()='Closed Won / Closed Lost']/..")]
         private IWebElement ClickCloseLostExpandIcon { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Closed Lost...')]/..")]
@@ -226,9 +229,23 @@ namespace WorkWave.PestPac.TA.Model
 
         #endregion Remove SC Contacts
 
+        #region verify primary contact name
+
+        [FindsBy(How = How.XPath, Using = "(//div[text()='James Jacob']/../descendant::span[1]")]
+        private IWebElement ClickPrimaryContactRadioButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Close']/..")]
+        private IWebElement ClickCloseButtonInContactsPage { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//div[text()='James Jacob']")]
+        private IWebElement PrimaryContactName { get { return PageFactory.Load(this); } }
+
+       
+        #endregion verify primary contact name
+
         #region Edit SC opp contacts
 
-        [FindsBy(How = How.XPath, Using = "(//span[text()='Edit'])[2]/..")]
+      [FindsBy(How = How.XPath, Using = "(//span[text()='Edit'])[2]/..")]
         private IWebElement ClickEditLinkForContacts { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.Name, Using = "lastName")]
@@ -1453,6 +1470,79 @@ namespace WorkWave.PestPac.TA.Model
             catch (WebDriverTimeoutException)
             {
                 SUT.Log.ErrorFormat("Create contact button is not clicked ");
+            }
+        }
+
+        //Verify the contact name
+
+        public void ClickOnPrimaryContactRadioButton()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickPrimaryContactRadioButton)))
+                {
+                    ClickPrimaryContactRadioButton.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Primary contact radio button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Primary contact radio button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Primary contact radio button is not clicked ");
+            }
+        }
+
+        public void ClickOnCloseButtonInContactsPage()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCloseButtonInContactsPage)))
+                {
+                    ClickCloseButtonInContactsPage.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Close button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Close button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Close button is not clicked");
+            }
+        }
+
+        public bool VerifyPrimaryContactName_isDisplayed()
+        {
+
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => PrimaryContactName)))
+                {
+                    SUT.Log.DebugFormat("Primary contact name: {0}", PrimaryContactName.Text);
+                    if (PrimaryContactName.Text.Equals(PrimaryContactText))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+
+                throw e;
             }
         }
 

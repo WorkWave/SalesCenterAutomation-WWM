@@ -118,7 +118,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//span[text()='Close Services and Products']/..")]
         private IWebElement CloseServicesButton { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Convert to Opportunity'][1]/..")]
+        [FindsBy(How = How.XPath, Using = "(//p[text()='autocompany03']/../../../preceding-sibling::div/descendant::div/div[2]/child::button[1])[1]")]
         private IWebElement ClickConvertOpportunityButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[text()='Add Service']/..")]
@@ -242,7 +242,7 @@ namespace WorkWave.PestPac.TA.Model
         private IWebElement ReopenLeadStatusName { get { return PageFactory.Load(this); } }
 
 
-        [FindsBy(How = How.XPath, Using = "//div[text()='All']")]
+        [FindsBy(How = How.XPath, Using = "//div[text()='Open']")]
         private IWebElement LeadStatusOpenField { get { return PageFactory.Load(this); } }
 
 
