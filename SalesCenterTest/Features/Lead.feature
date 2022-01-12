@@ -359,5 +359,22 @@ Scenario Outline: Veriy user not able to add payment card with out matching lead
 	 
 
 	 
+@Smoke  @Regression  @Leads @WW_LD_015
+Scenario Outline: Verify User Can Disqualified Lead
+    When Mouse hover on sales center side menu
+    And Click on Leads link
+    Then Leads page should be displayed
+    And  Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider 
+    And Click on Lead status field
+    When Select the lead status in dropdown <Leadstatus>
+    Then Disqulified popup should be displayed
+    And Select the Not interested radio button
+    When Click on save button in disqualified popup
+    Then validation message should be displayed <LeadDisqualified>
 
+Examples:  
+     | LeadStatus   | LeadDisqualified  |
+     | Disqualified | Lead Disqualified |
 	 
