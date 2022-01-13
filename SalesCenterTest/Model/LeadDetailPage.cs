@@ -396,8 +396,28 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[text()='Link this lead to a location to view/capture payment information.']")]
         private IWebElement CatureCardButtonWarningToastmessage { get { return PageFactory.Load(this); } }
 
-       
+
         #endregion verify captre card button
+
+        #region Disqualified the lead
+
+        [FindsBy(How = How.XPath, Using = "(//div[@role='button'])[2]")]
+        private IWebElement ClickLeadStatusField { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='Disqualified']")]
+        private IWebElement DisqualifiedOption { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//h2[text()='Disqualified']")]
+        private IWebElement DisqualifiedPopupIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Not Interested']")]
+        private IWebElement NotInterestedRadioButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='SAVE']/..")]
+        private IWebElement SaveButtonInDisqualifiedPopup { get { return PageFactory.Load(this); } }
+
+      
+        #endregion Disqualified the lead
 
         #endregion PageFactory
 
@@ -2014,6 +2034,113 @@ namespace WorkWave.PestPac.TA.Model
             {
                 SUT.Log.Debug("Toast  message is not displayed");
                 return false;
+            }
+        }
+
+        //Disqualified the lead
+
+        public void ClickOnLeadStatusField()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickLeadStatusField)))
+                {
+                    ClickLeadStatusField.Click();
+                    Thread.Sleep(5000);
+                    SUT.Log.DebugFormat("Lead status dropdown is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Lead status dropdown is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Lead status dropdown is not clicked");
+            }
+        }
+
+        public void SelectDisqualifiedOption()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => DisqualifiedOption)))
+                {
+                    DisqualifiedOption.Click();
+                    Thread.Sleep(5000);
+                    SUT.Log.DebugFormat("Disqualified option is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Disqualified option is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Disqualified option is not clicked");
+            }
+        }
+
+        public void IsDisqualifiedPopupIsDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => DisqualifiedPopupIsDisplayed)))
+                {
+                    DisqualifiedPopupIsDisplayed.Displayed.ToString();
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("Disqualified popup is displayed ");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Disqualified popup is not displayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Disqualified popup is not displayed");
+            }
+        }
+
+        public void ClickOnNotInterestedRadioButton()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => NotInterestedRadioButton)))
+                {
+                    NotInterestedRadioButton.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Not interested radio button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Not interested radio button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Not interested radio button is not clicked");
+            }
+        }
+
+        public void ClickOnSaveButtonInDisqualifiedPopup()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => SaveButtonInDisqualifiedPopup)))
+                {
+                    SaveButtonInDisqualifiedPopup.Click();
+                    Thread.Sleep(5000);
+                    SUT.Log.DebugFormat("Save button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Save button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Save button is not clicked");
             }
         }
 

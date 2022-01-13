@@ -87,7 +87,7 @@ namespace WorkWave.PestPac.TA.Steps
         }
 
         [Then(@"Select the sales funnel (.*)")]
-        public void ThenSelectTheSalesFunnelUserDeleted(string funnelname)
+        public void ThenSelectTheSalesFunnelRequiredContractPayment(string salesfunnel)
         {
             leadspage.SelecttheFunnelName();
         }
@@ -565,6 +565,37 @@ namespace WorkWave.PestPac.TA.Steps
             leadspage.VerifyCatureCardButtonWarningToastmessage(ToastMessage);
         }
 
+        //Disqualified the lead
+
+        [Then(@"Click on Lead status field")]
+        public void ThenClickOnLeadStatusField()
+        {
+            leadspage.ClickOnLeadStatusField();
+        }
+
+        [When(@"Select the lead status in dropdown (.*)")]
+        public void WhenSelectTheLeadStatusInDropdown(string statusname)
+        {
+            leadspage.SelectDisqualifiedOption();
+        }
+
+        [Then(@"Disqulified popup should be displayed")]
+        public void ThenDisqulifiedPopupShouldBeDisplayed()
+        {
+            leadspage.IsDisqualifiedPopupIsDisplayed();
+        }
+
+        [Then(@"Select the Not interested radio button")]
+        public void ThenSelectTheNotInterestedRadioButton()
+        {
+            leadspage.ClickOnNotInterestedRadioButton();
+        }
+
+        [When(@"Click on save button in disqualified popup")]
+        public void WhenClickOnSaveButtonInDisqualifiedPopup()
+        {
+            leadspage.ClickOnSaveButtonInDisqualifiedPopup();
+        }
 
     }
 }

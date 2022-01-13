@@ -45,7 +45,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[text()='Opportunity Status']")]
         private IWebElement OpportunitiesStatusExpandIcon { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//p[text()='Open']")]
+        [FindsBy(How = How.Id, Using = "mui-component-select-filters.closed.value")]
         private IWebElement OpportunitiesStatusOpenField { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//li[text()='Closed']")]
