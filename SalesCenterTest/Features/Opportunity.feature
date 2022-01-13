@@ -360,3 +360,60 @@ Scenario Outline: Verify that Primary contact which is shown in the Contacts sli
    Examples:  
      | ExistingContact | EmailId        | FirstName | LastName | Email           |
      | James           | john@gmail.com | James     | Jacob    | james@gmail.com |
+
+
+@Regression @Opportunities @WWM-8607 @WW_OP_013
+Scenario Outline: Verification of Pushing WWM contact to PestPac Location for opportunities
+	When Click on plus icon 
+    And  Click on Add Lead button
+    Then Add Lead details page should be displayed
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
+    And Select the SalesTeam <SalesTeam>
+    And Select the Owner <Owner>
+    And Select the sales funnel <SalesFunnel>
+    When Click on Save button
+    Then Lead created validation message should be displayed <ValidationMessage>
+    And  Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+    And Click on Service expand icon
+    And Click on Add Serivces button
+    And Select the services <Services>
+    When Click on Add services button in slider
+    Then Service should be successfully added
+    And Click on Close services and product button
+    When Click on convert to opportunity button
+    When Select the lead details <OwnerName> <FunnelName> <FunnelStage> 
+    Then validation message should be displayed <OpportunityCreated>
+    When Mouse hover on sales center side menu
+    And Click on Opportunities link in leads page
+    Then Opportunities page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+    And Click on Bill to locations expand icon
+    When Click on Match or create link
+    Then Match or create new location slider should be displayed
+    And Click to match to existing location button
+    And Select the pestpac location
+    When Click on Save button in bill to search for matching slider
+    And Select match to service location <ServiceLocation>
+    When Click on Save button
+    Then Location matched validation message should be displayed <LocationMatchedValMsg> 
+    And Click on again billto expand icon
+    And Click on View detail page link
+    When Click on view contacts link
+    Then Contacts page should be displayed
+    And Click on workwave contacts tab
+    When Click on Add contact button
+    Then Add contact slider should be displayed
+    And Search the existing contact <ExistingContact>
+    And Click on Add contact button
+    And Push the wwm contacts to pestpac contacts
+    When Click on Pestpac contacts tab
+    Then Wwm contact should be displayed in pestpac contacts page
+
+ Examples:  
+     | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName    | LocationName | ServiceLocation     | LocationMatchedValMsg                  | Template                 | Services            | OpportunityCreated  | ExistingContact |
+     | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created | Residential Service Form | ANT- Ant Treatments | Opportunity created | James           |
+	
