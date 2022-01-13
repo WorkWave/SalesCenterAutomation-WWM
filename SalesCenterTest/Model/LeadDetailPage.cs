@@ -779,6 +779,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceExapndIcon)))
                 {
                     ClickServiceExapndIcon.Click();
+                    Thread.Sleep(3000);
                     SUT.Log.DebugFormat("Service expand icon is clicked");
                 }
                 else
