@@ -779,6 +779,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceExapndIcon)))
                 {
                     ClickServiceExapndIcon.Click();
+                    Thread.Sleep(3000);
                     SUT.Log.DebugFormat("Service expand icon is clicked");
                 }
                 else
@@ -865,6 +866,7 @@ namespace WorkWave.PestPac.TA.Model
                 {
                     Thread.Sleep(5000);
                     CloseServicesButton.Click();
+                    Thread.Sleep(4000);
                     SUT.Log.DebugFormat("Closeservice and product button is clicked");
                 }
                 else
@@ -1108,7 +1110,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSendContractButton)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSendContractButton),TimeSpan.FromSeconds(5)))
                 {
                     ClickSendContractButton.Click();
                     SUT.Log.DebugFormat("Send contract button is clicked");                  

@@ -280,8 +280,21 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//span[text()='Create Contact']/..")]
         private IWebElement ClickCreateContactButton { get { return PageFactory.Load(this); } }
 
-      
+
         #endregion Create SC contacts for opp
+
+        #region Push sc contacts to pp contacts
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Send To PestPac Location']")]
+        private IWebElement ClickSendTopestPaclocationlink { get { return PageFactory.Load(this); } }
+
+
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'PestPac Contacts ')]")]
+        private IWebElement ClickPestPacTab { get { return PageFactory.Load(this); } }
+
+      
+
+        #endregion Push sc contacts to pp contacts
 
         #endregion PageFactory
 
@@ -1545,6 +1558,53 @@ namespace WorkWave.PestPac.TA.Model
                 throw e;
             }
         }
+
+        //Push WWM contacts to pp contacts
+
+        public void ClickOnSendTopestPaclocationlink()
+        {
+            try
+            {
+
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSendTopestPaclocationlink)))
+                {
+                    ClickSendTopestPaclocationlink.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Send to pestpac location link is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Send to pestpac location link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Send to pestpac location link is not clicked");
+            }
+        }
+
+        public void ClickOnPestPacTab()
+        {
+            try
+            {
+
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickPestPacTab)))
+                {
+                    ClickPestPacTab.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Pestpac tab is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Pestpac tab is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Pestpac tab is not clicked");
+            }
+        }
+
 
     }
 }

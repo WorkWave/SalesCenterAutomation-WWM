@@ -394,9 +394,27 @@ namespace WorkWave.PestPac.TA.Steps
         }
 
 
+        //Push wwm contacts to pestpac contacts
+
+        [Then(@"Push the wwm contacts to pestpac contacts")]
+        public void ThenPushTheWwmContactsToPestpacContacts()
+        {
+            opportunitypage.ClickOnThreeDotsIconforAddedContacts();
+            opportunitypage.ClickOnSendTopestPaclocationlink();
+        }
+
+        [When(@"Click on Pestpac contacts tab")]
+        public void WhenClickOnPestpacContactsTab()
+        {
+            opportunitypage.ClickOnPestPacTab();
+        }
 
 
-
+        [Then(@"Wwm contact should be displayed in pestpac contacts page")]
+        public void ThenWwmContactShouldBeDisplayedInPestpacContactsPage()
+        {
+            opportunitypage.VerifyPrimaryContactName_isDisplayed();
+        }
 
     }
 }
