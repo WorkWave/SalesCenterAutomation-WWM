@@ -416,5 +416,63 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.VerifyPrimaryContactName_isDisplayed();
         }
 
+        //Add note
+
+        [When(@"Click on Add note button")]
+        public void WhenClickOnAddNoteButton()
+        {
+            opportunitypage.ClickOnAddNoteButton();
+        }
+
+        [Then(@"Add note slider should be dislayed")]
+        public void ThenAddNoteSliderShouldBeDislayed()
+        {
+            opportunitypage.IsAddNoteSliderIsDisplayed();
+        }
+
+        [Then(@"Enter the title (.*)")]
+        public void ThenEnterTheTitleTestAutomationNote(string title)
+        {
+            opportunitypage.EnterNoteTitle(title);
+        }
+
+        [Then(@"Enter the note (.*)")]
+        public void ThenEnterTheNoteAddedFirstNote(string note)
+        {
+            opportunitypage.EnterNote(note);
+        }
+
+        [When(@"Edit the note")]
+        public void WhenEditTheNote()
+        {
+            opportunitypage.ClickOnThreeDotsIconforAddedNotes();
+            opportunitypage.ClickOnEditLinkforNotes();
+            
+        }
+
+        [When(@"Update the note (.*)")]
+        public void WhenUpdateTheNote(string notesdetails)
+        {
+            opportunitypage.UpdateNotesDetail(notesdetails);
+        }
+
+        [Then(@"verify cancel button in notes delete popup")]
+        public void ThenVerifyCancelButtonInNotesDeletePopup()
+        {
+            opportunitypage.ClickOnThreeDotsIcontoDeleteNotes();
+            opportunitypage.ClickOnDeleteOptionforNotes();
+            opportunitypage.ClickOnCancelButtonInNotesDeletePopup();
+        }
+
+
+        [When(@"Delete the note")]
+        public void WhenDeleteTheNote()
+        {
+            opportunitypage.ClickOnThreeDotsIcontoDeleteNotes();
+            opportunitypage.ClickOnDeleteOptionforNotes();
+            opportunitypage.ClickOnDeleteButtonInNotesDeletePopup();
+        }
+
+
     }
 }

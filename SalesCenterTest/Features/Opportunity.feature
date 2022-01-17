@@ -417,3 +417,31 @@ Scenario Outline: Verification of Pushing WWM contact to PestPac Location for op
      | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName    | LocationName | ServiceLocation     | LocationMatchedValMsg                  | Template                 | Services            | OpportunityCreated  | ExistingContact |
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created | Residential Service Form | ANT- Ant Treatments | Opportunity created | James           |
 	
+
+@Regression @Opportunities @WWM-8603 @WW_OP_014 @ignore
+Scenario Outline: Verify a User can Create,Edit and delete a Note on an Opportunity
+	When Mouse hover on sales center side menu
+    And Click on Opportunities link
+    Then Opportunities page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+	When Click on View details page link
+	Then Opportunity detail page should be displayed
+    When Click on Add note button
+    Then Add note slider should be dislayed
+    And Enter the title <Title> 
+    And Enter the note <Note>
+    When Click on Save button
+    Then validation message should be displayed <NoteCreated>
+    When Edit the note
+    And Update the note <UpdateNote>
+    When Click on Save button
+    Then validation message should be displayed <NoteUpdated>
+    And verify cancel button in notes delete popup
+    When Delete the note
+    Then validation message should be displayed <NoteDeleted>
+    
+   Examples:  
+     | Title              | Note             | NoteCreated   | NoteUpdated   | NoteDeleted   | UpdateNote      |
+     | TestAutomationNote | added first note | Note created. | Note updated. | Note deleted. | addedsecondnote |
