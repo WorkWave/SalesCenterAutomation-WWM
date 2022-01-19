@@ -292,9 +292,48 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//span[contains(text(),'PestPac Contacts ')]")]
         private IWebElement ClickPestPacTab { get { return PageFactory.Load(this); } }
 
-      
+
 
         #endregion Push sc contacts to pp contacts
+
+        #region Add note 
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Add Note']/..")]
+        private IWebElement ClickAddNoteButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//span[text()='Add Note'])[2]")]
+        private IWebElement AddNoteSLiderIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Name, Using = "title")]
+        private IWebElement Title { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Name, Using = "detail")]
+        private IWebElement Note { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//b[text()='TestAutomationNote']/../../../../following-sibling::div/child::button")]
+        private IWebElement ClickThreeDotsIconforAddedNotes { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//span[text()='Edit'])[2]")]
+        private IWebElement ClickEditLinkforNotes { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Name, Using = "title")]
+        private IWebElement UpdateNote { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//span[text()='Delete'])[3]")]
+        private IWebElement ClickDeleteOptionforNotes { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//button[@data-test-id='cancelBtn'])[4]")]
+        private IWebElement ClickCancelButtonInNotesDeletePopup { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//button[@data-test-id='okBtn'])[4]")]
+        private IWebElement ClickDeleteButtonInNotesDeletePopup { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//b[text()='TestAutomationNoteaddedsecondnote']/../../../../following-sibling::div/child::button")]
+        private IWebElement ClickThreeDotsIcontoDeleteNotes { get { return PageFactory.Load(this); } }
+
+     
+        #endregion Add note
+
 
         #endregion PageFactory
 
@@ -1604,6 +1643,219 @@ namespace WorkWave.PestPac.TA.Model
                 SUT.Log.ErrorFormat("Pestpac tab is not clicked");
             }
         }
+
+        public void ClickOnAddNoteButton()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAddNoteButton)))
+                {
+                    ClickAddNoteButton.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Add note button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Add note button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Add note button is not clicked");
+            }
+        }
+
+        public void IsAddNoteSliderIsDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => AddNoteSLiderIsDisplayed), TimeSpan.FromSeconds(10)))
+                {
+                    AddNoteSLiderIsDisplayed.Displayed.ToString();
+                    Thread.Sleep(3000);
+                    SUT.Log.DebugFormat("Add note slider is diplayed");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Add note slider is not diplayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Add note slider is not diplayed");
+            }
+        }
+
+        public void EnterNoteTitle(string title)
+        {
+            Title.Click();
+            Title.SendKeys(title);
+            Thread.Sleep(1000);
+        }
+
+        public void EnterNote(string note)
+        {         
+            Note.Click();
+            Note.SendKeys(note);
+            Thread.Sleep(1000);         
+        }
+
+        public void ClickOnThreeDotsIconforAddedNotes()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsIconforAddedNotes)))
+                {
+                    SalesCenterUtility.ScrollToElement(ClickThreeDotsIconforAddedNotes);
+                    ClickThreeDotsIconforAddedNotes.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Three dot icon is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Three dot icon is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Three dot icon is not clicked ");
+            }
+        }
+
+        public void ClickOnEditLinkforNotes()
+        {
+            try
+            {
+
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickEditLinkforNotes)))
+                {
+                    ClickEditLinkforNotes.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Edit link is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Edit link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Edit link is not clicked");
+            }
+        }
+
+        public bool UpdateNotesDetail(string notesdetail)
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => UpdateNote)))
+                {
+                   // UpdateNote.Click();
+                    UpdateNote.Clear();
+                    UpdateNote.SendKeys(notesdetail);
+                    Thread.Sleep(1000);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void ClickOnDeleteOptionforNotes()
+        {
+            try
+            {
+
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickDeleteOptionforNotes)))
+                {
+                    ClickDeleteOptionforNotes.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Delete option is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Delete link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Delete link is not clicked");
+            }
+        }
+
+        public void ClickOnCancelButtonInNotesDeletePopup()
+        {
+            try
+            {
+
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCancelButtonInNotesDeletePopup)))
+                {
+                    ClickCancelButtonInNotesDeletePopup.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Cancel button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Cancel button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Cancel button is not clicked");
+            }
+        }
+
+        public void ClickOnDeleteButtonInNotesDeletePopup()
+        {
+            try
+            {
+
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickDeleteButtonInNotesDeletePopup)))
+                {
+                    ClickDeleteButtonInNotesDeletePopup.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Delete button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Delete button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Delete button is not clicked");
+            }
+        }
+
+        public void ClickOnThreeDotsIcontoDeleteNotes()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsIcontoDeleteNotes)))
+                {
+                    SalesCenterUtility.ScrollToElement(ClickThreeDotsIcontoDeleteNotes);
+                    ClickThreeDotsIcontoDeleteNotes.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Three dot icon is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Three dot icon is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Three dot icon is not clicked ");
+            }
+        }
+
 
 
     }
