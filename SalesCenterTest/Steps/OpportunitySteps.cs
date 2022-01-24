@@ -482,5 +482,29 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.ClickOnDeleteLinkforOpportunityCard();
             opportunitypage.ClickOnDeleteButtonInOpportunityDeletePopup();
         }
+
+        //Delete already added service
+
+        [Then(@"Click on Service expand icon for opportunity")]
+        public void ThenClickOnServiceExpandIconForOpportunity()
+        {
+            opportunitypage.ClickOnServiceExpandIconForOpportunity();
+        }
+
+        [When(@"Delete the already added service")]
+        public void WhenDeleteTheAlreadyAddedService()
+        {
+            opportunitypage.ClickOnThreeDotsIconforaddedService();
+            opportunitypage.ClickOnDeleteLinkOptionforAddedService();
+            opportunitypage.ClickOnDeleteButtonInDeleteServicePopup();
+        }
+
+        [Then(@"Select the different services (.*)")]
+        public void ThenSelectTheDifferentServicesBEDBUG_BedBugTreatment(string diffservice)
+        {
+            opportunitypage.SelectTheOtherServiceFromDropDown();
+        }
+
+
     }
 }

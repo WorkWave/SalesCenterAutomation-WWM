@@ -87,7 +87,7 @@ namespace WorkWave.PestPac.TA.Steps
         }
 
         [Then(@"Select the sales funnel (.*)")]
-        public void ThenSelectTheSalesFunnelRequiredContractPayment(string salesfunnel)
+        public void ThenSelectTheSalesFunnel(string salesfunnel)
         {
             leadspage.SelecttheFunnelName();
         }
