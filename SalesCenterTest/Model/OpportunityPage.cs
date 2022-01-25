@@ -345,9 +345,32 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//button[@data-test-id='okBtn'])[1]")]
         private IWebElement ClickDeleteButtonInOpportunityDeletePopup { get { return PageFactory.Load(this); } }
 
-       
+
         #endregion Delete opportunity card
 
+
+        #region Delete already added service
+
+        [FindsBy(How = How.XPath, Using = "(//button[contains(@data-test-id,'serviceMoreBtn')])[1]")]
+        private IWebElement ClickThreeDotsIconforaddedService { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//div[@data-test-id='deleteBtn']")]
+        private IWebElement ClickDeleteLinkOptionforAddedService { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//button[@data-test-id='okBtn'])[21]")]
+        private IWebElement ClickDeleteButtonInDeleteServicePopup { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//input[@id='services']/../..")]
+        private IWebElement ClickOtherServiceField { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='BEDBUG- Bed Bug Treatment']")]
+        private IWebElement SelectOtherServicename { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//div[contains(@data-test-id,'cardFooter')])[1]")]
+        private IWebElement ClickServiceExpandIconForOpportunity { get { return PageFactory.Load(this); } }
+
+       
+        #endregion Delete already added service
         #endregion PageFactory
 
         private readonly string PageHeaderText = "Opportunities";
@@ -1933,6 +1956,116 @@ namespace WorkWave.PestPac.TA.Model
             catch (WebDriverTimeoutException)
             {
                 SUT.Log.ErrorFormat("Delete button is not clicked");
+            }
+        }
+
+        //Delete already added service
+
+        public void ClickOnServiceExpandIconForOpportunity()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceExpandIconForOpportunity)))
+                {
+                    ClickServiceExpandIconForOpportunity.Click();
+                    Thread.Sleep(3000);
+                    SUT.Log.DebugFormat("Service expand icon is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Service expand icon is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Service expand icon is not clicked");
+            }
+        }
+
+        public void ClickOnThreeDotsIconforaddedService()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsIconforaddedService)))
+                {
+                    ClickThreeDotsIconforaddedService.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Three dot icon is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Three dot icon is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Three dot icon is not clicked ");
+            }
+        }
+
+        public void ClickOnDeleteLinkOptionforAddedService()
+        {
+            try
+            {
+
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickDeleteLinkOptionforAddedService)))
+                {
+                    ClickDeleteLinkOptionforAddedService.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Delete option is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Delete link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Delete link is not clicked");
+            }
+        }
+
+        public void ClickOnDeleteButtonInDeleteServicePopup()
+        {
+            try
+            {
+
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickDeleteButtonInDeleteServicePopup)))
+                {
+                    ClickDeleteButtonInDeleteServicePopup.Click();
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("Delete button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Delete button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Delete button is not clicked");
+            }
+        }
+
+        public void SelectTheOtherServiceFromDropDown()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickOtherServiceField)))
+                {
+                    ClickOtherServiceField.Click();
+                    Thread.Sleep(2000);
+                    SelectOtherServicename.Click();
+                    SUT.Log.DebugFormat("Service selected from the droddown");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Service is not selected from the droddown {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Service is not selected from the dropdown");
             }
         }
 

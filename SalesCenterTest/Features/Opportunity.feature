@@ -462,5 +462,24 @@ Scenario Outline: Verify user able to delete a opportunity card
      | OpportunityDeleted   |
      | Opportunity deleted. | 
 
+@Regression @Opportunities @WWM-8597 @WW_OP_016
+Scenario Outline: Verify user able to Delete already added service to a opportunity
+	When Mouse hover on sales center side menu
+    And Click on Opportunities link
+    Then Opportunities page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+    And Click on Service expand icon for opportunity
+    And Click on Add Serivces button
+    And Select the different services <Services>
+    When Click on Add services button in slider
+    Then Service should be successfully added
+    When Delete the already added service
+   # Then validation message should be displayed <ServiceDeleted>
+   
 
+  Examples:  
+     | OpportunityDeleted   | Services                   |
+     | Opportunity deleted. | BEDBUG- Bed Bug Treatment  |
 
