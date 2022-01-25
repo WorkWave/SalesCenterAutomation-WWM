@@ -221,7 +221,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//div[@class='MuiListItemText-root MuiListItemText-dense']//span)[2]/..")]
         private IWebElement ClickRemoveLinkForContacts { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Remove']/..")]
+        [FindsBy(How = How.XPath, Using = "//h2[text()='Remove Contact?']/../following-sibling::div/child::button[2]")]
         private IWebElement ClickRemoveButtonInPopup { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "(//span[text()='Add Contact'])[2]")]
@@ -331,9 +331,22 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//b[text()='TestAutomationNoteaddedsecondnote']/../../../../following-sibling::div/child::button")]
         private IWebElement ClickThreeDotsIcontoDeleteNotes { get { return PageFactory.Load(this); } }
 
-     
+
         #endregion Add note
 
+        #region Delete opportunity card
+
+        [FindsBy(How = How.XPath, Using = "(//button[@data-test-id='opportunityMoreBtn'])[1]")]
+        private IWebElement ClickThreeDotsIconforOpportunityCard { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//span[contains(@class,'MuiTypography-root MuiListItemText-primary')])[2]")]
+        private IWebElement ClickDeleteLinkforOpportunityCard { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//button[@data-test-id='okBtn'])[1]")]
+        private IWebElement ClickDeleteButtonInOpportunityDeletePopup { get { return PageFactory.Load(this); } }
+
+       
+        #endregion Delete opportunity card
 
         #endregion PageFactory
 
@@ -1856,7 +1869,72 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
+        //Delete opportunity card
 
+        public void ClickOnThreeDotsIconforOpportunityCard()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsIconforOpportunityCard)))
+                {
+                    ClickThreeDotsIconforOpportunityCard.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Three dot icon is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Three dot icon is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Three dot icon is not clicked ");
+            }
+        }
+
+        public void ClickOnDeleteLinkforOpportunityCard()
+        {
+            try
+            {
+
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickDeleteLinkforOpportunityCard)))
+                {
+                    ClickDeleteLinkforOpportunityCard.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Delete option is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Delete link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Delete link is not clicked");
+            }
+        }
+
+        public void ClickOnDeleteButtonInOpportunityDeletePopup()
+        {
+            try
+            {
+
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickDeleteButtonInOpportunityDeletePopup)))
+                {
+                    ClickDeleteButtonInOpportunityDeletePopup.Click();
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("Delete button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Delete button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Delete button is not clicked");
+            }
+        }
 
     }
 }

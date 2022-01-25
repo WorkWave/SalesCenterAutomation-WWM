@@ -445,3 +445,22 @@ Scenario Outline: Verify a User can Create,Edit and delete a Note on an Opportun
    Examples:  
      | Title              | Note             | NoteCreated   | NoteUpdated   | NoteDeleted   | UpdateNote      |
      | TestAutomationNote | added first note | Note created. | Note updated. | Note deleted. | addedsecondnote |
+
+
+@Regression @Opportunities @WWM-8597 @WW_OP_015
+Scenario Outline: Verify user able to delete a opportunity card
+	When Mouse hover on sales center side menu
+    And Click on Opportunities link
+    Then Opportunities page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+    When Delete the opportunity card
+    Then validation message should be displayed <OpportunityDeleted>
+
+  Examples:  
+     | OpportunityDeleted   |
+     | Opportunity deleted. | 
+
+
+

@@ -473,6 +473,14 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.ClickOnDeleteButtonInNotesDeletePopup();
         }
 
+        //Delete opportnity card
 
+        [When(@"Delete the opportunity card")]
+        public void WhenDeleteTheOpportunityCard()
+        {
+            opportunitypage.ClickOnThreeDotsIconforOpportunityCard();
+            opportunitypage.ClickOnDeleteLinkforOpportunityCard();
+            opportunitypage.ClickOnDeleteButtonInOpportunityDeletePopup();
+        }
     }
 }
