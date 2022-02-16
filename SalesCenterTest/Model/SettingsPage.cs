@@ -94,7 +94,7 @@ namespace WorkWave.PestPac.TA.Model
 
         #region Users and Access
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Add Unmapped User']/..")]
+        [FindsBy(How = How.XPath, Using = "//button[@data-test-id='addUnmUsrBtn']")]
         private IWebElement ClickOnUnmappedButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.Id, Using = "firstName")]
@@ -111,13 +111,13 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[@id='mui-component-select-role']/..")]
         private IWebElement SelectRoleName { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//div[@id='mui-component-select-role']/..")]
+        [FindsBy(How = How.XPath, Using = "//input[@name='role']/..")]
         private IWebElement ClickRoleField { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//li[text()='Testing  non admin']")]
         private IWebElement SelectRolename { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='+ Add Sales Team']/..")]
+        [FindsBy(How = How.XPath, Using = "//button[text()='+ Add Sales Team']")]
         private IWebElement ClickAddSalesTeamOption { get { return PageFactory.Load(this); } }
 
 
@@ -130,7 +130,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//span[text()='Lead']/..")]
         private IWebElement SelectSalesTeamPosition { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Save']/..")]
+        [FindsBy(How = How.XPath, Using = "//button[text()='Save']")]
         private IWebElement ClickSaveButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//div[@role='alert']")]
@@ -139,10 +139,10 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//td[text()='Automation user']/preceding-sibling::td/child::button")]
         private IWebElement ClickThreeDotsIconforUnmappedUser { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//span[text()='Delete'])[2]/..")]
+        [FindsBy(How = How.XPath, Using = "//span[text()='Delete']/..")]
         private IWebElement DeleteoptionforAddedUser { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Delete']/..")]
+        [FindsBy(How = How.XPath, Using = "//button[@data-test-id='okBtn']")]
         private IWebElement ClickDeletebuttonInPopup { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//div[text()='User deleted']")]
@@ -155,13 +155,13 @@ namespace WorkWave.PestPac.TA.Model
 
         #region Sales Team
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Add Sales Team']/..")]
+        [FindsBy(How = How.XPath, Using = "//button[text()='Add Sales Team']")]
         private IWebElement AddSalesTeamButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//label[text()='Name']/following::input[1]")]
         private IWebElement SalesTeamNamefield { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//div[contains(@class,'MuiSelect-root MuiSelect-select')]/..")]
+        [FindsBy(How = How.XPath, Using = "//input[@name='branchId']/..")]
         private IWebElement ClickBranchField { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//li[text()='North Branch']")]
@@ -174,7 +174,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//span[text()='autosalesteam']/../following-sibling::div/descendant::button[2]")]
         private IWebElement ClickThreeDotsIconforSalesTeam { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//div[@class='MuiListItemText-root MuiListItemText-dense']//span)[2]")]
+        [FindsBy(How = How.XPath, Using = "//span[text()='Delete']")]
         private IWebElement DeleteoptionforSalesTeam { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//div[text()='Sales Team deleted.']")]

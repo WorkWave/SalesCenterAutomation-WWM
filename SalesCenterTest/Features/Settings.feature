@@ -144,7 +144,7 @@ Scenario Outline: Verify Admin Users Can Add Positions to Sales Teams
     
    Examples: 
      | SalesTeamName   | Branch Name    | ConfirmMessage     | SalesTeamDeleted    | title        | Positionvalmsg               |
-     | autosalesteam   | North Branch  | Sales Team created | Sales Team deleted. | SalesManager | Sales Team Position created  |
+     | autosalesteam   | North Branch   | Sales Team created | Sales Team deleted. | SalesManager | Sales Team Position created  |
      
 
 @Smoke @Regression @WWM-8408 @Settings @WW_ST_012

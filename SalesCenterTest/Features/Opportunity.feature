@@ -5,7 +5,7 @@ Feature: Opportunities
 Background: 
 	Given I am logged in
 
-@Smoke @Opportunities @WWM-8447 @WW_OP_001
+@Smoke @Regression @Opportunities @WWM-8447 @WW_OP_001
 Scenario Outline: SC-Bulk Re-open: Verify that user can Bulk reopen the multiple closed opportunities at once
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
@@ -74,7 +74,6 @@ Scenario Outline: Verify Users Can Re-Open Closed/Won and Closed/Lost Opportunit
 	Then All the closed opportunities should be displayed
 	And Click on three dots icon for closed opportunities
 	And Select the reopen option for closed opportunities
-	And Select the date
 	When Click on reopen button in reopen opportunity popup
 	
 Examples:  
@@ -103,8 +102,10 @@ Scenario Outline: Verify user can closed won a opportunity
     And Click on Close services and product button
     When Click on send contract button
     Then Create contract slider should be displayed
-    And  Select contract template <Template> and click on launch form to complete button  
-    And  Click on Close form manager button
+    And  Select contract template <Template> and click on launch form to complete button
+    And  Click on complete form button
+    And Click on proceed button
+    And Click on Close form manager button
     When Click on convert to opportunity button
     When Select the lead details <OwnerName> <FunnelName> <FunnelStage> 
     Then validation message should be displayed <OpportunityCreated>
@@ -127,6 +128,8 @@ Scenario Outline: Verify user can closed won a opportunity
     And Click on View detail page link
     And Click on closed won/closed lost bar
     When Select the closed won option
+    Then Close won opportunity slider should be displayed
+    When Click on Submit button in Close won opportunity slider
    #Then Validation message should be displayed
     
   
@@ -157,8 +160,10 @@ Scenario Outline: Veriy user able to add payment card for a matched opportunity 
     And Click on Close services and product button
     When Click on send contract button
     Then Create contract slider should be displayed
-    And  Select contract template <Template> and click on launch form to complete button  
-    And  Click on Close form manager button
+    And  Select contract template <Template> and click on launch form to complete button
+    And  Click on complete form button
+    And Click on proceed button
+    And Click on Close form manager button
     When Click on convert to opportunity button
     When Select the lead details <OwnerName> <FunnelName> <FunnelStage> 
     Then validation message should be displayed <OpportunityCreated>
@@ -354,6 +359,7 @@ Scenario Outline: Verify that Primary contact which is shown in the Contacts sli
     Then Same contact name should be displayed in primary contact section
     When Click on view contacts link
     Then Contacts page should be displayed
+    And Select the other contact
     When Remove the contact
     #Then Confirmation message should be displayed <ContactDeleted>
     	
@@ -462,7 +468,7 @@ Scenario Outline: Verify user able to delete a opportunity card
      | OpportunityDeleted   |
      | Opportunity deleted. | 
 
-@Regression @Opportunities @WWM-8597 @WW_OP_016
+@Regression @Opportunities @WWM-8595 @WW_OP_016
 Scenario Outline: Verify user able to Delete already added service to a opportunity
 	When Mouse hover on sales center side menu
     And Click on Opportunities link

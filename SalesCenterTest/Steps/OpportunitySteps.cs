@@ -105,14 +105,7 @@ namespace WorkWave.PestPac.TA.Steps
         {
             opportunitypage.ClickOnThreeDotsIconforClosedOpportunities();
         }
-
-        [Then(@"Select the date")]
-        public void ThenSelectTheDates()
-        {
-            opportunitypage.ClickonCalenderIcon();
-            opportunitypage.ClickonOkButtonInCalenderPopup();
-        }
-
+      
         [When(@"Click on reopen button in reopen opportunity popup")]
         public void WhenClickOnReopenButtonInReopenOpportunityPopup()
         {
@@ -181,6 +174,19 @@ namespace WorkWave.PestPac.TA.Steps
         {
             opportunitypage.ClickOnCloseFormManagerButton();
         }
+
+        [Then(@"Close won opportunity slider should be displayed")]
+        public void ThenCloseWonOpportunitySliderShouldBeDisplayed()
+        {
+            opportunitypage.IsCloseWonOpportunitySliderDisplayed();
+        }
+
+        [When(@"Click on Submit button in Close won opportunity slider")]
+        public void WhenClickOnSubmitButtonInCloseWonOpportunitySlider()
+        {
+            opportunitypage.ClickonSubmitButtonInCloseWOnOpportunitySlider();
+        }
+
 
         //credit card details
 
@@ -393,6 +399,11 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.VerifyPrimaryContactName_isDisplayed();
         }
 
+        [Then(@"Select the other contact")]
+        public void ThenSelectTheOtherContact()
+        {
+            opportunitypage.SelectOtherPrimaryContactRadioButton();
+        }
 
         //Push wwm contacts to pestpac contacts
 

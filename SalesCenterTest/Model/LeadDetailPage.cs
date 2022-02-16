@@ -27,10 +27,10 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//p[text()='Leads'])[2]")]
         private IWebElement ClickLeadLink { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//span[@class='MuiButton-label']/../preceding-sibling::button)[1]")]
+        [FindsBy(How = How.XPath, Using = "//button[@data-test-id='addBtn']")]
         private IWebElement ClickPlusButton { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//div[text()='Add Lead']/..")]
+        [FindsBy(How = How.XPath, Using = "//button[@data-test-id='addLeadBtn']")]
         private IWebElement ClickAddLeadButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//p[text()='Add Lead']")]
@@ -50,7 +50,7 @@ namespace WorkWave.PestPac.TA.Model
         private IWebElement EmailNamefield { get { return PageFactory.Load(this); } }
 
 
-        [FindsBy(How = How.XPath, Using = "//div[@id='mui-component-select-salesTeamId']")]
+        [FindsBy(How = How.XPath, Using = "//input[@name='salesTeamId']/..")]
         private IWebElement ClickSalesTeamField { get { return PageFactory.Load(this); } }
 
 
@@ -58,39 +58,39 @@ namespace WorkWave.PestPac.TA.Model
         private IWebElement SelectSalesTeam { get { return PageFactory.Load(this); } }
 
 
-        [FindsBy(How = How.Id, Using = "mui-component-select-assigneeId")]
+        [FindsBy(How = How.XPath, Using = "//input[@name='assigneeId']/..")]
         private IWebElement ClickOwnerAssigneeField { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//li[text()='Unassigned']")]
         private IWebElement SelectOwnerAssigneeName { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.Id, Using = "mui-component-select-salesFunnelId")]
+        [FindsBy(How = How.XPath, Using = "//input[@name='salesFunnelId']/..")]
         private IWebElement ClickFunnelField { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//li[contains(text(),'Required Contract & Payment')]")]
         private IWebElement SelectFunnelName { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Save']/..")]
+        [FindsBy(How = How.XPath, Using = "//button[text()='Save']")]
         private IWebElement ClickSaveButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//div[@role='alert']")]
         private IWebElement LeadcreatedConfirm_Txt { get { return PageFactory.Load(this); } }
 
 
-        [FindsBy(How = How.XPath, Using = "//div[@class='MuiFormControl-root MuiTextField-root']")]
+        [FindsBy(How = How.XPath, Using = "//div[@data-test-id='searchInputField']")]
         private IWebElement ClickSearchIcon { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//div[@class='MuiFormControl-root MuiTextField-root']/descendant::input")]
+        [FindsBy(How = How.XPath, Using = "//input[@placeholder='Name, email, phone, address, location']")]
         private IWebElement EnterLeadname { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//p[text()='autocompany2']/../../../preceding-sibling::div/descendant::button[2]")]
         private IWebElement ClickThreeDotsforLead { get { return PageFactory.Load(this); } }
 
 
-        [FindsBy(How = How.XPath, Using = "(//span[contains(@class,'MuiTypography-root MuiListItemText-primary')])[2]")]
+        [FindsBy(How = How.XPath, Using = "//span[text()='Delete']")]
         private IWebElement ClickDeleteLink { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//span[text()='Delete']/..)[1]")]
+        [FindsBy(How = How.XPath, Using = "(//button[@data-test-id='okBtn'])[10]")]
         private IWebElement ClickDeletebutton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//div[contains(text(),'ANT')]")]
@@ -103,7 +103,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//p[contains(text(),'autocompany03')]/../../../following-sibling::div[1]")]
         private IWebElement ClickServiceExapndIcon { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Add Services']/../..")]
+        [FindsBy(How = How.XPath, Using = "//button[contains(@data-test-id,'serviceBtn')]")]
         private IWebElement ClickServiceButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//input[@id='services']/../..")]
@@ -115,13 +115,13 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[text()='ANT']")]
         private IWebElement servicePage { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Close Services and Products']/..")]
+        [FindsBy(How = How.XPath, Using = "//button[contains(text(),'Close Services and Products')]")]
         private IWebElement CloseServicesButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "(//p[text()='autocompany03']/../../../preceding-sibling::div/descendant::div/div[2]/child::button[1])[1]")]
         private IWebElement ClickConvertOpportunityButton { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Add Service']/..")]
+        [FindsBy(How = How.XPath, Using = "//button[text()='Add Service']")]
         private IWebElement ClickServiceButtonInSlider { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//div[text()='Services or Products Added']")]
@@ -155,7 +155,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//input[@placeholder='Search']")]
         private IWebElement EnterTheLeadname { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//span[text()='Create Opportunity'])[2]/..")]
+        [FindsBy(How = How.XPath, Using = "(//button[text()='Create Opportunity'])[1]")]
         private IWebElement ClickCreateOpportunityButtonInOppPage { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//div[text()='Choose one or more service locations related to this Bill-to']/../preceding-sibling::div")]
@@ -164,7 +164,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//p[text()='Add Opportunity']")]
         private IWebElement AddOpportunityPageIsDisplayed { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Add Additional Service or Product']/..")]
+        [FindsBy(How = How.XPath, Using = "//button[text()='Add Additional Service or Product']")]
         private IWebElement ClickAddAdditionalServiceOrProductButton { get { return PageFactory.Load(this); } }
       
         #endregion create opportunity directly
@@ -194,7 +194,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//p[text()='Residential Service Form']")]
         private IWebElement SelectContractTemplate { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Launch Form to Complete')]/..")]
+        [FindsBy(How = How.XPath, Using = "//button[text()='Launch Form to Complete']")]
         private IWebElement ClickLaunchFormToCompleteButton { get { return PageFactory.Load(this); } }
 
 
@@ -207,7 +207,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[text()='This form has been completed.']")]
         private IWebElement ContractIsAdded { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.Id, Using = "mui-component-select-salesFunnelStageId")]
+        [FindsBy(How = How.XPath, Using = "//div[contains(@id,'mui')]")]
         private IWebElement ReopenLeadStatusField { get { return PageFactory.Load(this); } }
 
 
@@ -229,10 +229,10 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//li[text()='Disqualified']")]
         private IWebElement LeadStatusName { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Apply']/..")]
+        [FindsBy(How = How.XPath, Using = "//button[text()='Apply']")]
         private IWebElement ClickApplyButton { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//div[@class='sc-ieecCq ehRXEK actions']/descendant::button[2])[1]")]
+        [FindsBy(How = How.XPath, Using = "(//div[@class='sc-hGPBjI hYnhmQ actions']/descendant::button[2])[1]")]
         private IWebElement ClickThreeDotsIconforDisqualified { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[text()='Re-Open']")]
@@ -245,8 +245,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[text()='Open']")]
         private IWebElement LeadStatusOpenField { get { return PageFactory.Load(this); } }
 
-
-        [FindsBy(How = How.XPath, Using = "//span[text()='Reset Filters to Default']")]
+        [FindsBy(How = How.XPath, Using = "//button[text()='Reset Filters to Default']")]
         private IWebElement ClickClearFilterButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[text()='Disqualified']/..")]
@@ -267,13 +266,13 @@ namespace WorkWave.PestPac.TA.Model
         private IWebElement MatchorCreateNewLocationSliderDisplayed { get { return PageFactory.Load(this); } }
 
       
-        [FindsBy(How = How.XPath, Using = "//span[text()='Match To Existing Location']")]
+        [FindsBy(How = How.XPath, Using = "//button[contains(text(),'Match To Existing Location')]")]
         private IWebElement ClickMatchToExistingLocationButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "(//span[text()='Match Bill-to'])[1]")]
         private IWebElement ClickExistingLocationRadioButton { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//span[text()='Save'])[2]")]
+        [FindsBy(How = How.XPath, Using = "(//button[text()='Save'])[2]")]
         private IWebElement ClickSaveButtonInBilltoMatchingSlider { get { return PageFactory.Load(this); } }
 
 
@@ -294,7 +293,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//li[text()='BEDBUG- Bed Bug Treatment']")]
         private IWebElement SelectOtherServicename { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Update Service']")]
+        [FindsBy(How = How.XPath, Using = "//button[text()='Update Service']")]
         private IWebElement ClickUpdateServiceButton { get { return PageFactory.Load(this); } }
 
 
@@ -315,13 +314,13 @@ namespace WorkWave.PestPac.TA.Model
 
         #region Create new location in PP
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Create New Location']")]
+        [FindsBy(How = How.XPath, Using = "//button[text()='Create New Location']")]
         private IWebElement ClickCreatenewLocationTab { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//p[text()='Create New Location']")]
         private IWebElement CreateNewLocationPageIsDisplayed { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Edit']")]
+        [FindsBy(How = How.XPath, Using = "(//button[@data-test-id='editCardFooterBtn'])[1]")]
         private IWebElement ClickBillToEditButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.Name, Using = "address1")]
@@ -339,10 +338,10 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//span[text()='Update Bill-To Location']")]
         private IWebElement UpdateLocationSliderDisplayed { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//span[text()='Edit'])[2]")]
+        [FindsBy(How = How.XPath, Using = "(//button[@data-test-id='editCardFooterBtn'])[2]")]
         private IWebElement ClickServiceLocationEditButton { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//span[text()='Save'])[2]/..")]
+        [FindsBy(How = How.XPath, Using = "(//button[text()='Save'])[2]")]
         private IWebElement ClickSaveButtonInUpdateLocationSlider { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//div[text()='A Service Location has been added successfully.']")]
@@ -368,7 +367,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//p[text()='Duplicate Alert']")]
         private IWebElement DuplicateAlertPageIsDisplayed { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Close Duplicate Alert']/..")]
+        [FindsBy(How = How.XPath, Using = "//button[contains(text(),'Close Duplicate Alert')]")]
         private IWebElement ClickCloseDuplicateAlertButton { get { return PageFactory.Load(this); } }
 
 
@@ -390,7 +389,7 @@ namespace WorkWave.PestPac.TA.Model
 
         #region verify captre card button
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Capture Card']/../..")]
+        [FindsBy(How = How.XPath, Using = "//button[contains(@data-test-id,'paymentBtn')]")]
         private IWebElement MouseHoverCaptureCardButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//div[text()='Link this lead to a location to view/capture payment information.']")]
@@ -413,7 +412,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//span[text()='Not Interested']")]
         private IWebElement NotInterestedRadioButton { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='SAVE']/..")]
+        [FindsBy(How = How.XPath, Using = "//button[text()='SAVE']")]
         private IWebElement SaveButtonInDisqualifiedPopup { get { return PageFactory.Load(this); } }
 
       
@@ -452,7 +451,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSalesCenter)))
                 {
                     ClickSalesCenter.Click();
-                    Thread.Sleep(1000);
+                    Thread.Sleep(1500);
                     SUT.Log.DebugFormat("Send center menu  is clicked");
                 }
                 else
@@ -1190,20 +1189,6 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
-        public void ClickOnCompleteFormButton()
-        {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCompleteFormButton)))
-            {               
-                    ClickCompleteFormButton.Click();
-                    SUT.Log.DebugFormat("Complete button is clicked");
-                }
-                else
-                {
-                    SUT.Log.ErrorFormat("Complete button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
-                }
-                       
-        }
-
         public void ClickOnProceedButtonInPopup()
         {
             try
@@ -1211,6 +1196,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickProceedButton)))
                 {
                     ClickProceedButton.Click();
+                    Thread.Sleep(3000);
                     SUT.Log.DebugFormat("Proceed button in popup is clicked");
                 }
                 else
@@ -1250,8 +1236,9 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickOnFilterButton)))
                 {
-                    Thread.Sleep(5000);
+                    Thread.Sleep(4000);
                     ClickOnFilterButton.Click();
+                    Thread.Sleep(5000);
                     SUT.Log.DebugFormat("Filters button is clicked");
                 }
                 else
@@ -1381,7 +1368,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickClearFilterButton)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickClearFilterButton)))
                 {
                     ClickClearFilterButton.Click();
                     Thread.Sleep(2000);
