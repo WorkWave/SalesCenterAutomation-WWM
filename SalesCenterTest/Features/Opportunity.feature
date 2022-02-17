@@ -489,3 +489,24 @@ Scenario Outline: Verify user able to Delete already added service to a opportun
      | OpportunityDeleted   | Services                   |
      | Opportunity deleted. | BEDBUG- Bed Bug Treatment  |
 
+
+@Regression @Opportunities @WWM-8599 @WW_OP_017
+Scenario Outline: Verify that a Close/Won Opportunity Cannot Send Additional Contracts
+	When Mouse hover on sales center side menu
+    And Click on Opportunities link
+    Then Opportunities page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+	And Click on filters button
+	And Select the opportunity status <OpportunityStatus>
+    And Click on Apply button in filter slider
+    And Click on Service expand icon
+    When Mouse hover on send contracts button
+    Then Toast message should be displayed <Toastmessage>
+   
+
+  Examples:  
+      | OpportunityStatus | 
+      | Closed            | 
+

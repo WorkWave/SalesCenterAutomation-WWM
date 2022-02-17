@@ -100,7 +100,7 @@ namespace WorkWave.PestPac.TA.Model
 
         #region Create opportunity
 
-        [FindsBy(How = How.XPath, Using = "//p[contains(text(),'autocompany03')]/../../../following-sibling::div[1]")]
+        [FindsBy(How = How.XPath, Using = "(//div[contains(@data-test-id,'cardFooter')])[1]")]
         private IWebElement ClickServiceExapndIcon { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//button[contains(@data-test-id,'serviceBtn')]")]
@@ -392,7 +392,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//button[contains(@data-test-id,'paymentBtn')]")]
         private IWebElement MouseHoverCaptureCardButton { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//div[text()='Link this lead to a location to view/capture payment information.']")]
+        [FindsBy(How = How.XPath, Using = "//div[text()='You cannot send a contract for a closed Opportunity.']")]
         private IWebElement CatureCardButtonWarningToastmessage { get { return PageFactory.Load(this); } }
 
 

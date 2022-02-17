@@ -391,8 +391,17 @@ namespace WorkWave.PestPac.TA.Model
         private IWebElement ClickCompleteFormButton { get { return PageFactory.Load(this); } }
 
 
-        
+
         #endregion Switch to Formmamanger
+
+        #region Can not send additional contracts for closed won opp
+
+        [FindsBy(How = How.XPath, Using = "//button[contains(@data-test-id,'contractBtn')]")]
+        private IWebElement MouseHoverSendContractsButton { get { return PageFactory.Load(this); } }
+
+
+
+        #endregion Can not send additional contracts for closed won opp
         #endregion PageFactory
 
         private readonly string PageHeaderText = "Opportunities";
@@ -2123,6 +2132,32 @@ namespace WorkWave.PestPac.TA.Model
                 ClickCompleteFormButton.Click();
                
                 SUT.Log.DebugFormat("Complete form button is clicked");
+            }
+        }
+
+        //Not able to send additionl contracts for closed won opp
+
+        public void MouseHoverOnSendContractsButton()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => MouseHoverSendContractsButton)))
+                {
+                    SalesCenterUtility.ScrollToElement(MouseHoverSendContractsButton);
+                    Thread.Sleep(2000);
+                    Assert.AreEqual(false, MouseHoverSendContractsButton.Enabled);
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("Capture card button is disabled");
+                }
+                else
+                {
+                    Assert.AreEqual(true, MouseHoverSendContractsButton.Enabled);
+                    SUT.Log.ErrorFormat("Capture card button is enabled {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Capture card button is enabled");
             }
         }
 

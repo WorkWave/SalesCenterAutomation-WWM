@@ -516,6 +516,14 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.SelectTheOtherServiceFromDropDown();
         }
 
+        //Not able to send additionl contracts for closed won opp
+
+        [When(@"Mouse hover on send contracts button")]
+        public void WhenMouseHoverOnSendContractsButton()
+        {
+            opportunitypage.MouseHoverOnSendContractsButton();
+        }
+
 
     }
 }
