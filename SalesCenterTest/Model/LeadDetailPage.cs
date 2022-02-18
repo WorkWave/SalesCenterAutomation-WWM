@@ -392,7 +392,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//button[contains(@data-test-id,'paymentBtn')]")]
         private IWebElement MouseHoverCaptureCardButton { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//div[text()='You cannot send a contract for a closed Opportunity.']")]
+        [FindsBy(How = How.XPath, Using = "//div[@role='tooltip']//div[1]")]
         private IWebElement CatureCardButtonWarningToastmessage { get { return PageFactory.Load(this); } }
 
 

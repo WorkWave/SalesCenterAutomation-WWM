@@ -39,7 +39,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//input[@type='checkbox'])[3]")]
         private IWebElement ClickSecondOpportunitiesCheckbox { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Re-Open']")]
+        [FindsBy(How = How.XPath, Using = "//button[@data-test-id='bulkActBtn-reopen']")]
         private IWebElement ClickBulkReopenButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//div[text()='Opportunity Status']")]
@@ -190,7 +190,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//h2[text()='Closing Requirements Missing']")]
         private IWebElement CloseRequirementMissingPopup { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='CLOSE']/..")]
+        [FindsBy(How = How.XPath, Using = "//button[text()='CLOSE']")]
         private IWebElement ClickCloseButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[text()='Close / Win Opportunity']")]
@@ -394,14 +394,27 @@ namespace WorkWave.PestPac.TA.Model
 
         #endregion Switch to Formmamanger
 
-        #region Can not send additional contracts for closed won opp
+        #region Can not send additional contracts,services for closed won opp
 
         [FindsBy(How = How.XPath, Using = "//button[contains(@data-test-id,'contractBtn')]")]
         private IWebElement MouseHoverSendContractsButton { get { return PageFactory.Load(this); } }
 
+        [FindsBy(How = How.XPath, Using = "//button[contains(@data-test-id,'serviceBtn')]")]
+        private IWebElement MouseHoverAddServiceButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//div[contains(@data-test-id,'serviceLink')]")]
+        private IWebElement ClickViewServicesAddedLink { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//button[text()='Add Additional Service or Product']")]
+        private IWebElement TryToClickAddAdditionalServiceOrProductButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//button[contains(@data-test-id,'serviceMoreBtn')])[1]")]
+        private IWebElement EditAndDeleteServices { get { return PageFactory.Load(this); } }
 
 
-        #endregion Can not send additional contracts for closed won opp
+       
+        #endregion Can not send additional contracts,services for closed won opp
+
         #endregion PageFactory
 
         private readonly string PageHeaderText = "Opportunities";
@@ -2160,6 +2173,103 @@ namespace WorkWave.PestPac.TA.Model
                 SUT.Log.ErrorFormat("Capture card button is enabled");
             }
         }
+
+        //Not able to add,edit and delete the services for closed won app
+
+        public void MouseHoverOnAddServiceButton()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => MouseHoverAddServiceButton)))
+                {
+                    SalesCenterUtility.ScrollToElement(MouseHoverAddServiceButton);
+                    Thread.Sleep(2000);
+                    Assert.AreEqual(false, MouseHoverAddServiceButton.Enabled);
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("Capture card button is disabled");
+                }
+                else
+                {
+                    Assert.AreEqual(true, MouseHoverAddServiceButton.Enabled);
+                    SUT.Log.ErrorFormat("Capture card button is enabled {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Capture card button is enabled");
+            }
+        }
+
+        public void ClickOnViewServicesAddedLink()
+        {
+            try
+            {
+
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickViewServicesAddedLink)))
+                {
+                    ClickViewServicesAddedLink.Click();
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("View services added link is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("View services added link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("View services added link is not clicked");
+            }
+        }
+
+        public void TryToClickOnAddAdditionalServiceOrProductButton()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => TryToClickAddAdditionalServiceOrProductButton)))
+                {
+                   // SalesCenterUtility.ScrollToElement(MouseHoverAddServiceButton);
+                    Thread.Sleep(2000);
+                    Assert.AreEqual(false, TryToClickAddAdditionalServiceOrProductButton.Enabled);
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("Add additional service or product button is disabled");
+                }
+                else
+                {
+                    Assert.AreEqual(true, TryToClickAddAdditionalServiceOrProductButton.Enabled);
+                    SUT.Log.ErrorFormat("Capture card button is enabled {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Add additional service or product button is enabled");
+            }
+        }
+
+        public void TryToEditAndDeleteTheServices()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => EditAndDeleteServices)))
+                {
+                    // SalesCenterUtility.ScrollToElement(MouseHoverAddServiceButton);
+                    Thread.Sleep(2000);
+                    Assert.AreEqual(false, EditAndDeleteServices.Enabled);
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("Edit and delete option is disabled");
+                }
+                else
+                {
+                    Assert.AreEqual(true, EditAndDeleteServices.Enabled);
+                    SUT.Log.ErrorFormat("Edit and delete option is enabled {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Edit and delete option is enabled");
+            }
+        }
+
 
     }
 }
