@@ -60,7 +60,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//p[text()='Status'])[1]")]
         private IWebElement LeadStagenameDisplayed { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//span[text()='View']/..)[1]")]
+        [FindsBy(How = How.XPath, Using = "(//button[text()='Leads'])[1]")]
         private IWebElement ClickViewLeadsButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//p[contains(text(),'Narrowed to 2  Leads')]")]
@@ -72,7 +72,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//p[text()='Count: '])[5]")]
         private IWebElement OpportunityCountDisplayed { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//span[text()='Opportunities'])[1]/..")]
+        [FindsBy(How = How.XPath, Using = "(//button[text()='Opportunities'])[1]")]
         private IWebElement ClickViewOpportunitiesButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//div[contains(text(),'Narrowed to')]")]

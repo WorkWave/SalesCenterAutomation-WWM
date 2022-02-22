@@ -278,14 +278,16 @@ namespace WorkWave.PestPac.TA.Steps
         [Then(@"Click on complete form button")]
         public void ThenIClickOnCompleteFormButton()
         {
-            leadspage.ClickOnCompleteFormButton();
+           opportunitypage.ClickOnCompleteFormButton();
+           leadspage.ClickOnProceedButtonInPopup();
         }
 
-        [When(@"Click on proceed button")]
-        public void WhenClickOnProceedButton()
+        [Then(@"Click on proceed button")]
+        public void ThenClickOnProceedButton()
         {
             leadspage.ClickOnProceedButtonInPopup();
         }
+
 
         [Then(@"Contract should be successfully added")]
         public void ThenContractShouldBeSuccessfullyAdded()
@@ -435,7 +437,7 @@ namespace WorkWave.PestPac.TA.Steps
         [When(@"click on close convert lead button")]
         public void WhenClickOnCloseConvertLeadButton()
         {
-           
+            leadspage.ClickCloseServicesAndProductButton();
         }
 
 

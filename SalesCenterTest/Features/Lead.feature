@@ -111,7 +111,7 @@ Scenario Outline: Verify User Can Add a Contract to a Lead
     Then Create contract slider should be displayed
     And  Select contract template <Template> and click on launch form to complete button  
     And  Click on complete form button
-    When Click on proceed button
+    And  Click on proceed button
     Then Contract should be successfully added
 
 Examples:  
@@ -271,11 +271,11 @@ Scenario Outline: Verification of Bulk Re-assignment of leads which are associat
     And Select the same branch SalesTeam in reassign slider <SalesTeam>
     And Select the team member in reassign slider <SalesTeamMember>
 	When Click on Save button
-   # Then validation message should be displayed
+    Then validation message should be displayed <ValidationMessage>
 
   Examples:  
-     | SalesTeam             | SalesTeamMember |
-     | Auto Test Sales Team  | unassigned      |
+     | SalesTeam            | SalesTeamMember | ValidationMessage                  |
+     | Auto Test Sales Team | unassigned      | Bulk update successfully applied   |
 
 
 @Smoke @Regression @Leads @WWM-8418 @WW_LD_012
