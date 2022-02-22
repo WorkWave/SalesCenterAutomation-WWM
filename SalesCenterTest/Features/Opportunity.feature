@@ -507,6 +507,32 @@ Scenario Outline: Verify that a Close/Won Opportunity Cannot Send Additional Con
    
 
   Examples:  
-      | OpportunityStatus | 
-      | Closed            | 
+      | OpportunityStatus | Toastmessage                                         |
+      | Closed            | You cannot send a contract for a closed Opportunity. |
 
+
+@Regression @Opportunities @WWM-8598 @WW_OP_018
+Scenario Outline: Verify that a Closed/Won Opportunity Cannot Add, Edit or Delete Services
+	When Mouse hover on sales center side menu
+    And Click on Opportunities link
+    Then Opportunities page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+	And Click on filters button
+	And Select the opportunity status <OpportunityStatus>
+    And Click on Apply button in filter slider
+    And Click on Service expand icon
+    When Mouse hover on Add service button
+    Then Toast message should be displayed <Toastmessage>
+    And Click on View services added link
+    And Try to click add,Edit and delete additional service or product
+    And Click on Close services and product button
+    And Click on View detail page link
+    And Click on View services added link
+    And Try to click add,Edit and delete additional service or product    
+    And Click on Close services and product button
+
+  Examples:  
+      | OpportunityStatus | Toastmessage                                     |
+      | Closed            | You cannot add services to a closed Opportunity. |

@@ -19,6 +19,7 @@ namespace WorkWave.PestPac.TA.Steps
         LeadDetailPage leadspage = new LeadDetailPage();
         OpportunityPage opportunitypage = new OpportunityPage();
         SettingsPage settingpage = new SettingsPage();
+        CommonFunctionsDetailsPage CommonFunctions = new CommonFunctionsDetailsPage();
       
       
 
@@ -563,8 +564,8 @@ namespace WorkWave.PestPac.TA.Steps
 
         [Then(@"Toast message should be displayed (.*)")]
         public void ThenToastMessageShouldBeDisplayed(string ToastMessage)
-        {
-            leadspage.VerifyCatureCardButtonWarningToastmessage(ToastMessage);
+        {          
+            CommonFunctions.VerifyToastmessage(ToastMessage);
         }
 
         //Disqualified the lead

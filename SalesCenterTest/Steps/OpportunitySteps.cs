@@ -524,6 +524,31 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.MouseHoverOnSendContractsButton();
         }
 
+        //Not able to add,edit and delete the services for closed won app
+
+        [When(@"Mouse hover on Add service button")]
+        public void WhenMouseHoverOnAddServiceButton()
+        {
+            opportunitypage.MouseHoverOnAddServiceButton();
+        }
+
+        [Then(@"Click on View services added link")]
+        public void ThenClickOnViewServicesAddedLink()
+        {
+            opportunitypage.ClickOnViewServicesAddedLink();
+        }
+    
+
+        [Then(@"Try to click add,Edit and delete additional service or product")]
+        public void ThenTryToClickAddEditAndDeleteAdditionalServiceOrProduct()
+        {
+            opportunitypage.TryToClickOnAddAdditionalServiceOrProductButton();
+        }
+
+
+
+
+
 
     }
 }
