@@ -345,11 +345,12 @@ namespace WorkWave.PestPac.TA.Steps
         }
 
          
-        [When(@"Enter the EmailId (.*)")]
-        public void WhenEnterTheEmailId(string emailid)
+        [When(@"Enter the phonenumber (.*)")]
+        public void WhenEnterThePhonenumber(string phonenumber)
         {
-            opportunitypage.EnterEmailId(emailid);
+            opportunitypage.EnterPhoneNumber(phonenumber);
         }
+
 
         [When(@"Click on Update button in add contact slider")]
         public void WhenClickOnUpdateButtonInAddContactSlider()
@@ -372,6 +373,13 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.EnterLastName(lastname);
             opportunitypage.EnterEmailId(emailid);
         }
+
+        [When(@"Enter company name (.*)")]
+        public void WhenEnterCompanyNameJamesPvtLtd(string companyname)
+        {
+            opportunitypage.EnterCompanyName(companyname);
+        }
+
 
         [When(@"Click on Create contact button")]
         public void WhenClickOnCreateContactButton()
@@ -546,8 +554,43 @@ namespace WorkWave.PestPac.TA.Steps
         }
 
 
+        //send contract form to the customer
 
+        [When(@"Click on Send form and notify button")]
+        public void WhenClickOnSendFormAndNotifyButton()
+        {
+            opportunitypage.ClickOnSendFormandNotifyFormButton();
+        }
 
+        [Then(@"Instruction page should be displayed")]
+        public void ThenInstructionPageShouldBeDisplayed()
+        {
+            opportunitypage.IsInstructionPageIsDisplayed();
+        }
+
+        [Then(@"Select send form and notify option radio button")]
+        public void ThenSelectSendFormAndNotifyOptionRadioButton()
+        {
+            opportunitypage.ClickOnDepartmentRadioButton();
+        }
+
+        [Then(@"Click on Sales center expand icon")]
+        public void ThenClickOnSalesCenterExpandIcon()
+        {
+            opportunitypage.ClickOnSalesCenterUserExpandButton();
+        }
+
+        [Then(@"Select the user mail id checkbox")]
+        public void ThenSelectTheUserMailIdCheckbox()
+        {
+            opportunitypage.SelectMailIdUserCheckBox();
+        }
+
+        [Then(@"Residential form sent validation message should be displayed")]
+        public void ThenResidentialFormSentValidationMessageShouldBeDisplayed()
+        {
+           
+        }
 
 
     }

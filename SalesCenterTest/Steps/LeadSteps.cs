@@ -20,9 +20,9 @@ namespace WorkWave.PestPac.TA.Steps
         OpportunityPage opportunitypage = new OpportunityPage();
         SettingsPage settingpage = new SettingsPage();
         CommonFunctionsDetailsPage CommonFunctions = new CommonFunctionsDetailsPage();
-      
-      
 
+
+      
         [When(@"Mouse hover on sales center side menu")]
         public void WhenMouseHoverOnSalesCenterSideMenu()
         {
@@ -599,6 +599,5 @@ namespace WorkWave.PestPac.TA.Steps
         {
             leadspage.ClickOnSaveButtonInDisqualifiedPopup();
         }
-
     }
 }

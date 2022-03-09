@@ -66,7 +66,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//p[contains(text(),'Narrowed to 2  Leads')]")]
         private IWebElement LeadCountDisplayedInLeadsPage { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//p[text()='Dashboard']")]
+        [FindsBy(How = How.XPath, Using = "(//p[text()='Opportunities'])[2]")]
         private IWebElement ClickDashboardLink { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "(//p[text()='Count: '])[5]")]
