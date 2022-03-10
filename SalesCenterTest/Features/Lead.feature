@@ -379,3 +379,25 @@ Examples:
      | Disqualified | Lead Disqualified |
 	 
 
+@Regression @Leads @WWM-8444 @WW_LD_016
+Scenario Outline: Verify that user can Bulk reopen the multiple disqualified Leads at once_Automation
+	When Mouse hover on sales center side menu
+    And Click on Leads link
+    Then Leads page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider  
+	And Click on filters button
+	And  Select the lead status <LeadStatus>
+    When Click on Apply button
+    Then All the disqualified leads should be diplayed
+	And Click on List view button
+	And Select the multiple opportunities
+	When Click on Reopen button
+	Then Reopen slider should be displayed
+	When Click on Save button
+    Then validation message should be displayed <ReopenedLeads>
+
+ Examples:  
+     | LeadStatus   | ReopenedLeads                     |
+     | Disqualified | Bulk update successfully applied  |

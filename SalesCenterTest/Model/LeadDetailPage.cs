@@ -562,7 +562,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSalesTeamField)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickSalesTeamField)))
                 {
                   //  PestPacUtility.ScrollToElement(SelectSalesTeam);
                     ClickSalesTeamField.Click();                  
@@ -943,7 +943,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => StageField)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => StageField)))
                 {
                  //   SalesCenterUtility.ScrollToElement(StageField);
                     StageField.Click();
@@ -965,7 +965,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickOwnerField)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickOwnerField)))
                 {
                     SalesCenterUtility.ScrollToElement(ClickOwnerField);
                     ClickOwnerField.Click();
@@ -1234,7 +1234,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickOnFilterButton)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickOnFilterButton),TimeSpan.FromSeconds(5)))
                 {
                     Thread.Sleep(4000);
                     ClickOnFilterButton.Click();
