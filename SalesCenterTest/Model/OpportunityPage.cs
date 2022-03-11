@@ -24,7 +24,7 @@ namespace WorkWave.PestPac.TA.Model
 
         #region Bulk reopen close opportunities
 
-        [FindsBy(How = How.XPath, Using = "(//p[text()='Opportunities'])[2]/..")]
+        [FindsBy(How = How.XPath, Using = "//div[@role='tooltip']/descendant::ul/child::div[4]")]
         private IWebElement ClickOpportunitiesLink { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//p[text()='Opportunities']")]
@@ -121,7 +121,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//span[text()='Closed Won']")]
         private IWebElement ClickCloseWonOption { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Close Form Manager']/..")]
+        [FindsBy(How = How.XPath, Using = "//button[text()='Close Form Manager']")]
         private IWebElement ClickCloseFormmanagerButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//p[text()='Opportunities']")]
@@ -225,7 +225,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[text()='James Jacob']/../descendant::button")]
         private IWebElement ClickThreeDotsforContacts { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Remove']")]
+        [FindsBy(How = How.XPath, Using = "(//div[contains(@class,'MuiListItemText-root MuiListItemText-dense')]//span)[2]")]
         private IWebElement ClickRemoveLinkForContacts { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//button[text()='Remove']")]
@@ -261,8 +261,13 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.Name, Using = "lastName")]
         private IWebElement LastNamefield { get { return PageFactory.Load(this); } }
 
+        [FindsBy(How = How.Name, Using = "phoneNumber")]
+        private IWebElement PhoneNumber { get { return PageFactory.Load(this); } }
+
         [FindsBy(How = How.Name, Using = "emailAddresses[0].emailAddress")]
         private IWebElement EmailId { get { return PageFactory.Load(this); } }
+
+     
 
         [FindsBy(How = How.XPath, Using = "//button[text()='Update Contact']")]
         private IWebElement ClickUpdateButtonInAddContactSlider { get { return PageFactory.Load(this); } }
@@ -287,7 +292,11 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.Name, Using = "lastName")]
         private IWebElement LastName { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//button[contains(text(),'Create Contact')]")]
+        [FindsBy(How = How.Name, Using = "company")]
+        private IWebElement CompanyName { get { return PageFactory.Load(this); } }
+
+
+       [FindsBy(How = How.XPath, Using = "//button[contains(text(),'Create Contact')]")]
         private IWebElement ClickCreateContactButton { get { return PageFactory.Load(this); } }
 
 
@@ -390,6 +399,12 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//button[text()='Complete Form']")]
         private IWebElement ClickCompleteFormButton { get { return PageFactory.Load(this); } }
 
+        [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-primary']")]
+        private IWebElement ClickSendFormandNotifyFormButton { get { return PageFactory.Load(this); } }
+
+
+       
+
 
 
         #endregion Switch to Formmamanger
@@ -412,8 +427,26 @@ namespace WorkWave.PestPac.TA.Model
         private IWebElement EditAndDeleteServices { get { return PageFactory.Load(this); } }
 
 
-       
+
         #endregion Can not send additional contracts,services for closed won opp
+
+        #region Send a contrcat form to the customer
+
+        [FindsBy(How = How.XPath, Using = "//div[text()='INSTRUCTIONS']")]
+        private IWebElement InstructionPageIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//div[@id='Sales Center - Assistant Manager']")]
+        private IWebElement ClickDepartmentRadioButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[contains(@class,'p-tree-toggler p-unselectable-text')]//span[1]")]
+        private IWebElement ClickSalesCenterUserExpandButton { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='nu5987624@gmail.com Non admin user(nu5987624@gmail.com)']")]
+        private IWebElement MailIdUserCheckBox { get { return PageFactory.Load(this); } }
+
+
+       
+        #endregion Send a contrcat form to the customer
 
         #endregion PageFactory
 
@@ -443,7 +476,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickOpportunitiesLink)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickOpportunitiesLink),TimeSpan.FromSeconds(10)))
                 {
                     ClickOpportunitiesLink.Click();
                     Thread.Sleep(5000);
@@ -1322,7 +1355,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAddContactButtonInContactSlider)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickAddContactButtonInContactSlider)))
                 {
                     ClickAddContactButtonInContactSlider.Click();
                     SUT.Log.DebugFormat("Add contact button is clicked");
@@ -1344,6 +1377,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsforContacts)))
                 {
+                    SalesCenterUtility.ScrollToElement(ClickThreeDotsforContacts);
                     ClickThreeDotsforContacts.Click();
                     Thread.Sleep(2000);
                     SUT.Log.DebugFormat("Three dot icon is clicked");
@@ -1364,7 +1398,7 @@ namespace WorkWave.PestPac.TA.Model
             try
             {
 
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickRemoveLinkForContacts)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickRemoveLinkForContacts)))
                 {
                     ClickRemoveLinkForContacts.Click();
                     Thread.Sleep(2000);
@@ -1424,8 +1458,7 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
-      
-       public bool EnterEmailId(string emailid)
+        public bool EnterEmailId(string emailid)
         {
             try
             {
@@ -1442,10 +1475,34 @@ namespace WorkWave.PestPac.TA.Model
                     return false;
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
 
-                throw ;
+                throw;
+            }
+        }
+
+        public bool EnterPhoneNumber(string phonenumber)
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => PhoneNumber)))
+                {
+                    PhoneNumber.Click();
+                    PhoneNumber.Clear();
+                    PhoneNumber.SendKeys(phonenumber);
+                    Thread.Sleep(1000);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
@@ -1455,7 +1512,7 @@ namespace WorkWave.PestPac.TA.Model
             try
             {
 
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickUpdateButtonInAddContactSlider)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickUpdateButtonInAddContactSlider)))
                 {
                     ClickUpdateButtonInAddContactSlider.Click();
                     Thread.Sleep(5000);
@@ -1584,6 +1641,31 @@ namespace WorkWave.PestPac.TA.Model
                 throw;
             }
         }
+
+        public bool EnterCompanyName(string companyname)
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => CompanyName)))
+                {
+                    CompanyName.Click();
+                    CompanyName.Clear();
+                    CompanyName.SendKeys(companyname);
+                    Thread.Sleep(1000);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
 
         public void ClickOnCreateContactButton()
         {
@@ -2148,6 +2230,18 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
+        public void ClickOnSendFormandNotifyFormButton()
+        {
+            if (SalesCenterUtility.Frame_SafeSwitch(IframeCompleteForm, () => ClickSendFormandNotifyFormButton, 10))
+            {
+                SUT.Log.Debug("Safely switched to the payment iFrame");
+                ClickSendFormandNotifyFormButton.Click();
+
+                SUT.Log.DebugFormat("Send form and notify button is clicked");
+            }
+        }
+
+
         //Not able to send additionl contracts for closed won opp
 
         public void MouseHoverOnSendContractsButton()
@@ -2270,6 +2364,96 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
+        //Send contract form to the customer
+
+
+        public void IsInstructionPageIsDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => InstructionPageIsDisplayed), TimeSpan.FromSeconds(10)))
+                {
+                    InstructionPageIsDisplayed.Displayed.ToString();
+                    Thread.Sleep(3000);
+                    SUT.Log.DebugFormat("Add contact slider is diplayed");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Add contact slider is not diplayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Add contact slider is not diplayed");
+            }
+        }
+
+        public void ClickOnDepartmentRadioButton()
+        {
+            try
+            {
+
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickDepartmentRadioButton)))
+                {
+                    ClickDepartmentRadioButton.Click();
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("Department radio button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Department radio button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Department radio button is not clicked");
+            }
+        }
+
+
+        public void ClickOnSalesCenterUserExpandButton()
+        {
+            try
+            {
+
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSalesCenterUserExpandButton)))
+                {
+                    ClickSalesCenterUserExpandButton.Click();
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("Sales center user expand icon is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Sales center user expand icon is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Sales center user expand icon is not clicked");
+            }
+        }
+
+        public void SelectMailIdUserCheckBox()
+        {
+            try
+            {
+
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => MailIdUserCheckBox)))
+                {
+                    MailIdUserCheckBox.Click();
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("User mail id checkbox is selected");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("User mail id checkbox is not selected {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("User mail id checkbox is not selected");
+            }
+        }
 
     }
 }

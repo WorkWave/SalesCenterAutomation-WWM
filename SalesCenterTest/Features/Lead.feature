@@ -7,7 +7,7 @@ Background:
 
 
 @Smoke @Regression @Leads @WW_LD_001
-Scenario Outline: Verify default display of Lead Card
+Scenario Outline: Verify default display of Lead Card   
     When Mouse hover on sales center side menu
     And Click on Leads link
     Then Leads page should be displayed
@@ -120,7 +120,7 @@ Examples:
 
 
 @Smoke  @Regression @WWM-8426 @Leads @WW_LD_006
-Scenario Outline: Verify User Can Re-Open a Disqualified Lead
+Scenario Outline: Verify User Can Re-Open a Disqualified Lead 
     When Mouse hover on sales center side menu
     And Click on Leads link
     Then Leads page should be displayed
@@ -257,8 +257,8 @@ Scenario Outline: Verify user able to create a new location in PP from a lead ca
 
 
 @Smoke @Regression @Opportunities @WWM-8446 @WW_LD_011
-Scenario Outline: Verification of Bulk Re-assignment of leads which are associated with same branch Sales Team
-	When Mouse hover on sales center side menu
+Scenario Outline: Verification of Bulk Re-assignment of leads which are associated with same branch Sales Team 
+    When Mouse hover on sales center side menu
     And Click on Leads link
     Then Leads page should be displayed
 	And Click on filters button
@@ -360,7 +360,7 @@ Scenario Outline: Veriy user not able to add payment card with out matching lead
 
 	 
 @Smoke  @Regression  @Leads @WW_LD_015
-Scenario Outline: Verify User Can Disqualified Lead
+Scenario Outline: Verify User Can Disqualified Lead 
     When Mouse hover on sales center side menu
     And Click on Leads link
     Then Leads page should be displayed
@@ -378,3 +378,26 @@ Examples:
      | LeadStatus   | LeadDisqualified  |
      | Disqualified | Lead Disqualified |
 	 
+
+@Regression @Leads @WWM-8444 @WW_LD_016
+Scenario Outline: Verify that user can Bulk reopen the multiple disqualified Leads at once_Automation
+	When Mouse hover on sales center side menu
+    And Click on Leads link
+    Then Leads page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider  
+	And Click on filters button
+	And  Select the lead status <LeadStatus>
+    When Click on Apply button
+    Then All the disqualified leads should be diplayed
+	And Click on List view button
+	And Select the multiple opportunities
+	When Click on Reopen button
+	Then Reopen slider should be displayed
+	When Click on Save button
+    Then validation message should be displayed <ReopenedLeads>
+
+ Examples:  
+     | LeadStatus   | ReopenedLeads                     |
+     | Disqualified | Bulk update successfully applied  |

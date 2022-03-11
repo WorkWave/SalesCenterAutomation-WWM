@@ -21,7 +21,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//p[text()='Leads']")]
         private IWebElement PageHeader { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//div[@role='button']//p/..")]
+        [FindsBy(How = How.XPath, Using = "//div[@role='button']//img[1]")]
         private IWebElement ClickSalesCenter { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "(//p[text()='Leads'])[2]")]
@@ -90,7 +90,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//span[text()='Delete']")]
         private IWebElement ClickDeleteLink { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//button[@data-test-id='okBtn'])[10]")]
+        [FindsBy(How = How.XPath, Using = "(//button[@data-test-id='okBtn'])[1]")]
         private IWebElement ClickDeletebutton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//div[contains(text(),'ANT')]")]
@@ -443,7 +443,7 @@ namespace WorkWave.PestPac.TA.Model
         }
 
         #region Selenium
-
+    
         public void ClickSalesCenterMenu()
         {
             try
@@ -451,7 +451,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSalesCenter)))
                 {
                     ClickSalesCenter.Click();
-                    Thread.Sleep(1500);
+                    Thread.Sleep(5000);
                     SUT.Log.DebugFormat("Send center menu  is clicked");
                 }
                 else
@@ -562,7 +562,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSalesTeamField)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickSalesTeamField)))
                 {
                   //  PestPacUtility.ScrollToElement(SelectSalesTeam);
                     ClickSalesTeamField.Click();                  
@@ -584,12 +584,12 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickOwnerAssigneeField)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickOwnerAssigneeField), TimeSpan.FromSeconds(10)))
                 {
                     ClickOwnerAssigneeField.Click();
                     SalesCenterUtility.ScrollToElement(SelectOwnerAssigneeName);
                     SelectOwnerAssigneeName.Click();
-                    Thread.Sleep(10000);
+                    Thread.Sleep(3000);
                     SUT.Log.DebugFormat("Owner selected from the dropdown");
                 }
                 else
@@ -608,14 +608,14 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickFunnelField)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickFunnelField), TimeSpan.FromSeconds(10)))
                 {
-                   //  SalesCenterUtility.ScrollToElement(ClickFunnelField);
+                    SalesCenterUtility.ScrollToElement(ClickFunnelField);
                     ClickFunnelField.Click();
-                    Thread.Sleep(7000);
+                    Thread.Sleep(3000);
                   //  SalesCenterUtility.ScrollToElement(SelectFunnelName);
                     SelectFunnelName.Click();
-                    Thread.Sleep(5000);
+                    Thread.Sleep(3000);
                     SUT.Log.DebugFormat("Sales funnel selected from the dropdown");
                 }
                 else
@@ -943,7 +943,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => StageField)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => StageField)))
                 {
                  //   SalesCenterUtility.ScrollToElement(StageField);
                     StageField.Click();
@@ -965,7 +965,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickOwnerField)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickOwnerField)))
                 {
                     SalesCenterUtility.ScrollToElement(ClickOwnerField);
                     ClickOwnerField.Click();
@@ -1234,7 +1234,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickOnFilterButton)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickOnFilterButton),TimeSpan.FromSeconds(5)))
                 {
                     Thread.Sleep(4000);
                     ClickOnFilterButton.Click();
@@ -2132,6 +2132,10 @@ namespace WorkWave.PestPac.TA.Model
                 SUT.Log.ErrorFormat("Save button is not clicked");
             }
         }
+
+       
+
+       
 
     }
 
