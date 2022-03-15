@@ -82,12 +82,12 @@ Scenario Outline: Verify user able to create new opportunity directly
     Then validation message should be displayed <OpportunityCreated>
  
  Examples:  
-     | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Services            | FunnelStage | Ownername  | FunnelName        | OpportunityCreated  |  LeadName   |
-     | Automation Labs | Labs02   | autocompany02 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments | Stage1      | Unassigned | Test Sales funnel | Opportunity created |  Automation |
+     | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Services            | FunnelStage | Ownername  | FunnelName        | OpportunityCreated  |  LeadName |
+     | Automation Labs | Labs02   | autocompany02 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments | Stage1      | Unassigned | Test Sales funnel | Opportunity created |  Auto     |
 
 
 
-@Smoke @Regression @Leads @WW_LD_005
+@Smoke @Regression @Leads @8422 @WW_LD_005
 Scenario Outline: Verify User Can Add a Contract to a Lead
     When Click on plus icon
     And Click on Add Lead button

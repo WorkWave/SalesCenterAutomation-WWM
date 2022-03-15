@@ -445,8 +445,23 @@ namespace WorkWave.PestPac.TA.Model
         private IWebElement MailIdUserCheckBox { get { return PageFactory.Load(this); } }
 
 
-       
         #endregion Send a contrcat form to the customer
+
+        #region Add a contract to an opp
+
+        [FindsBy(How = How.XPath, Using = "//p[text()='View Contracts']")]
+        private IWebElement ClickViewContractsLink { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//*[local-name()='svg' and @data-testid='CloseIcon']")]
+        private IWebElement ClickCloseIconInContractSlider { get { return PageFactory.Load(this); } }
+
+
+        [FindsBy(How = How.XPath, Using = "//p[text()='Residential Service Form']")]
+        private IWebElement ContratForm { get { return PageFactory.Load(this); } }
+
+
+      
+        #endregion Add a contract to an opp
 
         #endregion PageFactory
 
@@ -631,6 +646,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickViewDetailsLink)))
                 {
                     ClickViewDetailsLink.Click();
+                    Thread.Sleep(3000);
                     SUT.Log.DebugFormat("View detail link is clicked");
                 }
                 else
@@ -2225,7 +2241,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 SUT.Log.Debug("Safely switched to the payment iFrame");
                 ClickCompleteFormButton.Click();
-               
+                Thread.Sleep(4000);
                 SUT.Log.DebugFormat("Complete form button is clicked");
             }
         }
@@ -2236,6 +2252,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 SUT.Log.Debug("Safely switched to the payment iFrame");
                 ClickSendFormandNotifyFormButton.Click();
+                Thread.Sleep(2000);
 
                 SUT.Log.DebugFormat("Send form and notify button is clicked");
             }
@@ -2453,6 +2470,75 @@ namespace WorkWave.PestPac.TA.Model
             {
                 SUT.Log.ErrorFormat("User mail id checkbox is not selected");
             }
+        }
+
+        //add a contract to an opportunity
+
+        public void ClickOnViewContractsLink()
+        {
+            try
+            {
+
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickViewContractsLink)))
+                {
+                   
+                    ClickViewContractsLink.Click();
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("View Contracts link is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("View Contracts link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("View Contracts link is not clicked");
+            }
+        }
+
+        public void ClickOnCloseIconInContractSlider()
+        {
+            try
+            {
+
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCloseIconInContractSlider)))
+                {
+                    ClickCloseIconInContractSlider.Click();
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("Close icon is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Close icon is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Close icon is not clicked");
+            }
+        }
+
+        private readonly string ContractFormText = "Opportunities";
+
+        public bool IsSameContractFormDisplayedInViewDetailsPage()
+        {
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ContratForm), TimeSpan.FromSeconds(15)))
+            {
+                if (PageHeader.Text.TrimStart().StartsWith(ContractFormText))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
         }
 
     }

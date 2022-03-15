@@ -592,6 +592,27 @@ namespace WorkWave.PestPac.TA.Steps
            
         }
 
+        //Add a contract form to an opportunity
+
+        [When(@"Click on View contracts link")]
+        public void WhenClickOnViewContractsLink()
+        {
+            opportunitypage.ClickOnViewContractsLink();
+        }
+
+        [Then(@"Click on Close icon in contract slider")]
+        public void ThenClickOnCloseIconInContractSlider()
+        {
+            opportunitypage.ClickOnCloseIconInContractSlider();
+        }
+
+        [Then(@"Same Contract form should be displayed in contracts slider")]
+        public void ThenSameContractFormShouldBeDisplayedInContractsSlider()
+        {
+            opportunitypage.IsSameContractFormDisplayedInViewDetailsPage();
+        }
+
+
 
     }
 }

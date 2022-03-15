@@ -611,3 +611,31 @@ Scenario Outline: Verification of basic regression Track A scenario
  Examples:  
      | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName   | Services            | FunnelStage | Ownername  | OpportunityCreated  | Template                 | ValMessage          | OpportunityName | ServiceLocation     | LocationMatchedValMsg                  | CardHolderName | CardNumber       | CardAddedMessage                   |
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Residential Service Form | Opportunity Deleted | Automation Labs | 3600 STATE ROUTE 66 | Locations successfully matched/created | John Smith     | 4111111111111111 | Successfully added payment method. |
+
+
+@Regression @Opportunities @WWM-8434 @WW_OP_017
+Scenario Outline: Verify User Can Add a Contract to an Opportunity
+	When Mouse hover on sales center side menu
+    And Click on Opportunities link
+    Then Opportunities page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+    And Click on Service expand icon for opportunity
+    When Click on send contract button
+    Then Create contract slider should be displayed
+    And  Select contract template <Template> and click on launch form to complete button
+    And  Click on complete form button
+    And  Click on proceed button
+    And Click on Close form manager button
+    When Click on View contracts link
+    Then Contract should be successfully added
+    And Click on Close icon in contract slider
+    And Click on View detail page link
+    When Click on View contracts link
+    Then Same Contract form should be displayed in contracts slider
+    And Click on Close icon in contract slider
+  
+  Examples:  
+  | Template                  |
+  | Residential Service Form  |

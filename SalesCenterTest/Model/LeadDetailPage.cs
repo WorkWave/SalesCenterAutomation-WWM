@@ -67,7 +67,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//input[@name='salesFunnelId']/..")]
         private IWebElement ClickFunnelField { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//li[contains(text(),'Required Contract & Payment')]")]
+        [FindsBy(How = How.XPath, Using = "//ul//li[contains(text(),'Required Contract & Payment')]")]
         private IWebElement SelectFunnelName { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//button[text()='Save']")]
@@ -96,7 +96,9 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[contains(text(),'ANT')]")]
         private IWebElement ServcieAdded { get { return PageFactory.Load(this); } }
 
-       
+        [FindsBy(How = How.CssSelector, Using = "iframe[src*='test-forms.workwave']")]
+        private IWebElement IframeCompleteForm { get { return PageFactory.Load(this); } }
+
 
         #region Create opportunity
 
@@ -587,7 +589,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickOwnerAssigneeField), TimeSpan.FromSeconds(10)))
                 {
                     ClickOwnerAssigneeField.Click();
-                    SalesCenterUtility.ScrollToElement(SelectOwnerAssigneeName);
+                    Thread.Sleep(2000);
                     SelectOwnerAssigneeName.Click();
                     Thread.Sleep(3000);
                     SUT.Log.DebugFormat("Owner selected from the dropdown");
@@ -820,8 +822,9 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceField)))
                 {
                     ClickServiceField.Click();
-                    Thread.Sleep(2000);
-                    SelectServicename.Click();
+                    Thread.Sleep(3000);
+              //      SalesCenterUtility.ScrollToElement(SelectServicename);
+                    SelectServicename.Click();                   
                     SUT.Log.DebugFormat("Service selected from the droddown");
                 }
                 else

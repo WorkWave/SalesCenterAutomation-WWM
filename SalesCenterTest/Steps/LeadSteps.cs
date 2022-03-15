@@ -279,8 +279,7 @@ namespace WorkWave.PestPac.TA.Steps
         [Then(@"Click on complete form button")]
         public void ThenIClickOnCompleteFormButton()
         {
-           opportunitypage.ClickOnCompleteFormButton();
-           leadspage.ClickOnProceedButtonInPopup();
+           opportunitypage.ClickOnCompleteFormButton();         
         }
 
         [Then(@"Click on proceed button")]
