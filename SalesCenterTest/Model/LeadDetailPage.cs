@@ -417,8 +417,17 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//button[text()='SAVE']")]
         private IWebElement SaveButtonInDisqualifiedPopup { get { return PageFactory.Load(this); } }
 
-      
+
         #endregion Disqualified the lead
+
+        #region Adding a service to a lead
+
+        [FindsBy(How = How.XPath, Using = "//p[text()='Lead']")]
+        private IWebElement DetailsPageIsDisplayed { get { return PageFactory.Load(this); } }
+
+        
+
+        #endregion Adding a service to a lead
 
         #endregion PageFactory
 
@@ -2136,9 +2145,30 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
-       
+        //Adding a service to a lead
 
-       
+        public void IsLeadDetailsPageIsDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => DetailsPageIsDisplayed), TimeSpan.FromSeconds(10)))
+                {
+                    DetailsPageIsDisplayed.Displayed.ToString();
+                    Thread.Sleep(3000);
+                    SUT.Log.DebugFormat("Lead details page is displayed");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Lead details page is not displayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Lead details page is not displayed");
+            }
+        }
+
+
 
     }
 

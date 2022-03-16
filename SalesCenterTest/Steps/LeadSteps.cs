@@ -598,5 +598,14 @@ namespace WorkWave.PestPac.TA.Steps
         {
             leadspage.ClickOnSaveButtonInDisqualifiedPopup();
         }
+
+        //Add the service to a lead
+
+        [Then(@"Lead detail page should be displayed")]
+        public void ThenLeadDetailPageShouldBeDisplayed()
+        {
+            leadspage.IsLeadDetailsPageIsDisplayed();
+        }
+
     }
 }
