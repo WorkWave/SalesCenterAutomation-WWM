@@ -401,3 +401,31 @@ Scenario Outline: Verify that user can Bulk reopen the multiple disqualified Lea
  Examples:  
      | LeadStatus   | ReopenedLeads                     |
      | Disqualified | Bulk update successfully applied  |
+
+@Regression @Leads @WWM-8421 @WW_LD_017
+Scenario Outline: Verify user able to add service to a lead
+    When Mouse hover on sales center side menu
+    And Click on Leads link
+    Then Leads page should be displayed
+    And  Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider  
+    And Click on Service expand icon
+    And Click on Add Serivces button
+    And Select the services <Services>
+    When Click on Add services button in slider
+    Then Service should be successfully added
+    And Click on Close services and product button
+    When Click on view services added link
+    Then Service should be successfully added
+    And Click on Close services and product button
+    When Click on View details page link
+    Then Lead detail page should be displayed
+    When Click on view services added link
+    Then Service should be successfully added
+    And Click on Close services and product button
+
+ 
+ Examples:  
+      | Services            | 
+      | ANT- Ant Treatments | 

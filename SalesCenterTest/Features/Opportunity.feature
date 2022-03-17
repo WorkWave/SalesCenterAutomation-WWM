@@ -635,7 +635,7 @@ Scenario Outline: Verify User Can Add a Contract to an Opportunity
     When Click on View contracts link
     Then Same Contract form should be displayed in contracts slider
     And Click on Close icon in contract slider
-  
+    
   Examples:  
   | Template                  |
   | Residential Service Form  |
