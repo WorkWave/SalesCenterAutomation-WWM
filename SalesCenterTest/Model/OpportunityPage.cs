@@ -921,7 +921,7 @@ namespace WorkWave.PestPac.TA.Model
 
         public void ClickOnCloseFormManagerButton()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCloseFormmanagerButton)))
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickCloseFormmanagerButton),TimeSpan.FromSeconds(5)))
             {
                 ClickCloseFormmanagerButton.Click();
                 SUT.Log.DebugFormat("Complete button is clicked");

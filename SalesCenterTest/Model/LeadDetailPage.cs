@@ -54,14 +54,14 @@ namespace WorkWave.PestPac.TA.Model
         private IWebElement ClickSalesTeamField { get { return PageFactory.Load(this); } }
 
 
-        [FindsBy(How = How.XPath, Using = "//li[text()='Testing sales Team']")]
+        [FindsBy(How = How.XPath, Using = "//ul//li[text()='Testing sales Team']")]
         private IWebElement SelectSalesTeam { get { return PageFactory.Load(this); } }
 
 
         [FindsBy(How = How.XPath, Using = "//input[@name='assigneeId']/..")]
         private IWebElement ClickOwnerAssigneeField { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//li[text()='Unassigned']")]
+        [FindsBy(How = How.XPath, Using = "//ul//li[text()='Unassigned']")]
         private IWebElement SelectOwnerAssigneeName { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//input[@name='salesFunnelId']/..")]
@@ -132,19 +132,19 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//input[@name='opportunityStageId']/..")]
         private IWebElement StageField { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//li[text()='Stage1']")]
+        [FindsBy(How = How.XPath, Using = "//ul//li[text()='Stage1']")]
         private IWebElement SelectStageName { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//input[@name='ownerId']/..")]
         private IWebElement ClickOwnerField { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//li[text()='Unassigned']")]
+        [FindsBy(How = How.XPath, Using = "//ul//li[text()='Unassigned']")]
         private IWebElement SelectOwnerName { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.Id, Using = "mui-component-select-salesFunnelId")]
         private IWebElement FunnelField { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//li[contains(text(),'Test Sales funnel')]")]
+        [FindsBy(How = How.XPath, Using = "//ul//li[contains(text(),'Test Sales funnel')]")]
         private IWebElement FunnelName { get { return PageFactory.Load(this); } }
 
         #endregion Create opportunity
@@ -575,7 +575,6 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickSalesTeamField)))
                 {
-                  //  PestPacUtility.ScrollToElement(SelectSalesTeam);
                     ClickSalesTeamField.Click();                  
                     SelectSalesTeam.Click();
                     SUT.Log.DebugFormat("Sales team selected from the dropdown");
