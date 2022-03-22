@@ -54,7 +54,7 @@ namespace WorkWave.PestPac.TA.Model
         private IWebElement ClickSalesTeamField { get { return PageFactory.Load(this); } }
 
 
-        [FindsBy(How = How.XPath, Using = "//ul//li[text()='Testing sales Team']")]
+        [FindsBy(How = How.XPath, Using = "//ul//li[text()='Secondary south sales Team']")]
         private IWebElement SelectSalesTeam { get { return PageFactory.Load(this); } }
 
 

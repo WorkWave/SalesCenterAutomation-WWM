@@ -431,7 +431,7 @@ Scenario Outline: Verify user able to add service to a lead
       | ANT- Ant Treatments | 
 
 @Regression @Leads @WWM-9436 @WW_LD_018
-Scenario Outline:Verify that Create WWM Contact for  Lead
+Scenario Outline:Verify user able to Create WWM Contact for Lead
 	When Mouse hover on sales center side menu
     And Click on Leads link
     Then Leads page should be displayed
@@ -454,3 +454,30 @@ Scenario Outline:Verify that Create WWM Contact for  Lead
    Examples:  
     | FirstName | LastName | Email           |
     | James     | Jacob    | james@gmail.com |
+
+@Regression @Leads @WWM-9439 @WW_LD_019
+Scenario Outline:Verify user able to Edit WWM Contact for Lead
+	When Mouse hover on sales center side menu
+    And Click on Leads link
+    Then Leads page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+	When Click on View details page link
+    Then Lead detail page should be displayed
+    When Click on view contacts link
+    Then Contacts page should be displayed
+    And Click on workwave contacts tab
+    When Click on Add contact button
+    Then Add contact slider should be displayed
+    And Search the existing contact <ExistingContact>
+    And Click on Add contact button
+    When Edit the contacts
+    And Enter company name <CompanyName>
+    And Click on Update button in add contact slider
+    When Remove the contact
+    #Then Confirmation message should be displayed <ContactDeleted>
+    	
+   Examples:  
+     | ExistingContact | CompanyName     |
+     | James           | James pvt ltd   | 
