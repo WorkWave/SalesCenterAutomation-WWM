@@ -80,7 +80,7 @@ Examples:
      | OpportunityStatus | 
      | Closed            | 
 
-@Smoke @Regression @Opportunities @WWM-8439 @WW_OP_005
+@Smoke @Regression @Opportunities @WWM-8439 @WW_OP_005 @ignore @WWM-9587
 Scenario Outline: Verify user can closed won a opportunity
 	When Click on plus icon 
     And  Click on Add Lead button
@@ -138,7 +138,7 @@ Scenario Outline: Verify user can closed won a opportunity
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created | Residential Service Form | ANT- Ant Treatments | Opportunity created  |
 	
     
-@Smoke @Regression @Opportunities @WWM-8433 @WW_OP_006
+@Smoke @Regression @Opportunities @WWM-8433 @WW_OP_006 @ignore @WWM-9587
 Scenario Outline: Veriy user able to add payment card for a matched opportunity to a PP location
 	When Click on plus icon 
     And  Click on Add Lead button
@@ -613,7 +613,7 @@ Scenario Outline: Verification of basic regression Track A scenario
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Residential Service Form | Opportunity Deleted | Automation Labs | 3600 STATE ROUTE 66 | Locations successfully matched/created | John Smith     | 4111111111111111 | Successfully added payment method. |
 
 
-@Regression @Opportunities @WWM-8434 @WW_OP_017
+@Regression @Opportunities @WWM-8434 @WW_OP_017 @ignore @WWM-9587
 Scenario Outline: Verify User Can Add a Contract to an Opportunity
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
