@@ -257,7 +257,7 @@ Scenario Outline: Veriy user not able to close win if opportunity is not matched
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      |   ANT- Ant Treatments | Opportunity created |           
 
 
-@Regression @Opportunities @WWM-8611 @WW_OP_009
+@Smoke @Regression @Opportunities @WWM-8611 @WW_OP_009
 Scenario Outline: Remove WWM Contact for Opportunity
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
@@ -282,7 +282,7 @@ Scenario Outline: Remove WWM Contact for Opportunity
      | James           | 
 
 
-@Regression @Opportunities @WWM-8610 @WW_OP_010
+@Smoke @Regression @Opportunities @WWM-8610 @WW_OP_010
 Scenario Outline: Edit WWM Contact for Opportunity
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
@@ -310,7 +310,7 @@ Scenario Outline: Edit WWM Contact for Opportunity
      | James           | James pvt ltd   | 
 
 
-@Regression @Opportunities @WWM-8609 @WW_OP_011
+@Smoke @Regression @Opportunities @WWM-8609 @WW_OP_011
 Scenario Outline: Create WWM Contact for Opportunity
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
@@ -538,7 +538,7 @@ Scenario Outline: Verify that a Closed/Won Opportunity Cannot Add, Edit or Delet
       | Closed            | You cannot add services to a closed Opportunity. |
 
 
-@Regression @Opportunities @9432 @WW_OP_019 @ignore
+@Smoke @Regression @Opportunities @9432 @WW_OP_019 @ignore
 Scenario Outline: Verification of basic regression Track A scenario
     When Click on plus icon
     And  Click on Add Lead button

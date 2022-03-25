@@ -296,7 +296,7 @@ Scenario Outline: Verify duplicate alerts are displayed when there is matching F
      | Qa              | 
 
 
-@Regression @Leads @WWM-8613 @WW_LD_013
+@Smoke @Regression @Leads @WWM-8613 @WW_LD_013
 Scenario Outline: Verify user not able to add invalid payment card for a matched Lead to a PP location  
     When Click on plus icon 
     And  Click on Add Lead button
@@ -334,7 +334,7 @@ Scenario Outline: Verify user not able to add invalid payment card for a matched
      | Automation user3 | Test3    | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created | John Smith     | 4111111111111231  | INVALID CARD INFO  |                         
 	 
 
-@Regression @Leads @WWM-8612 @WW_LD_014
+@Smoke @Regression @Leads @WWM-8612 @WW_LD_014
 Scenario Outline: Veriy user not able to add payment card with out matching lead to a PP location
     When Click on plus icon 
     And  Click on Add Lead button
@@ -359,7 +359,7 @@ Scenario Outline: Veriy user not able to add payment card with out matching lead
 	 
 
 	 
-@Smoke  @Regression  @Leads @WW_LD_015
+@Smoke @Regression  @Leads @WW_LD_015
 Scenario Outline: Verify User Can Disqualified Lead 
     When Mouse hover on sales center side menu
     And Click on Leads link
@@ -430,7 +430,7 @@ Scenario Outline: Verify user able to add service to a lead
       | Services            | 
       | ANT- Ant Treatments | 
 
-@Regression @Leads @WWM-9436 @WW_LD_018
+@Smoke @Regression @Leads @WWM-9436 @WW_LD_018
 Scenario Outline:Verify user able to Create WWM Contact for Lead
 	When Mouse hover on sales center side menu
     And Click on Leads link
@@ -448,14 +448,14 @@ Scenario Outline:Verify user able to Create WWM Contact for Lead
     And Click on Add new contact tab
     And Enter the contact details <FirstName> <LastName> <Email>
     When Click on Create contact button
-    When Remove the contact
+    When Remove the contact for leads
     #Then Confirmation message should be displayed <ContactDeleted>
     	
    Examples:  
     | FirstName | LastName | Email           |
     | James     | Jacob    | james@gmail.com |
 
-@Regression @Leads @WWM-9439 @WW_LD_019
+@Smoke @Regression @Leads @WWM-9439 @WW_LD_019
 Scenario Outline:Verify user able to Edit WWM Contact for Lead
 	When Mouse hover on sales center side menu
     And Click on Leads link
