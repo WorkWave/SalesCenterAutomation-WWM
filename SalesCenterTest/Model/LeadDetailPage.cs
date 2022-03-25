@@ -425,9 +425,17 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//p[text()='Lead']")]
         private IWebElement DetailsPageIsDisplayed { get { return PageFactory.Load(this); } }
 
-        
+
 
         #endregion Adding a service to a lead
+
+        #region Remove sc contacts for leads
+
+        [FindsBy(How = How.XPath, Using = "//button[text()='Remove']")]
+        private IWebElement ClickRemoveButtonInPopupForLeads { get { return PageFactory.Load(this); } }
+        
+
+        #endregion Remove sc contacts for leads
 
         #endregion PageFactory
 
@@ -2164,6 +2172,29 @@ namespace WorkWave.PestPac.TA.Model
             catch (WebDriverTimeoutException)
             {
                 SUT.Log.ErrorFormat("Lead details page is not displayed");
+            }
+        }
+
+        //Click remove button in popup for lead
+
+        public void ClickOnRemoveButtonInPopupForleads()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickRemoveButtonInPopupForLeads)))
+                {
+                    ClickRemoveButtonInPopupForLeads.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Remove button is clicked in popup");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Remove button is not clicked in popup {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Remove button is not clicked in popup");
             }
         }
 

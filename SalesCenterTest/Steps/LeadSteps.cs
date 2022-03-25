@@ -607,5 +607,16 @@ namespace WorkWave.PestPac.TA.Steps
             leadspage.IsLeadDetailsPageIsDisplayed();
         }
 
+        //Remove the contact for leads
+
+        [When(@"Remove the contact for leads")]
+        public void WhenRemoveTheContactForLeads()
+        {
+            opportunitypage.ClickOnThreeDotsIconforAddedContacts();
+            opportunitypage.ClickOnRemoveLinkforContacts();
+            leadspage.ClickOnRemoveButtonInPopupForleads();
+        }
+
+
     }
 }

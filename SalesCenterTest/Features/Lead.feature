@@ -448,7 +448,7 @@ Scenario Outline:Verify user able to Create WWM Contact for Lead
     And Click on Add new contact tab
     And Enter the contact details <FirstName> <LastName> <Email>
     When Click on Create contact button
-    When Remove the contact
+    When Remove the contact for leads
     #Then Confirmation message should be displayed <ContactDeleted>
     	
    Examples:  
