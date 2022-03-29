@@ -475,7 +475,7 @@ Scenario Outline:Verify user able to Edit WWM Contact for Lead
     When Edit the contacts
     And Enter company name <CompanyName>
     And Click on Update button in add contact slider
-    When Remove the contact
+    When Remove the contact for leads
     #Then Confirmation message should be displayed <ContactDeleted>
     	
    Examples:  
@@ -499,7 +499,7 @@ Scenario Outline:Verify user able to Remove WWM Contact for Lead
     Then Add contact slider should be displayed
     And Search the existing contact <ExistingContact>
     And Click on Add contact button
-    When Remove the contact
+    When Remove the contact for leads
     #Then Confirmation message should be displayed <ContactDeleted>
     	
    Examples:  
