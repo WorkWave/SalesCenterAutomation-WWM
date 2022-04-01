@@ -431,7 +431,7 @@ namespace WorkWave.PestPac.TA.Model
 
         #region Remove sc contacts for leads
 
-        [FindsBy(How = How.XPath, Using = "//button[text()='Remove']")]
+        [FindsBy(How = How.XPath, Using = "//h2[text()='Remove Contact?']/../descendant::button[2]")]
         private IWebElement ClickRemoveButtonInPopupForLeads { get { return PageFactory.Load(this); } }
         
 
