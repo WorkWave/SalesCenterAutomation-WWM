@@ -46,7 +46,7 @@ namespace WorkWave.PestPac.TA.Steps
         public void ThenLeadsPageShouldBeDisplayed()
         {
             Assert.True(leadspage.IsLoaded(), "Failed to verify the Leads page loaded after click on leads link");
-            Thread.Sleep(10000);
+            Thread.Sleep(7000);
         }
 
         [When(@"Click on plus icon")]

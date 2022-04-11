@@ -6,47 +6,47 @@ Background:
 
 
 
-@Smoke @Regression @WWM-8401 @Settings @WW_ST_001 
+@Smoke @WWM-8401 @Settings @WW_ST_001 
 Scenario: Verify Display of Settings Home Page
     When Click on Settings Gear Icon
     Then Settings page should be displayed
 
-@Smoke @Regression @Settings @WW_ST_002
+@Smoke @Settings @WW_ST_002
 Scenario: Verify Display of Company Setup Page
     When Click on Settings Gear Icon
     Then Settings page should be displayed
     And Click on Company Setup link
     Then Company Setup page should be displayed
 
-@Smoke @Regression @Settings @WW_ST_003
+@Smoke @Settings @WW_ST_003
 Scenario: Verify Display of Roles and Permission  Page
     When Click on Settings Gear Icon
     Then Settings page should be displayed
     And Click on Roles and Permissions link
     Then Roles and Permissions page should be displayed
 
-@Smoke @Regression @Settings @WW_ST_004
+@Smoke  @Settings @WW_ST_004
 Scenario: Verify Display of User and Access  Page
     When Click on Settings Gear Icon
     Then Settings page should be displayed
     And Click on User and Access link
     Then User and Access page should be displayed
 
-@Smoke @Regression @Settings @WW_ST_005
+@Smoke @Settings @WW_ST_005
 Scenario: Verify Display of Sales Funnel Page
     When Click on Settings Gear Icon
     Then Settings page should be displayed
     And Click on Sales Funnels link
     Then Sales Funnels page should be displayed
 
-@Smoke @Regression @Settings @WW_ST_006
+@Smoke  @Settings @WW_ST_006
 Scenario: Verify Display of Sales Team Page
     When Click on Settings Gear Icon
     Then Settings page should be displayed
     And  Click on Sales Teams link
     Then Sales Teams page should be displayed
 
-@Smoke @Regression @WWM-8403 @Settings @WW_ST_007
+@Smoke @WWM-8403 @Settings @WW_ST_007
 Scenario Outline: Verify User is able to Add and Delete the  new role
     When Click on Settings Gear Icon
     Then Settings page should be displayed
@@ -64,7 +64,7 @@ Scenario Outline: Verify User is able to Add and Delete the  new role
    | Sales manager1 |
 
 
-@Smoke @Regression @WWM-8402 @Settings @WW_ST_008
+@Regression @WWM-8402 @Settings @WW_ST_008
 Scenario Outline: Verify user is able to Add and Delete the sales funnel
     When Click on Settings Gear Icon
     Then Settings page should be displayed
@@ -83,7 +83,7 @@ Scenario Outline: Verify user is able to Add and Delete the sales funnel
    | Automation funnel   |
 
 
-@Smoke @Regression @WWM-8406 @Settings @WW_ST_009
+@Smoke @WWM-8406 @Settings @WW_ST_009
 Scenario Outline: Verify User is Able to Add and delete the UnMapped User 
     When Click on Settings Gear Icon
     Then Settings page should be displayed
@@ -105,7 +105,7 @@ Scenario Outline: Verify User is Able to Add and delete the UnMapped User
      | Automation user | Test     | test321@gmail.com | Testing  non admin | Secondary south sales Team | User created. Welcome email sent. | User deleted  |
 
 
-@Smoke @Regression @WWM-8404 @Settings @WW_ST_010
+@Smoke @WWM-8404 @Settings @WW_ST_010
 Scenario Outline: Verify User is Able to Add and delete the Sales Team
     When Click on Settings Gear Icon
     Then Settings page should be displayed
@@ -124,7 +124,7 @@ Scenario Outline: Verify User is Able to Add and delete the Sales Team
      | autosalesteam | North Branch | Sales Team created | Sales Team deleted.  |
 
     
-@Smoke @Regression @WWM-8405 @Settings @WW_ST_011
+@Regression @WWM-8405 @Settings @WW_ST_011
 Scenario Outline: Verify Admin Users Can Add Positions to Sales Teams
     When Click on Settings Gear Icon
     Then Settings page should be displayed
@@ -147,7 +147,7 @@ Scenario Outline: Verify Admin Users Can Add Positions to Sales Teams
      | autosalesteam   | North Branch   | Sales Team created | Sales Team deleted. | SalesManager | Sales Team Position created  |
      
 
-@Smoke @Regression @WWM-8408 @Settings @WW_ST_012
+@Regression @WWM-8408 @Settings @WW_ST_012
 Scenario Outline: Verify that Non Admin Users Can be Assigned a Single Position on any Number of Sales Teams
     When Click on Settings Gear Icon
     Then Settings page should be displayed

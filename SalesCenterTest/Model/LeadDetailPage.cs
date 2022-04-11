@@ -605,9 +605,9 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickOwnerAssigneeField), TimeSpan.FromSeconds(10)))
                 {
                     ClickOwnerAssigneeField.Click();
-                    Thread.Sleep(2000);
+                    Thread.Sleep(1000);
                     SelectOwnerAssigneeName.Click();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(1000);
                     SUT.Log.DebugFormat("Owner selected from the dropdown");
                 }
                 else
@@ -630,10 +630,10 @@ namespace WorkWave.PestPac.TA.Model
                 {
                     SalesCenterUtility.ScrollToElement(ClickFunnelField);
                     ClickFunnelField.Click();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(1000);
                   //  SalesCenterUtility.ScrollToElement(SelectFunnelName);
                     SelectFunnelName.Click();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(1000);
                     SUT.Log.DebugFormat("Sales funnel selected from the dropdown");
                 }
                 else
@@ -654,7 +654,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickSaveButton)))
                 {
                     ClickSaveButton.Click();
-                    Thread.Sleep(5000);
+                    Thread.Sleep(2000);
                     SUT.Log.DebugFormat("Save button is clicked");
                 }
                 else
@@ -671,11 +671,10 @@ namespace WorkWave.PestPac.TA.Model
         public bool VerifyLeadCreatedConfirmMsg(string message)
         {
 
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => LeadcreatedConfirm_Txt)))
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => LeadcreatedConfirm_Txt),TimeSpan.FromSeconds(5)))
             {
                 SUT.Log.Debug("Validation message is dislayed");
                 Assert.True(LeadcreatedConfirm_Txt.Text.Contains(message), "Validation message is not matching");
-                Thread.Sleep(7000);
                 return true;
             }
             else
@@ -712,7 +711,7 @@ namespace WorkWave.PestPac.TA.Model
                 {
                     EnterLeadname.SendKeys(leadname);
                     EnterLeadname.SendKeys(Keys.Enter);
-                    Thread.Sleep(5000);
+                    Thread.Sleep(2000);
                     SUT.Log.DebugFormat("Lead name is entered");
                 }
                 else
@@ -733,7 +732,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsforLead)))
                 {
                     ClickThreeDotsforLead.Click();
-                    Thread.Sleep(2000);
+                    Thread.Sleep(1000);
                     SUT.Log.DebugFormat("Three dot icon is clicked");
                 }
                 else
@@ -755,7 +754,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickDeleteLink)))
                 {
                     ClickDeleteLink.Click();
-                    Thread.Sleep(2000);
+                    Thread.Sleep(1000);
                     SUT.Log.DebugFormat("Delete link is clicked");
                 }
                 else
@@ -796,7 +795,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceExapndIcon)))
                 {
                     ClickServiceExapndIcon.Click();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(1000);
                     SUT.Log.DebugFormat("Service expand icon is clicked");
                 }
                 else
@@ -838,7 +837,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceField)))
                 {
                     ClickServiceField.Click();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(1000);
               //      SalesCenterUtility.ScrollToElement(SelectServicename);
                     SelectServicename.Click();                   
                     SUT.Log.DebugFormat("Service selected from the droddown");
@@ -861,7 +860,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ServcieAdded), TimeSpan.FromSeconds(10)))
                 {
                     ServcieAdded.Displayed.ToString();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(1000);
                     SUT.Log.DebugFormat("Service added");
                 }
                 else
@@ -882,9 +881,9 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => CloseServicesButton)))
                 {
-                    Thread.Sleep(5000);
+                    Thread.Sleep(2000);
                     CloseServicesButton.Click();
-                    Thread.Sleep(4000);
+                    Thread.Sleep(1000);
                     SUT.Log.DebugFormat("Closeservice and product button is clicked");
                 }
                 else
@@ -904,7 +903,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickConvertOpportunityButton)))
                 {                  
                     ClickConvertOpportunityButton.Click();
-                    Thread.Sleep(8000);
+                    Thread.Sleep(5000);
                     SUT.Log.DebugFormat("Closeservice and product button is clicked");
                 }
                 else
@@ -925,7 +924,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceButtonInSlider)))
                 {
                     ClickServiceButtonInSlider.Click();
-                    Thread.Sleep(6000);
+                    Thread.Sleep(3000);
                     SUT.Log.DebugFormat("Add service button is clicked in the slider");
                 }
                 else
@@ -988,7 +987,7 @@ namespace WorkWave.PestPac.TA.Model
                 {
                     SalesCenterUtility.ScrollToElement(ClickOwnerField);
                     ClickOwnerField.Click();
-                    Thread.Sleep(2000);
+                    Thread.Sleep(1000);
                     SelectOwnerName.Click();
                     SUT.Log.DebugFormat("Owner selected from the droddown");
                 }
@@ -1046,7 +1045,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCreateOpportunityButtonInOppPage)))
                 {
                     ClickCreateOpportunityButtonInOppPage.Click();
-                    Thread.Sleep(5000);
+                    Thread.Sleep(2000);
                     SUT.Log.DebugFormat("Create opportunity button is clicked");
                 }
                 else
@@ -1087,7 +1086,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => AddOpportunityPageIsDisplayed),TimeSpan.FromSeconds(10)))
                 {
                     AddOpportunityPageIsDisplayed.Displayed.ToString();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(2000);
                     SUT.Log.DebugFormat("Create opportunity slider is diplayed");
                 }
                 else
@@ -1215,7 +1214,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickProceedButton)))
                 {
                     ClickProceedButton.Click();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(2000);
                     SUT.Log.DebugFormat("Proceed button in popup is clicked");
                 }
                 else
@@ -1255,9 +1254,9 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickOnFilterButton),TimeSpan.FromSeconds(5)))
                 {
-                    Thread.Sleep(4000);
+                    Thread.Sleep(3000);
                     ClickOnFilterButton.Click();
-                    Thread.Sleep(5000);
+                    Thread.Sleep(3000);
                     SUT.Log.DebugFormat("Filters button is clicked");
                 }
                 else
@@ -1303,7 +1302,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickApplyButton)))
                 {
                     ClickApplyButton.Click();
-                    Thread.Sleep(5000);
+                    Thread.Sleep(3000);
                     SUT.Log.DebugFormat("Apply button is clicked");
                 }
                 else
@@ -1722,7 +1721,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickBillToEditButton)))
                 {
                     ClickBillToEditButton.Click();
-                    Thread.Sleep(8000);
+                    Thread.Sleep(4000);
                     SUT.Log.DebugFormat("Bill-to Edit button is clicked");
                 }
                 else
@@ -1805,7 +1804,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickSaveButtonInUpdateLocationSlider)))
                 {
                     ClickSaveButtonInUpdateLocationSlider.Click();
-                    Thread.Sleep(10000);
+                    Thread.Sleep(5000);
                     SUT.Log.DebugFormat("Save button is clicked");
                 }
                 else
@@ -1826,7 +1825,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 SUT.Log.Debug("Validation  message is displayed");
                 Assert.True(ServiceLocationValidationConfirm_Txt.Text.Contains(message), "Validation message is not matching");
-                Thread.Sleep(12000);
+                Thread.Sleep(6000);
                 return true;
             }
             else
