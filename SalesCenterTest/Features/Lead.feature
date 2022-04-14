@@ -6,13 +6,13 @@ Background:
 
 
 
-@Smoke @Regression @Leads @WW_LD_001
+@Smoke @Leads  @WW_LD_001
 Scenario Outline: Verify default display of Lead Card   
     When Mouse hover on sales center side menu
     And Click on Leads link
     Then Leads page should be displayed
   
-@Smoke @Regression @Leads @WW_LD_002
+@Regression @Leads @WWM-8417 @WW_LD_002
 Scenario Outline: Verify user can create and delete a lead   
     When Click on plus icon
     And  Click on Add Lead button
@@ -36,7 +36,7 @@ Scenario Outline: Verify user can create and delete a lead
      | Automation user2 | Test2    | autocompany2 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | Lead deleted.        |
 	 
 
-@Smoke @Regression @Leads @WW_LD_003
+@Smoke @WWM-8427 @Leads @WW_LD_003
 Scenario Outline: Verify user can create lead and convert to opportunity
     When Click on plus icon
     And  Click on Add Lead button
@@ -65,7 +65,7 @@ Scenario Outline: Verify user can create lead and convert to opportunity
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Opportunity Deleted             | Automation Labs |
 
 
-@Smoke @Regression @Leads @WW_LD_004
+@Smoke @WWM-8428 @Leads @WW_LD_004
 Scenario Outline: Verify user able to create new opportunity directly 
     When Click on plus icon
     And  Click on Create opportunity button
@@ -87,7 +87,7 @@ Scenario Outline: Verify user able to create new opportunity directly
 
 
 
-@Smoke @Regression @Leads @8422 @WW_LD_005
+@Regression @WWM-8422 @Leads @8422 @WW_LD_005
 Scenario Outline: Verify User Can Add a Contract to a Lead
     When Click on plus icon
     And Click on Add Lead button
@@ -119,7 +119,7 @@ Examples:
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments | Residential Service Form |
 
 
-@Smoke  @Regression @WWM-8426 @Leads @WW_LD_006
+@Regression @WWM-8426 @Leads @WW_LD_006
 Scenario Outline: Verify User Can Re-Open a Disqualified Lead 
     When Mouse hover on sales center side menu
     And Click on Leads link
@@ -142,7 +142,7 @@ Examples:
      | Disqualified | Qualify  | 
 
 
-@Smoke @Regression @Leads @WWM-8423 @WW_LD_007
+@Regression @Leads @WWM-8423 @WW_LD_007
 Scenario Outline: Verify user able to attach lead card to existing location  
     When Click on plus icon
     And  Click on Add Lead button
@@ -173,7 +173,7 @@ Scenario Outline: Verify user able to attach lead card to existing location
      | Automation user3 | Test3    | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created |                     
 	 
 	 
-@Smoke @Regression @Leads @WWM-8430 @WW_LD_008
+@Regression @Leads @WWM-8430 @WW_LD_008
 Scenario Outline: Verify user able to edit the services on opportunity form
     When Click on plus icon
     And Click on Add Lead button
@@ -206,7 +206,7 @@ Examples:
      | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Services            | UpdateService      |
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments | BEES- Bee Services |
 
-@Smoke @Regression @Leads  @WWM-8443 @WW_LD_009
+@Regression @Leads  @WWM-8443 @WW_LD_009
 Scenario: Verification of multiple records selection on Leads List View Page
 	When Mouse hover on sales center side menu
     And Click on Leads link
@@ -219,7 +219,7 @@ Scenario: Verification of multiple records selection on Leads List View Page
 	Then checkbox should be selected
 
 
-@Smoke @Regression @Leads @WWM-8424 @WW_LD_0010
+@Regression @Leads @WWM-8424 @WW_LD_0010
 Scenario Outline: Verify user able to create a new location in PP from a lead card   
     When Click on plus icon
     And  Click on Add Lead button
@@ -255,8 +255,7 @@ Scenario Outline: Verify user able to create a new location in PP from a lead ca
      | FirstName | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Address        | City    | State | PostalCode | LocationMatchedValMsg                           | LocationValMsg                 |
      | John      | Smith    | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | 200 street san | chester | PA    | 93013-373  | A Service Location has been added successfully. | Locations Created Successfully |
 
-
-@Smoke @Regression @Opportunities @WWM-8446 @WW_LD_011
+@Regression @Opportunities @WWM-8446 @WW_LD_011
 Scenario Outline: Verification of Bulk Re-assignment of leads which are associated with same branch Sales Team 
     When Mouse hover on sales center side menu
     And Click on Leads link
@@ -278,7 +277,7 @@ Scenario Outline: Verification of Bulk Re-assignment of leads which are associat
      | Auto Test Sales Team | unassigned      | Bulk update successfully applied   |
 
 
-@Smoke @Regression @Leads @WWM-8418 @WW_LD_012
+@Regression @Leads @WWM-8418 @WW_LD_012
 Scenario Outline: Verify duplicate alerts are displayed when there is matching First Name ,Last Name ,Phone, Email address from an existing lead or opportunity
     When Click on plus icon
     And  Click on Add Lead button
@@ -296,7 +295,7 @@ Scenario Outline: Verify duplicate alerts are displayed when there is matching F
      | Qa              | 
 
 
-@Smoke @Regression @Leads @WWM-8613 @WW_LD_013
+@Regression @Leads @WWM-8613 @WW_LD_013
 Scenario Outline: Verify user not able to add invalid payment card for a matched Lead to a PP location  
     When Click on plus icon 
     And  Click on Add Lead button
@@ -334,7 +333,7 @@ Scenario Outline: Verify user not able to add invalid payment card for a matched
      | Automation user3 | Test3    | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created | John Smith     | 4111111111111231  | INVALID CARD INFO  |                         
 	 
 
-@Smoke @Regression @Leads @WWM-8612 @WW_LD_014
+@Regression @Leads @WWM-8612 @WW_LD_014
 Scenario Outline: Veriy user not able to add payment card with out matching lead to a PP location
     When Click on plus icon 
     And  Click on Add Lead button
@@ -357,9 +356,8 @@ Scenario Outline: Veriy user not able to add payment card with out matching lead
      | FirstName        | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Toastmessage                                                       |
      | Automation user3 | Test3    | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Link this lead to a location to view/capture payment information.  |
 	 
-
 	 
-@Smoke @Regression  @Leads @WW_LD_015
+@Regression  @Leads @WW_LD_015
 Scenario Outline: Verify User Can Disqualified Lead 
     When Mouse hover on sales center side menu
     And Click on Leads link
@@ -430,7 +428,7 @@ Scenario Outline: Verify user able to add service to a lead
       | Services            | 
       | ANT- Ant Treatments | 
 
-@Smoke @Regression @Leads @WWM-9436 @WW_LD_018
+@Smoke  @Leads @WWM-9436 @WW_LD_018
 Scenario Outline:Verify user able to Create WWM Contact for Lead
 	When Mouse hover on sales center side menu
     And Click on Leads link
@@ -455,7 +453,7 @@ Scenario Outline:Verify user able to Create WWM Contact for Lead
     | FirstName | LastName | Email           |
     | James     | Jacob    | james@gmail.com |
 
-@Smoke @Regression @Leads @WWM-9439 @WW_LD_019
+@Smoke  @Leads @WWM-9439 @WW_LD_019
 Scenario Outline:Verify user able to Edit WWM Contact for Lead
 	When Mouse hover on sales center side menu
     And Click on Leads link
@@ -482,7 +480,7 @@ Scenario Outline:Verify user able to Edit WWM Contact for Lead
      | ExistingContact | CompanyName     |
      | James           | James pvt ltd   | 
 
-@Smoke @Regression @Leads @WWM-9438 @WW_LD_020
+@Smoke @Leads @WWM-9438 @WW_LD_020
 Scenario Outline:Verify user able to Remove WWM Contact for Lead
 	When Mouse hover on sales center side menu
     And Click on Leads link

@@ -469,7 +469,7 @@ namespace WorkWave.PestPac.TA.Model
 
         public bool IsLoaded()
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => PageHeader),TimeSpan.FromSeconds(15)))
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => PageHeader),TimeSpan.FromSeconds(10)))
             {
                 if (PageHeader.Text.TrimStart().StartsWith(PageHeaderText))
                 {
@@ -494,7 +494,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickOpportunitiesLink),TimeSpan.FromSeconds(10)))
                 {
                     ClickOpportunitiesLink.Click();
-                    Thread.Sleep(5000);
+                    Thread.Sleep(3000);
                     SUT.Log.DebugFormat("Opportunities link is clicked");
                 }
                 else
@@ -1770,10 +1770,10 @@ namespace WorkWave.PestPac.TA.Model
                     return false;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
-                throw e;
+                throw;
             }
         }
 

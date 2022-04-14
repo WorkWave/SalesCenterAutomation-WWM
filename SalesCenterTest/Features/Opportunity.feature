@@ -5,7 +5,7 @@ Feature: Opportunities
 Background: 
 	Given I am logged in
 
-@Smoke @Regression @Opportunities @WWM-8447 @WW_OP_001
+@Regression @Opportunities @WWM-8447 @WW_OP_001
 Scenario Outline: SC-Bulk Re-open: Verify that user can Bulk reopen the multiple closed opportunities at once
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
@@ -28,7 +28,7 @@ Scenario Outline: SC-Bulk Re-open: Verify that user can Bulk reopen the multiple
      | OpportunityStatus | 
      | Closed            | 
 
-@Smoke @Regression @Opportunities @WWM-8438 @WW_OP_002
+@Regression @Opportunities @WWM-8438 @WW_OP_002
 Scenario Outline: Verify user can close an opportunity as closed/lost
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
@@ -48,7 +48,7 @@ Scenario Outline: Verify user can close an opportunity as closed/lost
      | OpportunityStatus |
      | Closed            |
 
-@Smoke @Regression @Opportunities @WWM-8442 @WW_OP_003
+@Regression @Opportunities @WWM-8442 @WW_OP_003
 Scenario: Verification of multiple records selection on Opportunity List View Page
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
@@ -60,7 +60,7 @@ Scenario: Verification of multiple records selection on Opportunity List View Pa
 	When select the all checkbox option
 	Then checkbox should be selected
 
-@Smoke @Regression @Opportunities @WWM-8440 @WW_OP_004
+@Regression @Opportunities @WWM-8440 @WW_OP_004
 Scenario Outline: Verify Users Can Re-Open Closed/Won and Closed/Lost Opportunities
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
@@ -80,7 +80,7 @@ Examples:
      | OpportunityStatus | 
      | Closed            | 
 
-@Smoke @Regression @Opportunities @WWM-8439 @WW_OP_005 @ignore @WWM-9587
+@Regression @Opportunities @WWM-8439 @WW_OP_005 @ignore @WWM-9587
 Scenario Outline: Verify user can closed won a opportunity
 	When Click on plus icon 
     And  Click on Add Lead button
@@ -138,7 +138,7 @@ Scenario Outline: Verify user can closed won a opportunity
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created | Residential Service Form | ANT- Ant Treatments | Opportunity created  |
 	
     
-@Smoke @Regression @Opportunities @WWM-8433 @WW_OP_006 @ignore @WWM-9587
+@Regression @Opportunities @WWM-8433 @WW_OP_006 @ignore @WWM-9587
 Scenario Outline: Veriy user able to add payment card for a matched opportunity to a PP location
 	When Click on plus icon 
     And  Click on Add Lead button
@@ -197,7 +197,7 @@ Scenario Outline: Veriy user able to add payment card for a matched opportunity 
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created | Residential Service Form | ANT- Ant Treatments | Opportunity created | John Smith     | 4111111111111111  | Successfully added payment method. |           
 	
    
-@Smoke @Regression @Opportunities @WWM-8445 @WW_OP_007
+@Regression @Opportunities @WWM-8445 @WW_OP_007
 Scenario Outline: Verification of Bulk Re-assignment of Opportunities which are associated with same branch Sales Team
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
@@ -218,7 +218,7 @@ Scenario Outline: Verification of Bulk Re-assignment of Opportunities which are 
      | SalesTeam             | SalesTeamMember |
      | Auto Test Sales Team  | unassigned      |
 
-@Smoke @Regression @Opportunities @WWM-8432 @WW_OP_008
+@Regression @Opportunities @WWM-8432 @WW_OP_008
 Scenario Outline: Veriy user not able to close win if opportunity is not matched to any PP location
 	When Click on plus icon 
     And  Click on Add Lead button
@@ -257,7 +257,7 @@ Scenario Outline: Veriy user not able to close win if opportunity is not matched
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      |   ANT- Ant Treatments | Opportunity created |           
 
 
-@Smoke @Regression @Opportunities @WWM-8611 @WW_OP_009
+@Smoke  @Opportunities @WWM-8611 @WW_OP_009
 Scenario Outline: Remove WWM Contact for Opportunity
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
@@ -282,7 +282,7 @@ Scenario Outline: Remove WWM Contact for Opportunity
      | James           | 
 
 
-@Smoke @Regression @Opportunities @WWM-8610 @WW_OP_010
+@Smoke @Opportunities @WWM-8610 @WW_OP_010
 Scenario Outline: Edit WWM Contact for Opportunity
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
@@ -310,7 +310,7 @@ Scenario Outline: Edit WWM Contact for Opportunity
      | James           | James pvt ltd   | 
 
 
-@Smoke @Regression @Opportunities @WWM-8609 @WW_OP_011
+@Smoke @Opportunities @WWM-8609 @WW_OP_011
 Scenario Outline: Create WWM Contact for Opportunity
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
@@ -538,7 +538,7 @@ Scenario Outline: Verify that a Closed/Won Opportunity Cannot Add, Edit or Delet
       | Closed            | You cannot add services to a closed Opportunity. |
 
 
-@Smoke @Regression @Opportunities @9432 @WW_OP_019 @ignore
+@Regression @Opportunities @9432 @WW_OP_019 @ignore
 Scenario Outline: Verification of basic regression Track A scenario
     When Click on plus icon
     And  Click on Add Lead button
