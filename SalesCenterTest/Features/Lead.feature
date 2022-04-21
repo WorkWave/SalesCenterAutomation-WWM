@@ -6,13 +6,13 @@ Background:
 
 
 
-@Smoke @Leads  @WW_LD_001
+@SmokeProd @Leads @WWM-8421  @WW_LD_001
 Scenario Outline: Verify default display of Lead Card   
     When Mouse hover on sales center side menu
     And Click on Leads link
     Then Leads page should be displayed
   
-@Regression @Leads @WWM-8417 @WW_LD_002
+@SmokeProd @Smoke @Leads @WWM-8416 @WW_LD_002
 Scenario Outline: Verify user can create and delete a lead   
     When Click on plus icon
     And  Click on Add Lead button
@@ -36,7 +36,7 @@ Scenario Outline: Verify user can create and delete a lead
      | Automation user2 | Test2    | autocompany2 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | Lead deleted.        |
 	 
 
-@Smoke @WWM-8427 @Leads @WW_LD_003
+@SmokeProd @Smoke @WWM-8427 @Leads @WW_LD_003
 Scenario Outline: Verify user can create lead and convert to opportunity
     When Click on plus icon
     And  Click on Add Lead button
@@ -65,7 +65,7 @@ Scenario Outline: Verify user can create lead and convert to opportunity
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Opportunity Deleted             | Automation Labs |
 
 
-@Smoke @WWM-8428 @Leads @WW_LD_004
+@SmokeProd @Smoke @WWM-8428 @Leads @WW_LD_004
 Scenario Outline: Verify user able to create new opportunity directly 
     When Click on plus icon
     And  Click on Create opportunity button
@@ -87,7 +87,7 @@ Scenario Outline: Verify user able to create new opportunity directly
 
 
 
-@Regression @WWM-8422 @Leads @8422 @WW_LD_005
+@SmokeProd @Smoke @WWM-8422 @Leads @8422 @WW_LD_005
 Scenario Outline: Verify User Can Add a Contract to a Lead
     When Click on plus icon
     And Click on Add Lead button
@@ -119,7 +119,7 @@ Examples:
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments | Residential Service Form |
 
 
-@Regression @WWM-8426 @Leads @WW_LD_006
+@Smoke @WWM-8426 @Leads @WW_LD_006
 Scenario Outline: Verify User Can Re-Open a Disqualified Lead 
     When Mouse hover on sales center side menu
     And Click on Leads link
@@ -142,7 +142,7 @@ Examples:
      | Disqualified | Qualify  | 
 
 
-@Regression @Leads @WWM-8423 @WW_LD_007
+@Smoke @Leads @WWM-8423 @WW_LD_007
 Scenario Outline: Verify user able to attach lead card to existing location  
     When Click on plus icon
     And  Click on Add Lead button
@@ -173,7 +173,7 @@ Scenario Outline: Verify user able to attach lead card to existing location
      | Automation user3 | Test3    | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created |                     
 	 
 	 
-@Regression @Leads @WWM-8430 @WW_LD_008
+@Smoke @Leads @WWM-8430 @WW_LD_008
 Scenario Outline: Verify user able to edit the services on opportunity form
     When Click on plus icon
     And Click on Add Lead button
@@ -219,7 +219,7 @@ Scenario: Verification of multiple records selection on Leads List View Page
 	Then checkbox should be selected
 
 
-@Regression @Leads @WWM-8424 @WW_LD_0010
+@Smoke @Leads @WWM-8424 @WW_LD_0010
 Scenario Outline: Verify user able to create a new location in PP from a lead card   
     When Click on plus icon
     And  Click on Add Lead button
@@ -400,7 +400,7 @@ Scenario Outline: Verify that user can Bulk reopen the multiple disqualified Lea
      | LeadStatus   | ReopenedLeads                     |
      | Disqualified | Bulk update successfully applied  |
 
-@Regression @Leads @WWM-8421 @WW_LD_017
+@SmokeProd @Smoke @Leads @WWM-8421 @WW_LD_017
 Scenario Outline: Verify user able to add service to a lead
     When Mouse hover on sales center side menu
     And Click on Leads link

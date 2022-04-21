@@ -6,7 +6,7 @@ Background:
 
 
 
-@Smoke @WWM-8401 @Settings @WW_ST_001 
+@SmokeProd @Smoke @WWM-8401 @Settings @WW_ST_001 
 Scenario: Verify Display of Settings Home Page
     When Click on Settings Gear Icon
     Then Settings page should be displayed
@@ -46,7 +46,7 @@ Scenario: Verify Display of Sales Team Page
     And  Click on Sales Teams link
     Then Sales Teams page should be displayed
 
-@Smoke @WWM-8403 @Settings @WW_ST_007
+@SmokeProd @Smoke @WWM-8403 @Settings @WW_ST_007
 Scenario Outline: Verify User is able to Add and Delete the  new role
     When Click on Settings Gear Icon
     Then Settings page should be displayed
@@ -64,7 +64,7 @@ Scenario Outline: Verify User is able to Add and Delete the  new role
    | Sales manager1 |
 
 
-@Regression @WWM-8402 @Settings @WW_ST_008
+@SmokeProd @Smoke @WWM-8402 @Settings @WW_ST_008
 Scenario Outline: Verify user is able to Add and Delete the sales funnel
     When Click on Settings Gear Icon
     Then Settings page should be displayed
@@ -83,7 +83,7 @@ Scenario Outline: Verify user is able to Add and Delete the sales funnel
    | Automation funnel   |
 
 
-@Smoke @WWM-8406 @Settings @WW_ST_009
+@SmokeProd @Smoke @WWM-8406 @Settings @WW_ST_009
 Scenario Outline: Verify User is Able to Add and delete the UnMapped User 
     When Click on Settings Gear Icon
     Then Settings page should be displayed
@@ -105,7 +105,7 @@ Scenario Outline: Verify User is Able to Add and delete the UnMapped User
      | Automation user | Test     | test321@gmail.com | Testing  non admin | Secondary south sales Team | User created. Welcome email sent. | User deleted  |
 
 
-@Smoke @WWM-8404 @Settings @WW_ST_010
+@SmokeProd @Smoke @WWM-8404 @Settings @WW_ST_010
 Scenario Outline: Verify User is Able to Add and delete the Sales Team
     When Click on Settings Gear Icon
     Then Settings page should be displayed
@@ -124,7 +124,7 @@ Scenario Outline: Verify User is Able to Add and delete the Sales Team
      | autosalesteam | North Branch | Sales Team created | Sales Team deleted.  |
 
     
-@Regression @WWM-8405 @Settings @WW_ST_011
+@SmokeProd @Smoke @WWM-8405 @Settings @WW_ST_011
 Scenario Outline: Verify Admin Users Can Add Positions to Sales Teams
     When Click on Settings Gear Icon
     Then Settings page should be displayed
@@ -147,7 +147,7 @@ Scenario Outline: Verify Admin Users Can Add Positions to Sales Teams
      | autosalesteam   | North Branch   | Sales Team created | Sales Team deleted. | SalesManager | Sales Team Position created  |
      
 
-@Regression @WWM-8408 @Settings @WW_ST_012
+@Smoke @WWM-8408 @Settings @WW_ST_012
 Scenario Outline: Verify that Non Admin Users Can be Assigned a Single Position on any Number of Sales Teams
     When Click on Settings Gear Icon
     Then Settings page should be displayed

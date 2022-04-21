@@ -169,11 +169,12 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.ClickOnCloseWonOption();
         }
 
-        [Then(@"Click on Close form manager button")]
-        public void ThenClickOnCloseFormManagerButton()
+        [When(@"Click on Close form manager button")]
+        public void WhenClickOnCloseFormManagerButton()
         {
             opportunitypage.ClickOnCloseFormManagerButton();
         }
+
 
         [Then(@"Close won opportunity slider should be displayed")]
         public void ThenCloseWonOpportunitySliderShouldBeDisplayed()
@@ -610,6 +611,22 @@ namespace WorkWave.PestPac.TA.Steps
         public void ThenSameContractFormShouldBeDisplayedInContractsSlider()
         {
             opportunitypage.IsSameContractFormDisplayedInViewDetailsPage();
+        }
+
+        //Switch back to default content
+
+        [Then(@"Card added successfully validation message should be displayed (.*)")]
+        public void ThenCardAddedSuccessfullyValidationMessageShouldBeDisplayed(string message)
+        {
+            opportunitypage.VerifyCardAddedConfirmMsg(message);
+        }
+
+        //TrackB scenario
+
+        [When(@"Click on convert to opportunity button after matching the location")]
+        public void WhenClickOnConvertToOpportunityButtonAfterMatchingTheLocation()
+        {
+            opportunitypage.ClickOnConvertOpportunityButtonAfterMatchingTheLocation();
         }
 
 

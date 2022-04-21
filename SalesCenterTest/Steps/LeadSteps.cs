@@ -208,8 +208,10 @@ namespace WorkWave.PestPac.TA.Steps
             settingpage.VerifySalesTeamCreatedConfirmMsg(message);
         }
 
-        //Delete opportunity
         
+
+        //Delete opportunity
+
         [Then(@"Opportunities page should be displayed")]
         public void ThenOpportunitiesPageShouldBeDisplayed()
         {
@@ -287,6 +289,8 @@ namespace WorkWave.PestPac.TA.Steps
         {
             leadspage.ClickOnProceedButtonInPopup();
         }
+
+
 
 
         [Then(@"Contract should be successfully added")]
