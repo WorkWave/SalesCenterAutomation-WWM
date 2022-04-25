@@ -1214,7 +1214,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickProceedButton)))
                 {
                     ClickProceedButton.Click();
-                    Thread.Sleep(2000);
+                    Thread.Sleep(5000);
                     SUT.Log.DebugFormat("Proceed button in popup is clicked");
                 }
                 else
@@ -1825,7 +1825,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 SUT.Log.Debug("Validation  message is displayed");
                 Assert.True(ServiceLocationValidationConfirm_Txt.Text.Contains(message), "Validation message is not matching");
-                Thread.Sleep(6000);
+                Thread.Sleep(10000);
                 return true;
             }
             else

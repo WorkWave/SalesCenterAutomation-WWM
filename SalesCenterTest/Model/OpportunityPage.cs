@@ -17,7 +17,7 @@ namespace WorkWave.PestPac.TA.Model
 {
     class OpportunityPage : IWebPage
     {
-
+       
         private readonly string PrimaryContactText = "James Jacob";
 
         #region PageFactory
@@ -140,7 +140,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//button[@type='submit']")]
         private IWebElement ClickEnterButton { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//p[contains(text(),'Add CC for API Auto CC Refund')]/../../../following-sibling::div[1]")]
+        [FindsBy(How = How.XPath, Using = "(//p[contains(text(),'Add CC for API Auto CC Refund')]/../../../following-sibling::div[contains(@data-test-id,'cardFooter')])[1]")]
         private IWebElement ClickServiceExapndIconForMatchedOpportunity { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.Id, Using = "cardNumber")]
@@ -228,7 +228,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//div[contains(@class,'MuiListItemText-root MuiListItemText-dense')]//span)[2]")]
         private IWebElement ClickRemoveLinkForContacts { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//button[text()='Remove']")]
+        [FindsBy(How = How.XPath, Using = "(//button[text()='Remove'])[2]")]
         private IWebElement ClickRemoveButtonInPopup { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "(//span[text()='Add Contact'])[2]")]
@@ -308,7 +308,7 @@ namespace WorkWave.PestPac.TA.Model
         private IWebElement ClickSendTopestPaclocationlink { get { return PageFactory.Load(this); } }
 
 
-        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'PestPac Contacts ')]")]
+        [FindsBy(How = How.XPath, Using = "//button[contains(text(),'PestPac Contacts ')]")]
         private IWebElement ClickPestPacTab { get { return PageFactory.Load(this); } }
 
 
@@ -460,8 +460,26 @@ namespace WorkWave.PestPac.TA.Model
         private IWebElement ContratForm { get { return PageFactory.Load(this); } }
 
 
-      
+
         #endregion Add a contract to an opp
+
+
+        #region Card details
+
+        [FindsBy(How = How.XPath, Using = "//div[@role='alert']")]
+        private IWebElement CardAddedConfirm_Txt { get { return PageFactory.Load(this); } }
+
+
+        #endregion Card details
+
+        #region TrackB scenario
+
+        [FindsBy(How = How.XPath, Using = "(//p[text()='Add CC for API Auto CC Refund']/../../../preceding-sibling::div/descendant::div/div[2]/child::button[1])[1]")]
+        private IWebElement ClickConvertOpportunityButtonAfterMatchingTheLocation { get { return PageFactory.Load(this); } }
+
+        
+
+        #endregion TrackB scenario
 
         #endregion PageFactory
 
@@ -643,6 +661,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
+                SUT.Web.WebDriver.SwitchTo().DefaultContent();
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickViewDetailsLink)))
                 {
                     ClickViewDetailsLink.Click();
@@ -884,7 +903,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAnywhere)))
                 {
                     ClickAnywhere.Click();
-                    Thread.Sleep(2000);
+                    Thread.Sleep(3000);
                     SUT.Log.DebugFormat("Ok button is clicked");
                 }
                 else
@@ -921,8 +940,10 @@ namespace WorkWave.PestPac.TA.Model
 
         public void ClickOnCloseFormManagerButton()
         {
+            SUT.Web.WebDriver.SwitchTo().DefaultContent();
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickCloseFormmanagerButton),TimeSpan.FromSeconds(5)))
             {
+               
                 ClickCloseFormmanagerButton.Click();
                 SUT.Log.DebugFormat("Complete button is clicked");
             }
@@ -1003,7 +1024,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCaptureCardButton)))
                 {
-                    SalesCenterUtility.ScrollToElement(ClickCaptureCardButton);
+                  //  SalesCenterUtility.ScrollToElement(ClickCaptureCardButton);
                     ClickCaptureCardButton.Click();
                     Thread.Sleep(2000);
                     SUT.Log.DebugFormat("Opportunities link is clicked");
@@ -1064,7 +1085,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceExapndIconForMatchedOpportunity)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickServiceExapndIconForMatchedOpportunity)))
                 {
                     ClickServiceExapndIconForMatchedOpportunity.Click();
                     Thread.Sleep(5000);
@@ -1083,7 +1104,8 @@ namespace WorkWave.PestPac.TA.Model
 
         public void EnterCardNumber(string cardnumber)
         {
-            if (SalesCenterUtility.Frame_SafeSwitch(IframeName, () => CardNumber, 10))
+            SUT.Web.WebDriver.SwitchTo().Frame(IframeName);
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => CardNumber)))
             {
                 SUT.Log.Debug("Safely switched to the payment iFrame");               
                     CardNumber.Click();
@@ -1113,7 +1135,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAddcreditCardButton)))
                 {
                     ClickAddcreditCardButton.Click();
-                    Thread.Sleep(5000);
+                    Thread.Sleep(13000);
                     SUT.Log.DebugFormat("Add credit card button is clicked");
                 }
                 else
@@ -2539,6 +2561,54 @@ namespace WorkWave.PestPac.TA.Model
                 return false;
             }
 
+        }
+
+        //Switch back to default content
+
+        public void VerifyCardAddedConfirmMsg(string message)
+        {
+            try
+            {
+
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => CardAddedConfirm_Txt), TimeSpan.FromSeconds(15)))
+                {
+                    SUT.Log.Debug("Validation  message is displayed");
+                    Assert.True(CardAddedConfirm_Txt.Text.Contains(message), "Validation message is not matching");
+                   
+                }
+                else
+                {
+                    SUT.Log.Debug("Validation message is displayed");
+                    
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Close icon is not clicked");
+            }
+        }
+
+        //Track B scenario
+
+        public void ClickOnConvertOpportunityButtonAfterMatchingTheLocation()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickConvertOpportunityButtonAfterMatchingTheLocation)))
+                {
+                    ClickConvertOpportunityButtonAfterMatchingTheLocation.Click();
+                    Thread.Sleep(5000);
+                    SUT.Log.DebugFormat("Closeservice and product button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Closeservice and product button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Closeservice and product button is not clicked");
+            }
         }
 
     }

@@ -28,7 +28,7 @@ Scenario Outline: SC-Bulk Re-open: Verify that user can Bulk reopen the multiple
      | OpportunityStatus | 
      | Closed            | 
 
-@Regression @Opportunities @WWM-8438 @WW_OP_002
+@Smoke @Opportunities @WWM-8438 @WW_OP_002
 Scenario Outline: Verify user can close an opportunity as closed/lost
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
@@ -60,7 +60,7 @@ Scenario: Verification of multiple records selection on Opportunity List View Pa
 	When select the all checkbox option
 	Then checkbox should be selected
 
-@Regression @Opportunities @WWM-8440 @WW_OP_004
+@Smoke @Opportunities @WWM-8440 @WW_OP_004
 Scenario Outline: Verify Users Can Re-Open Closed/Won and Closed/Lost Opportunities
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
@@ -80,7 +80,7 @@ Examples:
      | OpportunityStatus | 
      | Closed            | 
 
-@Regression @Opportunities @WWM-8439 @WW_OP_005 @ignore @WWM-9587
+@Smoke @Opportunities @WWM-8439 @WW_OP_005 @ignore @WWM-9587
 Scenario Outline: Verify user can closed won a opportunity
 	When Click on plus icon 
     And  Click on Add Lead button
@@ -105,7 +105,7 @@ Scenario Outline: Verify user can closed won a opportunity
     And  Select contract template <Template> and click on launch form to complete button
     And  Click on complete form button
     And Click on proceed button
-    And Click on Close form manager button
+    When Click on Close form manager button
     When Click on convert to opportunity button
     When Select the lead details <OwnerName> <FunnelName> <FunnelStage> 
     Then validation message should be displayed <OpportunityCreated>
@@ -163,7 +163,7 @@ Scenario Outline: Veriy user able to add payment card for a matched opportunity 
     And  Select contract template <Template> and click on launch form to complete button
     And  Click on complete form button
     And Click on proceed button
-    And Click on Close form manager button
+    When Click on Close form manager button
     When Click on convert to opportunity button
     When Select the lead details <OwnerName> <FunnelName> <FunnelStage> 
     Then validation message should be displayed <OpportunityCreated>
@@ -218,7 +218,7 @@ Scenario Outline: Verification of Bulk Re-assignment of Opportunities which are 
      | SalesTeam             | SalesTeamMember |
      | Auto Test Sales Team  | unassigned      |
 
-@Regression @Opportunities @WWM-8432 @WW_OP_008
+@Smoke @Opportunities @WWM-8432 @WW_OP_008
 Scenario Outline: Veriy user not able to close win if opportunity is not matched to any PP location
 	When Click on plus icon 
     And  Click on Add Lead button
@@ -538,7 +538,7 @@ Scenario Outline: Verify that a Closed/Won Opportunity Cannot Add, Edit or Delet
       | Closed            | You cannot add services to a closed Opportunity. |
 
 
-@Regression @Opportunities @9432 @WW_OP_019 @ignore
+@Regression @Opportunities @9432 @WW_OP_019  @ignore
 Scenario Outline: Verification of basic regression Track A scenario
     When Click on plus icon
     And  Click on Add Lead button
@@ -560,10 +560,7 @@ Scenario Outline: Verification of basic regression Track A scenario
     And Click on Close services and product button
     When Click on convert to opportunity button
     When Select the lead details <OwnerName> <FunnelName> <FunnelStage> 
-    Then validation message should be displayed <OpportunityCreated>
-    And  Click on filters button
-    And Click on clear filter button
-    And Click on Apply button in filter slider  
+    Then validation message should be displayed <OpportunityCreated>  
     And Navigate back to dashboard
     When Mouse hover on sales center side menu
     And Click on Opportunities link
@@ -575,14 +572,9 @@ Scenario Outline: Verification of basic regression Track A scenario
     When Click on send contract button
     Then Create contract slider should be displayed
     And  Select contract template <Template> and click on launch form to complete button
-    When Click on Send form and notify button
-    Then Instruction page should be displayed
-    And Select send form and notify option radio button
-    And Click on Sales center expand icon
-    And Select the user mail id checkbox
-    When Click on Send form and notify button
-    Then Residential form sent validation message should be displayed
-    And Click on Close form manager button
+    And  Click on complete form button
+    And  Click on proceed button
+    When Click on Close form manager button
     Then Contract should be successfully added
     And Click on Bill to locations expand icon
     When Click on Match or create link
@@ -594,14 +586,14 @@ Scenario Outline: Verification of basic regression Track A scenario
     When Click on Save button
     Then Location matched validation message should be displayed <LocationMatchedValMsg> 
     And Click on again billto expand icon
-    And Click on Service expand icon in opportunity page
+   # And Click on Service expand icon in opportunity page
     And Click on Capture card button
     And Enter the card holder name <CardHolderName>
     And Click on Enter button
     And Enter the card details <CardNumber>
     And Select the expiration month and year
     When Click on Add credit card button
-    Then validation message should be displayed <CardAddedMessage>
+    Then Card added successfully validation message should be displayed <CardAddedMessage>
     And Click on View detail page link
     And Click on closed won/closed lost bar
     When Select the closed won option
@@ -613,7 +605,7 @@ Scenario Outline: Verification of basic regression Track A scenario
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Residential Service Form | Opportunity Deleted | Automation Labs | 3600 STATE ROUTE 66 | Locations successfully matched/created | John Smith     | 4111111111111111 | Successfully added payment method. |
 
 
-@Regression @Opportunities @WWM-8434 @WW_OP_017 @ignore @WWM-9587
+@Smoke @Opportunities @WWM-8434 @WW_OP_020 @ignore @WWM-9587
 Scenario Outline: Verify User Can Add a Contract to an Opportunity
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
@@ -627,7 +619,7 @@ Scenario Outline: Verify User Can Add a Contract to an Opportunity
     And  Select contract template <Template> and click on launch form to complete button
     And  Click on complete form button
     And  Click on proceed button
-    And Click on Close form manager button
+    When Click on Close form manager button
     When Click on View contracts link
     Then Contract should be successfully added
     And Click on Close icon in contract slider
@@ -639,3 +631,69 @@ Scenario Outline: Verify User Can Add a Contract to an Opportunity
   Examples:  
   | Template                  |
   | Residential Service Form  |
+
+@Regression @Opportunities @9433 @WW_OP_021 @ignore
+Scenario Outline: Verification of basic regression Track B scenario
+    When Click on plus icon
+    And  Click on Add Lead button
+    Then Add Lead details page should be displayed
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
+    And Select the SalesTeam <SalesTeam>
+    And Select the Owner <Owner>
+    And Select the sales funnel <SalesFunnel>
+    When Click on Save button
+    Then Lead created validation message should be displayed <ValidationMessage>
+    And  Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+    And Click on Bill to locations expand icon
+    When Click on Match or create link
+    Then Match or create new location slider should be displayed
+    And Click to match to existing location button
+    And Select the pestpac location
+    When Click on Save button in bill to search for matching slider
+    And Select match to service location <ServiceLocation>
+    When Click on Save button
+    Then Location matched validation message should be displayed <LocationMatchedValMsg> 
+    And Click on again billto expand icon
+    And Click on Service expand icon
+    And Click on Add Serivces button
+    And Select the services <Services>
+    When Click on Add services button in slider
+    Then Service should be successfully added
+    And Click on Close services and product button
+    When Click on convert to opportunity button after matching the location
+    When Select the lead details <OwnerName> <FunnelName> <FunnelStage> 
+    Then validation message should be displayed <OpportunityCreated>
+    When Mouse hover on sales center side menu
+    And Click on Opportunities link
+    Then Opportunities page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+    And  Click on Service expand icon
+    When Click on send contract button
+    Then Create contract slider should be displayed
+    And  Select contract template <Template> and click on launch form to complete button
+    And  Click on complete form button
+    And  Click on proceed button
+    When Click on Close form manager button
+    Then Contract should be successfully added
+    And Click on View detail page link
+    And Click on closed won/closed lost bar
+    When Select the closed won option
+    Then Close won opportunity slider should be displayed
+    When Click on Submit button in Close won opportunity slider
+    Then validation message should be displayed <ClosedWonSuccessfully>
+    And Click on Capture card button
+    And Enter the card holder name <CardHolderName>
+    And Click on Enter button
+    And Enter the card details <CardNumber>
+    And Select the expiration month and year
+    When Click on Add credit card button
+    Then validation message should be displayed <CardAddedMessage>
+
+    Examples:  
+     | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName   | Services            | FunnelStage | Ownername  | OpportunityCreated  | Template                 | ValMessage          | OpportunityName | ServiceLocation     | LocationMatchedValMsg                  | CardHolderName | CardNumber       | CardAddedMessage                   | ClosedWonSuccessfully           |
+     | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Residential Service Form | Opportunity Deleted | Automation Labs | 3600 STATE ROUTE 66 | Locations successfully matched/created | John Smith     | 4111111111111111 | Successfully added payment method. | Opportunity closed successfully |
+
