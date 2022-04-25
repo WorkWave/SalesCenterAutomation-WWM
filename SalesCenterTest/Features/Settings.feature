@@ -5,8 +5,11 @@ Background:
 	Given I am logged in
 
 
-
-@SmokeProd @Smoke @WWM-8401 @Settings @WW_ST_001 
+ @WWM-8401 @Settings @WW_ST_001 
+@SmokeProd
+@Smoke
+@Regression
+@Regression_Full
 Scenario: Verify Display of Settings Home Page
     When Click on Settings Gear Icon
     Then Settings page should be displayed
@@ -18,7 +21,7 @@ Scenario: Verify Display of Company Setup Page
     And Click on Company Setup link
     Then Company Setup page should be displayed
 
-@Smoke @Settings @WW_ST_003
+@Smoke @Settings @WWM_8516 @WW_ST_003
 Scenario: Verify Display of Roles and Permission  Page
     When Click on Settings Gear Icon
     Then Settings page should be displayed
@@ -39,14 +42,18 @@ Scenario: Verify Display of Sales Funnel Page
     And Click on Sales Funnels link
     Then Sales Funnels page should be displayed
 
-@Smoke  @Settings @WW_ST_006
+@Smoke  @Settings @WWM-8537 @WW_ST_006
 Scenario: Verify Display of Sales Team Page
     When Click on Settings Gear Icon
     Then Settings page should be displayed
     And  Click on Sales Teams link
     Then Sales Teams page should be displayed
 
-@SmokeProd @Smoke @WWM-8403 @Settings @WW_ST_007
+@Settings @WWM-8403  @WW_ST_007
+@SmokeProd
+@Smoke
+@Regression
+@Regression_Full
 Scenario Outline: Verify User is able to Add and Delete the  new role
     When Click on Settings Gear Icon
     Then Settings page should be displayed
@@ -64,7 +71,11 @@ Scenario Outline: Verify User is able to Add and Delete the  new role
    | Sales manager1 |
 
 
-@SmokeProd @Smoke @WWM-8402 @Settings @WW_ST_008
+@Settings @WWM-8402 @WW_ST_008
+@SmokeProd
+@Smoke
+@Regression 
+@Regression_Full
 Scenario Outline: Verify user is able to Add and Delete the sales funnel
     When Click on Settings Gear Icon
     Then Settings page should be displayed
@@ -83,7 +94,11 @@ Scenario Outline: Verify user is able to Add and Delete the sales funnel
    | Automation funnel   |
 
 
-@SmokeProd @Smoke @WWM-8406 @Settings @WW_ST_009
+@Settings @WWM-8406  @WW_ST_009
+@SmokeProd
+@Smoke
+@Regression 
+@Regression_Full
 Scenario Outline: Verify User is Able to Add and delete the UnMapped User 
     When Click on Settings Gear Icon
     Then Settings page should be displayed
@@ -105,7 +120,11 @@ Scenario Outline: Verify User is Able to Add and delete the UnMapped User
      | Automation user | Test     | test321@gmail.com | Testing  non admin | Secondary south sales Team | User created. Welcome email sent. | User deleted  |
 
 
-@SmokeProd @Smoke @WWM-8404 @Settings @WW_ST_010
+@Settings @WWM-8404  @WW_ST_010
+@SmokeProd
+@Smoke
+@Regression 
+@Regression_Full
 Scenario Outline: Verify User is Able to Add and delete the Sales Team
     When Click on Settings Gear Icon
     Then Settings page should be displayed
@@ -124,7 +143,11 @@ Scenario Outline: Verify User is Able to Add and delete the Sales Team
      | autosalesteam | North Branch | Sales Team created | Sales Team deleted.  |
 
     
-@SmokeProd @Smoke @WWM-8405 @Settings @WW_ST_011
+@Settings @WWM-8405  @WW_ST_011
+@SmokeProd
+@Smoke
+@Regression 
+@Regression_Full
 Scenario Outline: Verify Admin Users Can Add Positions to Sales Teams
     When Click on Settings Gear Icon
     Then Settings page should be displayed
@@ -147,7 +170,10 @@ Scenario Outline: Verify Admin Users Can Add Positions to Sales Teams
      | autosalesteam   | North Branch   | Sales Team created | Sales Team deleted. | SalesManager | Sales Team Position created  |
      
 
-@Smoke @WWM-8408 @Settings @WW_ST_012
+@WWM-8408 @Settings @WW_ST_012
+@Smoke
+@Regression
+@Regression_Full
 Scenario Outline: Verify that Non Admin Users Can be Assigned a Single Position on any Number of Sales Teams
     When Click on Settings Gear Icon
     Then Settings page should be displayed
