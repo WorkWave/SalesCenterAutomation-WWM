@@ -780,3 +780,66 @@ Scenario Outline: Verification of basic regression Track C scenario
 Examples:  
      | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName   | Services            | FunnelStage | Ownername  | OpportunityCreated  | Template                 | ValMessage          | OpportunityName | ServiceLocation     | LocationMatchedValMsg                  | CardHolderName | CardNumber       | CardAddedMessage                   |
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Residential Service Form | Opportunity Deleted | Automation Labs | 3600 STATE ROUTE 66 | Locations successfully matched/created | John Smith     | 4111111111111111 | Successfully added payment method. |
+
+
+@Opportunities @WW_OP_023 @WWM-9088
+@Regression 
+@Regression_Full
+Scenario Outline: Verification of Closed/Won Opportunity Info while sending it to core product(PestPac) SSQ
+	When Click on plus icon 
+    And  Click on Add Lead button
+    Then Add Lead details page should be displayed
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
+    And Select the SalesTeam <SalesTeam>
+    And Select the Owner <Owner>
+    And Select the sales funnel <SalesFunnel>
+    When Click on Save button
+    Then Lead created validation message should be displayed <ValidationMessage>
+    And  Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+    And Click on Service expand icon
+    And Click on Add Serivces button
+    And Select the services <Services>
+    When Click on Add services button in slider
+    Then Service should be successfully added
+    And Click on Close services and product button
+    When Click on send contract button
+    Then Create contract slider should be displayed
+    And  Select contract template <Template> and click on launch form to complete button
+    And  Click on complete form button
+    And Click on proceed button
+    When Click on Close form manager button
+    When Click on convert to opportunity button
+    When Select the lead details <OwnerName> <FunnelName> <FunnelStage> 
+    Then validation message should be displayed <OpportunityCreated>
+    When Mouse hover on sales center side menu
+    And Click on Opportunities link in leads page
+    Then Opportunities page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+    And Click on Bill to locations expand icon
+    When Click on Match or create link
+    Then Match or create new location slider should be displayed
+    And Click to match to existing location button
+    And Select the pestpac location
+    When Click on Save button in bill to search for matching slider
+    And Select match to service location <ServiceLocation>
+    When Click on Save button
+    Then Location matched validation message should be displayed <LocationMatchedValMsg> 
+    And Click on again billto expand icon
+    And Click on View detail page link
+    And Click on closed won/closed lost bar
+    When Select the closed won option
+    Then Close won opportunity slider should be displayed
+    And Select the Technicians details <Tech1> <Tech2> <Sales1> <Sales2>
+    And Enter the sales note <SalesNote>
+    When Click on Submit button in Close won opportunity slider
+    Then validation message should be displayed <OpportunityClosed>
+    
+  
+ Examples:  
+     | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName    | LocationName | ServiceLocation     | LocationMatchedValMsg                  | Template                 | Services            | OpportunityCreated  | Tech1 | Tech2  | Sales1 | Sales2 | SalesNote                               | OpportunityClosed               |
+     | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created | Residential Service Form | ANT- Ant Treatments | Opportunity created | ADMN  | EDWARD | AKLEIN | DAVID  | sending it to core product(PestPac) SSQ | Opportunity closed successfully |
+	

@@ -199,7 +199,37 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//button[text()='Submit']")]
         private IWebElement ClickSubmitButtonInCloseWOnOpportunitySlider { get { return PageFactory.Load(this); } }
 
-      
+        [FindsBy(How = How.XPath, Using = "(//div[contains(@id,'mui')])[1]")]
+        private IWebElement ClickTech1Field { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='ADMN']")]
+        private IWebElement SelectTech1Name { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//div[contains(@id,'mui')])[2]")]
+        private IWebElement ClickTech2Field { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='EDWARD']")]
+        private IWebElement SelectTech2Name { get { return PageFactory.Load(this); } }
+
+
+        [FindsBy(How = How.XPath, Using = "(//div[contains(@id,'mui')])[3]")]
+        private IWebElement ClickSales1Field { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='AKLEIN']")]
+        private IWebElement SelectSales1Name { get { return PageFactory.Load(this); } }
+
+
+        [FindsBy(How = How.XPath, Using = "(//div[contains(@id,'mui')])[4]")]
+        private IWebElement ClickSales2Field { get { return PageFactory.Load(this); } }
+
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='DAVID']")]
+        private IWebElement SelectSales2Name { get { return PageFactory.Load(this); } }
+
+
+        [FindsBy(How = How.Name, Using = "salesNote")]
+        private IWebElement SalesNote { get { return PageFactory.Load(this); } }
+
         #endregion Close won the opportunity without pp location matched
 
         #region Remove SC contacts
@@ -1015,10 +1045,128 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
+        public void SelecttheTech1Details()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickTech1Field)))
+                {
+                 //   SalesCenterUtility.ScrollToElement(ClickTech1Field);
+                    ClickTech1Field.Click();
+                    Thread.Sleep(1000);
+                    SelectTech1Name.Click();
+                    Thread.Sleep(1000);
+                    SUT.Log.DebugFormat("Technician selected from the droddown");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Technician is selected from the droddown {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Technician is selected from the droddown");
+            }
+        }
 
-        //Enter the card details
+        public void SelecttheTech2Details()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickTech2Field)))
+                {
+                    //   SalesCenterUtility.ScrollToElement(ClickTech1Field);
+                    ClickTech2Field.Click();
+                    Thread.Sleep(1000);
+                    SelectTech2Name.Click();
+                    Thread.Sleep(1000);
+                    SUT.Log.DebugFormat("Technician is selected from the droddown");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Technician is not selected from the droddown {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Technician is not selected from the droddown");
+            }
+        }
 
-        public void ClickonCaptureCardButton()
+        public void SelecttheSales1Details()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickSales1Field)))
+                {
+                    ClickSales1Field.Click();
+                    Thread.Sleep(1000);
+                    SelectSales1Name.Click();
+                    Thread.Sleep(1000);
+                    SUT.Log.DebugFormat("Sales user name  selected from the droddown");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Sales user name  is not selected from the droddown {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Sales user name  is not selected from the droddown");
+            }
+        }
+
+        public void SelecttheSales2Details()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickSales2Field)))
+                {
+                    //   SalesCenterUtility.ScrollToElement(ClickTech1Field);
+                    ClickSales2Field.Click();
+                    Thread.Sleep(1000);
+                    SelectSales2Name.Click();
+                    Thread.Sleep(1000);
+                    SUT.Log.DebugFormat("Sales user name  selected from the droddown");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Sales user name  is not selected from the droddown {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Sales user name  is not selected from the droddown");
+            }
+        }
+
+        public void EnterSalesNote(string salesnote)
+        {
+            try
+            {
+
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => SalesNote)))
+                {
+                    SalesNote.Click();
+                    SalesNote.Clear();
+                    SalesNote.SendKeys(salesnote);
+                    Thread.Sleep(1000);
+                    SUT.Log.DebugFormat("Sales note is entered");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Sales note is not entered {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Sales note is not entered ");
+            }
+        }
+
+    //Enter the card details
+
+    public void ClickonCaptureCardButton()
         {
             try
             {
@@ -2610,6 +2758,8 @@ namespace WorkWave.PestPac.TA.Model
                 SUT.Log.ErrorFormat("Closeservice and product button is not clicked");
             }
         }
+
+        //
 
     }
 }
