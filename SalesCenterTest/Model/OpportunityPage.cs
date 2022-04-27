@@ -258,7 +258,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//div[contains(@class,'MuiListItemText-root MuiListItemText-dense')]//span)[2]")]
         private IWebElement ClickRemoveLinkForContacts { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//button[text()='Remove'])[2]")]
+        [FindsBy(How = How.XPath, Using = "//button[text()='Remove']")]
         private IWebElement ClickRemoveButtonInPopup { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "(//span[text()='Add Contact'])[2]")]
@@ -414,6 +414,10 @@ namespace WorkWave.PestPac.TA.Model
 
         [FindsBy(How = How.XPath, Using = "//li[text()='BEDBUG- Bed Bug Treatment']")]
         private IWebElement SelectOtherServicename { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='ANT- Ant Treatments']")]
+        private IWebElement SelectServicename { get { return PageFactory.Load(this); } }
+
 
         [FindsBy(How = How.XPath, Using = "(//div[contains(@data-test-id,'cardFooter')])[1]")]
         private IWebElement ClickServiceExpandIconForOpportunity { get { return PageFactory.Load(this); } }
@@ -2378,6 +2382,28 @@ namespace WorkWave.PestPac.TA.Model
             catch (WebDriverTimeoutException)
             {
                 SUT.Log.ErrorFormat("Delete button is not clicked");
+            }
+        }
+
+        public void SelectTheServiceFromDropDown()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickOtherServiceField)))
+                {
+                    ClickOtherServiceField.Click();
+                    Thread.Sleep(2000);
+                    SelectServicename.Click();
+                    SUT.Log.DebugFormat("Service selected from the droddown");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Service is not selected from the droddown {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Service is not selected from the dropdown");
             }
         }
 

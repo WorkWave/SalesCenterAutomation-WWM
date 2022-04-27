@@ -535,11 +535,19 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.ClickOnDeleteButtonInDeleteServicePopup();
         }
 
+        [Then(@"Select the first services (.*)")]
+        public void ThenSelectTheFirstServices(string service)
+        {
+            opportunitypage.SelectTheServiceFromDropDown();
+        }
+
+
         [Then(@"Select the different services (.*)")]
         public void ThenSelectTheDifferentServicesBEDBUG_BedBugTreatment(string diffservice)
         {
             opportunitypage.SelectTheOtherServiceFromDropDown();
         }
+
 
         //Not able to send additionl contracts for closed won opp
 
