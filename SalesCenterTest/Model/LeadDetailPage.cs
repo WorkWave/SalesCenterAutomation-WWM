@@ -49,8 +49,11 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.Name, Using = "emailAddresses[0].emailAddress")]
         private IWebElement EmailNamefield { get { return PageFactory.Load(this); } }
 
+        [FindsBy(How = How.Name, Using = "phoneNumber")]
+        private IWebElement PhoneNamefield { get { return PageFactory.Load(this); } }
+      
 
-        [FindsBy(How = How.XPath, Using = "//input[@name='salesTeamId']/..")]
+       [FindsBy(How = How.XPath, Using = "//input[@name='salesTeamId']/..")]
         private IWebElement ClickSalesTeamField { get { return PageFactory.Load(this); } }
 
 
@@ -70,7 +73,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//ul//li[contains(text(),'Required Contract & Payment')]")]
         private IWebElement SelectFunnelName { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//button[text()='Save']")]
+        [FindsBy(How = How.XPath, Using = "//button[@data-test-id='saveLeadBtn']")]
         private IWebElement ClickSaveButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//div[@role='alert']")]
@@ -574,9 +577,9 @@ namespace WorkWave.PestPac.TA.Model
             CompanyNamefield.SendKeys(company);
             Thread.Sleep(1000);
             EmailNamefield.SendKeys(email);
-            Thread.Sleep(1000);
+            Thread.Sleep(1000);          
         }
-
+     
         public void SelectSalesTeamfromdropdown()
         {
             try
@@ -633,7 +636,7 @@ namespace WorkWave.PestPac.TA.Model
                     Thread.Sleep(1000);
                   //  SalesCenterUtility.ScrollToElement(SelectFunnelName);
                     SelectFunnelName.Click();
-                    Thread.Sleep(1000);
+                    Thread.Sleep(3000);
                     SUT.Log.DebugFormat("Sales funnel selected from the dropdown");
                 }
                 else
