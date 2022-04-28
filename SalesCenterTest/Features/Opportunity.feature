@@ -479,7 +479,32 @@ Scenario Outline: Verify user able to delete a opportunity card
      | OpportunityDeleted   |
      | Opportunity deleted. | 
 
-@Regression @Opportunities @WWM-8595 @WW_OP_016
+
+@Opportunities @WWM-8594 @WW_OP_016
+@Regression @Regression_Full
+Scenario Outline: Verify user able to add multiple services to a opportunity
+	When Mouse hover on sales center side menu
+    And Click on Opportunities link
+    Then Opportunities page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+    And Click on Service expand icon for opportunity
+    And Click on Add Serivces button
+    And Select the first services <FirstServices>
+    When Click on Add services button in slider
+    Then Service should be successfully added
+    And click on add additional service or product button
+    And Select the different services <Services>
+    When Click on Add services button in slider
+    Then Service should be successfully added
+   
+  Examples:  
+     | OpportunityDeleted   | FirstServices       | Services                   |
+     | Opportunity deleted. | ANT- Ant Treatments | BEDBUG- Bed Bug Treatment  |
+
+@Opportunities @WWM-8595 @WW_OP_017
+@Regression @Regression_Full
 Scenario Outline: Verify user able to Delete already added service to a opportunity
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
@@ -501,7 +526,7 @@ Scenario Outline: Verify user able to Delete already added service to a opportun
      | Opportunity deleted. | BEDBUG- Bed Bug Treatment  |
 
 
-@Regression @Opportunities @WWM-8599 @WW_OP_017
+@Regression @Opportunities @WWM-8599 @WW_OP_018
 Scenario Outline: Verify that a Close/Won Opportunity Cannot Send Additional Contracts
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
@@ -522,7 +547,7 @@ Scenario Outline: Verify that a Close/Won Opportunity Cannot Send Additional Con
       | Closed            | You cannot send a contract for a closed Opportunity. |
 
 
-@Regression @Opportunities @WWM-8598 @WW_OP_018
+@Regression @Opportunities @WWM-8598 @WW_OP_019
 Scenario Outline: Verify that a Closed/Won Opportunity Cannot Add, Edit or Delete Services
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
@@ -549,7 +574,7 @@ Scenario Outline: Verify that a Closed/Won Opportunity Cannot Add, Edit or Delet
       | Closed            | You cannot add services to a closed Opportunity. |
 
 
-@Opportunities @WWM-8434 @WW_OP_019 @ignore @WWM-9587
+@Opportunities @WWM-8434 @WW_OP_020 @ignore @WWM-9587
 @Smoke
 @Regression 
 @Regression_Full
@@ -579,7 +604,7 @@ Scenario Outline: Verify User Can Add a Contract to an Opportunity
   | Template                  |
   | Residential Service Form  |
 
-@Opportunities @WWM-9432 @WW_OP_020  @ignore
+@Opportunities @WWM-9432 @WW_OP_021  @ignore
 @SmokeProd 
 @Sanity
 @Regression
@@ -649,7 +674,7 @@ Scenario Outline: Verification of basic regression Track A scenario
      | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName   | Services            | FunnelStage | Ownername  | OpportunityCreated  | Template                 | ValMessage          | OpportunityName | ServiceLocation     | LocationMatchedValMsg                  | CardHolderName | CardNumber       | CardAddedMessage                   |
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Residential Service Form | Opportunity Deleted | Automation Labs | 3600 STATE ROUTE 66 | Locations successfully matched/created | John Smith     | 4111111111111111 | Successfully added payment method. |
 
-@Opportunities @9433 @WW_OP_021 @ignore
+@Opportunities @9433 @WW_OP_022 @ignore
 @SmokeProd 
 @Sanity
 @Regression
@@ -719,7 +744,7 @@ Scenario Outline: Verification of basic regression Track B scenario
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Residential Service Form | Opportunity Deleted | Automation Labs | 3600 STATE ROUTE 66 | Locations successfully matched/created | John Smith     | 4111111111111111 | Successfully added payment method. | Opportunity closed successfully |
 
 
-@Opportunities @9434 @WW_OP_022 @ignore
+@Opportunities @9434 @WW_OP_023 @ignore
 @SmokeProd 
 @Sanity
 @Regression
@@ -782,7 +807,7 @@ Examples:
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Residential Service Form | Opportunity Deleted | Automation Labs | 3600 STATE ROUTE 66 | Locations successfully matched/created | John Smith     | 4111111111111111 | Successfully added payment method. |
 
 
-@Opportunities @WW_OP_023 @WWM-9088
+@Opportunities @WW_OP_024 @WWM-9088
 @Regression 
 @Regression_Full
 Scenario Outline: Verification of Closed/Won Opportunity Info while sending it to core product(PestPac) SSQ

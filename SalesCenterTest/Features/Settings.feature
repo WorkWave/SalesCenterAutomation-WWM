@@ -139,8 +139,8 @@ Scenario Outline: Verify User is Able to Add and delete the Sales Team
     Then SalesTeam deleted confirmation mesage should be displayed <DeleteConfirmMessage>
       
    Examples: 
-     | SalesTeamName | BranchName   | ConfirmMessage     | DeleteConfirmMessage |
-     | autosalesteam | North Branch | Sales Team created | Sales Team deleted.  |
+     | SalesTeamName       | BranchName   | ConfirmMessage     | DeleteConfirmMessage |
+     | autosalesteam       | North Branch | Sales Team created | Sales Team deleted.  |
 
     
 @Settings @WWM-8405  @WW_ST_011
