@@ -188,6 +188,22 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.ClickonSubmitButtonInCloseWOnOpportunitySlider();
         }
 
+        [Then(@"Select the Technicians details (.*) (.*) (.*) (.*)")]
+        public void ThenSelectTheTechniciansDetails(string tech1, string tech2, string sales1, string sales2)
+        {
+            opportunitypage.SelecttheTech1Details();
+            opportunitypage.SelecttheTech2Details();
+            opportunitypage.SelecttheSales1Details();
+            opportunitypage.SelecttheSales2Details();
+        }
+
+        [Then(@"Enter the sales note (.*)")]
+        public void ThenEnterTheSalesNote(string salesnote)
+        {
+            opportunitypage.EnterSalesNote(salesnote);
+        }
+
+
 
         //credit card details
 

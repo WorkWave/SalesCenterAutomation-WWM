@@ -4,11 +4,18 @@ Feature: CockPit
 Background: 
 	Given I am logged in
 	
-@Smoke  @WWM-8411 @CockPit @WW_CP_001
+@CockPit @WWM-8411  @WW_CP_001
+@Smoke
+@Regression_Base 
+@Regression_Full
 Scenario: Verify Captured Leads, Open Opportunities, Leads to Qualify cards are displayed on dashboard
     Then Verify the Leads opportunities and Leads to Qualify cards are displayed on dashboard
 
-@SmokeProd @Smoke @WWM-8412 @CockPit @WW_CP_002
+@CockPit @WWM-8412  @WW_CP_002
+@SmokeProd
+@Smoke
+@Regression_Base 
+@Regression_Full
 Scenario: Verify default dispay of Records with Overdue Next Action Dates on dashboard
     Then Verify the  default dispay of Records with Overdue Next Action Dates on dashboard
 
@@ -16,7 +23,11 @@ Scenario: Verify default dispay of Records with Overdue Next Action Dates on das
 Scenario: Verify  Contract History is displayed on dashboard
     Then Verify the Contract History is displayed on dashboard
 
-@SmokeProd @Smoke @WWM-8414 @CockPit @WW_CP_004
+@CockPit  @WWM-8414  @WW_CP_004
+@SmokeProd
+@Smoke
+@Regression_Base 
+@Regression_Full
 Scenario: Verify default dispay of Upcoming Follow-Ups on dashboard
     Then Verify the default dispay of Upcoming Follow-Ups on dashboard
 
