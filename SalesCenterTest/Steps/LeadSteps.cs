@@ -621,6 +621,17 @@ namespace WorkWave.PestPac.TA.Steps
             leadspage.ClickOnRemoveButtonInPopupForleads();
         }
 
+        //Unbale to convert to lead without service    
+
+        [When(@"Try to click on Convert to Opportunity button")]
+        public void WhenTryToClickOnConvertToOpportunityButton()
+        {
+            leadspage.MouseHoverOnConvertToOpportunityButton();
+        }
+
+
+
+
 
     }
 }

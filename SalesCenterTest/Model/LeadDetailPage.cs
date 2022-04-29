@@ -73,7 +73,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//ul//li[contains(text(),'Required Contract & Payment')]")]
         private IWebElement SelectFunnelName { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//button[@data-test-id='saveLeadBtn']")]
+        [FindsBy(How = How.XPath, Using = "//button[text()='Save']")]
         private IWebElement ClickSaveButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//div[@role='alert']")]
@@ -436,9 +436,17 @@ namespace WorkWave.PestPac.TA.Model
 
         [FindsBy(How = How.XPath, Using = "//h2[text()='Remove Contact?']/../descendant::button[2]")]
         private IWebElement ClickRemoveButtonInPopupForLeads { get { return PageFactory.Load(this); } }
-        
+
 
         #endregion Remove sc contacts for leads
+
+        #region Unbale to convert to lead without service
+
+        [FindsBy(How = How.XPath, Using = "(//div[contains(@class,'MuiOutlinedInput-root MuiInputBase-root')]/following-sibling::span)[1]")]
+        private IWebElement MouseHoverConverttoOpportunityButton { get { return PageFactory.Load(this); } }
+
+
+        #endregion Unbale to convert to lead without service
 
         #endregion PageFactory
 
@@ -2200,7 +2208,30 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
+        //Unbale to convert to lead without service
 
+        public void MouseHoverOnConvertToOpportunityButton()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => MouseHoverConverttoOpportunityButton)))
+                {
+                    MouseHoverConverttoOpportunityButton.Click();
+                  //  Assert.AreEqual(false, MouseHoverConverttoOpportunityButton.Enabled);
+                    Thread.Sleep(4000);
+                    SUT.Log.DebugFormat("Convert to opportunity button is disabled");
+                }
+                else
+                {
+                   // Assert.AreEqual(true, MouseHoverCaptureCardButton.Enabled);
+                    SUT.Log.ErrorFormat("Convert to opportunity button is enabled {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Convert to opportunity button is enabled");
+            }
+        }
 
     }
 

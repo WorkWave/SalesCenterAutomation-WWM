@@ -28,7 +28,7 @@ Scenario: Verify Display of Roles and Permission  Page
     And Click on Roles and Permissions link
     Then Roles and Permissions page should be displayed
 
-@Smoke  @Settings @WW_ST_004
+@Smoke  @Settings @WW_ST_004 @WWM-8522
 Scenario: Verify Display of User and Access  Page
     When Click on Settings Gear Icon
     Then Settings page should be displayed
