@@ -25,7 +25,7 @@ Scenario Outline: Verify user can create and delete a lead
     When Click on plus icon
     And  Click on Add Lead button
     Then Add Lead details page should be displayed
-    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email>
     And Select the SalesTeam <SalesTeam>
     And Select the Owner <Owner>
     And Select the sales funnel <SalesFunnel>
@@ -34,14 +34,12 @@ Scenario Outline: Verify user can create and delete a lead
     And  Click on filters button
     And Click on clear filter button
     And Click on Apply button in filter slider   
-    And  Click on search icon
-    And  Enter the lead name <LeadName> and click on search icon
     When Delete the lead
     Then Lead deleted confirmation message should be displayed <DeleteConfirmMessage>
     
  Examples:  
-     | FirstName        | LastName | CompanyName  | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName    | DeleteConfirmMessage |
-     | Automation user2 | Test2    | autocompany2 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | Lead deleted.        |
+     | FirstName        | LastName | CompanyName  | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName    | DeleteConfirmMessage | 
+     | Automation user2 | Test2    | autocompany2 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | Lead deleted.        | 
 	 
 
 @WWM-8427 @Leads @WW_LD_003
@@ -195,7 +193,7 @@ Scenario Outline: Verify user able to attach lead card to existing location
     Then Location matched validation message should be displayed <LocationMatchedValMsg>
   
  Examples:  
-     | FirstName        | LastName | CompanyName  | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName    | LocationName | ServiceLocation     | LocationMatchedValMsg                  |
+     | FirstName        | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName    | LocationName | ServiceLocation     | LocationMatchedValMsg                  |
      | Automation user3 | Test3    | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created |                     
 	 
 	 

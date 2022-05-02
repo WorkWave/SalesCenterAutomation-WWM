@@ -258,7 +258,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//div[contains(@class,'MuiListItemText-root MuiListItemText-dense')]//span)[2]")]
         private IWebElement ClickRemoveLinkForContacts { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//button[text()='Remove']")]
+        [FindsBy(How = How.XPath, Using = "(//button[text()='Remove'])[2]")]
         private IWebElement ClickRemoveButtonInPopup { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "(//span[text()='Add Contact'])[2]")]

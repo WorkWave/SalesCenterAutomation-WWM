@@ -268,7 +268,8 @@ Scenario Outline: Veriy user not able to close win if opportunity is not matched
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      |   ANT- Ant Treatments | Opportunity created |           
 
 
-@Smoke  @Opportunities @WWM-8611 @WW_OP_009
+ @Opportunities @WWM-8611 @WW_OP_009
+ @Smoke 
 Scenario Outline: Remove WWM Contact for Opportunity
 	When Mouse hover on sales center side menu
     And Click on Opportunities link
@@ -276,6 +277,8 @@ Scenario Outline: Remove WWM Contact for Opportunity
 	And Click on filters button
     And Click on clear filter button
     And Click on Apply button in filter slider
+    And  Click on search icon
+    And  Enter the lead name <OpportunityName> and click on search icon
 	When Click on View details page link
 	Then Opportunity detail page should be displayed
     When Click on view contacts link
@@ -289,8 +292,8 @@ Scenario Outline: Remove WWM Contact for Opportunity
     #Then Confirmation message should be displayed <ContactDeleted>
     	
    Examples:  
-     | ExistingContact | 
-     | James           | 
+     | ExistingContact | OpportunityName               |
+     | James           | Add CC for API Auto CC Refund |
 
 
 @Smoke @Opportunities @WWM-8610 @WW_OP_010
@@ -301,6 +304,8 @@ Scenario Outline: Edit WWM Contact for Opportunity
 	And Click on filters button
     And Click on clear filter button
     And Click on Apply button in filter slider
+    And  Click on search icon
+    And  Enter the lead name <OpportunityName> and click on search icon
 	When Click on View details page link
 	Then Opportunity detail page should be displayed
     When Click on view contacts link
@@ -317,8 +322,8 @@ Scenario Outline: Edit WWM Contact for Opportunity
     #Then Confirmation message should be displayed <ContactDeleted>
     	
    Examples:  
-     | ExistingContact | CompanyName     |
-     | James           | James pvt ltd   | 
+     | ExistingContact | CompanyName     |  OpportunityName               |
+     | James           | James pvt ltd   |  Add CC for API Auto CC Refund |
 
 
 @Smoke @Opportunities @WWM-8609 @WW_OP_011
@@ -329,6 +334,8 @@ Scenario Outline: Create WWM Contact for Opportunity
 	And Click on filters button
     And Click on clear filter button
     And Click on Apply button in filter slider
+    And  Click on search icon
+    And  Enter the lead name <OpportunityName> and click on search icon
 	When Click on View details page link
 	Then Opportunity detail page should be displayed
     When Click on view contacts link
@@ -343,8 +350,8 @@ Scenario Outline: Create WWM Contact for Opportunity
     #Then Confirmation message should be displayed <ContactDeleted>
     	
    Examples:  
-    | FirstName | LastName | Email           |
-    | James     | Jacob    | james@gmail.com |
+    | FirstName | LastName | Email           | OpportunityName               |
+    | James     | Jacob    | james@gmail.com | Add CC for API Auto CC Refund |
 
 
 @Regression @Opportunities @WWM-8608 @WW_OP_012
@@ -868,3 +875,40 @@ Scenario Outline: Verification of Closed/Won Opportunity Info while sending it t
      | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName    | LocationName | ServiceLocation     | LocationMatchedValMsg                  | Template                 | Services            | OpportunityCreated  | Tech1 | Tech2  | Sales1 | Sales2 | SalesNote                               | OpportunityClosed               |
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created | Residential Service Form | ANT- Ant Treatments | Opportunity created | ADMN  | EDWARD | AKLEIN | DAVID  | sending it to core product(PestPac) SSQ | Opportunity closed successfully |
 	
+
+@Opportunities @WWM-8593 @WW_OP_025
+@Regression
+@Regression_Full
+Scenario Outline: Verify user able to add new services and delete old services
+    When Mouse hover on sales center side menu
+    And Click on Leads link
+    Then Leads page should be displayed
+    And  Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider  
+    And Click on Service expand icon
+    And Click on Add Serivces button
+    And Select the services <Services>
+    When Click on Add services button in slider
+    Then Service should be successfully added
+    And Click on Close services and product button
+    When Click on convert to opportunity button
+    When Select the lead details <OwnerName> <FunnelName> <FunnelStage> 
+    Then validation message should be displayed <OpportunityCreated>
+    When Mouse hover on sales center side menu
+    And Click on Opportunities link in leads page
+    Then Opportunities page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+    And Click on Service expand icon
+    And Click on Add Serivces button
+    And Select the different services <DiffServices>
+    When Click on Add services button in slider
+    Then Service should be successfully added
+    When Delete the already added service
+   # Then validation message should be displayed <ServiceDeleted>
+ 
+ Examples:   
+     | Services            | FunnelStage | Ownername  | OpportunityCreated  | OpportunityDeleteConfirmMessage | OpportunityName | DiffServices              |
+     | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Opportunity Deleted             | Automation Labs | BEDBUG- Bed Bug Treatment |
