@@ -261,7 +261,11 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//button[text()='Remove'])[2]")]
         private IWebElement ClickRemoveButtonInPopup { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//span[text()='Add Contact'])[2]")]
+        [FindsBy(How = How.XPath, Using = "//button[text()='Remove']")]
+        private IWebElement ClickRemoveButtonInWorkWavePopup { get { return PageFactory.Load(this); } }
+       
+
+       [FindsBy(How = How.XPath, Using = "(//span[text()='Add Contact'])[2]")]
         private IWebElement AddOpportunityPageIsDisplayed { get { return PageFactory.Load(this); } }
 
         #endregion Remove SC Contacts
@@ -1612,6 +1616,27 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickRemoveButtonInPopup)))
                 {
                     ClickRemoveButtonInPopup.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Remove button is clicked in popup");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Remove button is not clicked in popup {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Remove button is not clicked in popup");
+            }
+        }
+
+        public void ClickOnRemoveButtonInWorkWavePopup()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickRemoveButtonInWorkWavePopup)))
+                {
+                    ClickRemoveButtonInWorkWavePopup.Click();
                     Thread.Sleep(2000);
                     SUT.Log.DebugFormat("Remove button is clicked in popup");
                 }

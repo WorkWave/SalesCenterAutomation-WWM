@@ -541,3 +541,26 @@ Scenario Outline:Verify user able to Remove WWM Contact for Lead
    Examples:  
      | ExistingContact | 
      | James           | 
+
+@WWM-8592 @Leads @WW_LD_021
+@Regression
+@Regression_Full
+Scenario Outline: Verify user should not be able to convert a lead to opportunity if there are no services in the lead
+    When Click on plus icon
+    And  Click on Add Lead button
+    Then Add Lead details page should be displayed
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
+    And Select the SalesTeam <SalesTeam>
+    And Select the Owner <Owner>
+    And Select the sales funnel <SalesFunnel>
+    When Click on Save button
+    Then Lead created validation message should be displayed <ValidationMessage>
+    And  Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider  
+    When Try to click on Convert to Opportunity button
+    Then Toast message should be displayed <Toastmessage>
+
+ Examples:  
+     | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Toastmessage                                                      |
+     | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Add services to this lead to convert it into a sales opportunity  |

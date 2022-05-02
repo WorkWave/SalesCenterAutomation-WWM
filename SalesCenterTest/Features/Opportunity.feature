@@ -378,7 +378,7 @@ Scenario Outline: Verify that Primary contact which is shown in the Contacts sli
     When Click on view contacts link
     Then Contacts page should be displayed
     And Select the other contact
-    When Remove the contact
+    When Remove the workwave contact
     #Then Confirmation message should be displayed <ContactDeleted>
     	
    Examples:  
@@ -581,7 +581,7 @@ Scenario Outline: Verify that a Closed/Won Opportunity Cannot Add, Edit or Delet
       | Closed            | You cannot add services to a closed Opportunity. |
 
 
-@Opportunities @WWM-8434 @WW_OP_020 @ignore @WWM-9587
+@Opportunities @WWM-8434 @WW_OP_020 @WWM-9587
 @Smoke
 @Regression 
 @Regression_Full
@@ -814,7 +814,7 @@ Examples:
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Residential Service Form | Opportunity Deleted | Automation Labs | 3600 STATE ROUTE 66 | Locations successfully matched/created | John Smith     | 4111111111111111 | Successfully added payment method. |
 
 
-@Opportunities @WW_OP_024 @WWM-9088
+@Opportunities @WW_OP_024 @WWM-9616
 @Regression 
 @Regression_Full
 Scenario Outline: Verification of Closed/Won Opportunity Info while sending it to core product(PestPac) SSQ
