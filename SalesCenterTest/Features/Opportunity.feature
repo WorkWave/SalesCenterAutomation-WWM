@@ -378,7 +378,7 @@ Scenario Outline: Verify that Primary contact which is shown in the Contacts sli
     When Click on view contacts link
     Then Contacts page should be displayed
     And Select the other contact
-    When Remove the contact
+    When Remove the workwave contact
     #Then Confirmation message should be displayed <ContactDeleted>
     	
    Examples:  

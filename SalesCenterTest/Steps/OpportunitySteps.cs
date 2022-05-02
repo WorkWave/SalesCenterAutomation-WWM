@@ -346,6 +346,13 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.ClickOnRemoveButtonInPopup();
         }
 
+        [When(@"Remove the workwave contact")]
+        public void WhenRemoveTheWorkwaveContact()
+        {
+            
+        }
+
+
         //[Then(@"Confirmation message should be displayed Closed")]
         //public void ThenConfirmationMessageShouldBeDisplayedClosed()
         //{
