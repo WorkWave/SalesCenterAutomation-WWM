@@ -78,8 +78,10 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[contains(text(),'Narrowed to')]")]
         private IWebElement OpportunityCountDisplayedInOpportunityPage { get { return PageFactory.Load(this); } }
 
-        
+
         #endregion Sales funnel summary
+
+   
 
         #endregion PageFactory
 
@@ -503,16 +505,16 @@ namespace WorkWave.PestPac.TA.Model
                         Console.WriteLine("Opportunities count is:::" + m.Value);
                     }
 
-                    SUT.Log.DebugFormat("Opportunity Count Displayed");
+                    SUT.Log.DebugFormat("Opportunity Count is Displayed");
                 }
                 else
                 {
-                    SUT.Log.ErrorFormat("Opportunity Count not Displayed {0}", MethodBase.GetCurrentMethod().Name);
+                    SUT.Log.ErrorFormat("Opportunity Count is not Displayed {0}", MethodBase.GetCurrentMethod().Name);
                 }
             }
             catch (WebDriverTimeoutException)
             {
-                SUT.Log.ErrorFormat("Opportunity Count not Displayed");
+                SUT.Log.ErrorFormat("Opportunity Count is not Displayed");
             }
         }
     }
