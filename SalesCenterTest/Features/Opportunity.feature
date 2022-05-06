@@ -978,7 +978,6 @@ Scenario Outline: Verification of closing requirement counts in open cards for O
     Then Validation message should be displayed <ValMessage>
     When Click on view services added link
     Then Same service count should be displayed in Manage services and products page
-    And click on ht
 
 Examples:   
       | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Services            | Template                 | CardHolderName | CardNumber       | ValMessage                         | ServiceLocation     | FunnelStage | Ownername  | OpportunityCreated  | LocationMatchedValMsg                  |
