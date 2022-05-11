@@ -42,7 +42,7 @@ Scenario Outline: Verify user can create and delete a lead
      | Automation user2 | Test2    | autocompany2 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | Lead deleted.        | 
 	 
 
-@WWM-8427 @Leads @WW_LD_003
+@WWM-8427 @Leads @WW_LD_003 @ignore @WWM-9833
 @Smoke
 @SmokeProd
 @Regression

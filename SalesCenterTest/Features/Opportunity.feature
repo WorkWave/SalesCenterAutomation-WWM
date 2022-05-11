@@ -85,7 +85,7 @@ Examples:
      | OpportunityStatus | 
      | Closed            | 
 
-@Opportunities @WWM-8439 @WW_OP_005 @WWM-9587
+@Opportunities @WWM-8439 @WW_OP_005 @ignore @WWM-9833
 @Smoke
 @Regression 
 @Regression_Full
@@ -146,7 +146,7 @@ Scenario Outline: Verify user can closed won a opportunity
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created | Residential Service Form | ANT- Ant Treatments | Opportunity created  |
 	
     
-@Regression @Opportunities @WWM-8433 @WW_OP_006 @ignore @WWM-9587
+@Regression @Opportunities @WWM-8433 @WW_OP_006 @ignore @WWM-9833
 Scenario Outline: Veriy user able to add payment card for a matched opportunity to a PP location
 	When Click on plus icon 
     And  Click on Add Lead button
@@ -226,7 +226,7 @@ Scenario Outline: Verification of Bulk Re-assignment of Opportunities which are 
      | SalesTeam             | SalesTeamMember |
      | Auto Test Sales Team  | unassigned      |
 
-@Opportunities @WWM-8432 @WW_OP_008
+@Opportunities @WWM-8432 @WW_OP_008 @ignore @WWM-9833
 @Smoke
 @Regression 
 @Regression_Full
@@ -386,7 +386,7 @@ Scenario Outline: Verify that Primary contact which is shown in the Contacts sli
      | James           | john@gmail.com | James     | Jacob    | james@gmail.com |
 
 
-@Regression @Opportunities @WWM-8607 @WW_OP_013
+@Regression @Opportunities @WWM-8607 @WW_OP_013 @ignore @WWM-9833 
 Scenario Outline: Verification of Pushing WWM contact to PestPac Location for opportunities
 	When Click on plus icon 
     And  Click on Add Lead button
@@ -611,7 +611,7 @@ Scenario Outline: Verify User Can Add a Contract to an Opportunity
   | Template                  |
   | Residential Service Form  |
 
-@Opportunities @WWM-9432 @WW_OP_021  @ignore
+@Opportunities @WWM-9432 @WW_OP_021  @ignore @WWM-9833 
 @SmokeProd 
 @Sanity
 @Regression
@@ -681,7 +681,7 @@ Scenario Outline: Verification of basic regression Track A scenario
      | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName   | Services            | FunnelStage | Ownername  | OpportunityCreated  | Template                 | ValMessage          | OpportunityName | ServiceLocation     | LocationMatchedValMsg                  | CardHolderName | CardNumber       | CardAddedMessage                   |
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Residential Service Form | Opportunity Deleted | Automation Labs | 3600 STATE ROUTE 66 | Locations successfully matched/created | John Smith     | 4111111111111111 | Successfully added payment method. |
 
-@Opportunities @9433 @WW_OP_022 @ignore
+@Opportunities @9433 @WW_OP_022 @ignore @WWM-9833 
 @SmokeProd 
 @Sanity
 @Regression
@@ -751,7 +751,7 @@ Scenario Outline: Verification of basic regression Track B scenario
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Residential Service Form | Opportunity Deleted | Automation Labs | 3600 STATE ROUTE 66 | Locations successfully matched/created | John Smith     | 4111111111111111 | Successfully added payment method. | Opportunity closed successfully |
 
 
-@Opportunities @9434 @WW_OP_023 @ignore
+@Opportunities @9434 @WW_OP_023 @ignore @WWM-9833 
 @SmokeProd 
 @Sanity
 @Regression
@@ -814,7 +814,7 @@ Examples:
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Residential Service Form | Opportunity Deleted | Automation Labs | 3600 STATE ROUTE 66 | Locations successfully matched/created | John Smith     | 4111111111111111 | Successfully added payment method. |
 
 
-@Opportunities @WW_OP_024 @WWM-9616
+@Opportunities @WW_OP_024 @WWM-9616 @ignore @WWM-9833 
 @Regression 
 @Regression_Full
 Scenario Outline: Verification of Closed/Won Opportunity Info while sending it to core product(PestPac) SSQ
@@ -876,7 +876,7 @@ Scenario Outline: Verification of Closed/Won Opportunity Info while sending it t
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created | Residential Service Form | ANT- Ant Treatments | Opportunity created | ADMN  | EDWARD | AKLEIN | DAVID  | sending it to core product(PestPac) SSQ | Opportunity closed successfully |
 	
 
-@Opportunities @WWM-8593 @WW_OP_025
+@Opportunities @WWM-8593 @WW_OP_025 @ignore @WWM-9833 
 @Regression
 @Regression_Full
 Scenario Outline: Verify user able to add new services and delete old services
@@ -912,3 +912,73 @@ Scenario Outline: Verify user able to add new services and delete old services
  Examples:   
      | Services            | FunnelStage | Ownername  | OpportunityCreated  | OpportunityDeleteConfirmMessage | OpportunityName | DiffServices              |
      | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Opportunity Deleted             | Automation Labs | BEDBUG- Bed Bug Treatment |
+
+
+@Opportunities @WWM-8591 @WW_OP_026 @ignore @WWM-9833 
+@Regression
+@Regression_Full
+Scenario Outline: Verification of closing requirement counts in open cards for Opportunities
+    When Click on plus icon
+    And  Click on Add Lead button
+    Then Add Lead details page should be displayed
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
+    And Select the SalesTeam <SalesTeam>
+    And Select the Owner <Owner>
+    And Select the sales funnel <SalesFunnel>
+    When Click on Save button
+    Then Lead created validation message should be displayed <ValidationMessage>
+    And  Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+    And Click on Service expand icon
+    And Click on Add Serivces button
+    And Select the services <Services>
+    When Click on Add services button in slider
+    Then Service should be successfully added
+    And Click on Close services and product button
+    When Click on convert to opportunity button
+    When Select the lead details <OwnerName> <FunnelName> <FunnelStage> 
+    Then validation message should be displayed <OpportunityCreated>
+	When Mouse hover on sales center side menu
+    And Click on Opportunities link
+    Then Opportunities page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider     
+    When Click on send contract button
+    Then Create contract slider should be displayed
+    And  Select contract template <Template> and click on launch form to complete button
+    And  Click on complete form button
+    And  Click on proceed button
+    When Click on Close form manager button
+    Then Contract should be successfully added
+    When Click on send contract button
+    Then Create contract slider should be displayed
+    And  Select contract template <Template> and click on launch form to complete button  
+    And  Click on complete form button
+    And  Click on proceed button
+    Then Contract should be successfully added
+     And Click on Bill to locations expand icon
+    When Click on Match or create link
+    Then Match or create new location slider should be displayed
+    And Click to match to existing location button
+    And Select the pestpac location
+    When Click on Save button in bill to search for matching slider
+    And Select match to service location <ServiceLocation>
+    When Click on Save button
+    Then Location matched validation message should be displayed <LocationMatchedValMsg> 
+    And Click on again billto expand icon
+    And Click on Service expand icon
+    And Click on Capture card button
+    And Enter the card holder name <CardHolderName>
+    And Click on Enter button
+    And Enter the card details <CardNumber>
+    And Select the expiration month and year
+    When Click on Add credit card button
+    Then Validation message should be displayed <ValMessage>
+    When Click on view services added link
+    Then Same service count should be displayed in Manage services and products page
+
+Examples:   
+      | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Services            | Template                 | CardHolderName | CardNumber       | ValMessage                         | ServiceLocation     | FunnelStage | Ownername  | OpportunityCreated  | LocationMatchedValMsg                  |
+      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments | Residential Service Form | John Smith     | 4111111111111111 | Successfully added payment method. | 3600 STATE ROUTE 66 | Stage1      | Unassigned | Opportunity created | Locations successfully matched/created |

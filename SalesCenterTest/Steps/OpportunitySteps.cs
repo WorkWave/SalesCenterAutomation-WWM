@@ -660,7 +660,15 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.ClickOnConvertOpportunityButtonAfterMatchingTheLocation();
         }
 
+        //Closing requirements counts
 
+        [Then(@"Same service count should be displayed in Manage services and products page")]
+        public void ThenSameServiceCountShouldBeDisplayedInManageServicesAndProductsPage()
+        {
+            opportunitypage.IsServiceCountDisplayedInManageServicesPage();
+        }
+
+       
 
     }
 }
