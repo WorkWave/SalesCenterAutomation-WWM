@@ -632,7 +632,129 @@ namespace WorkWave.PestPac.TA.Steps
         }
 
 
+        //Update lead details
 
+        [Then(@"Click on grey pencil edit icon")]
+        public void ThenClickOnGreyPencilEditIcon()
+        {
+            leadspage.ClickOnLeadPencilIcon();
+        }
+
+        [Then(@"Rename this field popup should be displayed")]
+        public void ThenRenameThisFieldPopupShouldBeDisplayed()
+        {
+          
+        }
+
+        [Then(@"Update first name and last name (.*) (.*)")]
+        public void ThenUpdateFirstNameAndLastName(string firstname,string lastname)
+        {
+            leadspage.UpdateFirstNameInLeadPopup(firstname);
+            leadspage.UpdateLastNameInLeadPopup(lastname);
+        }
+
+        [Then(@"Verify updated names displayed in the details page")]
+        public void ThenVerifyUpdatedNamesDisplayedInTheDetailsPage()
+        {
+            Assert.True(leadspage.IsUpdatedLeadDetailsDisplayed(), "Lead details first name and last names details are not updated");
+        }
+
+        [When(@"Click on edit link for bill to location")]
+        public void WhenClickOnEditLinkForBillToLocation()
+        {
+            leadspage.ClickOnThreeDotsIconForBillToLocation();
+            opportunitypage.ClickOnEditLinkforContacts();
+        }
+
+        [Then(@"Update bill to location slider should be displayed")]
+        public void ThenUpdateBillToLocationSliderShouldBeDisplayed()
+        {
+            leadspage.IsUpdateBillToLocationSliderIsDisplayed();
+        }
+
+        [Then(@"Select Branch Location type and division (.*) (.*) (.*)")]
+        public void ThenSelectBranchLocationTypeAndDivision(string branch, string locationtype, string division)
+        {
+            leadspage.SelectBranchdropdownValue();
+            leadspage.SelectLocationTypedropdownValue();
+            leadspage.SelectDivisiondropdownValue();
+        }
+
+        [Then(@"Click on View more information link")]
+        public void ThenClickOnViewMoreInformationLink()
+        {
+            leadspage.ClickOnViewMoreInformationLink();
+        }
+
+        [Then(@"Click on View more information link for service location")]
+        public void ThenClickOnViewMoreInformationLinkForServiceLocation()
+        {
+            leadspage.ClickOnViewMoreInformationLinkForServcieLocation();
+        }
+
+        [Then(@"Bill to location updated validation message should be displayed (.*)")]
+        public void ThenBillToLocationUpdatedValidationMessageShouldBeDisplayed(string message)
+        {
+            leadspage.IsBillToLocationUpdatedValidationMessage(message);
+        }
+
+
+
+        [Then(@"Verify the updated billto location details")]
+        public void ThenVerifyTheUpdatedBilltoLocationDetails()
+        {
+            Assert.True(leadspage.IsBillToFirstandLastNameUpdated(), "Bill-to first name and last names details are not updated");         
+        }
+
+        [When(@"Click on edit link for service location")]
+        public void WhenClickOnEditLinkForServiceLocation()
+        {
+            leadspage.ClickOnThreeDotsIconForServiceLocation();
+            opportunitypage.ClickOnEditLinkforContacts();
+        }
+
+        [Then(@"Update service location slider should be displayed")]
+        public void ThenUpdateServiceLocationSliderShouldBeDisplayed()
+        {
+            leadspage.IsUpdateServiceLocationSliderIsDisplayed();
+        }
+
+        [When(@"Click on Edit link for additional information")]
+        public void WhenClickOnEditLinkForAdditionalInformation()
+        {
+            leadspage.ClickOnEditLinkForAdditionalInformationSection();
+        }
+
+        [Then(@"Edit additional information slider should be displayed")]
+        public void ThenEditAdditionalInformationSliderShouldBeDisplayed()
+        {
+            leadspage.IsUpdateLocationSliderDisplayed();
+        }
+
+        [Then(@"Update additional information details (.*) (.*) (.*) (.*) (.*) (.*) (.*)")]
+        public void ThenUpdateAdditionalInformationDetailsSecondarySouthSalesTeamUnassignedRequiredContractPayment(string salesteam, string owner, string salesfunnel, string leadstatus, string targetpest, string campaign, string leadsource)
+        {
+            leadspage.SelectSalesTeamdropdownValue();
+            leadspage.SelectOwnerdropdownValue();
+            leadspage.SelectSalesFunneldropdownValue();
+            leadspage.SelectLeadStatusdropdownValue();
+            leadspage.SelectTargetPestdropdownValue();
+            leadspage.SelectCampaigndropdownValue();
+            leadspage.SelectLeadSourcedropdownValue();
+
+        }
+
+        [Then(@"Verify lead updated information details")]
+        public void ThenVerifyLeadUpdatedInformationDetails()
+        {
+            Assert.True(leadspage.IsSalesTeamNameUpdated(), "Sales Team name is not updated");
+            Assert.True(leadspage.IsSalesFunnelNameUpdated(), "Sales funnel name is not updated");
+            Assert.True(leadspage.IsOwnerNameUpdated(), "Owner name is not updated");
+            Assert.True(leadspage.IsCampaignNameUpdated(), "Campaign name is not updated");
+            Assert.True(leadspage.IsLeadSourceNameUpdated(), "Lead source name is not updated");
+            Assert.True(leadspage.IsTargetPestsNameUpdated(), "Target pets name is not updated");
+
+        }
 
 
     }

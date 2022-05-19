@@ -42,7 +42,7 @@ Scenario Outline: Verify user can create and delete a lead
      | Automation user2 | Test2    | autocompany2 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | Lead deleted.        | 
 	 
 
-@WWM-8427 @Leads @WW_LD_003 @ignore @WWM-9833
+@WWM-8427 @Leads @WW_LD_003
 @Smoke
 @SmokeProd
 @Regression
@@ -564,3 +564,57 @@ Scenario Outline: Verify user should not be able to convert a lead to opportunit
  Examples:  
      | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Toastmessage                                                      |
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Add services to this lead to convert it into a sales opportunity  |
+
+
+@Leads @WWM-8578  @WW_LD_022
+@Regression
+@Regression_Full
+Scenario Outline: Verify Users Can Edit the Lead Details   
+    When Click on plus icon 
+    And  Click on Add Lead button
+    Then Add Lead details page should be displayed
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
+    And Select the SalesTeam <SalesTeam>
+    And Select the Owner <Owner>
+    And Select the sales funnel <SalesFunnel>
+    When Click on Save button
+    Then Lead created validation message should be displayed <ValidationMessage>
+    And  Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider 
+    When Click on View details page link
+    Then Lead detail page should be displayed
+    And Click on grey pencil edit icon
+    And Rename this field popup should be displayed
+    And Update first name and last name <UpdateFirstName> <UpdateLastName>
+    When Click on Save button
+    Then validation message should be displayed <UpdatedLeads>
+    And Verify updated names displayed in the details page
+    When Click on edit link for bill to location
+    Then Update bill to location slider should be displayed
+    And Select Branch Location type and division <Branch> <LocationType> <Division>
+    And Update first name and last name <UpdateFirstName> <UpdateLastName>
+    And Enter the address details <Address> <City> <State> <PostalCode>
+    When Click on Save button
+    Then Bill to location updated validation message should be displayed <BillToUpdated>
+    And Click on View more information link
+    And Verify the updated billto location details
+    When Click on edit link for service location
+    Then Update service location slider should be displayed
+    And Select Branch Location type and division <Branch> <LocationType> <Division>
+    And Update first name and last name <UpdateFirstName> <UpdateLastName>
+    And Enter the address details <Address> <City> <State> <PostalCode>
+    When Click on Save button
+    Then Bill to location updated validation message should be displayed <ServiceLocationUpdated >
+    And Click on View more information link for service location
+    And Verify the updated billto location details
+    When Click on Edit link for additional information
+    Then Edit additional information slider should be displayed
+    And Update additional information details <SalesTeamName> <OwnerName> <SalesFunnelName> <LeadStatus> <TargetPets> <Campaign> <LeadSource>
+    When Click on Save button
+    Then validation message should be displayed <LeadInformationUpdated>
+    And Verify lead updated information details
+    
+Examples:  
+      | FirstName        | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | UpdateFirstName | UpdateLastName | UpdatedLeads       | Branch      | LocationType       | Division                | Address        | City    | State | PostalCode | BillToUpdated                 | ServiceLocationUpdated                 | SalesTeamName           | OwnerName   | SalesFunnelName   | TargetPets | LeadStatus | Campaign | LeadSource | LeadInformationUpdated |
+      | Automation user3 | Test3    | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | James           | Smith          | Lead name updated. | Main Branch | HOSPITAL- Hospital | CONSTRUCT- Construction | 200 street san | chester | PA    | 93013-373  | Bill-to successfully updated. | Service Location successfully updated. | South Branch Sales Team | Chad Kochel | Test Sales funnel | CLOVR MITE | Qualify    | CUSTOMER | RECOMMEND  | Lead information updated. |

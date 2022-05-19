@@ -85,7 +85,7 @@ Examples:
      | OpportunityStatus | 
      | Closed            | 
 
-@Opportunities @WWM-8439 @WW_OP_005 @ignore @WWM-9833
+@Opportunities @WWM-8439 @WW_OP_005
 @Smoke
 @Regression 
 @Regression_Full
@@ -146,7 +146,7 @@ Scenario Outline: Verify user can closed won a opportunity
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created | Residential Service Form | ANT- Ant Treatments | Opportunity created  |
 	
     
-@Regression @Opportunities @WWM-8433 @WW_OP_006 @ignore @WWM-9833
+@Regression @Opportunities @WWM-8433 @WW_OP_006
 Scenario Outline: Veriy user able to add payment card for a matched opportunity to a PP location
 	When Click on plus icon 
     And  Click on Add Lead button
@@ -226,7 +226,7 @@ Scenario Outline: Verification of Bulk Re-assignment of Opportunities which are 
      | SalesTeam             | SalesTeamMember |
      | Auto Test Sales Team  | unassigned      |
 
-@Opportunities @WWM-8432 @WW_OP_008 @ignore @WWM-9833
+@Opportunities @WWM-8432 @WW_OP_008
 @Smoke
 @Regression 
 @Regression_Full
@@ -386,7 +386,7 @@ Scenario Outline: Verify that Primary contact which is shown in the Contacts sli
      | James           | john@gmail.com | James     | Jacob    | james@gmail.com |
 
 
-@Regression @Opportunities @WWM-8607 @WW_OP_013 @ignore @WWM-9833 
+@Regression @Opportunities @WWM-8607 @WW_OP_013
 Scenario Outline: Verification of Pushing WWM contact to PestPac Location for opportunities
 	When Click on plus icon 
     And  Click on Add Lead button
@@ -876,7 +876,7 @@ Scenario Outline: Verification of Closed/Won Opportunity Info while sending it t
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | autocompany | QA Labs      | 3600 STATE ROUTE 66 | Locations successfully matched/created | Residential Service Form | ANT- Ant Treatments | Opportunity created | ADMN  | EDWARD | AKLEIN | DAVID  | sending it to core product(PestPac) SSQ | Opportunity closed successfully |
 	
 
-@Opportunities @WWM-8593 @WW_OP_025 @ignore @WWM-9833 
+@Opportunities @WWM-8593 @WW_OP_025
 @Regression
 @Regression_Full
 Scenario Outline: Verify user able to add new services and delete old services
@@ -914,7 +914,7 @@ Scenario Outline: Verify user able to add new services and delete old services
      | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Opportunity Deleted             | Automation Labs | BEDBUG- Bed Bug Treatment |
 
 
-@Opportunities @WWM-8591 @WW_OP_026 @ignore @WWM-9833 
+@Opportunities @WWM-8591 @WW_OP_026
 @Regression
 @Regression_Full
 Scenario Outline: Verification of closing requirement counts in open cards for Opportunities
