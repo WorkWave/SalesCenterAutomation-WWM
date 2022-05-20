@@ -111,10 +111,10 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//button[contains(@data-test-id,'serviceBtn')]")]
         private IWebElement ClickServiceButton { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//input[@id='services']/../..")]
+        [FindsBy(How = How.XPath, Using = "//input[@id='services']/..")]
         private IWebElement ClickServiceField { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = " //li[text()='ANT- Ant Treatments']")]
+        [FindsBy(How = How.XPath, Using = "//li[text()='ANT - Ant Treatments']")]
         private IWebElement SelectServicename { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//div[text()='ANT']")]
@@ -308,6 +308,10 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//p[text()='View Services Added']")]
         private IWebElement ClickViewServicesAddedLink { get { return PageFactory.Load(this); } }
 
+       
+
+       
+
 
 
 
@@ -448,6 +452,128 @@ namespace WorkWave.PestPac.TA.Model
 
         #endregion Unbale to convert to lead without service
 
+        #region Update lead details
+
+        [FindsBy(How = How.XPath, Using = "//p[text()='Lead']/following-sibling::div/child::div")]
+        private IWebElement ClickLeadPencilIcon { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Name, Using = "firstName")]
+        private IWebElement UpdateFirstName { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Name, Using = "lastName")]
+        private IWebElement UpdateLastName { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//b[text()='Rename this Lead']")]
+        private IWebElement RenameThisLeadPopupDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//div[contains(text(),'James Smith')]")]
+        private IWebElement UpdatedLeadDetails { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//p[text()='Bill-to'])[2]/../child::button")]
+        private IWebElement ClickThreeDotsIcnForBillToLocation { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Update Bill-To Location']")]
+        private IWebElement UpdateBillToLocationSliderIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//div[text()='South Branch']")]
+        private IWebElement SelectBranchField { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='Main Branch']")]
+        private IWebElement SelectBranchName { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//div[contains(@class,'MuiOutlinedInput-root MuiInputBase-root')]//div)[3]")]
+        private IWebElement SelectLocationTypeField { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='HOSPITAL- Hospital']")]
+        private IWebElement SelectLocationTypeName { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//div[@variant='outlined']//div)[3]")]
+        private IWebElement SelectDivisonField { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='CONSTRUCT- Construction']")]
+        private IWebElement SelectDivisonName { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//p[text()='200 street san, chester, PA 93013-373'])[2]")]
+        private IWebElement BillToAddressUpdated { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//p[text()='Bill-to'])[2]/../following-sibling::p")]
+        private IWebElement BillToScroll { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//p[text()='Bill-to'])[2]/../following-sibling::p")]
+        private IWebElement ClickViewMoreInformationLink { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//p[text()='Service Location']/../child::button")]
+        private IWebElement ClickThreeDotsIcnForServiceLocation { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Update Service Location']")]
+        private IWebElement UpdateServiceLocationSliderIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//p[text()='View '])[2]")]
+        private IWebElement ClickViewMoreInformationLinkForServcieLocation { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//button[text()='Edit']")]
+        private IWebElement ClickEditLinkForAdditionalInformationSection { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='South Branch Sales Team']")]
+        private IWebElement SelectSalesTeamValue { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='Chad Kochel']")]
+        private IWebElement SelectOwnerValue { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='Test Sales funnel']")]
+        private IWebElement SelectFunnelValue { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//label[text()='Target Pests']/following::input)[1]")]
+        private IWebElement ClicktargetPestField { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='CLOVR MITE']")]
+        private IWebElement SelectPestValue { get { return PageFactory.Load(this); } }
+
+
+        [FindsBy(How = How.XPath, Using = "//input[@name='campaignId']/..")]
+        private IWebElement ClickCampaignField { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='CUSTOMER']")]
+        private IWebElement SelectCampaignValue { get { return PageFactory.Load(this); } }
+
+
+        [FindsBy(How = How.XPath, Using = "//input[@name='leadSourceId']/..")]
+        private IWebElement ClickleadSourceField { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='RECOMMEND']")]
+        private IWebElement SelectLeadSourceValue { get { return PageFactory.Load(this); } }
+
+
+        [FindsBy(How = How.XPath, Using = "//div[contains(@class,'Toastify__toast-icon Toastify--animate-icon')]/following-sibling::div[1]")]
+        private IWebElement BillToLocationUpdatedValidationMessage { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//input[@name='salesFunnelStageId']/..")]
+        private IWebElement ClickleadStatusField { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//li[text()='Qualify']")]
+        private IWebElement SelectLeadStatusValue { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//p[text()='South Branch Sales Team']")]
+        private IWebElement UpdatedSalesTeamName { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//p[text()='Test Sales funnel']")]
+        private IWebElement UpdatedSalesFunnelName { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//p[text()='CUSTOMER']")]
+        private IWebElement UpdatedCampaignName { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//p[text()='Chad Kochel'])[1]")]
+        private IWebElement UpdatedOwnerName { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//p[text()='RECOMMEND']")]
+        private IWebElement UpdatedLeadSourceName { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//p[text()='CLOVR MITE']")]
+        private IWebElement UpdatedTargetPestsName { get { return PageFactory.Load(this); } }
+
+
+        #endregion Update lead details
+
         #endregion PageFactory
 
         private readonly string PageHeaderText = "Leads";
@@ -556,6 +682,8 @@ namespace WorkWave.PestPac.TA.Model
         }
 
         private readonly string LeadsPage = "Add Lead";
+        
+
         public bool IsLeadPageLoaded()
         {
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => leadPage), TimeSpan.FromSeconds(10)))
@@ -849,7 +977,7 @@ namespace WorkWave.PestPac.TA.Model
                 {
                     ClickServiceField.Click();
                     Thread.Sleep(1000);
-              //      SalesCenterUtility.ScrollToElement(SelectServicename);
+                //    SalesCenterUtility.ScrollToElement(SelectServicename);
                     SelectServicename.Click();                   
                     SUT.Log.DebugFormat("Service selected from the droddown");
                 }
@@ -2232,6 +2360,656 @@ namespace WorkWave.PestPac.TA.Model
                 SUT.Log.ErrorFormat("Convert to opportunity button is enabled");
             }
         }
+
+        //Update lead name details
+
+        public void ClickOnLeadPencilIcon()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickLeadPencilIcon)))
+                {
+                    ClickLeadPencilIcon.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Lead pencil icon is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Lead pencil icon is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Lead pencil icon is not clicked");
+            }
+        }
+
+        public bool UpdateFirstNameInLeadPopup(string firstname)
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => UpdateFirstName)))
+                {
+                    //  UpdateFirstName.Click();
+                    UpdateFirstName.SendKeys(Keys.Control + "a");
+                    UpdateFirstName.SendKeys(Keys.Delete);
+                    UpdateFirstName.SendKeys(firstname);
+                    Thread.Sleep(1000);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public bool UpdateLastNameInLeadPopup(string lastname)
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => UpdateLastName)))
+                {
+                    //  UpdateLastName.Click();
+                   
+                    UpdateLastName.SendKeys(Keys.Control + "a");
+                    UpdateLastName.SendKeys(Keys.Delete);
+                    UpdateLastName.SendKeys(lastname);
+                    Thread.Sleep(1000);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void IsRenameThisLeadPopupDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => RenameThisLeadPopupDisplayed), TimeSpan.FromSeconds(3)))
+                {
+                    string renamepopup=RenameThisLeadPopupDisplayed.ToString();
+                    Thread.Sleep(3000);
+                    SUT.Log.DebugFormat("Rename This Lead Popup is Displayed {0}", renamepopup);
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Rename This Lead Popup is not Displayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Rename This Lead Popup is not Displayed");
+            }
+        }
+
+        public bool IsUpdatedLeadDetailsDisplayed()
+        {
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => UpdatedLeadDetails)))
+            {
+                if (UpdatedLeadDetails.Text.Contains("James Smith")) 
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void ClickOnThreeDotsIconForBillToLocation()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickThreeDotsIcnForBillToLocation)))
+                {
+                   // SalesCenterUtility.ScrollToElement(ClickThreeDotsIcnForBillToLocation);
+                    ClickThreeDotsIcnForBillToLocation.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Bill-to location three dots icon is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Bill-to location three dots icon is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Bill-to location three dots icon is not clicked");
+            }
+        }
+
+        public void IsUpdateBillToLocationSliderIsDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => UpdateBillToLocationSliderIsDisplayed), TimeSpan.FromSeconds(3)))
+                {
+                    string UpdateBillToSliderDisplayed = UpdateBillToLocationSliderIsDisplayed.ToString();
+                    Thread.Sleep(3000);
+                    SUT.Log.DebugFormat("Update  bill to location slider is Displayed {0}", UpdateBillToSliderDisplayed);
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Update  bill to location slider is not Displayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Update  bill to location slider is not Displayed");
+            }
+        }
+
+        public void SelectBranchdropdownValue()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => SelectBranchField)))
+                {
+                    SelectBranchField.Click();
+                    SelectBranchName.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Branch name is selected from the dropdown");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Branch name is not selected from the dropdown {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Branch name is not selected from the dropdown");
+            }
+        }
+
+        public void SelectLocationTypedropdownValue()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => SelectLocationTypeField)))
+                {
+                    SelectLocationTypeField.Click();
+                    SelectLocationTypeName.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Location type is selected from the dropdown");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Location type is not selected from the dropdown {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Location type is not selected from the dropdown");
+            }
+        }
+
+          public void SelectDivisiondropdownValue()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => SelectDivisonField)))
+                {
+                    SelectDivisonField.Click();
+                    SelectDivisonName.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Division is selected from the dropdown");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Division is not selected from the dropdown {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Division is not selected from the dropdown");
+            }
+        }
+
+        public bool IsBillToFirstandLastNameUpdated()
+        {
+          
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => UpdatedLeadDetails)))
+            {
+                if (UpdatedLeadDetails.Text.Contains("James Smith"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+ 
+        public void ClickOnViewMoreInformationLink()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickViewMoreInformationLink)))
+                {
+                //    SalesCenterUtility.ScrollToElement(ClickViewMoreInformationLink);                  
+                    ClickViewMoreInformationLink.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("View more information link is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("View more information link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("View more information link is not clicked");
+            }
+        }
+
+        public void ClickOnThreeDotsIconForServiceLocation()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickThreeDotsIcnForServiceLocation)))
+                {
+                    // SalesCenterUtility.ScrollToElement(ClickThreeDotsIcnForBillToLocation);
+                    ClickThreeDotsIcnForServiceLocation.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Service location three dots icon is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Service location three dots icon is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Service location three dots icon is not clicked");
+            }
+        }
+
+        public void IsUpdateServiceLocationSliderIsDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => UpdateServiceLocationSliderIsDisplayed), TimeSpan.FromSeconds(3)))
+                {
+                    string UpdateServiceSliderDisplayed = UpdateServiceLocationSliderIsDisplayed.ToString();
+                    Thread.Sleep(3000);
+                    SUT.Log.DebugFormat("Update  service location slider is Displayed {0}", UpdateServiceSliderDisplayed);
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Update  service location slider is not Displayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Update  service location slider is not Displayed");
+            }
+        }
+
+        public void ClickOnViewMoreInformationLinkForServcieLocation()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickViewMoreInformationLinkForServcieLocation)))
+                {
+                    //    SalesCenterUtility.ScrollToElement(ClickViewMoreInformationLink);                  
+                    ClickViewMoreInformationLinkForServcieLocation.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("View more information link is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("View more information link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("View more information link is not clicked");
+            }
+        }
+
+        public void ClickOnEditLinkForAdditionalInformationSection()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickEditLinkForAdditionalInformationSection)))
+                {
+                    //    SalesCenterUtility.ScrollToElement(ClickViewMoreInformationLink);                  
+                    ClickEditLinkForAdditionalInformationSection.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Edit link is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Edit link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Edit link is not clicked");
+            }
+        }
+
+
+
+        public void SelectSalesTeamdropdownValue()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickSalesTeamField)))
+                {
+                    ClickSalesTeamField.Click();
+                    SelectSalesTeamValue.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Sales team name is selected from the dropdown");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Sales team name is not selected from the dropdown {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Sales team name is not selected from the dropdown");
+            }
+        }
+
+        public void SelectOwnerdropdownValue()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickOwnerAssigneeField)))
+                {
+                    ClickOwnerAssigneeField.Click();
+                    SelectOwnerValue.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Owner name is selected from the dropdown");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Owner name is not selected from the dropdown {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Owner name is not selected from the dropdown");
+            }
+        }
+
+        public void SelectSalesFunneldropdownValue()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickFunnelField)))
+                {
+                    ClickFunnelField.Click();
+                    SelectFunnelValue.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Sales funnel name is selected from the dropdown");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Sales funnel name is not selected from the dropdown {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Sales funnel name is not selected from the dropdown");
+            }
+        }
+
+        public void SelectLeadStatusdropdownValue()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickleadStatusField)))
+                {
+                    ClickleadStatusField.Click();
+                    SelectLeadStatusValue.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Lead status value is selected from the dropdown");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Lead status value is not selected from the dropdown {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Lead status value is not selected from the dropdown");
+            }
+        }
+
+        public void SelectTargetPestdropdownValue()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClicktargetPestField)))
+                {
+                    ClicktargetPestField.Click();
+                    SelectPestValue.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Target Pest value is selected from the dropdown");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Target Pest value is not selected from the dropdown {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Target Pest value is not selected from the dropdown");
+            }
+        }
+
+        public void SelectCampaigndropdownValue()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickCampaignField)))
+                {
+                    ClickCampaignField.Click();
+                    SelectCampaignValue.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Campaign value is selected from the dropdown");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Campaign value is not selected from the dropdown {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Campaign value is not selected from the dropdown");
+            }
+        }
+
+        public void SelectLeadSourcedropdownValue()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickleadSourceField)))
+                {
+                    ClickleadSourceField.Click();
+                    SelectLeadSourceValue.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Campaign value is selected from the dropdown");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Campaign value is not selected from the dropdown {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Campaign value is not selected from the dropdown");
+            }
+        }
+
+        public bool IsBillToLocationUpdatedValidationMessage(string message)
+        {
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => BillToLocationUpdatedValidationMessage), TimeSpan.FromSeconds(10)))
+            {
+                SUT.Log.Debug("Validation  message is displayed");
+                Assert.True(BillToLocationUpdatedValidationMessage.Text.Contains(message), "Validation message is not matching");
+                Thread.Sleep(16000);
+                return true;
+            }
+            else
+            {
+                SUT.Log.Debug("Validation message is displayed");
+                return false;
+            }
+        }
+
+        public bool IsSalesTeamNameUpdated()
+        {
+
+
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => UpdatedSalesTeamName)))
+            {
+                SalesCenterUtility.ScrollToElement(UpdatedSalesTeamName);
+                if (UpdatedSalesTeamName.Text.Contains("South Branch Sales Team"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsOwnerNameUpdated()
+        {
+
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => UpdatedOwnerName)))
+            {
+                if (UpdatedOwnerName.Text.Contains("Chad Kochel"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsSalesFunnelNameUpdated()
+        {
+
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => UpdatedSalesFunnelName)))
+            {
+                if (UpdatedSalesFunnelName.Text.Contains("Test Sales funnel"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+       
+        public bool IsCampaignNameUpdated()
+        {
+
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => UpdatedCampaignName)))
+            {
+                if (UpdatedCampaignName.Text.Contains("CUSTOMER"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsLeadSourceNameUpdated()
+        {
+
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => UpdatedLeadSourceName)))
+            {
+                if (UpdatedLeadSourceName.Text.Contains("RECOMMEND"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsTargetPestsNameUpdated()
+        {
+
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => UpdatedTargetPestsName)))
+            {
+                if (UpdatedTargetPestsName.Text.Contains("CLOVR MITE"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+       
 
     }
 

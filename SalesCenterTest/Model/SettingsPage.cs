@@ -891,7 +891,7 @@ namespace WorkWave.PestPac.TA.Model
 
         public bool VerifySalesTeamCreatedConfirmMsg(string message)
         {
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ValidationConfirm_Txt),TimeSpan.FromSeconds(5)))
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ValidationConfirm_Txt),TimeSpan.FromSeconds(10)))
             {
                 SUT.Log.Debug("Validation  message is displayed");
                 Assert.True(ValidationConfirm_Txt.Text.Contains(message), "Validation message is not matching");
