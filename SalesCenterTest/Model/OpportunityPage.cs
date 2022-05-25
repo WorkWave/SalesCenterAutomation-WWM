@@ -414,13 +414,13 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//button[@data-test-id='okBtn'])[31]")]
         private IWebElement ClickDeleteButtonInDeleteServicePopup { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//input[@id='services']/../..")]
+        [FindsBy(How = How.XPath, Using = "//input[@id='services']/..")]
         private IWebElement ClickOtherServiceField { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//li[text()='BEDBUG- Bed Bug Treatment']")]
+        [FindsBy(How = How.XPath, Using = "//li[text()='BEDBUG - Bed Bug Treatment']")]
         private IWebElement SelectOtherServicename { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//li[text()='ANT- Ant Treatments']")]
+        [FindsBy(How = How.XPath, Using = "//li[text()='ANT - Ant Treatments']")]
         private IWebElement SelectServicename { get { return PageFactory.Load(this); } }
 
 
@@ -459,7 +459,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[contains(@data-test-id,'serviceLink')]")]
         private IWebElement ClickViewServicesAddedLink { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//button[text()='Add Additional Service or Product']")]
+        [FindsBy(How = How.XPath, Using = "//button[text()='Add Service or Product']/.")]
         private IWebElement TryToClickAddAdditionalServiceOrProductButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "(//button[contains(@data-test-id,'serviceMoreBtn')])[1]")]
@@ -951,7 +951,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAnywhere)))
                 {
                     ClickAnywhere.Click();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(4000);
                     SUT.Log.DebugFormat("Ok button is clicked");
                 }
                 else
