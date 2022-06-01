@@ -352,7 +352,7 @@ namespace WorkWave.PestPac.TA.Model
 
         #region Add note 
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Add Note']/..")]
+        [FindsBy(How = How.XPath, Using = "//*[text()='Add Note']/.")]
         private IWebElement ClickAddNoteButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "(//span[text()='Add Note'])[2]")]
@@ -367,13 +367,13 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//b[text()='TestAutomationNote']/../../../../following-sibling::div/child::button")]
         private IWebElement ClickThreeDotsIconforAddedNotes { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//span[text()='Edit'])[2]")]
+        [FindsBy(How = How.XPath, Using = "(//*[@id='simple-popover']/descendant::ul/child::div)[1]")]
         private IWebElement ClickEditLinkforNotes { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.Name, Using = "title")]
         private IWebElement UpdateNote { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//span[text()='Delete'])[3]")]
+        [FindsBy(How = How.XPath, Using = "(//*[@id='simple-popover']/descendant::ul/child::div)[2]")]
         private IWebElement ClickDeleteOptionforNotes { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "(//button[@data-test-id='cancelBtn'])[4]")]
@@ -382,7 +382,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//button[@data-test-id='okBtn'])[4]")]
         private IWebElement ClickDeleteButtonInNotesDeletePopup { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//b[text()='TestAutomationNoteaddedsecondnote']/../../../../following-sibling::div/child::button")]
+        [FindsBy(How = How.XPath, Using = "//b[text()='addedsecondnote']/../../../../following-sibling::div/child::button")]
         private IWebElement ClickThreeDotsIcontoDeleteNotes { get { return PageFactory.Load(this); } }
 
 
@@ -1140,7 +1140,6 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickSales2Field)))
                 {
-                    //   SalesCenterUtility.ScrollToElement(ClickTech1Field);
                     ClickSales2Field.Click();
                     Thread.Sleep(1000);
                     SelectSales2Name.Click();
@@ -1189,8 +1188,7 @@ namespace WorkWave.PestPac.TA.Model
             try
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCaptureCardButton)))
-                {
-                  //  SalesCenterUtility.ScrollToElement(ClickCaptureCardButton);
+                {              
                     ClickCaptureCardButton.Click();
                     Thread.Sleep(2000);
                     SUT.Log.DebugFormat("Opportunities link is clicked");
@@ -2081,7 +2079,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => AddNoteSLiderIsDisplayed), TimeSpan.FromSeconds(10)))
                 {
                     AddNoteSLiderIsDisplayed.Displayed.ToString();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(2000);
                     SUT.Log.DebugFormat("Add note slider is diplayed");
                 }
                 else
@@ -2159,8 +2157,8 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => UpdateNote)))
                 {
-                   // UpdateNote.Click();
-                    UpdateNote.Clear();
+                    UpdateNote.SendKeys(Keys.Control + "a");
+                    UpdateNote.SendKeys(Keys.Delete);
                     UpdateNote.SendKeys(notesdetail);
                     Thread.Sleep(1000);
                     return true;

@@ -618,3 +618,33 @@ Scenario Outline: Verify Users Can Edit the Lead Details
 Examples:  
       | FirstName        | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | UpdateFirstName | UpdateLastName | UpdatedLeads       | Branch      | LocationType       | Division                | Address        | City    | State | PostalCode | BillToUpdated                 | ServiceLocationUpdated                 | SalesTeamName           | OwnerName   | SalesFunnelName   | TargetPets | LeadStatus | Campaign | LeadSource | LeadInformationUpdated |
       | Automation user3 | Test3    | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | James           | Smith          | Lead name updated. | Main Branch | HOSPITAL- Hospital | CONSTRUCT- Construction | 200 street san | chester | PA    | 93013-373  | Bill-to successfully updated. | Service Location successfully updated. | South Branch Sales Team | Chad Kochel | Test Sales funnel | CLOVR MITE | Qualify    | CUSTOMER | RECOMMEND  | Lead information updated. |
+
+@Leads @WWM-8577 @WW_LD_023
+@Regression
+@Regression_Full
+Scenario Outline: Verify a User can Create,Edit and delete a Note on an Lead
+	When Mouse hover on sales center side menu
+    And Click on Leads link
+    Then Leads page should be displayed
+	And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+	When Click on View details page link
+    Then Lead detail page should be displayed
+    When Click on Add note button
+    Then Add note slider should be dislayed
+    And Enter the title <Title> 
+    And Enter the note <Note>
+    When Click on Save button
+    Then validation message should be displayed <NoteCreated>
+    When Edit the note
+    And Update the note <UpdateNote>
+    When Click on Save button
+    Then validation message should be displayed <NoteUpdated>
+    And verify cancel button in notes delete popup
+    When Delete the note
+    Then validation message should be displayed <NoteDeleted>
+    
+   Examples:  
+     | Title              | Note             | NoteCreated   | NoteUpdated   | NoteDeleted   | UpdateNote      |
+     | TestAutomationNote | added first note | Note created. | Note updated. | Note deleted. | addedsecondnote |
