@@ -226,12 +226,6 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.ClickOnEnterButton();
         }
 
-        //[Then(@"Enter the card details (.*)")]
-        //public void ThenEnterTheCardDetails(string cardnumber)
-        //{
-        //    opportunitypage.EnterCardNumber(cardnumber);
-        //}
-
         [Then(@"Enter the card details (.*)")]
         public void ThenEnterTheCardDetails(string cardnumber)
         {

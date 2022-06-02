@@ -1103,7 +1103,6 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => StageField)))
                 {
-                 //   SalesCenterUtility.ScrollToElement(StageField);
                     StageField.Click();
                     SelectStageName.Click();
                     SUT.Log.DebugFormat("Stage is selected from the droddown");
@@ -1310,8 +1309,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickTemplateField)))
                 {
-                    ClickTemplateField.Click();
-                 //   PestPacUtility.ScrollToElement(SelectContractTemplate);
+                    ClickTemplateField.Click();            
                     SelectContractTemplate.Click();
                     SUT.Log.DebugFormat("Contract template selected from the dropdown");
                 }
@@ -2697,8 +2695,7 @@ namespace WorkWave.PestPac.TA.Model
             try
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickEditLinkForAdditionalInformationSection)))
-                {
-                    //    SalesCenterUtility.ScrollToElement(ClickViewMoreInformationLink);                  
+                {                               
                     ClickEditLinkForAdditionalInformationSection.Click();
                     Thread.Sleep(2000);
                     SUT.Log.DebugFormat("Edit link is clicked");

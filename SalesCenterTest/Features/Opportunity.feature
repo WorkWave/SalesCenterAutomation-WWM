@@ -936,9 +936,6 @@ Scenario Outline: Verification of closing requirement counts in open cards for O
     When Click on convert to opportunity button
     When Select the lead details <OwnerName> <FunnelName> <FunnelStage> 
     Then validation message should be displayed <OpportunityCreated>
-	#When Mouse hover on sales center side menu
-   # And Click on Opportunities link
-   # Then Opportunities page should be displayed
 	And Click on filters button
     And Click on clear filter button
     And Click on Apply button in filter slider  
@@ -959,7 +956,6 @@ Scenario Outline: Verification of closing requirement counts in open cards for O
     When Click on Save button
     Then Location matched validation message should be displayed <LocationMatchedValMsg> 
     And Click on again billto expand icon
-   # And Click on Service expand icon
     And Click on Capture card button
     And Enter the card holder name <CardHolderName>
     And Click on Enter button
