@@ -230,8 +230,8 @@ Scenario Outline: Verify user able to edit the services on opportunity form
 
   
 Examples:  
-     | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Services            | UpdateService      |
-     | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments | BEES- Bee Services |
+     | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Services            | UpdateService   |
+     | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments | EXTERIOR LIGHT  |
 
 @Regression @Leads  @WWM-8443 @WW_LD_009
 Scenario: Verification of multiple records selection on Leads List View Page

@@ -169,7 +169,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//p[text()='Add Opportunity']")]
         private IWebElement AddOpportunityPageIsDisplayed { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//button[text()='Add Additional Service or Product']")]
+        [FindsBy(How = How.XPath, Using = "//button[text()='Add Service or Product']/.")]
         private IWebElement ClickAddAdditionalServiceOrProductButton { get { return PageFactory.Load(this); } }
       
         #endregion create opportunity directly
@@ -237,7 +237,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//button[text()='Apply']")]
         private IWebElement ClickApplyButton { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//div[@class='sc-hGPBjI hYnhmQ actions']/descendant::button[2])[1]")]
+        [FindsBy(How = How.XPath, Using = "(//*[@data-testid='MoreVertIcon'])[1]")]
         private IWebElement ClickThreeDotsIconforDisqualified { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[text()='Re-Open']")]
@@ -281,7 +281,7 @@ namespace WorkWave.PestPac.TA.Model
         private IWebElement ClickSaveButtonInBilltoMatchingSlider { get { return PageFactory.Load(this); } }
 
 
-        [FindsBy(How = How.XPath, Using = "//div[text()='Select Service Location']")]
+        [FindsBy(How = How.XPath, Using = "//div[text()='Select Service Location']/..")]
         private IWebElement ClickServiceLocationField { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//li[contains(text(),'3600 STATE ROUTE 66')]")]
@@ -295,7 +295,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[text()='ANT']/../../descendant::button")]
         private IWebElement ClickThreeDotsIconInSlider { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//li[text()='BEDBUG- Bed Bug Treatment']")]
+        [FindsBy(How = How.XPath, Using = "//li[text()='EXTERIOR LIGHT']")]
         private IWebElement SelectOtherServicename { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//button[text()='Update Service']")]
@@ -305,7 +305,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[@data-test-id='editBtn']")]
         private IWebElement ClickEditOption { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//p[text()='View Services Added']")]
+        [FindsBy(How = How.XPath, Using = "(//p[text()='View Services Added'])[1]")]
         private IWebElement ClickViewServicesAddedLink { get { return PageFactory.Load(this); } }
 
        
@@ -956,6 +956,7 @@ namespace WorkWave.PestPac.TA.Model
                 {
                     SalesCenterUtility.ScrollToElement(ClickServiceButton);
                     ClickServiceButton.Click();
+                    Thread.Sleep(3000);
                     SUT.Log.DebugFormat("Add service button is clicked");
                 }
                 else
@@ -976,7 +977,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceField)))
                 {
                     ClickServiceField.Click();
-                    Thread.Sleep(1000);
+                    Thread.Sleep(3000);
                 //    SalesCenterUtility.ScrollToElement(SelectServicename);
                     SelectServicename.Click();                   
                     SUT.Log.DebugFormat("Service selected from the droddown");
@@ -1795,7 +1796,7 @@ namespace WorkWave.PestPac.TA.Model
             try
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickViewServicesAddedLink)))
-                {
+                {                 
                     ClickViewServicesAddedLink.Click();
                     SUT.Log.DebugFormat("View services added link is clicked");
                 }

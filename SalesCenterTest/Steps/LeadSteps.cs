@@ -401,12 +401,6 @@ namespace WorkWave.PestPac.TA.Steps
             leadspage.ClickOnSaveButtonInBilltoMatchingSlider();
         }
 
-        //[When(@"Select match to service location")]
-        //public void WhenSelectMatchToServiceLocation()
-        //{
-        //    leadspage.SelecttheServiceLocation();
-        //}
-
         [When(@"Select match to service location (.*)")]
         public void WhenSelectMatchToServiceLocationSTATEROUTE(string servicelocation)
         {

@@ -728,12 +728,13 @@ namespace WorkWave.PestPac.TA.Model
 
         public bool VerifyConfirmMsg(string message)
         {
+            SUT.Web.WebDriver.SwitchTo().DefaultContent();
 
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ValidationConfirm_Txt)))
             {
                 SUT.Log.Debug("Validation  message is displayed");
                 Assert.True(ValidationConfirm_Txt.Text.Contains(message), "Validation message is not matching");
-                Thread.Sleep(8000);
+                Thread.Sleep(10000);
                 return true;
             }
             else
