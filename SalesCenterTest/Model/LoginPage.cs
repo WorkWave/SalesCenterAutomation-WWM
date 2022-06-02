@@ -47,7 +47,7 @@ namespace WorkWave.PestPac.TA.Model
             //it would take for tests to run with failure, dev seeing the failure and then having to re-run the 
             //smoke test steps.            
 
-            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => LoginForm), TimeSpan.FromSeconds(25)))
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => LoginForm), TimeSpan.FromSeconds(30)))
             {
                 return true;
             }
@@ -80,14 +80,17 @@ namespace WorkWave.PestPac.TA.Model
 
         private void EnterCredentials(string username, string password)
         {
-            //if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(()=>CompanyKey)))
-            //{ CompanyKey.SendKeys(key); }
-
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => Username)))
-            { Username.SendKeys(username); }
+            { 
+                Username.SendKeys(username);
+                Thread.Sleep(3000);
+            }
 
             if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => Password)))
-            { Password.SendKeys(password); }
+            { 
+                Password.SendKeys(password);
+                Thread.Sleep(3000);
+            }
         }
 
         private bool SubmitLogin()

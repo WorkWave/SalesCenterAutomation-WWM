@@ -488,7 +488,7 @@ namespace WorkWave.PestPac.TA.Model
 
         #region Add a contract to an opp
 
-        [FindsBy(How = How.XPath, Using = "//p[text()='View Contracts']")]
+        [FindsBy(How = How.XPath, Using = "//span[text()='Agreements']/.")]
         private IWebElement ClickViewContractsLink { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//*[local-name()='svg' and @data-testid='CloseIcon']")]

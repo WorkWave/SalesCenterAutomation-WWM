@@ -335,6 +335,7 @@ namespace WorkWave.PestPac.TA.Steps
                 LoginPage loginPage = new LoginPage();
                 WebConfig config = SUT.Web.Config;
                 SUT.Web.WebDriver.Navigate().GoToUrl(config.HomePage);
+                Thread.Sleep(10000);
                 Assert.True(loginPage.IsLoaded(),
                     "Failed to verify that the login page at {0} has been loaded", config.HomePage);
 

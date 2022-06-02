@@ -307,7 +307,7 @@ Scenario Outline: Verification of Bulk Re-assignment of leads which are associat
      | Auto Test Sales Team | unassigned      | Bulk update successfully applied   |
 
 
- @Leads @WWM-8418 @WW_LD_012
+@Leads @WWM-8418 @WW_LD_012
 @Smoke
 @Regression 
 @Regression_Full
