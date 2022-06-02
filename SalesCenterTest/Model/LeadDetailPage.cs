@@ -187,7 +187,7 @@ namespace WorkWave.PestPac.TA.Model
 
         #region Add contract to the lead
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Send Contract']/../..")]
+        [FindsBy(How = How.XPath, Using = "(//span[text()='Send Agreement']/..)[1]")]
         private IWebElement ClickSendContractButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[text()='Create Contract']")]
