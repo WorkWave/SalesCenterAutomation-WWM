@@ -383,8 +383,34 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//span[text()='Results']/..)[1]")]
         private IWebElement SameDuplicateAlertCountIsDisplayed { get { return PageFactory.Load(this); } }
 
+        [FindsBy(How = How.XPath, Using = "//th[text()='Record Name']")]
+        private IWebElement RecordNameCoulmIsDisplayed { get { return PageFactory.Load(this); } }
 
+        [FindsBy(How = How.XPath, Using = "//th[text()='Address']")]
+        private IWebElement AddressColumIsDisplayed { get { return PageFactory.Load(this); } }
 
+        [FindsBy(How = How.XPath, Using = "//th[text()='Company Name']")]
+        private IWebElement CompanyNameColumIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//th[text()='Email']")]
+        private IWebElement EmailColumIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//th[text()='Phone']")]
+        private IWebElement PhoneColumIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//th[text()='Type']")]
+        private IWebElement TypeColumIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//th[text()='Name']")]
+        private IWebElement NameColumIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//th[text()='Branch']")]
+        private IWebElement BranchColumIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = " //button[contains(text(),'PestPac Locations')]")]
+        private IWebElement ClickPestPacLocationTab { get { return PageFactory.Load(this); } }
+
+       
 
         #endregion Duplicate alerts
 
@@ -573,7 +599,8 @@ namespace WorkWave.PestPac.TA.Model
 
 
         #endregion Update lead details
-
+                
+     
         #endregion PageFactory
 
         private readonly string PageHeaderText = "Leads";
@@ -3006,8 +3033,197 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
+        //Verify duplicate alerts page
+
+        public bool IsRecordNameColumIsDisplayed()
+        {
+
+
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => RecordNameCoulmIsDisplayed)))
+            {              
+                if (RecordNameCoulmIsDisplayed.Text.Contains("Record Name"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsAddressColumIsDisplayed()
+        {
+
+
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => AddressColumIsDisplayed)))
+            {
+                if (AddressColumIsDisplayed.Text.Contains("Address"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsCompanyNameColumIsDisplayed()
+        {
+
+
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => CompanyNameColumIsDisplayed)))
+            {
+                if (CompanyNameColumIsDisplayed.Text.Contains("Company Name"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsEmailColumIsDisplayed()
+        {
+
+
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => EmailColumIsDisplayed)))
+            {
+                if (EmailColumIsDisplayed.Text.Contains("Email"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsPhoneColumIsDisplayed()
+        {
+
+
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => PhoneColumIsDisplayed)))
+            {
+                if (PhoneColumIsDisplayed.Text.Contains("Phone"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsTypeColumIsDisplayed()
+        {
+
+
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => TypeColumIsDisplayed)))
+            {
+                if (TypeColumIsDisplayed.Text.Contains("Type"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsNameColumIsDisplayed()
+        {
+
+
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => NameColumIsDisplayed)))
+            {
+                if (NameColumIsDisplayed.Text.Contains("Name"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsBranchColumIsDisplayed()
+        {
+
+
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => BranchColumIsDisplayed)))
+            {
+                if (BranchColumIsDisplayed.Text.Contains("Branch"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
 
        
+          public void ClickOnPestPacLocationTab()
+            {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickPestPacLocationTab)))
+                {
+                    ClickPestPacLocationTab.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("Pestpac location tab is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Pestpac location tab is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Pestpac location tab is not clicked");
+            }
+        }
 
     }
 

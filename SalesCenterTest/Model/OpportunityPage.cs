@@ -116,7 +116,7 @@ namespace WorkWave.PestPac.TA.Model
 
         #region  closed won opportunity
 
-        [FindsBy(How = How.XPath, Using = "//div[@id='contacts-popover']/div[3]/div[1]/div[1]/div[1]/p[1]")]
+        [FindsBy(How = How.XPath, Using = "(//div[text()='Next Action'])[1]")]
         private IWebElement ClickAnywhere { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[text()='Closed Won']")]
@@ -450,7 +450,7 @@ namespace WorkWave.PestPac.TA.Model
 
         #region Can not send additional contracts,services for closed won opp
 
-        [FindsBy(How = How.XPath, Using = "//button[contains(@data-test-id,'contractBtn')]")]
+        [FindsBy(How = How.XPath, Using = "//button[contains(@data-test-id,'agreementBtn')]")]
         private IWebElement MouseHoverSendContractsButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//button[contains(@data-test-id,'serviceBtn')]")]
@@ -710,7 +710,7 @@ namespace WorkWave.PestPac.TA.Model
             try
             {
                 SUT.Web.WebDriver.SwitchTo().DefaultContent();
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickViewDetailsLink)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickViewDetailsLink),TimeSpan.FromSeconds(5)))
                 {
                     ClickViewDetailsLink.Click();
                     Thread.Sleep(3000);
@@ -946,23 +946,10 @@ namespace WorkWave.PestPac.TA.Model
 
         public void ClickonAgainBilltoexpandicon()
         {
-            try
-            {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickAnywhere)))
-                {
-                    ClickAnywhere.Click();
-                    Thread.Sleep(4000);
-                    SUT.Log.DebugFormat("Ok button is clicked");
-                }
-                else
-                {
-                    SUT.Log.ErrorFormat("Ok button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
-                }
-            }
-            catch (WebDriverTimeoutException)
-            {
-                SUT.Log.ErrorFormat("Ok button is not clicked");
-            }
+           
+                    SUT.Web.WebDriver.Navigate().Refresh();                 
+                    Thread.Sleep(5000);
+                    SUT.Log.DebugFormat("Page is refreshed");          
         }
 
         public void ClickOnCloseWonOption()

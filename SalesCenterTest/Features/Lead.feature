@@ -648,3 +648,25 @@ Scenario Outline: Verify a User can Create,Edit and delete a Note on an Lead
    Examples:  
      | Title              | Note             | NoteCreated   | NoteUpdated   | NoteDeleted   | UpdateNote      |
      | TestAutomationNote | added first note | Note created. | Note updated. | Note deleted. | addedsecondnote |
+
+@Leads @WWM-8573 @WW_LD_024
+@Regression 
+@Regression_Full
+Scenario Outline: Verify default display of duplicate alerts detail page
+    When Click on plus icon
+    And  Click on Add Lead button
+    Then Add Lead details page should be displayed
+    When Enable show only required fields toggle on
+    When Enter the first name <FirstName>
+    Then Duplicate alerts count should be displayed
+    When Click on Dulicate alerts link
+    Then Same duplicate alerts count should be displayed in duplicate alert page
+    And Click on workwave contacts tab
+    And Verify workwave marketing contacts column details
+    When Click on pestpac location tab
+    Then Verify the pestpac location column names
+        
+ Examples:  
+     | FirstName       | 
+     | Qa              | 
+
