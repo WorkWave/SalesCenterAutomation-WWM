@@ -245,12 +245,13 @@ namespace WorkWave.PestPac.TA.Steps
         {
             leadspage.IsCreateOpportunitySliderDisplayed();
         }
-       
-        [Then(@"Add opportunity page should be displayed")]
-        public void ThenAddOpportunityPageShouldBeDisplayed()
+
+        [Then(@"Create opportunity page should be displayed")]
+        public void ThenCreateOpportunityPageShouldBeDisplayed()
         {
             leadspage.IsAddOpportunityPageIsDisplayed();
         }
+
 
         [Then(@"click on add additional service or product button")]
         public void ThenClickOnAddAdditionalServiceOrProductButton()
@@ -776,6 +777,13 @@ namespace WorkWave.PestPac.TA.Steps
             Assert.True(leadspage.IsBranchColumIsDisplayed(), "Branch column name is not displayed");
         }
 
+        //Create opportunity through duplicate alerts page
+
+        [Then(@"Select the sales team in create opportunity page (.*)")]
+        public void ThenSelectTheSalesTeamInCreateOpportunityPage(string p0)
+        {
+            
+        }
 
 
     }

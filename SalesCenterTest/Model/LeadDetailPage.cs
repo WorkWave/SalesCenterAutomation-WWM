@@ -166,7 +166,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[text()='Choose one or more service locations related to this Bill-to']/../preceding-sibling::div")]
         private IWebElement CreateOpportunityPageIsDisplayed { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//p[text()='Add Opportunity']")]
+        [FindsBy(How = How.XPath, Using = "//p[text()='Create Opportunity']")]
         private IWebElement AddOpportunityPageIsDisplayed { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//button[text()='Add Service or Product']/.")]
@@ -409,14 +409,13 @@ namespace WorkWave.PestPac.TA.Model
 
         [FindsBy(How = How.XPath, Using = " //button[contains(text(),'PestPac Locations')]")]
         private IWebElement ClickPestPacLocationTab { get { return PageFactory.Load(this); } }
-
        
 
         #endregion Duplicate alerts
 
         #region Invalid card info
 
-        [FindsBy(How = How.XPath, Using = "//span[text()=': INVALID CARD INFO']")]
+       [FindsBy(How = How.XPath, Using = "//span[text()=': INVALID CARD INFO']")]
         private IWebElement InvalidCardErrorMessage_Txt { get { return PageFactory.Load(this); } }
 
 
@@ -3224,10 +3223,9 @@ namespace WorkWave.PestPac.TA.Model
                 SUT.Log.ErrorFormat("Pestpac location tab is not clicked");
             }
         }
+        }
 
     }
-
-}
 
 
 
