@@ -87,17 +87,18 @@ Scenario Outline: Verify user able to create new opportunity directly
     When Click on Create opportunity button in create opportunity page 
     Then Create opportunity slider should be displayed
     When Click on Apply button
-    Then Add opportunity page should be displayed
+    Then Create opportunity page should be displayed
     And click on add additional service or product button
     And Select the services <Services>
     When Click on Add services button in slider
     Then Service should be successfully added
+    And Select the SalesTeam <SalesTeam>
     When Select the lead details <OwnerName> <FunnelName> <FunnelStage>
     Then validation message should be displayed <OpportunityCreated>
  
  Examples:  
-     | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Services            | FunnelStage | Ownername  | FunnelName        | OpportunityCreated  |  LeadName |
-     | Automation Labs | Labs02   | autocompany02 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments | Stage1      | Unassigned | Test Sales funnel | Opportunity created |  Auto     |
+      | Services            | SalesTeam                  | FunnelStage | Ownername  | FunnelName        | OpportunityCreated  | LeadName  |
+      | ANT- Ant Treatments | Secondary south sales Team | Stage1      | Unassigned | Test Sales funnel | Opportunity created | qa        |
 
 
 
@@ -670,3 +671,31 @@ Scenario Outline: Verify default display of duplicate alerts detail page
      | FirstName       | 
      | Qa              | 
 
+@Leads @WWM-8574 @WW_LD_025
+@Regression 
+@Regression_Full
+Scenario Outline: Verify user able to create new opportunity from duplicate alert detail page for a pestpac location
+    When Click on plus icon
+    And  Click on Add Lead button
+    Then Add Lead details page should be displayed
+    When Enable show only required fields toggle on
+    When Enter the first name <FirstName>
+    Then Duplicate alerts count should be displayed
+    When Click on Dulicate alerts link
+    Then Same duplicate alerts count should be displayed in duplicate alert page
+    When Click on pestpac location tab
+    Then Verify the pestpac location column names
+    When Click on Create opportunity button in create opportunity page
+    Then Create opportunity page should be displayed
+    And click on add additional service or product button
+    And Select the services <Services>
+    When Click on Add services button in slider
+    Then Service should be successfully added
+    And Select the SalesTeam <SalesTeam>
+    When Select the lead details <OwnerName> <FunnelName> <FunnelStage>
+    Then validation message should be displayed <OpportunityCreated>
+
+        
+ Examples:  
+     | FirstName | Services            | SalesTeam                   | FunnelStage | Ownername  | FunnelName         | OpportunityCreated |
+     | james     | ANT- Ant Treatments | Secondary south sales Team  | Stage1      | Unassigned | Test Sales funnel  | Opportunity created |         
