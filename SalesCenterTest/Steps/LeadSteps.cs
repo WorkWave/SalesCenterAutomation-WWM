@@ -750,6 +750,33 @@ namespace WorkWave.PestPac.TA.Steps
 
         }
 
+        //Duplicate alerts page
+
+        [Then(@"Verify workwave marketing contacts column details")]
+        public void ThenVerifyWorkwaveMarketingContactsColumnDetails()
+        {
+            Assert.True(leadspage.IsRecordNameColumIsDisplayed(), "Record name column name is not displayed");
+            Assert.True(leadspage.IsAddressColumIsDisplayed(), "Address column name is not displayed");
+            Assert.True(leadspage.IsCompanyNameColumIsDisplayed(), "Company name column is not displayed");
+            Assert.True(leadspage.IsEmailColumIsDisplayed(), "Email column name is not displayed");
+            Assert.True(leadspage.IsPhoneColumIsDisplayed(), "phone column name is not displayed");
+            Assert.True(leadspage.IsTypeColumIsDisplayed(), "Type column name is not displayed");
+        }
+
+        [When(@"Click on pestpac location tab")]
+        public void WhenClickOnPestpacLocationTab()
+        {
+            leadspage.ClickOnPestPacLocationTab();
+        }
+
+        [Then(@"Verify the pestpac location column names")]
+        public void ThenVerifyThePestpacLocationColumnNames()
+        {
+            Assert.True(leadspage.IsNameColumIsDisplayed(), "Name column name is not displayed");
+            Assert.True(leadspage.IsBranchColumIsDisplayed(), "Branch column name is not displayed");
+        }
+
+
 
     }
 }

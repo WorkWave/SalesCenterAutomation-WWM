@@ -409,9 +409,6 @@ Scenario Outline: Verification of Pushing WWM contact to PestPac Location for op
     When Click on convert to opportunity button
     When Select the lead details <OwnerName> <FunnelName> <FunnelStage> 
     Then validation message should be displayed <OpportunityCreated>
-    When Mouse hover on sales center side menu
-    And Click on Opportunities link in leads page
-    Then Opportunities page should be displayed
 	And Click on filters button
     And Click on clear filter button
     And Click on Apply button in filter slider
