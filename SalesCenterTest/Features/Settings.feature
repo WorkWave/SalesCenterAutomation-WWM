@@ -6,7 +6,6 @@ Background:
 
 
  @WWM-8401 @Settings @WW_ST_001 
-@SmokeProd
 @Smoke
 @Regression
 @Regression_Full
@@ -50,7 +49,6 @@ Scenario: Verify Display of Sales Team Page
     Then Sales Teams page should be displayed
 
 @Settings @WWM-8403  @WW_ST_007
-@SmokeProd
 @Smoke
 @Regression
 @Regression_Full
@@ -72,7 +70,6 @@ Scenario Outline: Verify User is able to Add and Delete the  new role
 
 
 @Settings @WWM-8402 @WW_ST_008
-@SmokeProd
 @Smoke
 @Regression 
 @Regression_Full
@@ -95,7 +92,6 @@ Scenario Outline: Verify user is able to Add and Delete the sales funnel
 
 
 @Settings @WWM-8406  @WW_ST_009
-@SmokeProd
 @Smoke
 @Regression 
 @Regression_Full
@@ -121,7 +117,6 @@ Scenario Outline: Verify User is Able to Add and delete the UnMapped User
 
 
 @Settings @WWM-8404  @WW_ST_010
-@SmokeProd
 @Smoke
 @Regression 
 @Regression_Full
@@ -144,7 +139,6 @@ Scenario Outline: Verify User is Able to Add and delete the Sales Team
 
     
 @Settings @WWM-8405  @WW_ST_011
-@SmokeProd
 @Smoke
 @Regression 
 @Regression_Full
@@ -191,8 +185,8 @@ Scenario Outline: Verify that Non Admin Users Can be Assigned a Single Position 
     Then User deleted confirmation mesage should be displayed <UserDeleted>
 
    Examples: 
-     | FirstName       | LastName | Email             | UserRole           | SalesTeam                   | ConfirmMessage                    | UserDeleted   |
-     | Automation user | Test     | test321@gmail.com | Testing  non admin | Secondary south sales Team  | User created. Welcome email sent. | User deleted  |
+     | FirstName       | LastName | Email              | UserRole           | SalesTeam                   | ConfirmMessage                    | UserDeleted   |
+     | Automation user | Test     | test3214@gmail.com | Testing  non admin | Secondary south sales Team  | User created. Welcome email sent. | User deleted  |
 
 
 

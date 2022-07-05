@@ -12,7 +12,6 @@ Scenario: Verify Captured Leads, Open Opportunities, Leads to Qualify cards are 
     Then Verify the Leads opportunities and Leads to Qualify cards are displayed on dashboard
 
 @CockPit @WWM-8412  @WW_CP_002
-@SmokeProd
 @Smoke
 @Regression_Base 
 @Regression_Full
@@ -24,7 +23,6 @@ Scenario: Verify  Contract History is displayed on dashboard
     Then Verify the Contract History is displayed on dashboard
 
 @CockPit  @WWM-8414  @WW_CP_004
-@SmokeProd
 @Smoke
 @Regression_Base 
 @Regression_Full

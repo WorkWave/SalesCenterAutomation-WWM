@@ -578,7 +578,7 @@ Scenario Outline: Verify that a Closed/Won Opportunity Cannot Add, Edit or Delet
       | Closed            | You cannot add services to a closed Opportunity. |
 
 
-@Opportunities @WWM-8434 @WW_OP_020 @WWM-9587
+@Opportunities @WWM-8434 @WW_OP_020 @WWM-9587 @ignore @WWM-10035-Defect
 @Smoke
 @Regression 
 @Regression_Full
@@ -609,7 +609,6 @@ Scenario Outline: Verify User Can Add a Contract to an Opportunity
   | Residential Service Form  |
 
 @Opportunities @WWM-9432 @WW_OP_021  @ignore @WWM-9833 
-@SmokeProd 
 @Sanity
 @Regression
 @Regression_Full
@@ -678,11 +677,8 @@ Scenario Outline: Verification of basic regression Track A scenario
      | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName   | Services            | FunnelStage | Ownername  | OpportunityCreated  | Template                 | ValMessage          | OpportunityName | ServiceLocation     | LocationMatchedValMsg                  | CardHolderName | CardNumber       | CardAddedMessage                   |
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Residential Service Form | Opportunity Deleted | Automation Labs | 3600 STATE ROUTE 66 | Locations successfully matched/created | John Smith     | 4111111111111111 | Successfully added payment method. |
 
-@Opportunities @9433 @WW_OP_022 @ignore @WWM-9833 
-@SmokeProd 
-@Sanity
-@Regression
-@Regression_Full
+@Opportunities @9433 @WW_OP_022
+@SmokeProd
 Scenario Outline: Verification of basic regression Track B scenario
     When Click on plus icon
     And  Click on Add Lead button
@@ -741,18 +737,16 @@ Scenario Outline: Verification of basic regression Track B scenario
     And Enter the card details <CardNumber>
     And Select the expiration month and year
     When Click on Add credit card button
-    Then validation message should be displayed <CardAddedMessage>
+   # Then validation message should be displayed <CardAddedMessage>
 
     Examples:  
      | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName   | Services            | FunnelStage | Ownername  | OpportunityCreated  | Template                 | ValMessage          | OpportunityName | ServiceLocation     | LocationMatchedValMsg                  | CardHolderName | CardNumber       | CardAddedMessage                   | ClosedWonSuccessfully           |
      | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Residential Service Form | Opportunity Deleted | Automation Labs | 3600 STATE ROUTE 66 | Locations successfully matched/created | John Smith     | 4111111111111111 | Successfully added payment method. | Opportunity closed successfully |
 
 
-@Opportunities @9434 @WW_OP_023 @ignore @WWM-9833 
-@SmokeProd 
+@Opportunities @9434 @WW_OP_023 @ignore
 @Sanity
-@Regression
-@Regression_Full
+
 Scenario Outline: Verification of basic regression Track C scenario
     When Click on plus icon
     And  Click on Add Lead button
@@ -799,7 +793,7 @@ Scenario Outline: Verification of basic regression Track C scenario
     And Enter the card details <CardNumber>
     And Select the expiration month and year
     When Click on Add credit card button
-    Then validation message should be displayed <CardAddedMessage>
+    Then Added payment method validation message should be displayed
     And Click on View detail page link
     And Click on closed won/closed lost bar
     When Select the closed won option
@@ -807,8 +801,8 @@ Scenario Outline: Verification of basic regression Track C scenario
     When Click on Submit button in Close won opportunity slider
 
 Examples:  
-     | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName   | Services            | FunnelStage | Ownername  | OpportunityCreated  | Template                 | ValMessage          | OpportunityName | ServiceLocation     | LocationMatchedValMsg                  | CardHolderName | CardNumber       | CardAddedMessage                   |
-     | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Residential Service Form | Opportunity Deleted | Automation Labs | 3600 STATE ROUTE 66 | Locations successfully matched/created | John Smith     | 4111111111111111 | Successfully added payment method. |
+     | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | LeadName   | Services            | FunnelStage | Ownername  | OpportunityCreated  | Template                 | ValMessage          | OpportunityName | ServiceLocation     | LocationMatchedValMsg                  | CardHolderName | CardNumber       | 
+     | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | Automation | ANT- Ant Treatments | Stage1      | Unassigned | Opportunity created | Residential Service Form | Opportunity Deleted | Automation Labs | 3600 STATE ROUTE 66 | Locations successfully matched/created | John Smith     | 4111111111111111 | 
 
 
 @Opportunities @WW_OP_024 @WWM-9616 @ignore @WWM-9833 

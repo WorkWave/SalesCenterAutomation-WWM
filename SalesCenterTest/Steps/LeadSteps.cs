@@ -157,6 +157,13 @@ namespace WorkWave.PestPac.TA.Steps
             leadspage.ClickAddServiceButtonInSlider();
         }
 
+        [When(@"Click on Add services button in create new opportunity slider")]
+        public void WhenClickOnAddServicesButtonInCreateNewOpportunitySlider()
+        {
+            leadspage.ClickOnAddServiceButtonInCreateNewOpportunitySlider();
+        }
+
+
         [Then(@"Service should be successfully added")]
         public void ThenServiceShouldBeSuccessfullyAdded()
         {          
