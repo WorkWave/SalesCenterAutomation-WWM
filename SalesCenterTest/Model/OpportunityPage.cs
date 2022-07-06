@@ -132,7 +132,7 @@ namespace WorkWave.PestPac.TA.Model
 
         #region Add credit card details
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Capture Card']/../..")]
+        [FindsBy(How = How.XPath, Using = "//button[contains(@data-test-id,'paymentBtn')]/.")]
         private IWebElement ClickCaptureCardButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.Name, Using = "name")]
@@ -159,7 +159,11 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.CssSelector, Using = "iframe[src*='certtransaction.hostedpayments']")]
         private IWebElement IframeName { get { return PageFactory.Load(this); } }
 
+        [FindsBy(How = How.CssSelector, Using = "//div[text()='Successfully added payment method.']/.")]
+        private IWebElement PaymentAddedMessageIsDisplayed { get { return PageFactory.Load(this); } }
 
+
+        
         #endregion  Add credit card details
 
         #region Bulk  Reassign opportunitues
@@ -456,7 +460,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//button[contains(@data-test-id,'serviceBtn')]")]
         private IWebElement MouseHoverAddServiceButton { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//div[contains(@data-test-id,'serviceLink')]")]
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Services Added')]")]
         private IWebElement ClickViewServicesAddedLink { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//button[text()='Add Service or Product']/.")]
@@ -488,7 +492,7 @@ namespace WorkWave.PestPac.TA.Model
 
         #region Add a contract to an opp
 
-        [FindsBy(How = How.XPath, Using = "//span[text()='Agreements']/.")]
+        [FindsBy(How = How.XPath, Using = "//span[contains(@data-test-id,'agreementLink')]")]
         private IWebElement ClickViewContractsLink { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//*[local-name()='svg' and @data-testid='CloseIcon']")]
@@ -517,7 +521,6 @@ namespace WorkWave.PestPac.TA.Model
         private IWebElement ClickConvertOpportunityButtonAfterMatchingTheLocation { get { return PageFactory.Load(this); } }
 
 
-
         #endregion TrackB scenario
 
         #region closing requirement counts
@@ -528,6 +531,7 @@ namespace WorkWave.PestPac.TA.Model
        
       
         #endregion closing requirement counts
+
 
         #endregion PageFactory
 
@@ -710,7 +714,7 @@ namespace WorkWave.PestPac.TA.Model
             try
             {
                 SUT.Web.WebDriver.SwitchTo().DefaultContent();
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickViewDetailsLink),TimeSpan.FromSeconds(5)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickViewDetailsLink),TimeSpan.FromSeconds(5)))
                 {
                     ClickViewDetailsLink.Click();
                     Thread.Sleep(3000);
@@ -946,11 +950,11 @@ namespace WorkWave.PestPac.TA.Model
 
         public void ClickonAgainBilltoexpandicon()
         {
-           
-                    SUT.Web.WebDriver.Navigate().Refresh();                 
-                    Thread.Sleep(5000);
-                    SUT.Log.DebugFormat("Page is refreshed");          
+            SUT.Web.WebDriver.Navigate().Refresh();
+            Thread.Sleep(10000);
+            SUT.Log.DebugFormat("Page is refreshed");
         }
+
 
         public void ClickOnCloseWonOption()
         {
@@ -2344,7 +2348,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsIconforaddedService)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickThreeDotsIconforaddedService)))
                 {
                     ClickThreeDotsIconforaddedService.Click();
                     Thread.Sleep(2000);
@@ -2695,7 +2699,7 @@ namespace WorkWave.PestPac.TA.Model
             try
             {
 
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickViewContractsLink)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickViewContractsLink)))
                 {
                    
                     ClickViewContractsLink.Click();
@@ -2836,7 +2840,30 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
-     
+        public bool IsPaymentAddedMessageIsDisplayed()
+        {
+
+            SUT.Web.WebDriver.SwitchTo().ParentFrame();
+
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => PaymentAddedMessageIsDisplayed),TimeSpan.FromSeconds(10)))
+            {
+                if (PaymentAddedMessageIsDisplayed.Text.Contains("Successfully added payment method."))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
 
     }
 }

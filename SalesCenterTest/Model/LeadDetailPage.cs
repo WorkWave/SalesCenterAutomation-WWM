@@ -21,10 +21,10 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//p[text()='Leads']")]
         private IWebElement PageHeader { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//div[@role='button']//img[1]")]
+        [FindsBy(How = How.XPath, Using = "//div[@role='button']//img[1]/.")]
         private IWebElement ClickSalesCenter { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//p[text()='Leads'])[2]")]
+        [FindsBy(How = How.XPath, Using = "(//p[text()='Leads'])[2]/..")]
         private IWebElement ClickLeadLink { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//button[@data-test-id='addBtn']")]
@@ -76,11 +76,11 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//button[text()='Save']")]
         private IWebElement ClickSaveButton { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//div[@role='alert']")]
+       [FindsBy(How = How.XPath, Using = "//div[@role='alert']")]
         private IWebElement LeadcreatedConfirm_Txt { get { return PageFactory.Load(this); } }
 
 
-        [FindsBy(How = How.XPath, Using = "//div[@data-test-id='searchInputField']")]
+        [FindsBy(How = How.XPath, Using = "(//div[@data-test-id='searchInputField']//div)[1]/..")]
         private IWebElement ClickSearchIcon { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//input[@placeholder='Name, email, phone, address, location']")]
@@ -126,10 +126,14 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "(//p[text()='autocompany03']/../../../preceding-sibling::div/descendant::div/div[2]/child::button[1])[1]")]
         private IWebElement ClickConvertOpportunityButton { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//button[text()='Add Service']")]
+        [FindsBy(How = How.XPath, Using = "(//button[text()='Add Service'])[2]")]
         private IWebElement ClickServiceButtonInSlider { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//div[text()='Services or Products Added']")]
+        [FindsBy(How = How.XPath, Using = "//button[text()='Add Service']")]
+        private IWebElement ClickAddServiceButtonInCReateNewOpportunitySlider { get { return PageFactory.Load(this); } }
+        
+
+       [FindsBy(How = How.XPath, Using = "//div[text()='Services or Products Added']")]
         private IWebElement ConvertLeadPageIsDisplayed { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//input[@name='opportunityStageId']/..")]
@@ -187,7 +191,7 @@ namespace WorkWave.PestPac.TA.Model
 
         #region Add contract to the lead
 
-        [FindsBy(How = How.XPath, Using = "(//span[text()='Send Agreement']/..)[1]")]
+        [FindsBy(How = How.XPath, Using = "//button[contains(@data-test-id,'agreementBtn')]/.")]
         private IWebElement ClickSendContractButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//span[text()='Create Contract']")]
@@ -225,7 +229,7 @@ namespace WorkWave.PestPac.TA.Model
         #region Reopen disqualified leads
 
 
-        [FindsBy(How = How.XPath, Using = "//button[@data-test-id='filterBtn']")]
+        [FindsBy(How = How.XPath, Using = "//button[@data-test-id='filterBtn']/.")]
         private IWebElement ClickOnFilterButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//div[text()='Lead Status']")]
@@ -261,7 +265,7 @@ namespace WorkWave.PestPac.TA.Model
 
         #region Attach a lead to location
 
-        [FindsBy(How = How.XPath, Using = "//p[text()='autocompany03']/../descendant::button")]
+        [FindsBy(How = How.XPath, Using = "(//span[text()='Bill-to / Locations']/..)[1]")]
         private IWebElement ClickBillToExpandButton { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//a[text()='Match / Create New']")]
@@ -305,7 +309,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[@data-test-id='editBtn']")]
         private IWebElement ClickEditOption { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "(//p[text()='View Services Added'])[1]")]
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Services Added')]")]
         private IWebElement ClickViewServicesAddedLink { get { return PageFactory.Load(this); } }
 
        
@@ -876,7 +880,7 @@ namespace WorkWave.PestPac.TA.Model
                 {
                     EnterLeadname.SendKeys(leadname);
                     EnterLeadname.SendKeys(Keys.Enter);
-                    Thread.Sleep(2000);
+                    Thread.Sleep(10000);
                     SUT.Log.DebugFormat("Lead name is entered");
                 }
                 else
@@ -1005,7 +1009,7 @@ namespace WorkWave.PestPac.TA.Model
                     ClickServiceField.Click();
                     Thread.Sleep(3000);
                 //    SalesCenterUtility.ScrollToElement(SelectServicename);
-                    SelectServicename.Click();                   
+                    SelectServicename.Click();
                     SUT.Log.DebugFormat("Service selected from the droddown");
                 }
                 else
@@ -1026,7 +1030,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ServcieAdded), TimeSpan.FromSeconds(10)))
                 {
                     ServcieAdded.Displayed.ToString();
-                    Thread.Sleep(1000);
+                    Thread.Sleep(5000);
                     SUT.Log.DebugFormat("Service added");
                 }
                 else
@@ -1087,9 +1091,30 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickServiceButtonInSlider)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickServiceButtonInSlider)))
                 {
                     ClickServiceButtonInSlider.Click();
+                    Thread.Sleep(3000);
+                    SUT.Log.DebugFormat("Add service button is clicked in the slider");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Add service button is not clicked in the slider {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Add service button is not clicked in the slider");
+            }
+        }
+
+        public void ClickOnAddServiceButtonInCreateNewOpportunitySlider()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickAddServiceButtonInCReateNewOpportunitySlider)))
+                {
+                    ClickAddServiceButtonInCReateNewOpportunitySlider.Click();
                     Thread.Sleep(3000);
                     SUT.Log.DebugFormat("Add service button is clicked in the slider");
                 }
@@ -1416,7 +1441,7 @@ namespace WorkWave.PestPac.TA.Model
         {
             try
             {
-                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickOnFilterButton),TimeSpan.FromSeconds(5)))
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickOnFilterButton),TimeSpan.FromSeconds(15)))
                 {
                     Thread.Sleep(3000);
                     ClickOnFilterButton.Click();
@@ -1466,7 +1491,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickApplyButton)))
                 {
                     ClickApplyButton.Click();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(10000);
                     SUT.Log.DebugFormat("Apply button is clicked");
                 }
                 else
@@ -1718,6 +1743,7 @@ namespace WorkWave.PestPac.TA.Model
                     ClickServiceLocationField.Click();
                     Thread.Sleep(2000);
                     SelectServiceLocationName.Click();
+                    Thread.Sleep(2000);
                     SUT.Log.DebugFormat("Service location is selected from the dropdown");
                 }
                 else
@@ -1820,7 +1846,8 @@ namespace WorkWave.PestPac.TA.Model
             try
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickViewServicesAddedLink)))
-                {                 
+                {
+                    SalesCenterUtility.ScrollToElement(ClickViewServicesAddedLink);
                     ClickViewServicesAddedLink.Click();
                     SUT.Log.DebugFormat("View services added link is clicked");
                 }
@@ -1989,7 +2016,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 SUT.Log.Debug("Validation  message is displayed");
                 Assert.True(ServiceLocationValidationConfirm_Txt.Text.Contains(message), "Validation message is not matching");
-                Thread.Sleep(10000);
+                Thread.Sleep(15000);
                 return true;
             }
             else

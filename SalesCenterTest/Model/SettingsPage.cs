@@ -142,7 +142,7 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//span[text()='Delete']/..")]
         private IWebElement DeleteoptionforAddedUser { get { return PageFactory.Load(this); } }
 
-        [FindsBy(How = How.XPath, Using = "//button[@data-test-id='okBtn']")]
+        [FindsBy(How = How.XPath, Using = "//button[text()='Delete']")]
         private IWebElement ClickDeletebuttonInPopup { get { return PageFactory.Load(this); } }
 
         [FindsBy(How = How.XPath, Using = "//div[text()='User deleted']")]

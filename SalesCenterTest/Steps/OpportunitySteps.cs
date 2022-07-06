@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using NUnit.Framework;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using WorkWave.PestPac.TA.Model;
@@ -162,6 +163,7 @@ namespace WorkWave.PestPac.TA.Steps
         {
             opportunitypage.ClickonAgainBilltoexpandicon();
         }
+   
 
         [When(@"Select the closed won option")]
         public void WhenSelectTheClosedWonOption()
@@ -249,6 +251,14 @@ namespace WorkWave.PestPac.TA.Steps
         {
             opportunitypage.EnterthedateandYear();
         }
+
+        [Then(@"Added payment method validation message should be displayed")]
+        public void ThenAddedPaymentMethodValidationMessageShouldBeDisplayed()
+        {
+            
+           Assert.True(opportunitypage.IsPaymentAddedMessageIsDisplayed(), "Validation message is not displayed");
+        }
+
 
         //Reassign the sales team
 

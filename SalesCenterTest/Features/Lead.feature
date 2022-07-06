@@ -7,7 +7,6 @@ Background:
 
 
 @Leads @WWM-8420  @WW_LD_001
-@SmokeProd
 @Smoke
 @Regression
 @Regression_Full
@@ -17,7 +16,6 @@ Scenario Outline: Verify default display of Lead Card
     Then Leads page should be displayed
   
 @Leads @WWM-8416 @WW_LD_002
-@SmokeProd
 @Smoke
 @Regression
 @Regression_Full
@@ -44,7 +42,6 @@ Scenario Outline: Verify user can create and delete a lead
 
 @WWM-8427 @Leads @WW_LD_003
 @Smoke
-@SmokeProd
 @Regression
 @Regression_Full
 Scenario Outline: Verify user can create lead and convert to opportunity
@@ -77,7 +74,6 @@ Scenario Outline: Verify user can create lead and convert to opportunity
 
 @Leads @WWM-8428 @WW_LD_004
 @Smoke
-@SmokeProd
 @Regression
 @Regression_Full
 Scenario Outline: Verify user able to create new opportunity directly 
@@ -90,7 +86,7 @@ Scenario Outline: Verify user able to create new opportunity directly
     Then Create opportunity page should be displayed
     And click on add additional service or product button
     And Select the services <Services>
-    When Click on Add services button in slider
+    When Click on Add services button in create new opportunity slider
     Then Service should be successfully added
     And Select the SalesTeam <SalesTeam>
     When Select the lead details <OwnerName> <FunnelName> <FunnelStage>
@@ -104,7 +100,6 @@ Scenario Outline: Verify user able to create new opportunity directly
 
 @Leads @WWM-8422  @8422 @WW_LD_005
 @Smoke
-@SmokeProd
 @Regression
 @Regression_Full
 Scenario Outline: Verify User Can Add a Contract to a Lead
@@ -283,8 +278,8 @@ Scenario Outline: Verify user able to create a new location in PP from a lead ca
     Then Location created successfully message should be displayed <LocationValMsg>
     
  Examples:  
-     | FirstName | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Address        | City    | State | PostalCode | LocationMatchedValMsg                           | LocationValMsg                 |
-     | John      | Smith    | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | 200 street san | chester | PA    | 93013-373  | A Service Location has been added successfully. | Locations Created Successfully |
+     | FirstName | LastName | CompanyName   | Email          | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Address        | City    | State | PostalCode | LocationMatchedValMsg                           | LocationValMsg                 |
+     | John      | Smith    | autocompany03 | john@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | 200 street san | chester | PA    | 93013-373  | A Service Location has been added successfully. | Locations Created Successfully |
 
 @Regression @Opportunities @WWM-8446 @WW_LD_011
 Scenario Outline: Verification of Bulk Re-assignment of leads which are associated with same branch Sales Team 
@@ -436,7 +431,6 @@ Scenario Outline: Verify that user can Bulk reopen the multiple disqualified Lea
 
 
 @Leads @WWM-8421 @WW_LD_017
-@SmokeProd
 @Smoke
 @Regression 
 @Regression_Full
@@ -689,7 +683,7 @@ Scenario Outline: Verify user able to create new opportunity from duplicate aler
     Then Create opportunity page should be displayed
     And click on add additional service or product button
     And Select the services <Services>
-    When Click on Add services button in slider
+    When Click on Add services button in create new opportunity slider
     Then Service should be successfully added
     And Select the SalesTeam <SalesTeam>
     When Select the lead details <OwnerName> <FunnelName> <FunnelStage>
