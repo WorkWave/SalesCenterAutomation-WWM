@@ -792,6 +792,16 @@ namespace WorkWave.PestPac.TA.Steps
             
         }
 
+        //Delete lead card
+        [When(@"Delete the lead card")]
+        public void WhenDeleteTheLeadCard()
+        {
+            leadspage.ClickOnThreeDotsIconforDisqualifiedLead();
+            opportunitypage.ClickOnDeleteLinkforOpportunityCard();
+            opportunitypage.ClickOnDeleteButtonInOpportunityDeletePopup();
+        }
+
+
 
     }
 }
