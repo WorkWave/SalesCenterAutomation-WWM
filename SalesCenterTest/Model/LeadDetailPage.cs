@@ -602,8 +602,26 @@ namespace WorkWave.PestPac.TA.Model
 
 
         #endregion Update lead details
-                
-     
+
+        #region Update service details
+
+        [FindsBy(How = How.XPath, Using = "//p[text()='View Details']")]
+        private IWebElement ClickViewDetailsExpandLink { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Initial Price']/following-sibling::span")]
+        private IWebElement InitialPriceIsDisplayed { get { return PageFactory.Load(this); } }
+
+
+        [FindsBy(How = How.Name, Using = "initialPrice")]
+        private IWebElement InitialPriceIsEntered { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//h2[text()='Delete Service']/../child::div/following-sibling::div/child::button[2]")]
+        private IWebElement ClickDeleteButtonInDeleteServicePopup { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//div[text()='EXTERIOR LIGHT']/../../descendant::button")]
+        private IWebElement ClickThreeDotsIconInUpdatedService { get { return PageFactory.Load(this); } }
+       
+        #endregion Update service details
         #endregion PageFactory
 
         private readonly string PageHeaderText = "Leads";
@@ -923,7 +941,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickDeleteLink)))
                 {
                     ClickDeleteLink.Click();
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2000);
                     SUT.Log.DebugFormat("Delete link is clicked");
                 }
                 else
@@ -1828,6 +1846,7 @@ namespace WorkWave.PestPac.TA.Model
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickUpdateServiceButton)))
                 {
                     ClickUpdateServiceButton.Click();
+                    Thread.Sleep(2000);
                     SUT.Log.DebugFormat("Update service button is clicked");
                 }
                 else
@@ -3250,7 +3269,116 @@ namespace WorkWave.PestPac.TA.Model
                 SUT.Log.ErrorFormat("Pestpac location tab is not clicked");
             }
         }
+
+        //Update service details
+
+        public void ClickOnViewDetailsExpandLink()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => ClickViewDetailsExpandLink)))
+                {
+                    ClickViewDetailsExpandLink.Click();
+                    Thread.Sleep(2000);
+                    SUT.Log.DebugFormat("View details expand link is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("View details expand link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("View details expand link is not clicked");
+            }
         }
+
+        public bool IsInitialPriceIsDisplayed()
+        {
+
+
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => InitialPriceIsDisplayed)))
+            {
+                if (InitialPriceIsDisplayed.Text.Contains("50"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsInitialPriceIsEntered(string firstname)
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => InitialPriceIsEntered)))
+                {
+                    //  UpdateFirstName.Click();
+                    InitialPriceIsEntered.SendKeys(Keys.Control + "a");
+                    InitialPriceIsEntered.SendKeys(Keys.Delete);
+                    InitialPriceIsEntered.SendKeys(firstname);
+                    Thread.Sleep(1000);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void ClickOnDeleteButtonInDeleteServicePopup()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickDeleteButtonInDeleteServicePopup)))
+                {
+                    ClickDeleteButtonInDeleteServicePopup.Click();
+                    SUT.Log.DebugFormat("Delete button is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Delete button is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Delete button is not clicked");
+            }
+        }
+
+        public void ClickOnThreeDotsIconInUpdatedService()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickThreeDotsIconInUpdatedService)))
+                {
+                    ClickThreeDotsIconInUpdatedService.Click();
+                    SUT.Log.DebugFormat("Three dots icon is clicked for updated service");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Three dots icon is not clicked for updated service {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Three dots icon is not clicked for updated service");
+            }
+        }
+    }
 
     }
 
