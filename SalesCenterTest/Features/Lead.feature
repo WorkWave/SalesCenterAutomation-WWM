@@ -7,6 +7,7 @@ Background:
 
 
 @Leads @WWM-8420  @WW_LD_001
+@SmokeProd
 @Smoke
 @Regression
 @Regression_Full
@@ -16,6 +17,7 @@ Scenario Outline: Verify default display of Lead Card
     Then Leads page should be displayed
   
 @Leads @WWM-8416 @WW_LD_002
+@SmokeProd
 @Smoke
 @Regression
 @Regression_Full
@@ -41,6 +43,7 @@ Scenario Outline: Verify user can create and delete a lead
 	 
 
 @WWM-8427 @Leads @WW_LD_003
+@SmokeProd
 @Smoke
 @Regression
 @Regression_Full
@@ -73,6 +76,7 @@ Scenario Outline: Verify user can create lead and convert to opportunity
 
 
 @Leads @WWM-8428 @WW_LD_004
+@SmokeProd
 @Smoke
 @Regression
 @Regression_Full
@@ -99,6 +103,7 @@ Scenario Outline: Verify user able to create new opportunity directly
 
 
 @Leads @WWM-8422  @8422 @WW_LD_005
+@SmokeProd
 @Smoke
 @Regression
 @Regression_Full
@@ -431,6 +436,7 @@ Scenario Outline: Verify that user can Bulk reopen the multiple disqualified Lea
 
 
 @Leads @WWM-8421 @WW_LD_017
+@SmokeProd
 @Smoke
 @Regression 
 @Regression_Full
@@ -693,3 +699,56 @@ Scenario Outline: Verify user able to create new opportunity from duplicate aler
  Examples:  
      | FirstName | Services            | SalesTeam                   | FunnelStage | Ownername  | FunnelName         | OpportunityCreated |
      | james     | ANT- Ant Treatments | Secondary south sales Team  | Stage1      | Unassigned | Test Sales funnel  | Opportunity created |         
+
+@Leads @WWM-8564  @WW_LD_026
+@Regression
+@Regression_Full
+Scenario Outline: Verify user able to delete a lead card  
+    When Mouse hover on sales center side menu
+    And Click on Leads link
+    Then Leads page should be displayed
+    And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+    When Delete the lead card
+    Then validation message should be displayed <LeadDeleted>
+
+  Examples:  
+    | LeadDeleted   | 
+    | Lead deleted. |   
+
+@Leads @WWM-8562 @WW_LD_027
+@Regression 
+@Regression_Full
+Scenario Outline: Verify user is able to edit already added service to a lead
+    When Click on plus icon
+    And Click on Add Lead button
+    Then Add Lead details page should be displayed
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
+    And Select the SalesTeam <SalesTeam>
+    And Select the Owner <Owner> 
+    And Select the sales funnel <SalesFunnel>
+    When Click on Save button
+    Then Lead created validation message should be displayed <ValidationMessage>
+    And  Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider  
+    And Click on Service expand icon
+    And Click on Add Serivces button
+    And Select the services <Services>
+    When Click on Add services button in slider
+    Then Service should be successfully added
+    And Click on Close services and product button   
+    When Click on view services added link
+    Then Manage services and products page should be displayed
+    And Click on three dots icon in update service or product slider
+    And Update the servcie details <UpdateServcie> <IntialPrice>
+    And click on update servcie button
+    And Click on view details expand icon
+    And Verify the updated details
+    And Delete the service
+
+    
+ Examples:  
+       | FirstName        | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage  | Services            | UpdateServcie  | IntialPrice   |
+       | Automation Labs  | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created       | ANT- Ant Treatments | EXTERIOR LIGHT | 50            |

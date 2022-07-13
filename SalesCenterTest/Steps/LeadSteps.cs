@@ -427,7 +427,6 @@ namespace WorkWave.PestPac.TA.Steps
         public void ThenClickOnThreeDotsIconInUpdateServiceOrProductSlider()
         {
             leadspage.ClickOnThreeDotsIconInUpdateServiceSlider();
-            leadspage.ClickOnEditOption();
         }
 
         [Then(@"Select the other service (.*)")]
@@ -792,6 +791,45 @@ namespace WorkWave.PestPac.TA.Steps
             
         }
 
+        //Delete lead card
+        [When(@"Delete the lead card")]
+        public void WhenDeleteTheLeadCard()
+        {
+            leadspage.ClickOnThreeDotsIconforDisqualifiedLead();
+            opportunitypage.ClickOnDeleteLinkforOpportunityCard();
+            opportunitypage.ClickOnDeleteButtonInOpportunityDeletePopup();
+        }
 
+        //Update lead details
+
+        [Then(@"Update the servcie details (.*) (.*)")]
+        public void ThenUpdateTheServcieDetailsEXTERIORLIGHT(string otherservcie,string initialprice)
+        {
+            leadspage.ClickOnEditOption();
+            leadspage.SelectOtherServiceFromDropDown();
+            leadspage.IsInitialPriceIsEntered(initialprice);
+        }
+
+        [Then(@"Click on view details expand icon")]
+        public void ThenClickOnViewDetailsExpandIcon()
+        {
+            leadspage.ClickOnViewDetailsExpandLink();
+        }
+
+        [Then(@"Verify the updated details")]
+        public void ThenVerifyTheUpdatedDetails()
+        {
+            leadspage.IsInitialPriceIsDisplayed();
+        }
+
+        [Then(@"Delete the service")]
+        public void ThenDeleteTheService()
+        {
+            leadspage.ClickOnThreeDotsIconInUpdatedService();
+            leadspage.ClickOnDeleteLinkforLead();
+            leadspage.ClickOnDeleteButtonInDeleteServicePopup();
+        }
     }
-}
+
+   }
+

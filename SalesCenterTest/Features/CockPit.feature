@@ -12,17 +12,21 @@ Scenario: Verify Captured Leads, Open Opportunities, Leads to Qualify cards are 
     Then Verify the Leads opportunities and Leads to Qualify cards are displayed on dashboard
 
 @CockPit @WWM-8412  @WW_CP_002
+@SmokeProd
 @Smoke
 @Regression_Base 
 @Regression_Full
 Scenario: Verify default dispay of Records with Overdue Next Action Dates on dashboard
     Then Verify the  default dispay of Records with Overdue Next Action Dates on dashboard
 
-@Smoke  @CockPit @WW_CP_003 @WWM-8415
+@CockPit @WW_CP_003 @WWM-8415
+@SmokeProd
+@Smoke
 Scenario: Verify  Contract History is displayed on dashboard
     Then Verify the Contract History is displayed on dashboard
 
 @CockPit  @WWM-8414  @WW_CP_004
+@SmokeProd
 @Smoke
 @Regression_Base 
 @Regression_Full
