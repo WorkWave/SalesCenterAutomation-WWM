@@ -752,3 +752,20 @@ Scenario Outline: Verify user is able to edit already added service to a lead
  Examples:  
        | FirstName        | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage  | Services            | UpdateServcie  | IntialPrice   |
        | Automation Labs  | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created       | ANT- Ant Treatments | EXTERIOR LIGHT | 50            |
+
+@Leads @WWM-8561  @WW_LD_028
+@Regression
+@Regression_Full
+Scenario: Verify default display of Add service or Product slideout
+    When Mouse hover on sales center side menu
+    And Click on Leads link
+    Then Leads page should be displayed
+    And Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+    And Click on Service expand icon
+    And Click on Add Serivces button
+    And Veriry the details in add servcie or product slide out
+    
+
+  

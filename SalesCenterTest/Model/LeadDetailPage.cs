@@ -620,8 +620,40 @@ namespace WorkWave.PestPac.TA.Model
 
         [FindsBy(How = How.XPath, Using = "//div[text()='EXTERIOR LIGHT']/../../descendant::button")]
         private IWebElement ClickThreeDotsIconInUpdatedService { get { return PageFactory.Load(this); } }
-       
+
         #endregion Update service details
+
+        #region Add service or product slideout
+
+        [FindsBy(How = How.Name, Using = "externalId")]
+        private IWebElement AddServiceOrProductIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Upsell']/..")]
+        private IWebElement UpsellToggleButtonIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//span[text()='Add Pricing']")]
+        private IWebElement PricingLabelIsDisplayed { get { return PageFactory.Load(this); } }
+
+
+        [FindsBy(How = How.Name, Using = "initialPrice")]
+        private IWebElement InitialButtonIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Name, Using = "initialDiscountAmount")]
+        private IWebElement DiscountButtonIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Name, Using = "//span[text()='Include Sales Tax']/.")]
+        private IWebElement ToggleButtonIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Name, Using = "//div[text()='Service or Product Total Summary']")]
+        private IWebElement ServiceProductSummaryIsDisplayed { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.Name, Using = "(//button[text()='Add Service'])[2]")]
+        private IWebElement AddServiceButtonIsDisplayed { get { return PageFactory.Load(this); } }
+
+
+       
+
+        #endregion Add service or product slideout
         #endregion PageFactory
 
         private readonly string PageHeaderText = "Leads";
@@ -2035,7 +2067,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 SUT.Log.Debug("Validation  message is displayed");
                 Assert.True(ServiceLocationValidationConfirm_Txt.Text.Contains(message), "Validation message is not matching");
-                Thread.Sleep(15000);
+                Thread.Sleep(20000);
                 return true;
             }
             else
@@ -3378,9 +3410,183 @@ namespace WorkWave.PestPac.TA.Model
                 SUT.Log.ErrorFormat("Three dots icon is not clicked for updated service");
             }
         }
-    }
+
+        //Add service or product slideoout
+
+        public void IsAddServiceOrProductDropdownIsDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => AddServiceOrProductIsDisplayed), TimeSpan.FromSeconds(3)))
+                {
+                    string AddServiceOrProductDisplayed = AddServiceOrProductIsDisplayed.ToString();
+                    Thread.Sleep(1000);
+                    SUT.Log.DebugFormat("Add service or product dropdown is Displayed {0}", AddServiceOrProductDisplayed);
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Add service or product dropdown is not Displayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Add service or product dropdown is not Displayed");
+            }
+        }
+
+        public void IsUpsellToggleButtonIsDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => UpsellToggleButtonIsDisplayed), TimeSpan.FromSeconds(3)))
+                {
+                    SalesCenterUtility.ScrollToElement(UpsellToggleButtonIsDisplayed);
+                    string UpsellToggleButtonDisplayed = UpsellToggleButtonIsDisplayed.ToString();
+                    Thread.Sleep(1000);
+                    SUT.Log.DebugFormat("Upsell toggle button is Displayed {0}", UpsellToggleButtonDisplayed);
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Upsell toggle button is not Displayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Upsell toggle button is not Displayed");
+            }
+        }
+
+        public void IsPricingLabelIsDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => PricingLabelIsDisplayed), TimeSpan.FromSeconds(3)))
+                {
+                    string PricingLabelDisplayed = PricingLabelIsDisplayed.ToString();
+                    Thread.Sleep(1000);
+                    SUT.Log.DebugFormat("Pricing label is Displayed {0}", PricingLabelDisplayed);
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Pricing label is not Displayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Pricing label is not Displayed");
+            }
+        }
+
+        public void IsInitialButtonIsDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => InitialButtonIsDisplayed), TimeSpan.FromSeconds(3)))
+                {
+                    string InitialButtonDisplayed = InitialButtonIsDisplayed.ToString();
+                    Thread.Sleep(1000);
+                    SUT.Log.DebugFormat("Initial button is Displayed {0}", InitialButtonDisplayed);
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Initial button is not Displayed  {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Initial button is not Displayed");
+            }
+        }
+
+        public void IsDiscountButtonIsDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => DiscountButtonIsDisplayed), TimeSpan.FromSeconds(3)))
+                {
+                    SalesCenterUtility.ScrollToElement(DiscountButtonIsDisplayed);
+                    string DiscountButtonDisplayed = DiscountButtonIsDisplayed.ToString();
+                    Thread.Sleep(1000);
+                    SUT.Log.DebugFormat("Discount button is Displayed {0}", DiscountButtonDisplayed);
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Discount button is not Displayed  {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Discount button is not Displayed");
+            }
+        }
+
+        public void IsToggleButtonIsDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ToggleButtonIsDisplayed), TimeSpan.FromSeconds(3)))
+                {
+                    SalesCenterUtility.ScrollToElement(ToggleButtonIsDisplayed);
+                    string ToggleButtonDisplayed = ToggleButtonIsDisplayed.ToString();
+                    Thread.Sleep(1000);
+                    SUT.Log.DebugFormat("Toggle button is Displayed {0}", ToggleButtonDisplayed);
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Toggle button is not Displayed  {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Toggle button is not Displayed");
+            }
+        }
+
+        public void IsServiceProductSummaryIsDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ServiceProductSummaryIsDisplayed), TimeSpan.FromSeconds(3)))
+                {
+                    string ServiceProductSummaryDisplayed = ServiceProductSummaryIsDisplayed.ToString();
+                    Thread.Sleep(1000);
+                    SUT.Log.DebugFormat("Service product summary is Displayed {0}", ServiceProductSummaryDisplayed);
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Service product summary is not Displayed  {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Service product summary is not Displayed");
+            }
+        }
+
+        public void IsAddServiceButtonIsDisplayed()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => AddServiceButtonIsDisplayed), TimeSpan.FromSeconds(3)))
+                {
+                    string  AddServiceButtonDisplayed = AddServiceButtonIsDisplayed.ToString();
+                    Thread.Sleep(1000);
+                    SUT.Log.DebugFormat("Add servcie button is Displayed {0}", AddServiceButtonDisplayed);
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Add servcie button is not Displayed  {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Add servcie button is not Displayed");
+            }
+        }
 
     }
+
+}
 
 
 
