@@ -142,7 +142,7 @@ Scenario Outline: Verify User is Able to Add and delete the Sales Team
      | autosalesteam       | North Branch | Sales Team created | Sales Team deleted.  |
 
     
-@Settings @WWM-8405  @WW_ST_011
+@Settings @WWM-8405  @WW_ST_011 @ignore
 @SmokeProd
 @Smoke
 @Regression 
@@ -159,14 +159,16 @@ Scenario Outline: Verify Admin Users Can Add Positions to Sales Teams
     Then Sales team created validation message should be displayed <ConfirmMessage>
     And  Click on Add Position button
     And  Enter the position title <title>
-    When Click on Save button 
+    When Click on Save button
+    When Select the Reports To <ReportsTo>
+    When Click on Save button
     Then Sales team position created validation message should be displayed <Positionvalmsg>
     When Delete the sales team
     Then SalesTeam deleted confirmation mesage should be displayed <SalesTeamDeleted>
     
    Examples: 
-     | SalesTeamName   | Branch Name    | ConfirmMessage     | SalesTeamDeleted    | title        | Positionvalmsg               |
-     | autosalesteam   | North Branch   | Sales Team created | Sales Team deleted. | SalesManager | Sales Team Position created  |
+     | SalesTeamName | Branch Name  | ConfirmMessage     | SalesTeamDeleted    | title        | Positionvalmsg              | ReportsTo    |
+     | autosalesteam | North Branch | Sales Team created | Sales Team deleted. | SalesManager | Sales Team Position created | SalesManager |
      
 
 @WWM-8408 @Settings @WW_ST_012

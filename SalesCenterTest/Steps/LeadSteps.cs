@@ -829,7 +829,23 @@ namespace WorkWave.PestPac.TA.Steps
             leadspage.ClickOnDeleteLinkforLead();
             leadspage.ClickOnDeleteButtonInDeleteServicePopup();
         }
+
+        //verify add servcie or product slideout
+
+        [Then(@"Veriry the details in add servcie or product slide out")]
+        public void ThenVeriryTheDetailsInAddServcieOrProductSlideOut()
+        {
+            leadspage.IsAddServiceOrProductDropdownIsDisplayed();
+            leadspage.IsUpsellToggleButtonIsDisplayed();
+            leadspage.IsPricingLabelIsDisplayed();
+            leadspage.IsInitialButtonIsDisplayed();
+            leadspage.IsDiscountButtonIsDisplayed();
+            leadspage.IsToggleButtonIsDisplayed();
+            leadspage.IsServiceProductSummaryIsDisplayed();
+            leadspage.IsAddServiceButtonIsDisplayed();
+        }
+
     }
 
-   }
+}
 

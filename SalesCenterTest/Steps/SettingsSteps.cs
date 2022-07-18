@@ -294,6 +294,13 @@ namespace WorkWave.PestPac.TA.Steps
         {
             settingpage.EnterPositionTitle(titlename);
         }
+ 
+        [When(@"Select the Reports To (.*)")]
+        public void WhenSelectTheReportsToSalesManager(string reportsto)
+        {
+            settingpage.SelectReportsToFromTheDropDown();
+        }
+
 
         [Then(@"Sales team position created validation message should be displayed (.*)")]
         public void ThenSalesTeamPositionCreatedValidationMessageShouldBeDisplayedSalesTeamPositionCreated(string positioncreatedmessage)

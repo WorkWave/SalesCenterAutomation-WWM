@@ -180,6 +180,12 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.XPath, Using = "//div[text()='Sales Team deleted.']")]
         private IWebElement SalesTeamDeleteConfirm_Txt { get { return PageFactory.Load(this); } }
 
+        [FindsBy(How = How.XPath, Using = "//span[text()='Reports to']/../child::div[2]")]
+        private IWebElement ClickReportsField { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "//ul//li[text()='SalesManager']")]
+        private IWebElement SelectReportsToFromDropDown { get { return PageFactory.Load(this); } }
+
         #endregion Sales Team
 
         #region Add position
@@ -1010,7 +1016,30 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
-       
+        public void SelectReportsToFromTheDropDown()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickReportsField)))
+                {
+                    ClickReportsField.Click();
+                    Thread.Sleep(2000);                   
+                    SelectReportsToFromDropDown.Click();
+                    SUT.Log.DebugFormat("Reports to is selected from the droddown");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Reports to is not selected from the droddown {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Reports to is not selected from the droddown");
+            }
+        }
+
+
+
     }
 
 }
