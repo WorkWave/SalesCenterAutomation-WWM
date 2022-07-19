@@ -427,6 +427,7 @@ namespace WorkWave.PestPac.TA.Steps
         public void ThenClickOnThreeDotsIconInUpdateServiceOrProductSlider()
         {
             leadspage.ClickOnThreeDotsIconInUpdateServiceSlider();
+            leadspage.ClickOnEditOption();
         }
 
         [Then(@"Select the other service (.*)")]
@@ -844,6 +845,16 @@ namespace WorkWave.PestPac.TA.Steps
             leadspage.IsServiceProductSummaryIsDisplayed();
             leadspage.IsAddServiceButtonIsDisplayed();
         }
+
+        //Add dollar and percentage to service
+
+        [Then(@"Enter the initial price and discount percentage (.*) (.*)")]
+        public void ThenEnterTheInitialPriceAndDiscountPercentage(string initialprice, string dollarpercentage)
+        {
+            leadspage.IsInitialPriceIsEntered(initialprice);
+            leadspage.IsDollarPercentageIsEntered(dollarpercentage);
+        }
+
 
     }
 

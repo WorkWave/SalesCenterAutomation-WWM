@@ -1887,6 +1887,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickCreateContactButton)))
                 {
+                    SalesCenterUtility.ScrollToElement(ClickCreateContactButton);
                     ClickCreateContactButton.Click();
                     Thread.Sleep(2000);
                     SUT.Log.DebugFormat("Create contact button is clicked");

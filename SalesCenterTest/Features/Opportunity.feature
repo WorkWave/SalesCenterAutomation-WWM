@@ -326,7 +326,7 @@ Scenario Outline: Edit WWM Contact for Opportunity
      | James           | James pvt ltd   |  Add CC for API Auto CC Refund |
 
 
-@Smoke @Opportunities @WWM-8609 @WW_OP_011
+@Smoke @Opportunities @WWM-8609 @WW_OP_011 @ignore @WWM-10168
 Scenario Outline: Create WWM Contact for Opportunity
 	When Mouse hover on sales center side menu
     And Click on Opportunities link

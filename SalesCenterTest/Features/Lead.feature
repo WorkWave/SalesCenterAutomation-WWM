@@ -467,7 +467,7 @@ Scenario Outline: Verify user able to add service to a lead
       | Services            | 
       | ANT- Ant Treatments | 
 
-@Smoke  @Leads @WWM-9436 @WW_LD_018
+@Smoke  @Leads @WWM-9436 @WW_LD_018 @ignore @WWM-10168
 Scenario Outline:Verify user able to Create WWM Contact for Lead
 	When Mouse hover on sales center side menu
     And Click on Leads link
@@ -767,5 +767,38 @@ Scenario: Verify default display of Add service or Product slideout
     And Click on Add Serivces button
     And Veriry the details in add servcie or product slide out
     
+@Leads @WWM-8560 @WW_LD_029
+@Regression 
+@Regression_Full
+Scenario Outline: Verify user is able to add discount in dollar amount or percentage while adding service
+    When Click on plus icon
+    And Click on Add Lead button
+    Then Add Lead details page should be displayed
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
+    And Select the SalesTeam <SalesTeam>
+    And Select the Owner <Owner> 
+    And Select the sales funnel <SalesFunnel>
+    When Click on Save button
+    Then Lead created validation message should be displayed <ValidationMessage>
+    And  Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider  
+    And Click on Service expand icon
+    And Click on Add Serivces button
+    And Select the services <Services>
+    And Enter the initial price and discount percentage <InitialPrice> <DiscountPercentage>
+    When Click on Add services button in slider
+    Then Service should be successfully added
+    And Click on Close services and product button     
+    And Click on Add Serivces button
+    And Select the services <Services>
+    And Enter the initial price and discount percentage <InitialPrice1> <DiscountPercentage1>
+    When Click on Add services button in slider
+    Then Service should be successfully added
+    And Click on Close services and product button
+    And Delete the service
 
-  
+    
+ Examples:  
+       | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Services            |  InitialPrice  | DiscountPercentage  | InitialPrice1 | DiscountPercentage1  |
+       | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments |     50         |      10             |    60         |         11%          |
