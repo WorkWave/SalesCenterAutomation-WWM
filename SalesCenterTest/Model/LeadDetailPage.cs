@@ -650,8 +650,11 @@ namespace WorkWave.PestPac.TA.Model
         [FindsBy(How = How.Name, Using = "(//button[text()='Add Service'])[2]")]
         private IWebElement AddServiceButtonIsDisplayed { get { return PageFactory.Load(this); } }
 
+        [FindsBy(How = How.Name, Using = "initialDiscountAmount")]
+        private IWebElement DollarPercentageIsEntered { get { return PageFactory.Load(this); } }
 
-       
+
+        
 
         #endregion Add service or product slideout
         #endregion PageFactory
@@ -3583,6 +3586,34 @@ namespace WorkWave.PestPac.TA.Model
                 SUT.Log.ErrorFormat("Add servcie button is not Displayed");
             }
         }
+
+        //Add dollar amount and discount percetage to service
+
+        public bool IsDollarPercentageIsEntered(string dollarpercentage)
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsEnabled(() => DollarPercentageIsEntered)))
+                {
+                    //  UpdateFirstName.Click();
+                    DollarPercentageIsEntered.SendKeys(Keys.Control + "a");
+                    DollarPercentageIsEntered.SendKeys(Keys.Delete);
+                    DollarPercentageIsEntered.SendKeys(dollarpercentage);
+                    Thread.Sleep(1000);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
 
     }
 
