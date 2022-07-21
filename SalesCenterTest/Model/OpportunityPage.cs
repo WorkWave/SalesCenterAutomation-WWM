@@ -525,11 +525,14 @@ namespace WorkWave.PestPac.TA.Model
 
         #region closing requirement counts
 
-        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'1 Service')]")]
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),' Service')]")]
         private IWebElement ServiceCountDisplayedInManageServicesPage { get { return PageFactory.Load(this); } }
 
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Services Added ')]")]
+        private IWebElement ServiceCountDisplayedInCardView { get { return PageFactory.Load(this); } }
+
        
-      
+
         #endregion closing requirement counts
 
 
@@ -2863,6 +2866,34 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
+        public void IsServiceCountDisplayedInCardView()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ServiceCountDisplayedInCardView)))
+                {
+                    string text = ServiceCountDisplayedInCardView.Text;
+
+                    Regex re = new Regex(@"[0-9]+");
+
+                    var match = re.Matches(text);
+                    foreach (Match m in match)
+                    {
+                        Console.WriteLine("Service count is:::" + m.Value);
+                    }
+
+                    SUT.Log.DebugFormat("Service count is Displayed");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("Service count is not Displayed {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("Service count is not Displayed");
+            }
+        }
 
 
 

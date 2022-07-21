@@ -802,3 +802,46 @@ Scenario Outline: Verify user is able to add discount in dollar amount or percen
  Examples:  
        | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Services            |  InitialPrice  | DiscountPercentage  | InitialPrice1 | DiscountPercentage1  |
        | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments |     50         |      10             |    60         |         11%          |
+
+@Leads @WWM-8559 @WW_LD_030
+@Regression 
+@Regression_Full
+Scenario Outline: Verify user able to add multiple services to a lead
+    When Click on plus icon
+    And Click on Add Lead button
+    Then Add Lead details page should be displayed
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
+    And Select the SalesTeam <SalesTeam>
+    And Select the Owner <Owner> 
+    And Select the sales funnel <SalesFunnel>
+    When Click on Save button
+    Then Lead created validation message should be displayed <ValidationMessage>
+    And  Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider  
+    And Click on Service expand icon
+    And Click on Add Serivces button
+    And Select the services <Services>
+    And Enter the initial price and discount percentage <InitialPrice> <DiscountPercentage>
+    When Click on Add services button in slider
+    Then Service should be successfully added
+    And Click on Close services and product button     
+    And Click on Add Serivces button
+    And Select the services <Services>
+    And Enter the initial price and discount percentage <InitialPrice> <DiscountPercentage>
+    When Click on Add services button in slider
+    Then Service should be successfully added
+    And Click on Close services and product button
+    And Click on Add Serivces button
+    And Select the services <Services>
+    And Enter the initial price and discount percentage <InitialPrice> <DiscountPercentage>
+    When Click on Add services button in slider
+    Then Service should be successfully added
+    And Click on Close services and product button   
+    And Verify the service count
+    When Click on view services added link
+    Then Same service count should be displayed in Manage services and products page
+    
+ Examples:  
+       | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Services            |  InitialPrice  | DiscountPercentage  | 
+       | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments |     50         |      10             |    

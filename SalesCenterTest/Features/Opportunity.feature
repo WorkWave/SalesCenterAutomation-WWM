@@ -954,6 +954,7 @@ Scenario Outline: Verification of closing requirement counts in open cards for O
     And Select the expiration month and year
     When Click on Add credit card button
     Then Validation message should be displayed <ValMessage>
+    And Verify the service count
     When Click on view services added link
     Then Same service count should be displayed in Manage services and products page
 

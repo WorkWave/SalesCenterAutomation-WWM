@@ -672,7 +672,13 @@ namespace WorkWave.PestPac.TA.Steps
             opportunitypage.IsServiceCountDisplayedInManageServicesPage();
         }
 
-       
+        [Then(@"Verify the service count")]
+        public void ThenVerifyTheServiceCount()
+        {
+            opportunitypage.IsServiceCountDisplayedInCardView();
+        }
+
+
 
     }
 }
