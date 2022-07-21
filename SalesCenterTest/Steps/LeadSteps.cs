@@ -855,6 +855,29 @@ namespace WorkWave.PestPac.TA.Steps
             leadspage.IsDollarPercentageIsEntered(dollarpercentage);
         }
 
+        //Verify the lead details
+
+        [Then(@"Verify the company details")]
+        public void ThenVerifyTheCompanyDetails()
+        {           
+            Assert.True(leadspage.VerifyCompanynameIsDisplayedInLeadCard(), "Company Name is not displayed on lead card");
+        }
+
+        [When(@"Click on View primary contact link")]
+        public void WhenClickOnViewPrimaryContactLink()
+        {
+            leadspage.ClickOnViewPrimaryContactLinkOnleadCard();
+        }
+
+        [Then(@"Verify the lead details")]
+        public void ThenVerifyTheLeadDetails()
+        {           
+            Assert.True(leadspage.VerifyCompanynameInPrimaryContactSection(), "Company Name  is not displayed primary contact section");
+            Assert.True(leadspage.VerifyPrimaryEmailAddressInPrimaryContactSection(), "Primary email address  is not displayed in primary contact section");
+
+        }
+
+
 
     }
 

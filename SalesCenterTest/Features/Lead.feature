@@ -845,3 +845,29 @@ Scenario Outline: Verify user able to add multiple services to a lead
  Examples:  
        | FirstName       | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | Services            |  InitialPrice  | DiscountPercentage  | 
        | Automation Labs | Labs03   | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      | ANT- Ant Treatments |     50         |      10             |    
+
+
+@Leads @WWM-8558  @WW_LD_031
+@Regression
+@Regression_Full
+Scenario Outline: Verify newly added lead is displayed with all the details correctly on lead cards   
+    When Click on plus icon 
+    And  Click on Add Lead button
+    Then Add Lead details page should be displayed
+    And Enter the lead details <FirstName> <LastName> <CompanyName> <Email> 
+    And Select the SalesTeam <SalesTeam>
+    And Select the Owner <Owner>
+    And Select the sales funnel <SalesFunnel>
+    When Click on Save button
+    Then Lead created validation message should be displayed <ValidationMessage>
+    And  Click on filters button
+    And Click on clear filter button
+    And Click on Apply button in filter slider
+    And Verify the company details
+    When Click on View primary contact link
+    Then Verify the lead details
+    
+
+Examples:  
+      | FirstName        | LastName | CompanyName   | Email              | SalesTeam                  | Owner      | SalesFunnel                 | ValidationMessage | 
+      | Automation user3 | Test3    | autocompany03 | autouser@gmail.com | Secondary south sales Team | Unassigned | Required Contract & Payment | Lead created      |

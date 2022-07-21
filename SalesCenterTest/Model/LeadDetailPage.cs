@@ -654,9 +654,28 @@ namespace WorkWave.PestPac.TA.Model
         private IWebElement DollarPercentageIsEntered { get { return PageFactory.Load(this); } }
 
 
-        
+
 
         #endregion Add service or product slideout
+
+        #region verify lead details
+
+        [FindsBy(How = How.XPath, Using = "//p[text()='autocompany03']")]
+        private IWebElement CompanynameIsDisplayedInLeadCard { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//p[text()='View Primary Contact '])[1]")]
+        private IWebElement ClickViewPrimaryContactLinkOnleadCard { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//p[contains(text(),'autocompany03')])[2]")]
+        private IWebElement CompanynameInPrimaryContactSection { get { return PageFactory.Load(this); } }
+
+        [FindsBy(How = How.XPath, Using = "(//a[@href='mailto:autouser@gmail.com'])[1]")]
+        private IWebElement PrimaryEmailAddressInPrimaryContactSection { get { return PageFactory.Load(this); } }
+
+        
+
+        #endregion verify lead details
+
         #endregion PageFactory
 
         private readonly string PageHeaderText = "Leads";
@@ -2070,7 +2089,7 @@ namespace WorkWave.PestPac.TA.Model
             {
                 SUT.Log.Debug("Validation  message is displayed");
                 Assert.True(ServiceLocationValidationConfirm_Txt.Text.Contains(message), "Validation message is not matching");
-                Thread.Sleep(20000);
+                Thread.Sleep(25000);
                 return true;
             }
             else
@@ -3614,6 +3633,84 @@ namespace WorkWave.PestPac.TA.Model
             }
         }
 
+        //Verify lead details
+
+        public bool VerifyCompanynameIsDisplayedInLeadCard()
+        {
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => CompanynameIsDisplayedInLeadCard)))
+            {
+                if (CompanynameIsDisplayedInLeadCard.Text.Contains("autocompany03"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void ClickOnViewPrimaryContactLinkOnleadCard()
+        {
+            try
+            {
+                if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => ClickViewPrimaryContactLinkOnleadCard)))
+                {
+                    ClickViewPrimaryContactLinkOnleadCard.Click();
+                    SUT.Log.DebugFormat("View primary contact link is clicked");
+                }
+                else
+                {
+                    SUT.Log.ErrorFormat("View primary contact link is not clicked {0}", MethodBase.GetCurrentMethod().Name);
+                }
+            }
+            catch (WebDriverTimeoutException)
+            {
+                SUT.Log.ErrorFormat("View primary contact link is not clicked");
+            }
+        }
+
+        public bool VerifyCompanynameInPrimaryContactSection()
+        {
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => CompanynameInPrimaryContactSection)))
+            {
+                if (CompanynameInPrimaryContactSection.Text.Contains("autocompany03"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool VerifyPrimaryEmailAddressInPrimaryContactSection()
+        {
+            if (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(() => PrimaryEmailAddressInPrimaryContactSection)))
+            {
+                if (PrimaryEmailAddressInPrimaryContactSection.Text.Contains("autouser@gmail.com"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
 
     }
 
